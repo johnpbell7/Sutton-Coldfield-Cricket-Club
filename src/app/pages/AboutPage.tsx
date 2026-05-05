@@ -30,10 +30,10 @@ export default function AboutPage() {
           <div className="max-w-[1270px] mx-auto px-4 md:px-6">
             {/* Text content - offset to the right */}
             <div className="md:pl-[440px] mb-[60px] md:mb-[80px]">
-              <h2 className="font-['Georgia',serif] font-bold text-[28px] md:text-[36px] leading-[36px] md:leading-[44px] text-[#8B1538] mb-[20px]">
+              <h2 className="font-['Georgia',serif] font-bold text-2xl md:text-4xl leading-snug text-[#8B1538] mb-[20px]">
                 A Legacy Since 1880
               </h2>
-              <div className="font-['Georgia',serif] text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-[#222] space-y-5">
+              <div className="font-['Georgia',serif] text-base md:text-lg leading-relaxed text-[#222] space-y-5">
                 <p>
                   In the spring of 1880, twelve cricket enthusiasts gathered at the local town hall in Sutton Coldfield and decided to form what would become one of the region's most prestigious cricket clubs. The founding members included local business owners, teachers, and cricket lovers who shared a vision of creating a community centered around the gentleman's game.
                 </p>
@@ -53,7 +53,7 @@ export default function AboutPage() {
                 />
                 {/* Caption - below on mobile, left on desktop */}
                 <div className="mt-4 md:mt-0 md:absolute md:left-[-440px] md:top-0 md:w-[280px] border-b border-[#d9c9ca] py-[10px]">
-                  <p className="font-['Georgia',serif] text-[15px] md:text-[17.7px] leading-[26px] md:leading-[30px] text-[#4a4a4a]">
+                  <p className="font-['Georgia',serif] text-sm md:text-base leading-relaxed text-[#4a4a4a]">
                     The founding members at their first meeting, Sutton Coldfield, 1880.
                   </p>
                 </div>
@@ -86,10 +86,10 @@ export default function AboutPage() {
           <div className="max-w-[1270px] mx-auto px-4 md:px-6">
             {/* Text content */}
             <div className="md:pl-[440px] mb-[60px] md:mb-[80px]">
-              <h2 className="font-['Georgia',serif] font-bold text-[28px] md:text-[36px] leading-[36px] md:leading-[44px] text-[#8B1538] mb-[20px]">
+              <h2 className="font-['Georgia',serif] font-bold text-2xl md:text-4xl leading-snug text-[#8B1538] mb-[20px]">
                 The First Pavilion
               </h2>
-              <div className="font-['Georgia',serif] text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-[#222] space-y-5">
+              <div className="font-['Georgia',serif] text-base md:text-lg leading-relaxed text-[#222] space-y-5">
                 <p>
                   After eight years of operating from temporary structures, the club raised funds to construct its first purpose-built pavilion in 1888. The elegant building featured changing rooms, a tea room, and a members' lounge with panoramic views of the playing field.
                 </p>
@@ -108,7 +108,7 @@ export default function AboutPage() {
                   className="w-full h-auto object-cover"
                 />
                 <div className="mt-4 md:mt-0 md:absolute md:left-[-440px] md:top-0 md:w-[280px] border-b border-[#d9c9ca] py-[10px]">
-                  <p className="font-['Georgia',serif] text-[15px] md:text-[17.7px] leading-[26px] md:leading-[30px] text-[#4a4a4a]">
+                  <p className="font-['Georgia',serif] text-sm md:text-base leading-relaxed text-[#4a4a4a]">
                     The original pavilion under construction, Sutton Park, 1888.
                   </p>
                 </div>
@@ -141,10 +141,10 @@ export default function AboutPage() {
           <div className="max-w-[1270px] mx-auto px-4 md:px-6">
             {/* Text content */}
             <div className="md:pl-[440px] mb-[60px] md:mb-[80px]">
-              <h2 className="font-['Georgia',serif] font-bold text-[28px] md:text-[36px] leading-[36px] md:leading-[44px] text-[#8B1538] mb-[20px]">
+              <h2 className="font-['Georgia',serif] font-bold text-2xl md:text-4xl leading-snug text-[#8B1538] mb-[20px]">
                 Victorian Era Expansion
               </h2>
-              <div className="font-['Georgia',serif] text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-[#222] space-y-5">
+              <div className="font-['Georgia',serif] text-base md:text-lg leading-relaxed text-[#222] space-y-5">
                 <p>
                   The 1896 season marked significant growth for Sutton Coldfield Cricket Club during the height of the Victorian era. Membership doubled to over 100 active players, and the club introduced a second team to accommodate the increased interest.
                 </p>
@@ -163,7 +163,7 @@ export default function AboutPage() {
                   className="w-full h-auto object-cover"
                 />
                 <div className="mt-4 md:mt-0 md:absolute md:left-[-440px] md:top-0 md:w-[280px] border-b border-[#d9c9ca] py-[10px]">
-                  <p className="font-['Georgia',serif] text-[15px] md:text-[17.7px] leading-[26px] md:leading-[30px] text-[#4a4a4a]">
+                  <p className="font-['Georgia',serif] text-sm md:text-base leading-relaxed text-[#4a4a4a]">
                     Cricket in the Victorian era, Sutton Park, 1896.
                   </p>
                 </div>
@@ -196,10 +196,10 @@ export default function AboutPage() {
           <div className="max-w-[1270px] mx-auto px-4 md:px-6">
             {/* Text content */}
             <div className="md:pl-[440px] mb-[60px] md:mb-[80px]">
-              <h2 className="font-['Georgia',serif] font-bold text-[28px] md:text-[36px] leading-[36px] md:leading-[44px] text-[#8B1538] mb-[20px]">
+              <h2 className="font-['Georgia',serif] font-bold text-2xl md:text-4xl leading-snug text-[#8B1538] mb-[20px]">
                 A New Century Begins
               </h2>
-              <div className="font-['Georgia',serif] text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-[#222] space-y-5">
+              <div className="font-['Georgia',serif] text-base md:text-lg leading-relaxed text-[#222] space-y-5">
                 <p>
                   To celebrate both the dawn of the 20th century and the club's 20th anniversary, Sutton Coldfield Cricket Club organized a spectacular three-day festival in June 1900. The event featured exhibition matches, social gatherings, and a grand dinner at the Three Tuns Hotel.
                 </p>
@@ -218,7 +218,7 @@ export default function AboutPage() {
                   className="w-full h-auto object-cover"
                 />
                 <div className="mt-4 md:mt-0 md:absolute md:left-[-440px] md:top-0 md:w-[280px] border-b border-[#d9c9ca] py-[10px]">
-                  <p className="font-['Georgia',serif] text-[15px] md:text-[17.7px] leading-[26px] md:leading-[30px] text-[#4a4a4a]">
+                  <p className="font-['Georgia',serif] text-sm md:text-base leading-relaxed text-[#4a4a4a]">
                     The grand century celebration gathering, Sutton Coldfield, 1900.
                   </p>
                 </div>
@@ -240,10 +240,10 @@ export default function AboutPage() {
         <div className="relative pt-[100px] md:pt-[180px] pb-[80px]">
           <div className="max-w-[1270px] mx-auto px-4 md:px-6">
             <div className="md:pl-[440px]">
-              <h2 className="font-['Georgia',serif] font-bold text-[28px] md:text-[36px] leading-[36px] md:leading-[44px] text-[#8B1538] mb-[20px]">
+              <h2 className="font-['Georgia',serif] font-bold text-2xl md:text-4xl leading-snug text-[#8B1538] mb-[20px]">
                 The Journey Continues
               </h2>
-              <div className="font-['Georgia',serif] text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-[#222] space-y-5">
+              <div className="font-['Georgia',serif] text-base md:text-lg leading-relaxed text-[#222] space-y-5">
                 <p>
                   From those humble beginnings in 1880 to today, Sutton Coldfield Cricket Club has remained a cornerstone of our community. Through two world wars, economic challenges, and changing times, our commitment to cricket excellence and community spirit has never wavered.
                 </p>

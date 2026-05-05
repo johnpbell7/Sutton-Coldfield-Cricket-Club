@@ -1,7 +1,27 @@
 import image_fc4c2d6cfb8d8e98a7717873f6d785a1e5b880e7 from '@/assets/fc4c2d6cfb8d8e98a7717873f6d785a1e5b880e7.png';
 import image_f82377ba58d74186f1a05e52302988a3b22aba9e from '@/assets/f82377ba58d74186f1a05e52302988a3b22aba9e.png';
-import heroImage from '@/assets/6f1bbfac96acbf6413d96a0785c853f13e0bfac6.png';
+import heroImage from '@/assets/Homepage.png';
 // cricketBall import removed as it's unused
+
+// Archive images for decade thumbnails
+import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';
+import img_1892_team from '@/assets/decades/1890s/1892_part1_image9.jpg';
+import img_1906_1stxi from '@/assets/decades/1900s/1906_part1_image14.jpg';
+import img_1910_1stxi from '@/assets/decades/1910s/1910_part1_image20.jpg';
+import img_1921_team from '@/assets/decades/1920s/1921_part1_image47.jpg';
+import img_1937_centenary from '@/assets/decades/1930s/1937_part1_image1.jpg';
+import img_1947_mcc from '@/assets/decades/1940s/1947_part1_image58.jpg';
+import img_1951_team from '@/assets/decades/1950s/1951_part1_image65.jpg';
+import img_1966_team from '@/assets/decades/1960s/1966_part2_image1.jpg';
+import img_1970_pavilion from '@/assets/decades/1970s/1970_part2_image2.jpg';
+import img_1982_team from '@/assets/decades/1980s/1982_part2_image12.jpg';
+import img_1993_champions from '@/assets/decades/1990s/1993_part2_image22.jpg';
+import img_2004_champions from '@/assets/decades/2000s/2004_part2_image43.jpg';
+import img_2016_squad from '@/assets/decades/2010s/2016_part3_image2.jpg';
+import img_2022_blueteam from '@/assets/decades/2020s/2022_part3_image63.jpg';
+import img_1999_journey from '@/assets/ultra_denoised_cricket.jpg';
+import img_2021_community from '@/assets/decades/2020s/2021_part3_image48.jpeg';
+import img_decades from '@/assets/ChatGPT Image Apr 5, 2026, 10_32_11 AM.png';
 import { Link } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
@@ -32,7 +52,7 @@ function BowlToScroll({ onInteract }: { onInteract: () => void }) {
   const handleMouseLeave = () => setIsPressed(false);
 
   return (
-    <div className="absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-6 z-20 flex flex-col items-center pointer-events-none">
+    <div className="absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-10 z-20 flex flex-col items-center pointer-events-none">
       <div
         className="cursor-pointer select-none flex flex-col items-center gap-4 pointer-events-auto"
         style={{
@@ -55,7 +75,7 @@ function BowlToScroll({ onInteract }: { onInteract: () => void }) {
       >
         {/* Cricket Ball in Circle */}
         <div 
-          className="w-[80px] h-[80px] md:w-[85px] md:h-[85px] rounded-full border-2 border-white bg-transparent shadow-xl flex items-center justify-center overflow-hidden transition-all duration-200"
+          className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] rounded-full border-2 border-white bg-transparent shadow-xl flex items-center justify-center overflow-hidden transition-all duration-200"
           style={{
             animation: isBowling ? 'none' : 'bounce 1s infinite',
             borderColor: isPressed ? 'rgba(255, 255, 255, 0.6)' : 'rgba(255, 255, 255, 1)',
@@ -288,9 +308,9 @@ export default function HomePage() {
               {/* Image */}
               <div className="h-[500px] md:h-[700px]">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVyJTIwYWN0aW9ufGVufDF8fHx8MTc2ODQyMTYyNXww&ixlib=rb-4.1.0&q=80&w=1080"
+                  src={img_1999_journey}
                   alt="Our Journey"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover" style={{objectPosition: '45% center'}}
                   loading="lazy"
                 />
               </div>
@@ -326,7 +346,7 @@ export default function HomePage() {
             <div 
               className="absolute inset-0 bg-cover bg-center"
               style={{ 
-                backgroundImage: `url(https://images.unsplash.com/photo-1540390874431-6107572227d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc3RhZGl1bSUyMGNyb3dkfGVufDF8fHx8MTc2ODM2OTI5NHww&ixlib=rb-4.1.0&q=80&w=1080)` 
+                backgroundImage: `url(${img_2021_community})`
               }}
             >
               <div className="absolute inset-0 bg-black/40" />
@@ -377,7 +397,7 @@ export default function HomePage() {
               {/* Image */}
               <div className="h-[500px] md:h-[700px]">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdGVhbSUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc2ODM4OTUyNnww&ixlib=rb-4.1.0&q=80&w=1080"
+                  src={img_decades}
                   alt="Through the Decades"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -396,7 +416,7 @@ export default function HomePage() {
                   </p>
                 </FadeIn>
                 <FadeIn delay={200}>
-                  <footer className="font-['Proxima_Nova',sans-serif] text-xl text-white/90">
+                  <footer className="font-['Helvetica',sans-serif] text-xl text-white/90">
                     Club President, 1920
                   </footer>
                 </FadeIn>
@@ -485,105 +505,105 @@ export default function HomePage() {
                         id: "1880s",
                         title: "Foundations Before Formation",
                         years: "1837-1847",
-                        image: "https://images.unsplash.com/photo-1677679122801-42ac74545507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMDE4ODBzJTIwdmljdG9yaWFufGVufDF8fHx8MTc2ODU3Mzk1N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1859_team,
                         link: "/decades/1837"
                       },
                       {
                         id: "1890s",
                         title: "The First Fifty Years",
                         years: "1847-1899",
-                        image: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMHRlYW0lMjB2aWN0b3JpYW58ZW58MXx8fHwxNzY4NDY2NDUyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1892_team,
                         link: "/decades/1847"
                       },
                       {
                         id: "1900s",
                         title: "The Turn of the Century",
                         years: "1900-1909",
-                        image: "https://images.unsplash.com/photo-1687742909721-cb8dc3361e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0JTIwdmludGFnZXxlbnwxfHx8fDE3Njg1NzQ2NDh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1906_1stxi,
                         link: "/decades/1900"
                       },
                       {
                         id: "1910s",
                         title: "The Great War Era",
                         years: "1910-1919",
-                        image: "https://images.unsplash.com/photo-1596807996038-612df413be5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwd29ybGQlMjB3YXIlMjBzb2xkaWVyc3xlbnwxfHx8fDE3Njg1NzM5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1910_1stxi,
                         link: "/decades/1910"
                       },
                       {
                         id: "1920s",
                         title: "The Roaring Twenties",
                         years: "1920-1929",
-                        image: "https://images.unsplash.com/photo-1660978692407-a7863eebe395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwd2lja2V0cyUyMHN0dW1wc3xlbnwxfHx8fDE3Njg1NzQ2NDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1921_team,
                         link: "/decades/1920"
                       },
                       {
                         id: "1930s",
                         title: "The Thirties",
                         years: "1930-1939",
-                        image: "https://images.unsplash.com/photo-1677785643764-179393bc3842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmFsbCUyMGdyYXNzfGVufDF8fHx8MTc2ODU3NDY0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1937_centenary,
                         link: "/decades/1930"
                       },
                       {
                         id: "1940s",
                         title: "Second World War",
                         years: "1940-1949",
-                        image: "https://images.unsplash.com/photo-1701766993323-cc05898df2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBjbHViaG91c2V8ZW58MXx8fHwxNzY4NTc0NjQ5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1947_mcc,
                         link: "/decades/1940"
                       },
                       {
                         id: "1950s",
                         title: "Post-War Revival",
                         years: "1950-1959",
-                        image: "https://images.unsplash.com/photo-1589475201212-e0c77aa2d670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYm91bmRhcnklMjByb3BlfGVufDF8fHx8MTc2ODU3NDY1MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1951_team,
                         link: "/decades/1950"
                       },
                       {
                         id: "1960s",
                         title: "The Swinging Sixties",
                         years: "1960-1969",
-                        image: "https://images.unsplash.com/photo-1759733841123-b8e1d75ee45c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGl0Y2glMjBmaWVsZHxlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1966_team,
                         link: "/decades/1960"
                       },
                       {
                         id: "1970s",
                         title: "The Seventies",
                         years: "1970-1979",
-                        image: "https://images.unsplash.com/photo-1692859415442-94eabe7a7488?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ2xvdmVzJTIwcGFkc3xlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1970_pavilion,
                         link: "/decades/1970"
                       },
                       {
                         id: "1980s",
                         title: "The Eighties",
                         years: "1980-1989",
-                        image: "https://images.unsplash.com/photo-1714449349503-ea9b1d6ed9ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc2NvcmVib2FyZHxlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1982_team,
                         link: "/decades/1980"
                       },
                       {
                         id: "1990s",
                         title: "The Nineties",
                         years: "1990-1999",
-                        image: "https://images.unsplash.com/photo-1568290925324-9d30cded4223?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVycyUyMGZpZWxkfGVufDF8fHx8MTc2ODU3NDY1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_1993_champions,
                         link: "/decades/1990"
                       },
                       {
                         id: "2000s",
                         title: "The New Millennium",
                         years: "2000-2009",
-                        image: "https://images.unsplash.com/photo-1593341646782-e0b495cff86d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0dGluZyUyMGFjdGlvbnxlbnwxfHx8fDE3Njg1NjUxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_2004_champions,
                         link: "/decades/2000"
                       },
                       {
                         id: "2010s",
                         title: "The Twenty-Tens",
                         years: "2010-2019",
-                        image: "https://images.unsplash.com/photo-1743342875460-366f386a364a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYm93bGluZyUyMHNwZWVkfGVufDF8fHx8MTc2ODU3NDY1Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_2016_squad,
                         link: "/decades/2010"
                       },
                       {
                         id: "2020s",
                         title: "The Twenty-Twenties",
                         years: "2020-Present",
-                        image: "https://images.unsplash.com/photo-1722661840554-568357f77b80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc3Vuc2V0JTIwZ3JvdW5kfGVufDF8fHx8MTc2ODU3NDY1M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                        image: img_2022_blueteam,
                         link: "/decades/2020"
                       }
                     ].map((decade) => (

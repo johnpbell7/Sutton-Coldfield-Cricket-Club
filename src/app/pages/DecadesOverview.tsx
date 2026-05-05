@@ -4,13 +4,30 @@ import { Footer } from "@/app/components/Footer";
 import { useState, useEffect, useRef } from "react";
 import bannerImage from "@/assets/46b1b5438f7230b782958ef739cc53489cee10a2.png";
 
+// Archive images for decade thumbnails
+import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';
+import img_1892_team from '@/assets/decades/1890s/1892_part1_image9.jpg';
+import img_1906_1stxi from '@/assets/decades/1900s/1906_part1_image14.jpg';
+import img_1910_1stxi from '@/assets/decades/1910s/1910_part1_image20.jpg';
+import img_1921_team from '@/assets/decades/1920s/1921_part1_image47.jpg';
+import img_1937_centenary from '@/assets/decades/1930s/1937_part1_image1.jpg';
+import img_1947_mcc from '@/assets/decades/1940s/1947_part1_image58.jpg';
+import img_1951_team from '@/assets/decades/1950s/1951_part1_image65.jpg';
+import img_1966_team from '@/assets/decades/1960s/1966_part2_image1.jpg';
+import img_1970_pavilion from '@/assets/decades/1970s/1970_part2_image2.jpg';
+import img_1982_team from '@/assets/decades/1980s/1982_part2_image12.jpg';
+import img_1993_champions from '@/assets/decades/1990s/1993_part2_image22.jpg';
+import img_2004_champions from '@/assets/decades/2000s/2004_part2_image43.jpg';
+import img_2016_squad from '@/assets/decades/2010s/2016_part3_image2.jpg';
+import img_2022_blueteam from '@/assets/decades/2020s/2022_part3_image63.jpg';
+
 const decades = [
   {
     id: "1880s",
     title: "Foundations Before Formation",
     years: "1837-1847",
     description: "Cricket takes root in Sutton Coldfield before the club's formal founding",
-    image: "https://images.unsplash.com/photo-1677679122801-42ac74545507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMDE4ODBzJTIwdmljdG9yaWFufGVufDF8fHx8MTc2ODU3Mzk1N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1859_team,
     link: "/decades/1837"
   },
   {
@@ -18,7 +35,7 @@ const decades = [
     title: "The First Fifty Years",
     years: "1847-1899",
     description: "Foundations, faith, and the forming of a club through Victorian challenges",
-    image: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMHRlYW0lMjB2aWN0b3JpYW58ZW58MXx8fHwxNzY4NDY2NDUyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1892_team,
     link: "/decades/1847"
   },
   {
@@ -26,7 +43,7 @@ const decades = [
     title: "The Turn of the Century",
     years: "1900-1909",
     description: "Cricket blossoms in the new century",
-    image: "https://images.unsplash.com/photo-1687742909721-cb8dc3361e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0JTIwdmludGFnZXxlbnwxfHx8fDE3Njg1NzQ2NDh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1906_1stxi,
     link: "/decades/1900"
   },
   {
@@ -34,7 +51,7 @@ const decades = [
     title: "The Great War Era",
     years: "1910-1919",
     description: "Cricket through challenging times",
-    image: "https://images.unsplash.com/photo-1596807996038-612df413be5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwd29ybGQlMjB3YXIlMjBzb2xkaWVyc3xlbnwxfHx8fDE3Njg1NzM5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1910_1stxi,
     link: "/decades/1910"
   },
   {
@@ -42,7 +59,7 @@ const decades = [
     title: "The Golden Resurgence",
     years: "1920-1929",
     description: "Renewal, growth, and sporting distinction after WWI",
-    image: "https://images.unsplash.com/photo-1660978692407-a7863eebe395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwd2lja2V0cyUyMHN0dW1wc3xlbnwxfHx8fDE3Njg1NzQ2NDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1921_team,
     link: "/decades/1920"
   },
   {
@@ -50,7 +67,7 @@ const decades = [
     title: "The Thirties",
     years: "1930-1939",
     description: "Continued growth and excellence",
-    image: "https://images.unsplash.com/photo-1677785643764-179393bc3842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmFsbCUyMGdyYXNzfGVufDF8fHx8MTc2ODU3NDY0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1937_centenary,
     link: "/decades/1930"
   },
   {
@@ -58,7 +75,7 @@ const decades = [
     title: "Second World War",
     years: "1940-1949",
     description: "Resilience during the war years",
-    image: "https://images.unsplash.com/photo-1701766993323-cc05898df2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBjbHViaG91c2V8ZW58MXx8fHwxNzY4NTc0NjQ5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1947_mcc,
     link: "/decades/1940"
   },
   {
@@ -66,7 +83,7 @@ const decades = [
     title: "Post-War Revival",
     years: "1950-1959",
     description: "The club rebuilds and thrives",
-    image: "https://images.unsplash.com/photo-1589475201212-e0c77aa2d670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYm91bmRhcnklMjByb3BlfGVufDF8fHx8MTc2ODU3NDY1MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1951_team,
     link: "/decades/1950"
   },
   {
@@ -74,7 +91,7 @@ const decades = [
     title: "The Swinging Sixties",
     years: "1960-1969",
     description: "A decade of transformation",
-    image: "https://images.unsplash.com/photo-1759733841123-b8e1d75ee45c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGl0Y2glMjBmaWVsZHxlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1966_team,
     link: "/decades/1960"
   },
   {
@@ -82,7 +99,7 @@ const decades = [
     title: "The Seventies",
     years: "1970-1979",
     description: "Expansion and modernization",
-    image: "https://images.unsplash.com/photo-1692859415442-94eabe7a7488?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ2xvdmVzJTIwcGFkc3xlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1970_pavilion,
     link: "/decades/1970"
   },
   {
@@ -90,7 +107,7 @@ const decades = [
     title: "The Eighties",
     years: "1980-1989",
     description: "Competitive cricket at its finest",
-    image: "https://images.unsplash.com/photo-1714449349503-ea9b1d6ed9ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc2NvcmVib2FyZHxlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1982_team,
     link: "/decades/1980"
   },
   {
@@ -98,7 +115,7 @@ const decades = [
     title: "The Nineties",
     years: "1990-1999",
     description: "Approaching the millennium",
-    image: "https://images.unsplash.com/photo-1568290925324-9d30cded4223?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVycyUyMGZpZWxkfGVufDF8fHx8MTc2ODU3NDY1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_1993_champions,
     link: "/decades/1990"
   },
   {
@@ -106,7 +123,7 @@ const decades = [
     title: "The New Millennium",
     years: "2000-2009",
     description: "Cricket enters the 21st century",
-    image: "https://images.unsplash.com/photo-1593341646782-e0b495cff86d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0dGluZyUyMGFjdGlvbnxlbnwxfHx8fDE3Njg1NjUxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_2004_champions,
     link: "/decades/2000"
   },
   {
@@ -114,7 +131,7 @@ const decades = [
     title: "The Twenty-Tens",
     years: "2010-2019",
     description: "A new era of success",
-    image: "https://images.unsplash.com/photo-1743342875460-366f386a364a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYm93bGluZyUyMHNwZWVkfGVufDF8fHx8MTc2ODU3NDY1Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_2016_squad,
     link: "/decades/2010"
   },
   {
@@ -122,7 +139,7 @@ const decades = [
     title: "The Twenty-Twenties",
     years: "2020-Present",
     description: "Our current chapter continues",
-    image: "https://images.unsplash.com/photo-1722661840554-568357f77b80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc3Vuc2V0JTIwZ3JvdW5kfGVufDF8fHx8MTc2ODU3NDY1M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: img_2022_blueteam,
     link: "/decades/2020"
   }
 ];
@@ -242,7 +259,7 @@ export default function DecadesOverview() {
                 <h3 className="font-['Archivo_Black',sans-serif] text-3xl font-bold text-white">
                   {decade.title}
                 </h3>
-                <p className="font-['Proxima_Nova',sans-serif] text-sm text-white/90 mt-1">
+                <p className="font-['Helvetica',sans-serif] text-sm text-white/90 mt-1">
                   {decade.years}
                 </p>
               </div>
@@ -268,7 +285,7 @@ export default function DecadesOverview() {
             className="group bg-[#8B1538] border-2 border-[#8B1538] p-8 hover:bg-[#6d1029] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2 relative h-80 flex flex-col justify-center"
           >
             <div className="flex items-center justify-end gap-3 mb-4">
-              <p className="font-['Proxima_Nova',sans-serif] text-sm uppercase tracking-wide text-white transition-colors">
+              <p className="font-['Helvetica',sans-serif] text-sm uppercase tracking-wide text-white transition-colors">
                 Our Journey
               </p>
               <svg className="w-6 h-6 text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">

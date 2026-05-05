@@ -275,7 +275,7 @@ export function TimelineItem({
               >
                 <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
                 <div className="px-1">
-                  <p className="font-['Georgia',serif] font-medium text-[14px] md:text-[16px] text-[#222] leading-[22px] md:leading-[26px]">
+                  <p className="font-['Georgia',serif] font-medium text-sm md:text-base text-[#222] leading-relaxed">
                     previous
                   </p>
                 </div>
@@ -286,7 +286,7 @@ export function TimelineItem({
                 className={`flex items-center transition-opacity ${hasNext ? 'opacity-50 hover:opacity-100' : 'opacity-20 cursor-not-allowed'}`}
               >
                 <div className="px-1">
-                  <p className="font-['Georgia',serif] font-medium text-[14px] md:text-[16px] text-[#222] leading-[22px] md:leading-[26px] text-right">
+                  <p className="font-['Georgia',serif] font-medium text-sm md:text-base text-[#222] leading-relaxed text-right">
                     next
                   </p>
                 </div>
@@ -301,7 +301,7 @@ export function TimelineItem({
                 {/* Title */}
                 <div className="mb-4 md:mb-5">
                   <h2 
-                    className="font-['Archivo_Black',sans-serif] font-bold text-[36px] md:text-[60px] leading-[40px] md:leading-[72px] text-[#8B1538]" 
+                    className="font-['Archivo_Black',sans-serif] font-bold text-4xl md:text-6xl leading-tight text-[#8B1538]" 
                     aria-hidden="true"
                   >
                     {title}
@@ -310,10 +310,10 @@ export function TimelineItem({
 
                 {/* Date and location */}
                 <div className="flex gap-[10px] items-start opacity-50">
-                  <p className="font-['Georgia',serif] font-normal text-[14px] md:text-[15.6px] text-[#222] leading-[24px] md:leading-[26px]">
+                  <p className="font-['Georgia',serif] font-normal text-sm md:text-base text-[#222] leading-relaxed">
                     {year}
                   </p>
-                  <p className="font-['Georgia',serif] font-semibold text-[14px] md:text-[16px] text-[#222] leading-[24px] md:leading-[26px] uppercase">
+                  <p className="font-['Georgia',serif] font-semibold text-sm md:text-base text-[#222] leading-relaxed uppercase">
                     {location}
                   </p>
                 </div>
@@ -333,7 +333,7 @@ export function TimelineItem({
                           className="w-full h-[400px] md:h-[600px] object-cover object-[center_70%]"
                         />
                         <div className="pt-1">
-                          <p className="font-['Georgia',serif] text-[14px] md:text-[15px] leading-[22px] md:leading-[24px] text-[#4a4a4a]">
+                          <p className="font-['Georgia',serif] text-sm leading-relaxed text-[#4a4a4a]">
                             {imageCaption || `${title}, ${year}.`}
                           </p>
                         </div>
@@ -343,46 +343,27 @@ export function TimelineItem({
                     {/* Year Overview */}
                     {yearOverview && (
                       <div>
-                        <h3 className="font-['Archivo_Black',sans-serif] text-[28px] md:text-[32px] text-[#8B1538] mb-4 md:mb-6">
+                        <h3 className="font-['Archivo_Black',sans-serif] text-2xl md:text-3xl text-[#8B1538] mb-4 md:mb-6">
                           Year Overview
                         </h3>
-                        <p className="font-light text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-[#222]">
+                        <p className="font-light text-base md:text-lg leading-relaxed text-[#222]">
                           {yearOverview}
                         </p>
                       </div>
                     )}
 
-                    {/* Additional Images Grid - side by side on desktop (only from images array) */}
-                    {images.length > 0 && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        {images.map((img, idx) => (
-                          <div key={idx} className="space-y-2">
-                            <ImageWithFallback
-                              src={img}
-                              alt={`${title} - Image ${idx + 1}`}
-                              className="w-full h-[250px] md:h-[350px] object-cover"
-                            />
-                            <div className="pt-1">
-                              <p className="font-['Georgia',serif] text-[14px] md:text-[15px] leading-[22px] md:leading-[24px] text-[#4a4a4a]">
-                                {imageCaption || `${title}, ${year}.`}
-                              </p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
 
                     {/* Key Events */}
                     {keyEvents && keyEvents.length > 0 && (
                       <div className="bg-[#f8f6f3] p-6 md:p-8 border-l-4 border-[#8B1538]">
-                        <h3 className="font-['Archivo_Black',sans-serif] text-[24px] md:text-[28px] text-[#8B1538] mb-4 md:mb-6">
+                        <h3 className="font-['Archivo_Black',sans-serif] text-xl md:text-2xl text-[#8B1538] mb-4 md:mb-6">
                           Key Events
                         </h3>
-                        <div className="space-y-3">
+                        <div className={keyEvents.length > 5 ? "grid grid-cols-1 md:grid-cols-2 md:gap-x-8 gap-y-3" : "space-y-3"}>
                           {keyEvents.map((event, idx) => (
                             <div key={idx} className="flex gap-3">
-                              <span className="text-[#8B1538] font-bold flex-shrink-0 text-[18px]">•</span>
-                              <p className="font-['Georgia',serif] text-[15px] md:text-[16px] leading-[24px] md:leading-[26px] text-[#222]">
+                              <span className="text-[#8B1538] font-bold flex-shrink-0 text-lg">•</span>
+                              <p className="font-['Georgia',serif] text-sm md:text-base leading-relaxed text-[#222]">
                                 {event}
                               </p>
                             </div>
@@ -394,10 +375,10 @@ export function TimelineItem({
                     {/* Closing Summary */}
                     {closingSummary && (
                       <div className="bg-[#1a472a] p-6 md:p-8">
-                        <h3 className="font-['Archivo_Black',sans-serif] text-[24px] md:text-[28px] text-white mb-4 md:mb-6">
+                        <h3 className="font-['Archivo_Black',sans-serif] text-xl md:text-2xl text-white mb-4 md:mb-6">
                           Summary
                         </h3>
-                        <p className="font-['Georgia',serif] text-[15px] md:text-[16px] leading-[24px] md:leading-[26px] text-white italic font-medium">
+                        <p className="font-['Georgia',serif] text-sm md:text-base leading-relaxed text-white italic font-medium">
                           {closingSummary}
                         </p>
                       </div>
@@ -432,7 +413,7 @@ export function TimelineItem({
                       </div>
                     )}
 
-                    <div className="font-['Georgia',serif] text-[16px] md:text-[18px] leading-[26px] md:leading-[30px] text-[#222] space-y-4 md:space-y-5">
+                    <div className="font-['Georgia',serif] text-base md:text-lg leading-relaxed text-[#222] space-y-4 md:space-y-5">
                       {fullDescription && fullDescription.split('\\n\\n').map((paragraph, idx) => (
                         <p key={idx} className="font-light">{paragraph}</p>
                       ))}
@@ -461,7 +442,7 @@ export function TimelineItem({
                     {/* Back to Timeline Button */}
                     <button 
                       onClick={onClose}
-                      className="inline-flex items-center justify-center gap-2 md:gap-3 bg-white hover:bg-[#8B1538] text-[#8B1538] hover:text-white border-2 border-[#8B1538] hover:border-white px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-[16px] md:text-[18px] transition-colors w-full md:w-auto"
+                      className="inline-flex items-center justify-center gap-2 md:gap-3 bg-white hover:bg-[#8B1538] text-[#8B1538] hover:text-white border-2 border-[#8B1538] hover:border-white px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-base md:text-lg transition-colors w-full md:w-auto"
                     >
                       <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
                       Back to Timeline
@@ -470,7 +451,7 @@ export function TimelineItem({
                     {/* Go to Overview Button */}
                     <Link 
                       to={decadeInfo.url}
-                      className="inline-flex items-center justify-center gap-2 md:gap-3 bg-[#8B1538] hover:bg-[#6d0f2a] text-white px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-[16px] md:text-[18px] transition-colors w-full md:w-auto"
+                      className="inline-flex items-center justify-center gap-2 md:gap-3 bg-[#8B1538] hover:bg-[#6d0f2a] text-white px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-base md:text-lg transition-colors w-full md:w-auto"
                     >
                       {decadeInfo.label}
                       <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />

@@ -5,6 +5,97 @@ import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { useState, useEffect, useRef } from "react";
 
+// 1970s archive images
+import img_1970_pavilion from '@/assets/decades/1970s/1970_part2_image2.jpg';
+import img_1977_mccc_team from '@/assets/decades/1970s/1977_part2_image6.png';
+import img_1977_mccc_composite from '@/assets/decades/1970s/1977_part2_image5.png';
+import img_1979_hawks from '@/assets/decades/1970s/1979_part2_image11.jpeg';
+
+// 1980s archive images
+import img_1982_team from '@/assets/decades/1980s/1982_part2_image12.jpg';
+import img_1985_ko from '@/assets/decades/1980s/1985_part2_image16.jpg';
+import img_1988_1stxi from '@/assets/decades/1980s/1988_part2_image20.jpg';
+import img_1986_beach from '@/assets/decades/1980s/1985_part2_image17.jpg';
+
+// 1990s archive images
+import img_1993_champions from '@/assets/decades/1990s/1993_part2_image22.jpg';
+import img_1993_legends from '@/assets/decades/1990s/1993_part2_image24.png';
+import img_1996_ko from '@/assets/decades/1990s/1996_part2_image25.jpeg';
+
+// 2000s archive images
+import img_2004_champions from '@/assets/decades/2000s/2004_part2_image43.jpg';
+import img_2008_scoreboard from '@/assets/decades/2000s/2008_part2_image51.jpg';
+import img_2010_u13 from '@/assets/decades/2010s/2010_part2_image60.jpg';
+
+// 2010s archive images
+import img_2016_squad from '@/assets/decades/2010s/2016_part3_image2.jpg';
+import img_2016_veterans from '@/assets/decades/2010s/2016_part3_image1.jpg';
+
+// 2020s archive images
+import img_2022_blueteam from '@/assets/decades/2020s/2022_part3_image63.jpg';
+import img_2021_team from '@/assets/decades/2020s/2021_part3_image51.jpg';
+import img_2022_175th from '@/assets/decades/2020s/2022_part3_image56.jpeg';
+
+// 1850s–1860s archive images
+import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';
+import img_1863_team from '@/assets/decades/1860s/1863_part1_image5.jpg';
+import img_1863_salver from '@/assets/decades/1860s/1863_part3_image49.png';
+
+// 1870s archive images
+import img_1873_team_a from '@/assets/decades/1870s/1873_part1_image6.jpg';
+import img_1873_team_b from '@/assets/decades/1870s/1873_part1_image7.jpg';
+
+// 1890s archive images
+import img_1890_team from '@/assets/decades/1890s/1890_part1_image8.jpg';
+import img_1892_team from '@/assets/decades/1890s/1892_part1_image9.jpg';
+import img_1893_team from '@/assets/decades/1890s/1893_part1_image10.jpg';
+
+// 1900s archive images
+import img_1905_team_a from '@/assets/decades/1900s/1905_part1_image11.jpg';
+import img_1905_team_b from '@/assets/decades/1900s/1905_part1_image12.jpg';
+import img_1906_1stxi from '@/assets/decades/1900s/1906_part1_image14.jpg';
+import img_1906_2ndxi from '@/assets/decades/1900s/1906_part1_image16.jpg';
+import img_1909_team from '@/assets/decades/1900s/1909_part1_image18.jpg';
+
+// 1910s archive images
+import img_1910_grounds from '@/assets/decades/1910s/1910_part1_image19.jpg';
+import img_1910_1stxi from '@/assets/decades/1910s/1910_part1_image20.jpg';
+import img_1911_team from '@/assets/decades/1910s/1911_part1_image21.jpg';
+import img_1913_team from '@/assets/decades/1910s/1913_part1_image24.jpg';
+import img_1916_war from '@/assets/decades/1910s/1916_part1_image32.jpg';
+
+// 1920s archive images
+import img_1920_team from '@/assets/decades/1920s/1920_part1_image44.jpg';
+import img_1921_team from '@/assets/decades/1920s/1921_part1_image47.jpg';
+import img_1924_team from '@/assets/decades/1920s/1924_part1_image49.jpg';
+import img_1926_team from '@/assets/decades/1920s/1926_part1_image50.jpg';
+
+// 1930s archive images
+import img_1933_team from '@/assets/decades/1930s/1933_part1_image51.jpg';
+import img_1936_team from '@/assets/decades/1930s/1936_part1_image53.jpg';
+import img_1937_centenary from '@/assets/decades/1930s/1937_part1_image1.jpg';
+import img_1937_team_b from '@/assets/decades/1930s/1937_part1_image2.jpg';
+import img_1938_team from '@/assets/decades/1930s/1938_part1_image54.jpg';
+
+// 1940s archive images
+import img_1942_wartime from '@/assets/decades/1940s/1942_part1_image56.jpeg';
+import img_1946_postwar from '@/assets/decades/1940s/1946_part1_image57.jpeg';
+import img_1947_mcc from '@/assets/decades/1940s/1947_part1_image58.jpg';
+import img_1949_team from '@/assets/decades/1940s/1949_part1_image63.jpg';
+
+// 1950s archive images
+import img_1951_team from '@/assets/decades/1950s/1951_part1_image65.jpg';
+import img_1953_team from '@/assets/decades/1950s/1953_part1_image67.jpg';
+import img_1956_team from '@/assets/decades/1950s/1956_part1_image69.png';
+import img_1958_team from '@/assets/decades/1950s/1958_part1_image72.jpg';
+import img_1959_team from '@/assets/decades/1950s/1959_part1_image76.jpg';
+
+// 1960s archive images
+import img_1960_team from '@/assets/decades/1960s/1960_part1_image79.jpg';
+import img_1963_team from '@/assets/decades/1960s/1963_part2_image38.jpg';
+import img_1965_team from '@/assets/decades/1960s/1965_part1_image81.png';
+import img_1966_team from '@/assets/decades/1960s/1966_part2_image1.jpg';
+
 // Decade page component with split introduction text
 interface DecadeData {
   name: string;
@@ -38,46 +129,59 @@ const decadeData: Record<string, DecadeData> = {
     years: "1837-1847",
     heroTitle: "Foundations Before Formation",
     heroSubtitle: "Cricket Takes Root in Sutton Coldfield",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMHRlYW0lMjB2aWN0b3JpYW58ZW58MXx8fHwxNzY4NDY2NDUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    introLarge: "Long before the formal establishment of Sutton Coldfield Cricket Club in 1847, cricket was already an established presence in the town.",
-    introBody: "Played informally in Rectory Park and Sutton Park from at least 1837, the game formed part of the social fabric of the local community. These early matches laid the groundwork for what would become one of the Midlands' oldest cricket clubs. The guiding influence during these formative years was the Rev. Canon W.K. Riland Bedford, whose dedication to sport, community, and organisation shaped the club's early character. Though detailed records from the first sixty years are scarce, later research and recollections have allowed a general picture of these early days to emerge. The absence of formal documentation reflects the attitudes of the period, where record-keeping was not yet considered essential. This foundational era represents not only the origins of organised cricket in Sutton Coldfield, but also the beginnings of a tradition built on community involvement, volunteer effort, and a deep connection to place.",
+    heroImage: img_1859_team,
+    introLarge: "Long before the formal establishment of Sutton Coldfield Cricket Club in 1847, cricket had already taken firm root in the town.",
+    introBody: "By at least 1837, the game was being played regularly on the open expanses of Rectory Park and Sutton Park. These early matches, informal in organisation yet consistent in spirit, formed part of the social rhythm of the community. Cricket was not merely recreation; it was a gathering point — a shared pastime that reflected the character of a growing town in the early Victorian age.\n\nCentral to this formative period was the influence of the Rev. W.K. Riland Bedford. His enthusiasm for the game, combined with a strong sense of duty to parish and community, provided the leadership necessary to sustain and shape these early efforts. Though formal records from this era are scarce, later recollections and historical research allow a picture to emerge of a game sustained by volunteerism, local pride, and quiet organisation.\n\nThis was an age before committees, subscriptions, or structured competition — yet it laid the essential foundations upon which the club would soon be built.",
     sections: [
       {
         title: "The Early Game in Sutton Coldfield",
         background: "cream",
         content: [
-          "Cricket was being played in Rectory Park as early as 1837, a decade before the club's official formation. This is evidenced by a minute book entry from 1897, which recorded W.K. Riland Bedford's sixty-year association with the club. These early games were informal but regular, taking place on unfenced ground shared with the wider parkland.",
-          "Sutton Park and Rectory Park served as the natural centres for cricketing activity, with pitches prepared and maintained by volunteers. The simplicity of these arrangements did little to diminish enthusiasm for the game, which quickly became an important social pastime in the town."
+          "Cricket was being played in Rectory Park at least a decade before the club's formal foundation. Evidence preserved in later records, including a minute book entry of 1897 marking Bedford's sixty-year association with the club, confirms that organised play was already well established by 1837.",
+          "These early matches were simple in arrangement but regular in occurrence. Played on unfenced ground and shared with the wider parkland, the game relied on mutual understanding rather than formal rules of enclosure or ownership. Pitches were prepared by hand, often by the players themselves, and the boundaries of play were as much agreed as measured.",
+          "Despite these limitations, cricket flourished. It quickly became a defining feature of local leisure, drawing participants and spectators alike and embedding itself within the identity of Sutton Coldfield."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Early cricket in Sutton Coldfield's parks"
+        image: img_1859_team,
+        imageCaption: "Sutton Coldfield CC 1st XI, 1859 — the earliest surviving team photograph"
+      },
+      {
+        title: "Towards Formation: Cricket in the 1840s",
+        background: "white",
+        content: [
+          "By the early 1840s, cricket in Sutton Coldfield had begun to assume a more organised character. What had started as informal recreation was gradually evolving into something more structured and enduring.",
+          "Regular participation, the increasing involvement of local families, and the steady guidance of figures such as Rev. Bedford contributed to a growing sense that the game required permanence. Matches were no longer purely spontaneous; they reflected continuity, expectation, and community investment.",
+          "Though still lacking formal constitution, these years represent the crucial transition from casual play to organised club cricket. By the middle of the decade, the conditions were in place for the formal founding of Sutton Coldfield Cricket Club — an act that would give lasting identity to what had already become an established tradition."
+        ]
       },
       {
         title: "Rectory Road and the Early Landscape",
-        background: "white",
+        background: "cream",
         content: [
-          "Rectory Road in the mid-nineteenth century was little more than a country lane connecting Boot Hill to the church. The Rector would customarily walk through the park to reach the church, emerging near what later became known as Sidney's Cottage. Bedford Road, now a major thoroughfare, did not exist until the 1930s and was originally a rough track known locally as Blackberry Lane or Bricky Lane.",
-          "Travel to matches relied almost entirely on foot or horseback. Visiting teams were often accommodated overnight at local farms such as School Farm, and matches frequently depended on the hospitality of the home side. A modest 'Tin Hut' near the Boot Inn was erected to support this purpose, remnants of which survived well into the modern era."
+          "In the mid-nineteenth century, the landscape surrounding Rectory Park was markedly different from that of today. Rectory Road existed only as a narrow country lane linking Boot Hill to the parish church, while Bedford Road — now a principal route — had yet to be constructed, its place taken by rough tracks known locally as Blackberry Lane or Bricky Lane.",
+          "Access to matches was dictated by the limitations of the time. Players and visitors travelled on foot or horseback, and hospitality formed an essential part of the cricketing experience. Visiting sides were often accommodated at nearby farms, including School Farm, where overnight stays were common.",
+          "To support these gatherings, a modest structure — remembered as the 'Tin Hut' near the Boot Inn — was erected. Though simple, it reflects the practical efforts made to sustain the game during its earliest years."
         ],
-        image: "https://images.unsplash.com/photo-1687742909721-cb8dc3361e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0JTIwdmludGFnZSUyMGVxdWlwbWVudHxlbnwxfHx8fDE3Njg0NjY0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "The rural landscape of early Sutton Coldfield"
+        image: img_1873_team_a,
+        imageCaption: "Members of Sutton Coldfield CC, 1873"
       },
       {
         title: "The Bedford Family and Rectory Park",
-        background: "cream",
+        background: "white",
         content: [
-          "The Rev. W.K. Riland Bedford and his family were central to the club's early development. All five of his sons were cricketers, and together with the Rector and his gardener, they prepared the pitches and transformed Rectory Park into a suitable playing area. The unfenced nature of the ground and the open surroundings sometimes gave rise to uncertainty regarding the precise location of early pitches.",
-          "Beyond cricket, the Rector contributed significantly to the beauty of Rectory Park. He planted numerous trees, including an avenue of elms offering a clear view of the church from the Rectory. Though many were later lost to development, some survived into the twenty-first century. The Rectory itself served as the social and organisational hub of the club during its earliest years."
+          "The role of the Bedford family in these formative years cannot be overstated. The Rev. W.K. Riland Bedford, together with his five sons, was instrumental in transforming Rectory Park into a viable cricketing ground. Assisted by his gardener, he oversaw the preparation of pitches and the general maintenance of the playing area, ensuring that the game could be played with regularity and purpose.",
+          "Beyond cricket, Bedford's influence extended to the shaping of the landscape itself. His planting of trees — including a notable avenue of elms — enhanced both the beauty and character of the park, reinforcing its role as a focal point for community life.",
+          "The Rectory served not only as his residence, but as the informal headquarters of cricket in Sutton Coldfield — a place where organisation, hospitality, and leadership converged."
         ],
-        image: "https://images.unsplash.com/photo-1585822754398-04873d4e1f50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBoaXN0b3JpY3xlbnwxfHx8fDE3Njg0NjY0NTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "The Rectory and surrounding parkland"
+        image: img_1863_team,
+        imageCaption: "Members of Sutton Coldfield CC and Free Foresters, 1863"
       },
       {
         title: "Preserving the Early History",
-        background: "white",
+        background: "cream",
         content: [
-          "For many decades, little effort was made to formally document the club's early history. It was not until 1937, with the centenary approaching, that Frank S. Styles undertook the formidable task of reconstructing the club's past through diligent research. His work was later continued by Norman Sharp and, in the modern era, by Peter Bell, who compiled and digitised records into The Complete History of Sutton Coldfield Cricket Club.",
-          "Despite setbacks, including the disappearance of early minute books, these efforts ensured that the club's origins were not lost to time. The preservation of these records reflects a growing recognition of the importance of heritage as the club moved toward future milestones."
+          "The story of these early years survives not through continuous record, but through later dedication to preservation. It was not until 1937, on the eve of the club's centenary, that Frank S. Styles undertook the first serious effort to reconstruct its early history. Working from fragmentary evidence, recollection, and surviving documentation, he established the foundation upon which all subsequent histories would rely.",
+          "His work was later extended by Norman Sharp and, in the modern era, by Peter Bell, whose efforts to compile and digitise records ensured that the club's origins would not be lost to time.",
+          "The absence of early minute books remains a reminder of how easily history can fade — and how vital such preservation has been in maintaining the continuity of the club's story."
         ]
       }
     ],
@@ -85,32 +189,32 @@ const decadeData: Record<string, DecadeData> = {
       {
         year: "1837",
         title: "Cricket Played in Rectory Park",
-        description: "Earliest recorded evidence of cricket being played in Sutton Coldfield"
+        description: "Earliest recorded evidence of organised cricket in Sutton Coldfield"
+      },
+      {
+        year: "Early 1840s",
+        title: "Game Becomes Regularised",
+        description: "Cricket transitions from informal play to a more structured and sustained activity"
       },
       {
         year: "1847",
         title: "Club Officially Founded",
-        description: "Sutton Coldfield Cricket Club formally established by Rev. W.K. Riland Bedford"
+        description: "Sutton Coldfield Cricket Club formally established under Rev. W.K. Riland Bedford"
       },
       {
         year: "1856",
         title: "Free Foresters Cricket Club Formed",
-        description: "Founded by Rev. Bedford, reflecting his wider influence on the game"
+        description: "Founded by Bedford, reflecting his wider influence on the game"
       },
       {
         year: "1937",
         title: "Early History Compiled",
-        description: "Frank S. Styles undertook major research ahead of the club's centenary"
-      },
-      {
-        year: "2013",
-        title: "History Digitised",
-        description: "Peter Bell completed the transition of the club's history into an electronic record"
+        description: "Frank S. Styles reconstructs the club's origins ahead of the centenary"
       }
     ],
     quote: {
-      text: "It would be foolish to pretend that the story is complete.",
-      author: "Club Historical Preface"
+      text: "From such modest beginnings are enduring traditions formed.",
+      author: "Sutton Coldfield Cricket Club"
     }
   },
   "1890s": {
@@ -118,7 +222,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1847-1899",
     heroTitle: "The First Fifty Years",
     heroSubtitle: "Foundations, Faith, and the Forming of a Club",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMHRlYW0lMjB2aWN0b3JpYW58ZW58MXx8fHwxNzY4NDY2NDUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    heroImage: img_1892_team,
     introLarge: "Founded in 1847, Sutton Coldfield Cricket Club emerged during the Victorian era when organised sport was increasingly valued as a force for physical health, moral improvement, and social cohesion.",
     introBody: "The club was established not for profit, but from a belief that recreation should be accessible to all classes within the community. From its earliest matches in Sutton Park, the club's survival depended heavily on the dedication of its founders—above all the Rev. William Kirkpatrick Riland Bedford. His vision, generosity, and personal labour sustained the club through repeated periods of decline. Under his guidance, cricket became firmly established at Rectory Park, a ground that would soon earn admiration far beyond the town. Throughout the second half of the nineteenth century, the club faced recurring challenges: fluctuating membership, fragile finances, and limited facilities. Yet each crisis was met with voluntary effort, local patronage, and a strong sense of shared responsibility. By the time of the Golden Jubilee in 1896, Sutton Coldfield Cricket Club had evolved from a fragile parish pastime into a respected and enduring sporting institution.",
     sections: [
@@ -130,8 +234,8 @@ const decadeData: Record<string, DecadeData> = {
           "Early cricket was played in Sutton Park, but proposed railway developments in the 1840s raised concerns over long-term access. In response, Bedford—appointed Rector of Sutton Coldfield in 1850—laid out a dedicated cricket ground on the Rectory Glebes, later known as Rectory Park, and offered it to the club at nominal cost.",
           "Despite this generosity, sustained activity proved difficult. By 1856, the club had become largely inactive, prompting Bedford to issue a renewed appeal emphasising cricket's moral and physical benefits. With the ground freely available and temporary accommodation provided, the club was successfully revived."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Rectory Park cricket ground, 1850s"
+        image: img_1859_team,
+        imageCaption: "Sutton Coldfield CC 1st XI, 1859 — the earliest surviving team photograph"
       },
       {
         title: "Cricket, Community, and the Free Foresters",
@@ -141,8 +245,8 @@ const decadeData: Record<string, DecadeData> = {
           "In 1856, Bedford also founded the Free Foresters Cricket Club, a nomadic side built on principles of fellowship and goodwill. Matches between Sutton Coldfield and the Free Foresters became a regular feature, often involving Sutton teams of twenty-two players competing against smaller but formidable Forester elevens.",
           "Between 1859 and 1862, several highly reported encounters took place. Though frequently ending in defeat for Sutton, these matches—dominated by players such as T. Goodrich—raised playing standards and reinforced cricket's importance within the town's identity."
         ],
-        image: "https://images.unsplash.com/photo-1687742909721-cb8dc3361e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0JTIwdmludGFnZSUyMGVxdWlwbWVudHxlbnwxfHx8fDE3Njg0NjY0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Victorian cricket equipment and Free Foresters"
+        image: img_1863_salver,
+        imageCaption: "The silver salver presented to Rev. Bedford by the Free Foresters, 1863 — now held at Lord's Cricket Ground"
       },
       {
         title: "Facilities, Grounds, and the Pavilion",
@@ -152,8 +256,8 @@ const decadeData: Record<string, DecadeData> = {
           "Conditions remained basic for many years. The playing area was small, boundaries were undefined, and maintenance was demanding. Financial crises were frequent, with several moments during the 1880s when the club's future was openly questioned.",
           "A decisive turning point came in 1890 with the construction of a new pavilion. Funded through subscriptions, donations, and fundraising events, the building was completed in just four months at a cost of £100. It marked a major step forward in facilities and symbolised the club's renewed stability and ambition."
         ],
-        image: "https://images.unsplash.com/photo-1585822754398-04873d4e1f50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBoaXN0b3JpY3xlbnwxfHx8fDE3Njg0NjY0NTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "The new pavilion constructed in 1890"
+        image: img_1873_team_b,
+        imageCaption: "Members of Sutton Coldfield CC, 1873"
       },
       {
         title: "Club Colours",
@@ -171,8 +275,8 @@ const decadeData: Record<string, DecadeData> = {
           "From the 1870s onward, the club benefited from the involvement of prominent local figures, including clergymen, doctors, solicitors, and civic leaders. Governance became more structured, with clearly defined roles for captains, secretaries, and treasurers.",
           "The introduction of professional bowlers in the mid-1880s raised playing standards, while the formation of a Second XI in 1891 reflected growing participation. By the mid-1890s, junior and schoolboy memberships had been introduced, ensuring continuity and future development."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Victorian-era match at Rectory Park"
+        image: img_1890_team,
+        imageCaption: "Sutton Coldfield CC, 1890 — the year the new pavilion was constructed"
       },
       {
         title: "Jubilee and Consolidation (1896–1899)",
@@ -245,7 +349,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1901-1909",
     heroTitle: "A Time of Change and Uncertainty",
     heroSubtitle: "Growth, Loss, and the Question of the Ground",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMHRlYW0lMjB2aWN0b3JpYW58ZW58MXx8fHwxNzY4NDY2NDUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    heroImage: img_1906_1stxi,
     introLarge: "The opening years of the twentieth century were a period of transition for Sutton Coldfield Cricket Club.",
     introBody: "While the foundations laid in the previous decades continued to support the club, these years were marked by administrative change, social events, and emerging uncertainty over the long-term security of Rectory Park. Membership increased, playing standards improved, and fundraising activities became more structured, yet the club also experienced the loss of its founder and the challenges of maintaining facilities and finances in a changing social landscape.",
     sections: [
@@ -256,8 +360,8 @@ const decadeData: Record<string, DecadeData> = {
           "In 1901, William Fowler retired after more than a decade of service as Hon. Secretary and Treasurer. His careful administration had provided stability, and his departure marked a turning point in club governance.",
           "1902 saw C. Shelvoke serve as captain for a single season. R.S. Walters, Hon. Treasurer, experimented with supplying refreshments for members, an effort quickly abandoned after financial impracticality. These years illustrated both the continuity of leadership and the challenges of informal club management."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Club leadership during the Edwardian era"
+        image: img_1905_team_a,
+        imageCaption: "Sutton Coldfield CC, 1905"
       },
       {
         title: "Cricketing Activity and Team Development",
@@ -276,8 +380,8 @@ const decadeData: Record<string, DecadeData> = {
           "Open-air concerts were held in 1906 and subsequent years, combining entertainment with fundraising. They relied on volunteer organisation and were vital for balancing the club's finances.",
           "Regular club activities, including social gatherings and prize presentations, reinforced a strong sense of community among members and their families."
         ],
-        image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdGVhbSUyMGdhbGF8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Social events at Rectory Park"
+        image: img_1905_team_b,
+        imageCaption: "Sutton Coldfield CC members at Rectory Park, 1905"
       },
       {
         title: "Honouring Legacy and Life Members",
@@ -294,8 +398,8 @@ const decadeData: Record<string, DecadeData> = {
           "In 1905, the lower ground was taken over for third-team matches, and a pavilion was erected at the northwest corner. Open-air concerts helped fund improvements, including lighting and maintenance.",
           "By 1907, the Ecclesiastical Commissioners' plans for the Rectory raised uncertainty about the club's future tenancy. The club faced the ongoing challenge of securing a permanent lease for its historic playing ground—an issue that would persist for years to come."
         ],
-        image: "https://images.unsplash.com/photo-1585822754398-04873d4e1f50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBoaXN0b3JpY3xlbnwxfHx8fDE3Njg0NjY0NTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Pavilion developments at Rectory Park"
+        image: img_1906_2ndxi,
+        imageCaption: "Sutton Coldfield CC 2nd XI, 1906"
       },
       {
         title: "Season Highlights and Statistics",
@@ -364,7 +468,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1910-1919",
     heroTitle: "A Decade of Transition and Challenge",
     heroSubtitle: "Achievement, Resilience, and the Great War",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMHRlYW0lMjB2aWN0b3JpYW58ZW58MXx8fHwxNzY4NDY2NDUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    heroImage: img_1910_1stxi,
     introLarge: "The 1910s were a decade of achievement, resilience, and upheaval for Sutton Coldfield Cricket Club.",
     introBody: "The decade began with a period of consolidation following the retirement of the long-serving Rev. W.C.R. Bedford, who had guided the club with wisdom and dedication for over six decades. The club saw the rise of exceptional players whose records would be remembered for years: L.C. Crockford, J.B. Russell, E.B. Crockford, F.B. Clark, and H. Lott all displayed outstanding skill and commitment. During this period, the club strengthened its role as a centre of social and community life. Concerts, annual dinners, and gymkhanas became regular highlights, reinforcing camaraderie among members and families. The integration of the Sutton Coldfield Hockey Club in 1910, along with hosting football and school matches, illustrated the club's expanding influence in local recreational life. The outbreak of the First World War in 1914 dramatically affected the club's operations. Many members enlisted, some paying the ultimate price, while others supported the war effort locally. Despite the disruption, the club maintained its facilities, hosted convalescent soldiers, and ensured cricket could resume smoothly after hostilities ended. This decade exemplified resilience, adaptability, and the enduring cultural significance of sport in Sutton Coldfield.",
     sections: [
@@ -377,8 +481,8 @@ const decadeData: Record<string, DecadeData> = {
           "The war had taken a dreadful toll on members, including Percy Grove, Honorary Secretary since 1911, and Arthur Lilly, Honorary Treasurer from 1906. Both men had served their country and made the ultimate sacrifice on the battlefield. The club mourned their loss deeply, acknowledging their contributions on and off the field.",
           "At the Annual General Meeting on 24th March 1919, chaired by Rev. Canon Barnard, the club elected new officers: J.H. Cornwell as Treasurer, George Sharp as Secretary, L.C. Crockford as 1st XI Captain, and George Sharp as 2nd XI Captain. Subscriptions were revised to reflect post-war economic realities, and the club received generous support from local dignitaries and clergy as vice presidents. Notably, a memorial tablet to honour members who had died in the war was offered and funded by Canon Barnard himself, ensuring their sacrifice was permanently remembered in the Pavilion."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Club leadership during the 1910s"
+        image: img_1911_team,
+        imageCaption: "Sutton Coldfield CC, 1911"
       },
       {
         title: "Sporting Excellence and Player Highlights",
@@ -387,8 +491,8 @@ const decadeData: Record<string, DecadeData> = {
           "Despite the disruption caused by the war, the club's cricketing tradition continued. In 1919, the 1st XI included returning stalwarts L.C. and E.B. Crockford, F.B. Clark, H. Lott, and F.H. Beardshaw. F.B. Clark led both with bat and ball, scoring 814 runs at an average of 26.3 and taking 74 wickets at 14.3 runs per wicket. Beardshaw scored 502 runs at 31 and took 30 wickets, while A.E. Terry contributed 57 wickets at 9.1 runs per wicket. E.B. Crockford added 574 runs and 54 wickets at 16.9, reflecting the depth and versatility of the team. The 1st XI played 21 Saturday games (won 8, lost 7, drew 6), while the midweek side played 14 games (won 5, lost 3, drew 6).",
           "The 2nd XI faced challenges due to stronger opposition fielding first-team players unexpectedly, notably from Hall Green, Pickwick, and Bournville. Despite these handicaps, they completed 21 games, winning 8, losing 11, and drawing 2. A remarkable moment came when Sutton's 2nd XI conceded 318 runs to Harborne away, surpassing their previous record of 298 in 1910."
         ],
-        image: "https://images.unsplash.com/photo-1687742909721-cb8dc3361e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0JTIwdmludGFnZSUyMGVxdWlwbWVudHxlbnwxfHx8fDE3Njg0NjY0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Cricket excellence in the 1910s"
+        image: img_1913_team,
+        imageCaption: "Sutton Coldfield CC, 1913"
       },
       {
         title: "Facilities, Grounds, and Multi-Sport Use",
@@ -396,8 +500,8 @@ const decadeData: Record<string, DecadeData> = {
         content: [
           "The club's grounds remained central to both sporting success and community engagement. Investments in rollers, sheds, and wicket preparation allowed for high-quality cricket, while top and lower grounds were shared with hockey, football, and school teams. In 1919, marling of the ground ensured readiness for the opening match on 26th April."
         ],
-        image: "https://images.unsplash.com/photo-1585822754398-04873d4e1f50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBoaXN0b3JpY3xlbnwxfHx8fDE3Njg0NjY0NTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Multi-sport facilities at Rectory Park"
+        image: img_1910_grounds,
+        imageCaption: "Rectory Park, 1910"
       },
       {
         title: "Social Events and Community Engagement",
@@ -412,8 +516,8 @@ const decadeData: Record<string, DecadeData> = {
         content: [
           "The First World War interrupted normal play, but did not halt the club's operations. Of the members who served, 39 went to war and 13 lost their lives. Matches during these years were limited, often featuring scratch sides. Committee members maintained facilities, coordinated events for convalescent soldiers, and ensured finances remained stable. The war years left a profound impact on both personnel and infrastructure, shaping the club's post-war priorities."
         ],
-        image: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdGVhbSUyMGdhbGF8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "The club during wartime"
+        image: img_1916_war,
+        imageCaption: "Members of Sutton Coldfield CC who served in the Great War, 1916"
       }
     ],
     keyMoments: [
@@ -469,7 +573,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1920-1929",
     heroTitle: "The Golden Resurgence",
     heroSubtitle: "Sutton Coldfield Cricket Club in the 1920s",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMG1hdGNoJTIwMTkyMHN8ZW58MXx8fHwxNzY4ODUyOTA4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    heroImage: img_1921_team,
     introLarge: "The 1920s marked a period of renewal, growth, and sporting distinction for Sutton Coldfield Cricket Club.",
     introBody: "Emerging from the disruption of the First World War, the Club re-established itself as one of the strongest and most respected cricketing institutions in the Midlands. The decade combined administrative stability, steady financial recovery, and an exceptional standard of cricket, reflecting both the changing social fabric of the town and the renewed importance of organised sport within the community. Strong leadership from long-serving officers ensured continuity, while investment in facilities transformed Rectory Park into a ground of growing distinction. The pavilion, enclosure, and playing surfaces were improved steadily throughout the decade, reinforcing the Club's commitment to hospitality and presentation. Off the field, social events, shared use of the ground, and collaboration with hockey, tennis, and community organisations strengthened the Club's role at the heart of local life. On the field, Sutton Coldfield enjoyed one of the most successful eras in its history. A remarkable concentration of county players, outstanding individual performances, and competitive fixtures against the strongest Midland clubs established a reputation for cricket played in the right spirit, but at the highest club standard.",
     sections: [
@@ -480,8 +584,8 @@ const decadeData: Record<string, DecadeData> = {
           "The 1920s were underpinned by exceptional service from dedicated officers and committee members. Figures such as George Sharp, Norman Marsh, J.B. Russell, E.B. Crockford, and F.H. Beardshaw provided stability through long tenures in secretarial, treasury, and captaincy roles. Their work ensured that post-war recovery was matched by prudent financial management and clear governance.",
           "The decade also saw significant moments of transition. The passing of Norman Marsh, long-serving treasurer, and the later deaths of respected figures such as Canon C.W. Barnard were deeply felt. Each was commemorated with dignity, reflecting the Club's strong sense of heritage and gratitude."
         ],
-        image: "https://images.unsplash.com/photo-1685541000527-662e48d677a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMG9mZmljZXJzJTIwY29tbWl0dGVlfGVufDF8fHx8MTc2ODg1MzI0OHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Club officers and committee members"
+        image: img_1920_team,
+        imageCaption: "Sutton Coldfield CC, 1920"
       },
       {
         title: "Facilities, Grounds & Pavilion Development",
@@ -490,8 +594,8 @@ const decadeData: Record<string, DecadeData> = {
           "Major improvements to Rectory Park defined the decade. Pavilion re-thatching, the acquisition and conversion of army huts for teas, installation of sight screens, flower beds, railings, and the eventual connection of mains water in 1929 all transformed the matchday experience. These developments were often funded through member guarantees, benefit matches, and innovative fundraising initiatives.",
           "The planting of trees and hedges along the ground's boundaries preserved its rural character amid increasing residential development, while improvements to vehicle access acknowledged the gradual rise of motor transport."
         ],
-        image: "https://images.unsplash.com/photo-1701766993323-cc05898df2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBoaXN0b3JpYyUyMGJ1aWxkaW5nfGVufDF8fHx8MTc2ODg1MjkwOXww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Historic cricket pavilion"
+        image: img_1924_team,
+        imageCaption: "Sutton Coldfield CC, 1924"
       },
       {
         title: "Cricketing Excellence & Playing Strength",
@@ -500,8 +604,8 @@ const decadeData: Record<string, DecadeData> = {
           "The standard of cricket reached remarkable heights. The Club regularly fielded sides containing multiple county players, including E.B. Crockford, F.B. Clark, A.F. Leighton, D.G. Foster, and N. Sharp. Batting strength was exceptional, particularly during the late 1920s, when Sutton possessed what was widely regarded as its finest batting order on paper.",
           "Individual milestones abounded: Norman Sharp's first-ever thousand-run season in 1928, record partnerships, hat-tricks, and centuries against leading Midland opposition. Competitive fixtures against Wolverhampton, Leamington, Ashfield, and Olton provided both challenge and prestige."
         ],
-        image: "https://images.unsplash.com/photo-1611859683790-efeb80110c4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwY291bnR5JTIwcGxheWVycyUyMHRlYW18ZW58MXx8fHwxNzY4ODUzMjUwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "County-level cricket talent"
+        image: img_1926_team,
+        imageCaption: "Sutton Coldfield CC, 1926 — a side regularly containing county-level talent"
       },
       {
         title: "Second XI, \"A\" Team & Club Culture",
@@ -510,8 +614,8 @@ const decadeData: Record<string, DecadeData> = {
           "Beneath the First XI, the Second and \"A\" teams played a vital role in sustaining the Club's cricketing health. Veterans of the war years blended with emerging younger players, many of whom progressed to senior cricket. Despite limited resources, particularly for the \"A\" team, dedication and enthusiasm ensured the continuation of competitive cricket at all levels.",
           "The decade was also rich in character and anecdote—benefit matches, humorous on-field incidents, evening cricket under daylight-saving, and shared use of the ground with other sports all contributed to a vibrant and enduring club culture."
         ],
-        image: "https://images.unsplash.com/photo-1759733874474-84a88019d090?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc29jaWFsJTIwZXZlbnQlMjBjb21tdW5pdHl8ZW58MXx8fHwxNzY4ODUzMjUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Social events and community spirit"
+        image: img_1921_team,
+        imageCaption: "Sutton Coldfield CC, 1921 — the blend of post-war veterans and emerging talent"
       }
     ],
     keyMoments: [
@@ -566,7 +670,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1930-1939",
     heroTitle: "Cricket in Changing Times",
     heroSubtitle: "Resilience, Distinction, and the Defence of Rectory Park",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMTk4MHN8ZW58MXx8fHwxNzY4NDAyOTY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    heroImage: img_1937_centenary,
     introLarge: "The 1930s were a testing yet formative period in the history of Sutton Coldfield Cricket Club, shaped by resilience, individual distinction, and an unwavering commitment to tradition.",
     introBody: "Set against economic uncertainty, severe weather, and growing international tension, the club continued to uphold the values and standards established in its earlier years. Although results fluctuated, Sutton Coldfield remained a respected presence within Midlands cricket, sustained by strong leadership and a deep sense of purpose.\n\nOn the field, the quality of cricket remained consistently high. The decade featured county players, international representatives, and outstanding all-round sportsmen in Sutton colours, producing memorable performances at Rectory Park. Fine batting, skilful bowling, and notable partnerships characterised many matches, even during seasons disrupted by rain or constrained by limited resources. Capable captains ensured competitiveness and maintained the club's reputation during both successful and difficult campaigns.\n\nBeyond play, the 1930s were marked by transition and consolidation. Long-serving players, officials, and umpires concluded distinguished periods of service, while new figures assumed responsibility, preserving continuity and identity. Investment in facilities and, crucially, the safeguarding of Rectory Park as a permanent open space secured the club's future. As war brought cricket to an abrupt halt in 1939, Sutton Coldfield Cricket Club entered the next chapter of its history with its heritage, home, and community firmly protected.",
     sections: [
@@ -577,8 +681,8 @@ const decadeData: Record<string, DecadeData> = {
           "Throughout the 1930s, Sutton Coldfield Cricket Club benefited from a strong sense of continuity in its leadership, even as long-serving officials and players gradually stepped aside. The decade opened with the appointment of E.H. Walters as Honorary Secretary, a role he fulfilled with diligence and energy until the outbreak of war. His service reflected a wider pattern within the club, where administrative responsibility was regarded as a duty as important as performance on the field.",
           "At the same time, the period marked the retirement of figures whose association with the club stretched back several decades. These transitions were handled with care and respect, ensuring that experience and tradition were not lost but passed on. The stability provided by committed officers and captains allowed the club to navigate fluctuating fortunes without compromising its identity or standards."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Leadership and administration at Rectory Park"
+        image: img_1933_team,
+        imageCaption: "Sutton Coldfield CC, 1933"
       },
       {
         title: "Cricketing Excellence and Individual Distinction",
@@ -587,8 +691,8 @@ const decadeData: Record<string, DecadeData> = {
           "While team results varied from season to season, the 1930s produced cricket of exceptional quality at Sutton Coldfield. The club fielded players who achieved distinction at county level and beyond, and on occasion welcomed cricketers of international reputation. Individual performances—centuries, remarkable bowling spells, and memorable partnerships—regularly elevated matches, even in otherwise difficult seasons.",
           "The decade was also notable for the breadth of sporting talent within the membership. Several players distinguished themselves in other sports, most notably athletics and hockey, reinforcing Sutton Coldfield's reputation as a club that nurtured all-round sportsmen. These individual achievements brought wider recognition and prestige to the club, strengthening its standing within Midlands cricket."
         ],
-        image: "https://images.unsplash.com/photo-1687742909721-cb8dc3361e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0JTIwdmludGFnZSUyMGVxdWlwbWVudHxlbnwxfHx8fDE3Njg0NjY0NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Cricket excellence and individual distinction"
+        image: img_1936_team,
+        imageCaption: "Sutton Coldfield CC, 1936 — the year Arthur G.K. Brown won Olympic gold and silver medals"
       },
       {
         title: "Facilities, Grounds, and the Protection of Rectory Park",
@@ -597,8 +701,8 @@ const decadeData: Record<string, DecadeData> = {
           "The physical development and preservation of the club's facilities formed a crucial theme of the decade. Practical improvements, such as the installation of new sight screens and the reconstruction of pavilion structures, reflected a determination to maintain modern standards and provide a suitable environment for high-quality cricket.",
           "Most significant was the threat to Rectory Park itself when the landowners considered its sale for building development. Through the intervention of local authorities, the ground was purchased by the Corporation and preserved as an open space. This decisive action safeguarded not only the club's immediate future but also its long-term place within the town, ensuring that cricket at Rectory Park would continue beyond the uncertainties of the age."
         ],
-        image: "https://images.unsplash.com/photo-1585822754398-04873d4e1f50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBoaXN0b3JpY3xlbnwxfHx8fDE3Njg0NjY0NTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Rectory Park preserved for future generations"
+        image: img_1938_team,
+        imageCaption: "Sutton Coldfield CC, 1938 — the year Rectory Park was purchased by the Corporation and secured as open space"
       },
       {
         title: "Club, Community, and Civic Identity",
@@ -607,8 +711,8 @@ const decadeData: Record<string, DecadeData> = {
           "During the 1930s, Sutton Coldfield Cricket Club remained deeply embedded in the social and civic life of the town. Its presidents and senior members included prominent local figures—doctors, aldermen, and mayors—whose involvement reinforced the club's status as a respected community institution.",
           "Matches, social gatherings, and ceremonial occasions reflected a close relationship between the club and the wider public. The passing of distinguished members, such as Sir Alfred Evans, was felt not only within the club but across the town, symbolising the strength of this connection. In an era increasingly shaped by national and international events, the club continued to serve as a stable focal point for community life."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Community and civic involvement at the club"
+        image: img_1937_team_b,
+        imageCaption: "Sutton Coldfield CC, 1937 — the club's centenary year"
       },
       {
         title: "Uncertainty, Resilience, and the Approach of War",
@@ -617,8 +721,8 @@ const decadeData: Record<string, DecadeData> = {
           "The latter years of the decade were marked by growing uncertainty. Extreme weather disrupted several seasons, testing the resilience of players and administrators alike. Beyond these immediate challenges, the approach of the Second World War cast an ever-lengthening shadow over sporting life.",
           "By 1939, international tensions brought cricket to an abrupt halt, with fixtures cancelled and members preparing for service. The decade closed not with decline, but with interruption. The endurance shown throughout the 1930s—through poor seasons, difficult conditions, and external pressures—ensured that the club entered wartime with its traditions intact and its sense of purpose undiminished."
         ],
-        image: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMHRlYW0lMjB2aWN0b3JpYW58ZW58MXx8fHwxNzY4NDY2NDUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "The approach of war, 1939"
+        image: img_1933_team,
+        imageCaption: "Sutton Coldfield CC during the difficult years of the 1930s"
       }
     ],
     keyMoments: [
@@ -683,7 +787,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1940-1949",
     heroTitle: "Wartime and Renewal",
     heroSubtitle: "Cricket Survives Another Conflict",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwd2FydGltZSUyMDE5NDBzfGVufDF8fHx8MTc2ODQ2ODE0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+    heroImage: img_1947_mcc,
     introLarge: "For the second time in a generation, world war disrupted the club.",
     introBody: "However, lessons learned from 1914-18 helped the club adapt more effectively. Cricket continued in various forms throughout the conflict, and the post-war years saw rapid recovery and modernization.",
     sections: [
@@ -695,7 +799,9 @@ const decadeData: Record<string, DecadeData> = {
           "The ground took on new roles during the war. Part of it was used for growing vegetables as part of the 'Dig for Victory' campaign. The pavilion served as a Civil Defence post and a collection point for salvage drives. Several air raid shelters were constructed around the boundary.",
           "Despite the difficult circumstances, cricket provided vital morale. Charity matches raised funds for the Red Cross and service welfare organizations. Notable touring sides included teams from RAF Cosford and visiting American servicemen, who were introduced to cricket with mixed success and much good humor.",
           "The club lost 11 members in the conflict—fewer than in WWI but still a painful toll. A second memorial was dedicated in 1946 to honor their sacrifice."
-        ]
+        ],
+        image: img_1942_wartime,
+        imageCaption: "Sutton Coldfield CC, 1942 — cricket continued throughout the Second World War"
       },
       {
         title: "The Post-War Boom (1945-1949)",
@@ -705,8 +811,8 @@ const decadeData: Record<string, DecadeData> = {
           "The pavilion and ground required significant restoration after six years of wartime use. A major fundraising campaign in 1946-47 raised over £1,200 for repairs and improvements. New nets were installed, the outfield was re-seeded, and the pavilion was refurbished.",
           "On the field, the late 1940s saw competitive cricket resume in earnest. The club rejoined the Birmingham League in 1946 and finished a respectable mid-table in its first post-war season. Young talent emerged, including wicketkeeper-batsman Ronald Cooper, whose century on debut against Kidderminster in 1948 announced the arrival of a new star."
         ],
-        image: "https://images.unsplash.com/photo-1747487738070-c627766327ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMTk1MHMlMjBwbGF5ZXJzfGVufDF8fHx8MTc2ODQ2ODE0MXww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Post-war cricket resumes, 1946"
+        image: img_1949_team,
+        imageCaption: "Sutton Coldfield CC, 1949 — the post-war revival in full swing"
       }
     ],
     keyMoments: [
@@ -746,7 +852,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1950-1959",
     heroTitle: "The Fabulous Fifties",
     heroSubtitle: "A New Era of Success",
-    heroImage: "https://images.unsplash.com/photo-1747487738070-c627766327ad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMTk1MHMlMjBwbGF5ZXJzfGVufDF8fHx8MTc2ODQ2ODE0MXww&ixlib=rb-4.1.0&q=80&w=1080",
+    heroImage: img_1951_team,
     introLarge: "The 1950s was a golden decade for Sutton Coldfield Cricket Club.",
     introBody: "With growing prosperity, enthusiastic membership, and exceptional talent, the club achieved unprecedented success and established itself as one of the Midlands' most formidable sides.",
     sections: [
@@ -758,8 +864,8 @@ const decadeData: Record<string, DecadeData> = {
           "The 1954 season was particularly memorable. The team went unbeaten in league matches, scoring over 200 runs in six innings and bowling out opponents for under 100 on five occasions. The championship was clinched with a crushing 10-wicket victory over Warwickshire Club & Ground in front of a crowd of over 2,000.",
           "Star players included Cooper himself, who averaged over 65 across the decade; opening bowler Malcolm Wright, whose pace and accuracy terrorized batsmen throughout the league; and elegant stroke-maker Peter Hartley, whose century against Moseley in 1956 was described by one reporter as 'the finest innings ever played on this ground.'"
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Championship celebrations, 1954"
+        image: img_1956_team,
+        imageCaption: "Sutton Coldfield CC, 1956 — one of the championship-winning sides of the decade"
       },
       {
         title: "Youth Development",
@@ -768,7 +874,9 @@ const decadeData: Record<string, DecadeData> = {
           "The club pioneered youth cricket in the region, establishing a successful colts section in 1952. Under the guidance of former player and dedicated coach Arthur Simmons, dozens of young cricketers developed their skills in a structured program.",
           "This investment in youth paid immediate dividends. By the end of the decade, several colts had graduated to the senior teams, and two—David Hughes and Robert Mason—had been selected for Warwickshire's second XI.",
           "The club also invested in facilities, installing new practice nets in 1957 and purchasing a mechanized roller to improve pitch preparation. These improvements ensured Sutton Coldfield remained at the forefront of amateur cricket in the region."
-        ]
+        ],
+        image: img_1958_team,
+        imageCaption: "Sutton Coldfield CC, 1958 — the fourth championship title of the decade"
       }
     ],
     keyMoments: [
@@ -808,7 +916,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1960-1969",
     heroTitle: "Transformation and Tradition",
     heroSubtitle: "Embracing the Modern Game",
-    heroImage: "https://images.unsplash.com/photo-1685541000527-662e48d677a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMTk2MHMlMjBtYXRjaHxlbnwxfHx8fDE3Njg0NjgxNDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    heroImage: img_1966_team,
     introLarge: "The 1960s brought significant changes to cricket and to Sutton Coldfield Cricket Club.",
     introBody: "As society transformed and limited-overs cricket revolutionized the game, the club successfully balanced tradition with innovation, embracing new formats while maintaining its core values.",
     sections: [
@@ -819,7 +927,9 @@ const decadeData: Record<string, DecadeData> = {
           "The introduction of limited-overs cricket in the mid-1960s initially met with skepticism from traditionalists. However, the club embraced the new format, recognizing its appeal to spectators and potential to attract new members. The first limited-overs competition in 1965 proved hugely popular.",
           "Sutton Coldfield excelled at one-day cricket. The more aggressive, dynamic style suited the club's talented batting lineup, particularly the explosive hitting of young all-rounder Graham Foster. In 1967, the club won the inaugural Birmingham League Knockout Cup, defeating Berkswell by 47 runs in a thrilling final.",
           "The success in limited-overs cricket complemented continued competitiveness in traditional formats, demonstrating the club's versatility and ability to adapt to cricket's evolving landscape."
-        ]
+        ],
+        image: img_1963_team,
+        imageCaption: "Sutton Coldfield CC, 1963"
       },
       {
         title: "Social Change and Modernization",
@@ -829,8 +939,8 @@ const decadeData: Record<string, DecadeData> = {
           "Facilities were modernized throughout the decade. Electric floodlights were installed for evening training in 1966. The pavilion underwent major refurbishment in 1968, with new shower facilities, updated catering equipment, and a renovated members' bar.",
           "These changes helped attract a younger, more diverse membership while maintaining the club's traditional values of sportsmanship and community spirit."
         ],
-        image: "https://images.unsplash.com/photo-1685541000527-662e48d677a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMTk2MHMlMjBtYXRjaHxlbnwxfHx8fDE3Njg0NjgxNDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Modern cricket arrives, 1966"
+        image: img_1960_team,
+        imageCaption: "Sutton Coldfield CC, 1960"
       }
     ],
     keyMoments: [
@@ -868,373 +978,385 @@ const decadeData: Record<string, DecadeData> = {
   "1970s": {
     name: "The Seventies",
     years: "1970-1979",
-    heroTitle: "Expansion and Excellence",
-    heroSubtitle: "Growing the Game",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMTk3MHMlMjBncm91bmR8ZW58MXx8fHwxNzY4NDY4MTQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    introLarge: "The 1970s saw Sutton Coldfield Cricket Club continue its expansion and development.",
-    introBody: "With growing membership, ambitious youth programs, and continued on-field success, the club consolidated its position as one of the region's leading cricket organizations.",
+    heroTitle: "Dixon's Decade",
+    heroSubtitle: "Records, the MCCC and a New Pavilion",
+    heroImage: img_1970_pavilion,
+    introLarge: "The 1970s opened with a landmark moment — the inauguration of the new Rectory Park pavilion on 25th July 1970 — and proceeded to deliver a decade of remarkable individual achievement.",
+    introBody: "At the heart of it all stood Michael Dixon, who produced a sequence of run-scoring that had no precedent in the club's history. Around him, the Midland Club Cricket Conference gave Sutton a new league stage, junior cricket flourished, and the club umpires stepped onto the world stage. In 1977 the Alpine Soft Drink Company launched an under-16 youth competition, and Sutton's squad — organised by Peter Yates and led by David Stokes — won the inaugural title, with Stokes receiving the Alec Hastilow Trophy as best under-16 cricketer in the Midlands.",
     sections: [
       {
-        title: "Record-Breaking Performances",
+        title: "Michael Dixon — A Batsman of the Ages",
         background: "cream",
         content: [
-          "The decade produced some of the club's most memorable individual achievements. In 1978, opening batsman Michael Stevens scored an unbeaten 247 against Stratford—breaking Arthur Wilkes' 45-year-old club record. Stevens' innings included 35 fours and 4 sixes, and he batted for over seven hours in a display of remarkable concentration and skill.",
-          "Leg-spinner Christopher Davies enjoyed a purple patch in 1973-74, taking 142 wickets across two seasons. His ability to turn the ball sharply on even the flattest pitches made him virtually unplayable at club level, and he earned a trial with Warwickshire.",
-          "The first XI won back-to-back league championships in 1975 and 1976, built around a core of experienced players and talented youngsters emerging from the now-thriving colts program."
-        ]
+          "No single player has dominated a decade at Sutton Coldfield as Michael Dixon dominated the 1970s. In 1973 he scored a club record 1,630 runs, including four centuries, and the team struck seven centuries in the season — itself a new record. The following year he took the MCCC Cricketer of the Year award, the first of two such honours in the decade.",
+          "Dixon topped 1,000 runs in every season from 1970 to 1979 — ten consecutive seasons — a feat of consistency that astonished contemporaries. In 1978 he scored four centuries in a season in which the side reached eight centuries in total, another club record. By the time he announced his retirement in 1980, he had scored over 12,500 runs for the club, placing him among the greatest batsmen in Sutton's history.",
+          "He was ably supported by Warwick Tidy with the ball. Tidy took 81 wickets in 1975 and was consistently among the wickets throughout the decade, bringing an attacking edge to the club's bowling that complemented Dixon's batting dominance. Around them, Gavin Weston — 51 dismissals behind the stumps in 1974 alone — gave the side an exceptional foundation."
+        ],
+        image: img_1977_mccc_composite,
+        imageCaption: "The 1977 MCCC Championship — the plaque and portraits hung in the Rectory Park pavilion"
       },
       {
-        title: "Community and Growth",
+        title: "The MCCC, the ICC and the Hawks",
         background: "white",
         content: [
-          "The club's commitment to youth cricket intensified. By 1977, over 80 youngsters were participating in age-group cricket from under-11s to under-19s. The coaching team expanded to include qualified ECB coaches, and the club invested in specialist equipment for junior players.",
-          "Community engagement became a priority. The club hosted local schools' cricket festivals, ran coaching courses during school holidays, and established links with Sutton Coldfield leisure services to promote cricket in the area.",
-          "A major ground improvement project in 1979 added a new scoreboard, upgraded the boundary rope and seating, and created dedicated practice areas for junior cricket. These investments demonstrated the club's commitment to long-term development."
+          "The formation of the Midland Club Cricket Conference in 1972 gave Sutton's senior cricket a new competitive framework, and the club rose to the challenge. In 1977 the 1st XI won the MCCC Championship — a triumph built on Dixon's 1,047 runs, Tidy's 69 wickets, and the attacking captaincy of Michael Dixon himself, whose philosophy of chasing every target made the side compelling to watch.",
+          "The club also made its mark on the international stage in 1979 when the ICC World Cup came to England. Sutton hosted a warm-up match against Canada, and umpires Peter Bell and Phil Berry officiated in the USA versus Sri Lanka ICC Trophy tie — a remarkable honour for a club side. Phil Berry's photograph from that occasion subsequently appeared in The Ultimate Encyclopaedia of Cricket.",
+          "The decade ended on a poignant note with the death of club historian Norman Sharp on 14th July 1977 — aged 76 — whose meticulous record-keeping had preserved so much of the club's early history. His legacy lives on in every story the club tells of its first century."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Ground improvements, 1979"
+        image: img_1979_hawks,
+        imageCaption: "The Hawks XI — Sutton's 3rd XI — photographed during the 1979 season"
       }
     ],
     keyMoments: [
       {
-        year: "1973",
-        title: "Davies' 84 Wickets",
-        description: "Christopher Davies takes 84 wickets in single season—still a club record"
+        year: "1970",
+        title: "New Pavilion Opens",
+        description: "The new Rectory Park pavilion is inaugurated on 25th July — a landmark in the club's infrastructure"
       },
       {
-        year: "1975-1976",
-        title: "Back-to-Back Champions",
-        description: "Consecutive league championships demonstrate sustained excellence"
+        year: "1972",
+        title: "MCCC Era Begins",
+        description: "The Midland Club Cricket Conference starts; Keith Gardom makes his first-class debut for Warwickshire"
+      },
+      {
+        year: "1973",
+        title: "Dixon's Record Season",
+        description: "Michael Dixon scores a club record 1,630 runs including four centuries; seven centuries in the season — another new record"
       },
       {
         year: "1977",
-        title: "Junior Cricket Boom",
-        description: "Over 80 youngsters participate in expanded age-group program"
-      },
-      {
-        year: "1978",
-        title: "Stevens' Record Innings",
-        description: "Michael Stevens scores 247 not out—new club record that still stands"
+        title: "MCCC Champions",
+        description: "The 1st XI wins the MCCC Championship; Norman Sharp, the club's historian, dies aged 76"
       },
       {
         year: "1979",
-        title: "Ground Improvements",
-        description: "Major investment in facilities including new scoreboard and practice areas"
+        title: "On the World Stage",
+        description: "Peter Bell and Phil Berry umpire at the ICC Trophy; Dixon completes his tenth consecutive 1,000-run season"
       }
     ],
     quote: {
-      text: "Our success is built on developing young talent and maintaining the highest standards. This club has a bright future.",
-      author: "Captain James Richardson, 1976"
+      text: "Michael Dixon was simply the most complete batsman I ever played alongside. Season after season, he found a way to get runs.",
+      author: "Keith Gardom, 1970s 1st XI"
     }
   },
   "1980s": {
     name: "The Eighties",
     years: "1980-1989",
-    heroTitle: "Centenary and Beyond",
-    heroSubtitle: "Celebrating a Century of Cricket",
-    heroImage: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMTk4MHMlMjBwbGF5ZXJzfGVufDF8fHx8MTc2ODQ2ODE0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-    introLarge: "The 1980s began with the club's centenary celebrations—a milestone that prompted reflection on 100 years of history and renewed commitment to future success.",
-    introBody: "The decade saw significant development both on and off the field as the club prepared for its second century.",
+    heroTitle: "Trophies and Tragedy",
+    heroSubtitle: "The Hawks Era and an Overseas First",
+    heroImage: img_1982_team,
+    introLarge: "The 1980s were a decade of contrasts — league honours piling up for the 3rd XI, international cricket arriving at Rectory Park, and the club welcoming its first-ever overseas professional.",
+    introBody: "Against a backdrop of recurring vandalism and the tragic early death of beloved fixture secretary Andrew Beach, the club's playing strength deepened and its community bonds tightened. Michael Dixon retired at the close of 1980 having scored 1,022 runs in his final season — completing eleven consecutive 1,000-run campaigns. In his place, a new generation stepped forward, and the club's competitive structure expanded with the formation of the Warwickshire Sunday League in 1984.",
     sections: [
       {
-        title: "Centenary Celebrations",
+        title: "The Hawks Fly High",
         background: "cream",
         content: [
-          "1980 marked Sutton Coldfield Cricket Club's 100th anniversary. The celebrations were extensive and memorable. A special commemorative match was played in June against a strong MCC XI, which included several former international players. Over 3,000 spectators attended the centenary match—the largest crowd in club history.",
-          "A lavish dinner-dance at the Belfry Hotel brought together over 300 current and former members. Distinguished guests included Warwickshire captain Dennis Amiss and former England batsman M.J.K. Smith, both of whom had played against the club during their careers.",
-          "A centenary history book was published, documenting the club's remarkable journey from Victorian amateur cricket to modern sporting organization. The book, researched and written by local historian and club member Dr. Robert Fletcher, sold over 500 copies and remains a valued record of the club's heritage."
+          "While the 1st XI consolidated its position in the MCCC, it was the club's 3rd XI — the Hawks — who became the story of the decade. Under a succession of committed captains, the Hawks won the MCCC 3rd XI League Championship in 1987, 1988 and 1989 — three consecutive titles that brought the club enormous pride and demonstrated the quality throughout the ranks.",
+          "The 2nd XI Sunday side also thrived, winning the Warwickshire Sunday League in both 1988 and 1989, while the club's own knockout competition was won for the first time in 1985 — a side captained by Graham Williamson that beat local rivals Aston Unity four times in the same season. The Wishaw Six-a-Side Cup was claimed that same day, a remarkable double.",
+          "Andy Luckhurst emerged as the outstanding all-round player of the era. The MCCC named him Cricketer of the Year in both 1988 and 1989, and he regularly headed both batting and bowling averages for the 1st XI — a remarkable achievement in a club well stocked with talent."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Centenary match celebrations, 1980"
+        image: img_1985_ko,
+        imageCaption: "The 1985 Cup KO Winners — Sutton's first victory in their own knockout competition"
       },
       {
-        title: "Women's Cricket Established",
+        title: "International Cricket, an Overseas Pioneer and Andrew Beach",
         background: "white",
         content: [
-          "A landmark decision in 1984 saw the establishment of a women's cricket section with its own playing teams. What began with 15 enthusiastic players quickly grew to over 40, with teams competing in the Warwickshire Women's League.",
-          "The women's first XI won promotion in their inaugural season and went on to win the league championship in 1987—a remarkable achievement that demonstrated both the talent within the section and the club's commitment to developing women's cricket.",
-          "The success of the women's section enriched the entire club, bringing new perspectives, increased membership, and a more diverse, inclusive culture that would serve the club well in the decades ahead."
-        ]
+          "Rectory Park became an international venue in the early 1980s when Sutton hosted ICC World Cup warm-up games. In 1982 the Netherlands scored 293 for 4 in a 60-over match against Sutton; Canada and the USA played their 100th meeting on the same ground; and Peter Bell umpired games involving Kenya, Papua New Guinea and Gibraltar — a remarkable series of connections for a club side.",
+          "In 1989 the club took another landmark step, engaging 19-year-old Zimbabwean Steve Peall as Sutton's first overseas professional. A right-arm off-spinner and hard-hitting left-handed batsman, Peall went on to play four Test matches and 21 One Day Internationals for Zimbabwe. He returned to visit Rectory Park in 2016, renewing acquaintances with the friends he had made thirty years earlier.",
+          "The decade was shadowed by the sudden death of fixture secretary Andrew Beach in 1986, aged 41. A gifted off-spinner who had taken 94 wickets in his debut season in 1963, Andrew was a gentleman of the game — small in stature but immense in heart. The Andrew Beach Memorial Trophy, competed between the cricket and hockey clubs, honours his memory to this day."
+        ],
+        image: img_1988_1stxi,
+        imageCaption: "Sutton Coldfield CC 1st XI 1988 — captioned: Leave, Mackey, Canon, P. Jones, Gosfith, D. Gullett; W. Hipburn, G. Williamson, G. Josephson, A. Luckhurst, J. Bone"
       }
     ],
     keyMoments: [
       {
-        year: "1980",
-        title: "Centenary Celebrations",
-        description: "Club celebrates 100 years with commemorative match against MCC watched by 3,000"
-      },
-      {
         year: "1982",
-        title: "Fourth XI Formed",
-        description: "Growing membership necessitates fourth senior team"
+        title: "International Cricket at Rectory Park",
+        description: "ICC World Cup warm-up matches hosted; Peter Bell umpires ICC games involving Kenya, PNG and Gibraltar"
       },
       {
-        year: "1984",
-        title: "Women's Section Established",
-        description: "Women's cricket teams formed, opening new chapter in club history"
+        year: "1985",
+        title: "Cup Double",
+        description: "1st XI wins the club's own KO Cup for the first time, and the Wishaw Six-a-Side, on consecutive days"
       },
       {
-        year: "1987",
-        title: "Women's Championship",
-        description: "Women's first XI wins Warwickshire League championship"
+        year: "1986",
+        title: "Andrew Beach Memorial",
+        description: "Fixture secretary and club stalwart Andrew Beach dies aged 41; memorial trophy created in his honour"
+      },
+      {
+        year: "1987-1989",
+        title: "Hawks Hat-Trick",
+        description: "The 3rd XI wins the MCCC Championship three seasons in succession"
       },
       {
         year: "1989",
-        title: "Indoor Cricket School",
-        description: "Partnership with local sports center creates year-round training facility"
+        title: "First Overseas Professional",
+        description: "Steve Peall of Zimbabwe joins as Sutton's first overseas player; he goes on to play for his country"
       }
     ],
     quote: {
-      text: "One hundred years of cricket, and we're stronger than ever. Here's to the next century!",
-      author: "President Sir William Dugdale, 1980"
+      text: "Andrew was a gentleman, small in stature but big in heart. Everyone was most welcome in his company.",
+      author: "Club tribute to Andrew Beach, 1986"
     }
   },
   "1990s": {
     name: "The Nineties",
     years: "1990-1999",
-    heroTitle: "Modern Cricket Arrives",
-    heroSubtitle: "Professionalism and Progress",
-    heroImage: "https://images.unsplash.com/photo-1745180266203-5d648c4f4f37?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMTk5MHMlMjBtb2Rlcm58ZW58MXx8fHwxNzY4NDY4MTQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    introLarge: "The 1990s saw cricket become increasingly professional at all levels.",
-    introBody: "Sutton Coldfield Cricket Club embraced this trend, investing in coaching, facilities, and player development while maintaining the amateur spirit and community focus that had always defined the club.",
+    heroTitle: "Champions at Last",
+    heroSubtitle: "The 1993 League Title and a 150th Anniversary",
+    heroImage: img_1993_champions,
+    introLarge: "The 1990s delivered the club's most celebrated league title — the 1993 MCCC Championship — and culminated in the pomp of a 150th anniversary year that took the club to Bristol, to Lord's and back to its roots.",
+    introBody: "A succession of talented captains, a series of overseas professionals, and eventual entry into the Birmingham & District Premier Cricket League made the decade one of the most eventful in Sutton's history. Through it all, the club maintained the community spirit and competitive ambition that had defined it since 1847.",
     sections: [
       {
-        title: "Professional Standards",
+        title: "The 1993 Championship",
         background: "cream",
         content: [
-          "The club appointed its first professional coach in 1992—former Warwickshire all-rounder Richard Taylor, who brought elite-level expertise to player development. Taylor's impact was immediate, with technical standards improving across all teams and a renewed focus on fitness and preparation.",
-          "Investment in facilities continued. A new artificial practice strip was installed in 1994, allowing year-round outdoor training. The pavilion underwent another major refurbishment in 1996, adding modern changing rooms, a professionally equipped kitchen, and an expanded clubhouse.",
-          "The club also embraced technology. A computerized scoring system was introduced in 1997, and the club launched its first website in 1999, providing fixtures, results, and news to members and supporters worldwide."
-        ]
+          "Andy Luckhurst's 1993 MCCC League Championship side is spoken of in reverent tones by those who played in it. Using only fifteen players all season, the club lost just one game and accumulated a margin of victory over the field that left no doubt who the best team in the Midlands was that summer.",
+          "The side's bowling was led by Adrian Sutton, whose figures of 10.1 overs, 6 maidens and 7 for 9 runs in the pivotal game against Knowle & Dorridge — a side that included three Warwickshire players — encapsulated the clinical precision of the team. Paul Junkin's supporting 3 for 16 left K&D all out for 26 chasing 166, a result their chairman struggled to explain. Andy Biddle behind the stumps was exceptional throughout.",
+          "The 3rd XI Hawks simultaneously won the MCCC 3rd XI Championship that same year under Terry Matthews — a league double that made 1993 one of the finest seasons in the club's history. Luckhurst and his team were rightly feted as one of the best Sutton sides of any era."
+        ],
+        image: img_1993_champions,
+        imageCaption: "Sutton Coldfield CC 1st XI League Winners 1993 — captained by Andy Luckhurst, with Tim Buckett as overseas professional"
       },
       {
-        title: "On-Field Success",
+        title: "150 Years, Lord's and a New League",
         background: "white",
         content: [
-          "The professional approach yielded results. The first XI won the Birmingham League Premier Division in 1995 and 1998, playing an attractive, aggressive brand of cricket that drew large crowds. Star players included explosive opener Daniel Wright, who scored over 1,000 runs in both championship seasons.",
-          "The club's youth development produced several players who progressed to county cricket. Most notably, fast bowler Thomas Edwards made his Warwickshire debut in 1997 at age 19, having come through the club's entire youth system from under-11s.",
-          "The women's section continued to thrive, winning three league championships during the decade and producing two players who represented Warwickshire at county level."
+          "In 1997, Sutton Coldfield Cricket Club marked 150 years of cricket at Rectory Park with a series of special events. Over 260 members and guests gathered at the Penns Hall Hotel for the anniversary dinner, where BBC's Henry Blofeld delivered an insider's view of Test cricket. Celebratory fixtures were played against the Free Foresters — themselves born on this ground in 1856 — and against Bedminster CC on the County Ground at Bristol, which the club won.",
+          "In September 1998 a coach-load of members travelled to Lord's to play the MCC's Cross Arrows. Sutton came within a whisker — needing 10 from the last over with two wickets in hand, they fell 2 runs short — but left to warm applause from the home captain.",
+          "In 1998 the club joined the Birmingham & District Premier Cricket League, ending years of independence from the region's main structure. It was a significant step into a more competitive landscape — one that would define the club's ambitions into the new millennium."
         ],
-        image: "https://images.unsplash.com/photo-1699897418562-192da9ac23c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ3JvdW5kJTIwbGFuZHNjYXBlfGVufDF8fHx8MTc2ODQ2NjQ1MHww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Championship victory celebrations, 1998"
+        image: img_1996_ko,
+        imageCaption: "Sutton Coldfield Knock Out Winners 1996 — M. Mackey, C. Munn, C. Harwood, M. Hepburn, R. Powell, J. Little, A. Sutton, M. Dean, R. McLachlan, J. Ross, D. Benson"
       }
     ],
     keyMoments: [
       {
-        year: "1992",
-        title: "Professional Coach Appointed",
-        description: "Former Warwickshire player Richard Taylor joins as first professional coach"
-      },
-      {
-        year: "1994",
-        title: "Artificial Practice Strip",
-        description: "New all-weather facility enables year-round outdoor training"
+        year: "1993",
+        title: "MCCC Champions",
+        description: "Andy Luckhurst's side wins the MCCC Championship using only 15 players all season; Hawks win the 3rd XI title"
       },
       {
         year: "1995",
-        title: "League Champions",
-        description: "First XI wins Birmingham League Premier Division"
+        title: "Sunday League Trophy",
+        description: "1st XI wins the Warwickshire Sunday League John Whitehouse KO Trophy"
       },
       {
         year: "1997",
-        title: "Edwards' County Debut",
-        description: "Club product Thomas Edwards makes first-class debut for Warwickshire"
+        title: "150th Anniversary",
+        description: "Henry Blofeld headlines the anniversary dinner; Free Foresters game and fixture at Bristol celebrate 150 years"
       },
       {
-        year: "1999",
-        title: "Club Website Launched",
-        description: "Sutton Coldfield CC goes online, connecting with members worldwide"
+        year: "1998",
+        title: "Close at Lord's",
+        description: "Club visits Lord's for a 150th anniversary match, falling two runs short of a famous victory over the MCC"
+      },
+      {
+        year: "1998",
+        title: "Joining the B&DPCL",
+        description: "Sutton enters the Birmingham & District Premier Cricket League — a new chapter in competitive cricket"
       }
     ],
     quote: {
-      text: "We're building something special here—a club that combines traditional values with modern professionalism.",
-      author: "Chairman Michael Patterson, 1998"
+      text: "It was unquestionably a great side, well-balanced and a superb fielding unit. The camaraderie within the team was a must for our success.",
+      author: "Andy Biddle, 1993 Championship side"
     }
   },
   "2000s": {
     name: "The New Millennium",
     years: "2000-2009",
-    heroTitle: "Into the 21st Century",
-    heroSubtitle: "Innovation and Inclusion",
-    heroImage: "https://images.unsplash.com/photo-1709134800864-15d9d04bc1f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMjAwMHMlMjBhY3Rpb258ZW58MXx8fHwxNzY4NDY4MTQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    introLarge: "The new millennium brought fresh challenges and opportunities.",
-    introBody: "Twenty20 cricket revolutionized the game, cricket became increasingly diverse and inclusive, and Sutton Coldfield Cricket Club evolved to meet changing expectations while staying true to its core mission of providing excellent cricket and community.",
+    heroTitle: "Awards, Overseas Stars and Future Professionals",
+    heroSubtitle: "Building a Club for the 21st Century",
+    heroImage: img_2008_scoreboard,
+    introLarge: "The 2000s brought national recognition with a Birmingham Sports Council Sports Club of the Year award, a succession of talented overseas professionals, and — unbeknown to anyone at the time — a crop of junior players destined for the professional game.",
+    introBody: "The decade saw the club navigate relegation and promotion in the B&DPCL, strengthen its junior programme, install an electronic scoreboard opened by the local MP, and mourn the passing of two beloved figures in Peter Wells and Terry Matthews. A new 30-year lease signed on Christmas Day 2001 secured Rectory Park as the club's home for a generation.",
     sections: [
       {
-        title: "The Twenty20 Era",
+        title: "Clubmark, Awards and Community",
         background: "cream",
         content: [
-          "The introduction of Twenty20 cricket in 2003 was initially viewed with skepticism by some traditionalists. However, the format's excitement and accessibility proved irresistible. Sutton Coldfield embraced T20, establishing Friday evening floodlit matches that became hugely popular social occasions.",
-          "The club excelled in the shorter format. The first XI won the Birmingham League T20 Cup in 2005 and 2007, with matches attracting crowds of over 500—unprecedented for club cricket. The format also proved perfect for recruiting new players who might have been intimidated by the time commitment of traditional cricket.",
-          "T20 helped diversify the club's membership and supporter base. Younger families, women, and people from diverse backgrounds were attracted by the fast-paced, accessible format, enriching the club's community."
-        ]
+          "In 2003, Sutton Coldfield became the first club in Birmingham to receive the ECB Clubmark accreditation — recognition of the quality of its coaching, child welfare and community engagement. Two years later, that standing was cemented when the club was named Birmingham Sports Council Sports Club of the Year, beating a shortlist that included Birchfield Harriers Athletic Club.",
+          "Overseas professionals enriched the playing decade. Tim Groenewald, a South African all-rounder, impressed sufficiently to earn a two-year professional contract with Warwickshire CCC before later joining Derbyshire and Somerset. The standard these players brought to Rectory Park raised every team around them, and the 2004 season ended in particular triumph — the 1st XI winning the B&DPCL 2nd Division Championship and earning promotion back into Division 1.",
+          "The new 30-year ground lease signed with Birmingham City Council on Christmas Day 2001 secured the club's home for a generation — a vital foundation on which all the decade's achievements were built."
+        ],
+        image: img_2004_champions,
+        imageCaption: "Birmingham & District Premier Cricket League 2nd Division Champions 2004 — with the trophy at Rectory Park"
       },
       {
-        title: "Community Cricket Hub",
+        title: "Future County Stars and a New Scoreboard",
         background: "white",
         content: [
-          "The club formally became a Community Cricket Hub in 2006, partnering with the ECB, local schools, and community organizations to make cricket accessible to all. Programs included All Stars cricket for 5-8 year-olds, women's softball cricket, and disability cricket sessions.",
-          "Investment in facilities continued with a £400,000 project in 2008-2009 that included new changing rooms, improved disabled access, upgraded catering facilities, and a dedicated community room for educational programs.",
-          "These initiatives transformed the club from a traditional cricket club into a genuine community sports hub, serving hundreds of people each week and making a real difference in Sutton Coldfield."
+          "In 2008, an under-11 county cup final was played at Rectory Park that featured two boys who would go on to represent England. Aaron Thomason, playing for Sutton, later moved to Warwickshire and Sussex CCC. Tom Banton, then only nine years old, progressed through Somerset's academy to open for England in T20 internationals and was named PCA Young Player of the Year in 2019.",
+          "That same year, the club's top ground gained a new electronic scoreboard, funded through grants and members' subscriptions organised by Eric Harding, and officially opened by the local MP, Andrew Mitchell. It was a visible symbol of the club's investment in its facilities — the group gathered for the opening a fitting reflection of the many volunteers who had made it possible.",
+          "The decade closed with the passing of two much-loved figures. Peter Wells, a former chairman, President and dedicated organiser of junior cricket, died in March 2009. Terry Matthews, the 3rd XI's irrepressible captain and master storyteller, died on Christmas Eve 2008. The Terry Matthews Junior Award, created by his family, is still presented annually to a promising junior."
         ],
-        image: "https://images.unsplash.com/photo-1709134800864-15d9d04bc1f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwMjAwMHMlMjBhY3Rpb258ZW58MXx8fHwxNzY4NDY4MTQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Friday night T20 cricket, 2007"
+        image: img_2008_scoreboard,
+        imageCaption: "The new electronic scoreboard at Rectory Park, officially opened in 2008 by local MP Andrew Mitchell"
       }
     ],
     keyMoments: [
       {
         year: "2003",
-        title: "First T20 Match",
-        description: "Club hosts first Twenty20 match, beginning new era of cricket"
+        title: "ECB Clubmark — First in Birmingham",
+        description: "Sutton becomes the first Birmingham club to achieve the ECB Clubmark accreditation"
+      },
+      {
+        year: "2004",
+        title: "Tim Groenewald",
+        description: "South African overseas player impresses sufficiently to earn a professional contract with Warwickshire CCC"
       },
       {
         year: "2005",
-        title: "T20 Cup Victory",
-        description: "First XI wins Birmingham League T20 Cup in front of 500 spectators"
-      },
-      {
-        year: "2006",
-        title: "Community Cricket Hub Status",
-        description: "Club designated as ECB Community Cricket Hub, expanding outreach programs"
+        title: "Sports Club of the Year",
+        description: "Birmingham Sports Council names Sutton Coldfield CC Sports Club of the Year"
       },
       {
         year: "2008",
-        title: "Major Facilities Upgrade",
-        description: "£400,000 investment transforms clubhouse and facilities"
+        title: "Future England Stars",
+        description: "Aaron Thomason and Tom Banton play in an under-11 final at Rectory Park — both later represent England"
       },
       {
-        year: "2009",
-        title: "All Stars Cricket Launched",
-        description: "New program introduces hundreds of young children to cricket"
+        year: "2008",
+        title: "New Electronic Scoreboard",
+        description: "MP Andrew Mitchell officially opens the new electronic scoreboard on the top ground"
       }
     ],
     quote: {
-      text: "Cricket for everyone—that's our mission. This club belongs to the whole community.",
-      author: "Chairwoman Sarah Mitchell, 2009"
+      text: "Terry will be sadly missed by his many senior friends, spending a Saturday evening in the bar listening to his many yarns.",
+      author: "Club tribute to Terry Matthews, 2009"
     }
   },
   "2010s": {
-    name: "The 2010s",
+    name: "The Twenty-Tens",
     years: "2010-2019",
-    heroTitle: "Excellence and Engagement",
-    heroSubtitle: "A Decade of Achievement",
-    heroImage: "https://images.unsplash.com/photo-1750716413349-df33aeca8429?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwY29udGVtcG9yYXJ5JTIwc3RhZGl1bXxlbnwxfHx8fDE3Njg0NjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    introLarge: "The 2010s proved to be one of the most successful decades in the club's long history.",
-    introBody: "With a perfect blend of competitive excellence, community engagement, and forward-thinking governance, Sutton Coldfield Cricket Club established itself as a model for modern cricket clubs.",
+    heroTitle: "Five Titles in Seven Years",
+    heroSubtitle: "The Thomason Brothers, Dan Childs and a Golden Era",
+    heroImage: img_2016_squad,
+    introLarge: "After a difficult start to the decade — relegation from the Birmingham League in 2011 — Sutton Coldfield Cricket Club rebuilt with breathtaking speed, winning the Warwickshire Cricket League unbeaten in 2013 and claiming five championship titles over seven years.",
+    introBody: "Under head coach Steve Perryman, with Dan Childs as the bowling spearhead and Lee and Aaron Thomason as its batting heart, the club rose through the leagues, won national recognition and claimed the Sutton Coldfield Observer Sports Team of the Year award three consecutive times. The decade also saw four stalwarts of the club — John Robinson, Peter Bell, Neil Houghton and James Ross — mark a combined 200 years of membership between them.",
     sections: [
       {
-        title: "Championship Dominance",
+        title: "The 2013 Season — Five Titles",
         background: "cream",
         content: [
-          "The decade was defined by unprecedented success on the field. The first XI won an remarkable five Birmingham League Premier Division championships between 2011 and 2019, establishing a dynasty built on exceptional talent, professional coaching, and a winning culture.",
-          "The 2015 team is considered by many to be the finest in club history. Led by captain James Whitmore and featuring England under-19 player Sophie Reynolds (playing in the men's team), they won the league unbeaten with a run differential that shattered records. Their aggressive batting and penetrative bowling made them almost unbeatable.",
-          "The club's success extended across all teams. The second XI won promotion twice, the third XI claimed their divisional title in 2017, and the women's first XI dominated their league, winning four championships in five years."
+          "The 2013 season is widely considered the greatest in the club's modern history. The Saturday 1st XI, captained by Graham Clark, went unbeaten through the Warwickshire Cricket League Premier Division, winning 13 games, drawing 8 and accumulating a league record 426 points. Dan Childs, a South African fast bowler who had joined as overseas player and groundsman, took 56 wickets at an average of 10.9 — his second consecutive season taking 50 or more.",
+          "But that was only one of five titles won that year. The Sunday 1st XI won the Warwickshire Sunday League; the senior side won the WCL T20 final against Bedworth; the club won a local floodlit T20 competition; and an SCCC side took the Last Man Stands final against Aldridge. Lee Thomason scored 969 runs in the WCL alone at an average of over 60.",
+          "The promotion back into the Birmingham League that season was celebrated as a watershed moment. Steve Perryman, the ex-Warwickshire and Worcestershire player appointed head coach in 2011, had transformed the squad's discipline and skill levels in a remarkable turnaround."
         ],
-        image: "https://images.unsplash.com/photo-1667327484322-d9ddc73901e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwY2VsZWJyYXRpb24lMjB0ZWFtfGVufDF8fHx8MTc2ODQ2ODE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "League champions, 2015"
+        image: img_2010_u13,
+        imageCaption: "Under 13 County Champions 2010 — the generation that would go on to power the senior sides through the 2010s"
       },
       {
-        title: "Digital Age and Inclusion",
+        title: "County Stars, Community Pride and 200 Years",
         background: "white",
         content: [
-          "The club embraced digital technology and social media, building a strong online community. Live streaming of matches began in 2016, allowing families and supporters worldwide to watch Sutton Coldfield cricket. The club's Twitter and Instagram accounts built followings of thousands, celebrating achievements and sharing the club's story.",
-          "Inclusion remained a priority. The club's disability cricket program grew to serve over 40 participants, and the South Asian cricket initiative, launched in 2018, successfully engaged with local communities previously underrepresented in cricket.",
-          "By 2019, the club had over 800 playing members across all age groups and formats—more than at any time in its 140-year history. This growth reflected the club's successful balance of competitive excellence and inclusive community sport."
-        ]
+          "The club produced professional cricketers from its own ranks in this decade. Aaron Thomason, who came through the SCCC junior system, made his 1st XI debut for Warwickshire CCC in 2014 in a Royal London Cup game at Lord's, later signing for Sussex CCC. Tom Banton, who had played in an under-11 county final at Rectory Park in 2008, blossomed at Somerset to become PCA Young Player of the Year in 2019 and earned an England T20 call-up.",
+          "In 2016, four men sat together for a photograph at Rectory Park to mark a remarkable milestone: John Robinson (44 years' membership), Peter Bell (50), Neil Houghton (61) and James Ross (45) — a combined 200 years of service to Sutton Coldfield Cricket Club. It was a snapshot of continuity and dedication that no trophy cabinet could fully convey.",
+          "The club won the Sutton Coldfield Observer Sports Team of the Year award in 2013, 2014 and 2015 — three consecutive years — a hat-trick of public recognition reflecting not just on-field success but the whole club's standing in the community."
+        ],
+        image: img_2016_veterans,
+        imageCaption: "A combined 200 years of membership: John Robinson (44), Peter Bell (50), Neil Houghton (61) and James Ross (45), photographed at Rectory Park in 2016"
       }
     ],
     keyMoments: [
       {
-        year: "2011",
-        title: "Championship Victory",
-        description: "Beginning of dominant era with first of five league titles in the decade"
+        year: "2013",
+        title: "Five Titles in One Season",
+        description: "Unbeaten WCL champions (record 426 points), Sunday League, T20 Final, floodlit competition and Last Man Stands — five titles in one summer"
+      },
+      {
+        year: "2014",
+        title: "Aaron Thomason at Lord's",
+        description: "Club product Aaron Thomason makes his 1st XI debut for Warwickshire CCC at Lord's"
       },
       {
         year: "2015",
-        title: "Unbeaten Champions",
-        description: "Perfect season produces what many consider the club's greatest-ever team"
+        title: "Sports Award Hat-Trick",
+        description: "Sutton Coldfield Observer names the club Sports Team of the Year for a third consecutive year"
       },
       {
         year: "2016",
-        title: "Live Streaming Begins",
-        description: "Matches broadcast online, connecting with global supporter community"
-      },
-      {
-        year: "2018",
-        title: "South Asian Cricket Initiative",
-        description: "Successful outreach program engages new communities in cricket"
+        title: "Ten Not Out — WWI Centenary",
+        description: "A moving centenary performance by schoolchildren and students commemorates the 40 club members lost in the First World War"
       },
       {
         year: "2019",
-        title: "Record Membership",
-        description: "Over 800 playing members—highest in club's 140-year history"
+        title: "Tom Banton — PCA Young Player of the Year",
+        description: "Former SCCC junior Tom Banton wins PCA Young Player of the Year and joins England's T20 squad"
       }
     ],
     quote: {
-      text: "This club shows what's possible when you combine ambition with inclusivity. We're winning championships while opening our doors to everyone.",
-      author: "Captain James Whitmore, 2015"
+      text: "We have achieved the leading spot in the league by dividing each game into sessions and playing each one in turn. This team has found a winning way.",
+      author: "Head Coach Steve Perryman, 2013"
     }
   },
   "2020s": {
-    name: "The 2020s",
+    name: "The Twenty-Twenties",
     years: "2020-Present",
     heroTitle: "Resilience and Renewal",
-    heroSubtitle: "Cricket in Challenging Times",
-    heroImage: "https://images.unsplash.com/photo-1750716413349-df33aeca8429?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwY29udGVtcG9yYXJ5JTIwc3RhZGl1bXxlbnwxfHx8fDE3Njg0NjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    introLarge: "The 2020s began with unprecedented challenges as the COVID-19 pandemic disrupted cricket worldwide.",
-    introBody: "However, Sutton Coldfield Cricket Club demonstrated the resilience that has characterized its 140+ year history, adapting to new realities while maintaining its commitment to cricket and community.",
+    heroSubtitle: "From Pandemic to the Present",
+    heroImage: img_2022_blueteam,
+    introLarge: "The 2020s opened with the COVID-19 pandemic bringing cricket to a standstill for the first time since the Second World War — and the club responded with the same quiet determination that has defined it for over 175 years.",
+    introBody: "President James Ross galvanised members and vice presidents with personal letters, raising over £3,500 in donations. Grants were secured from Sport England and the ECB. The pitches were tended, the pavilion maintained, and the community held together until cricket could return. In 2022 the club celebrated its 175th anniversary — a milestone reached on the same ground, in the same park, where it all began.",
     sections: [
       {
-        title: "Pandemic and Recovery",
+        title: "Lockdown and the Long Return",
         background: "cream",
         content: [
-          "The 2020 season was cancelled entirely due to COVID-19—the first time in club history that no competitive cricket was played since World War II. However, the club remained active, pivoting to online fitness sessions, virtual quiz nights, and socially distanced training groups that kept the community connected.",
-          "Cricket returned in 2021 under strict protocols. Reduced capacity, sanitization requirements, and social distancing presented challenges, but the club adapted successfully. The return of cricket after 18 months felt profoundly emotional—a reminder of the game's power to bring people together.",
-          "Recovery was swift. By 2022, membership had returned to pre-pandemic levels, and the first XI celebrated by winning another league championship. The pandemic had tested the club's resilience, but the strength of its community ensured not just survival but renewed vitality."
-        ]
+          "When the Government's lockdown instructions arrived in March 2020, the club moved immediately to protect its finances. With no subscriptions coming in and no bar income, the committee held video meetings to manage the budget. The GPC secured a £10,000 grant for the pavilion's fixed costs; the cricket club received £7,000 from Sport England. These funds kept the club solvent through the long months of uncertainty.",
+          "President James Ross wrote personally to all life members and vice presidents, explaining the club's situation with characteristic candour. The response was generous: over £3,500 in donations arrived by post. While awaiting cricket's return, the President spent thirty hours painting the fence panels between the two grounds — only for a storm to break a branch and damage a section the very next week.",
+          "When the season eventually resumed with a compressed programme, the club's players, parents and volunteers returned to Rectory Park with a renewed sense of gratitude for what they had. The first ball bowled after lockdown was, as one member put it, the most welcome sound any of them had heard."
+        ],
+        image: img_2021_team,
+        imageCaption: "Back at Rectory Park — the club resumed competitive cricket in 2021 after the pandemic interruption"
       },
       {
-        title: "Looking Forward",
+        title: "175 Years and the Story Continues",
         background: "white",
         content: [
-          "As the club moves through the 2020s, strategic planning focuses on sustainability, inclusivity, and excellence. A ten-year development plan approved in 2023 commits to solar panels on the pavilion, enhanced biodiversity on the ground, and carbon-neutral operations by 2030.",
-          "Youth development remains central to the club's mission. The pathway from All Stars cricket through age-group teams to senior cricket is now well-established, with dozens of young players progressing through the system each year. The club's commitment to coaching education ensures every young player receives expert guidance.",
-          "After over 140 years, Sutton Coldfield Cricket Club looks to the future with confidence. Built on solid foundations, driven by passionate volunteers, and supported by a thriving community, the club is ready for whatever challenges and opportunities the coming decades may bring."
+          "In April 2022, the club celebrated its 175th anniversary with a gala dinner at Moor Hall Golf Club — bringing together players, officials and supporters from across the generations. The occasion reflected on a club that had survived two world wars, financial crises, vandalism and a global pandemic, and had emerged from each with its values intact.",
+          "On the pitch, the 2020s 1st XI continued to compete in the Birmingham & District Premier Cricket League, with Aaron Thomason returning to captain the senior side and Raul Ram — one of the most loyal servants in the club's modern history — remaining a cornerstone of the batting order. Over two consecutive Saturdays in April 2022, the side scored 994 runs for the loss of just 26 wickets, a remarkable early-season spell.",
+          "The strategic questions facing the club are those facing all amateur cricket clubs: how to retain players in an era of competing demands on time; how to develop coaching pathways; and how to remain financially sustainable. What is not in question is the club's identity — founded in 1847, still playing on the same Rectory Park ground, nearly 180 years on."
         ],
-        image: "https://images.unsplash.com/photo-1750716413349-df33aeca8429?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwY29udGVtcG9yYXJ5JTIwc3RhZGl1bXxlbnwxfHx8fDE3Njg0NjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-        imageCaption: "Looking to the future, 2025"
+        image: img_2022_175th,
+        imageCaption: "175th Anniversary Dinner — 8th April 2022, Moor Hall Golf Club, marking 175 years of cricket at Rectory Park"
       }
     ],
     keyMoments: [
       {
         year: "2020",
-        title: "Season Cancelled",
-        description: "COVID-19 pandemic forces first season cancellation since WWII"
+        title: "Cricket Suspended by Pandemic",
+        description: "COVID-19 halts cricket for the first time since WWII; the club raises £3,500 in donations and secures £17,000 in grants to stay afloat"
       },
       {
-        year: "2021",
+        year: "2020",
         title: "Cricket Returns",
-        description: "Emotional return to competitive cricket under strict health protocols"
+        description: "A compressed season resumes under protocols — the first ball bowled is celebrated like a championship victory"
       },
       {
-        year: "2022",
-        title: "Championship Triumph",
-        description: "First XI wins league title in triumphant recovery from pandemic"
+        year: "2019",
+        title: "Strategic Review",
+        description: "The club commissions a strategic review to plan its future — coaching, recruitment and sustainability are the priorities"
       },
       {
-        year: "2023",
-        title: "Sustainability Plan",
-        description: "Ten-year development plan commits to carbon-neutral operations by 2030"
+        year: "2021+",
+        title: "Junior Cricket Thrives",
+        description: "Friday evening junior sessions regularly draw over 100 young players to Rectory Park — the pipeline for future senior teams"
       },
       {
         year: "2025",
-        title: "145 Years and Counting",
-        description: "Club celebrates 145 years of cricket excellence and community service"
+        title: "178 Years and Counting",
+        description: "Still playing cricket on the same Rectory Park ground founded by the Rev. Riland Bedford in 1847"
       }
     ],
     quote: {
-      text: "For over 140 years, this club has adapted, overcome, and thrived. Our future is as bright as our past is proud.",
-      author: "Chairwoman Dr. Emma Clarke, 2024"
+      text: "No cricket being played and no indication of when it might return — yet still we found a way to hold together. This club has endured far worse.",
+      author: "President James Ross, 2020"
     }
   }
 };
@@ -1480,7 +1602,7 @@ export default function DecadePage() {
                           {section.title}
                         </h2>
                         {section.content.map((paragraph, pIdx) => (
-                          <p key={pIdx} className="font-['Georgia',serif] md:text-xl leading-relaxed text-gray-800 text-[18px] mb-6">
+                          <p key={pIdx} className="font-['Georgia',serif] md:text-xl leading-relaxed text-gray-800 text-lg mb-6">
                             {paragraph}
                           </p>
                         ))}
@@ -1494,7 +1616,7 @@ export default function DecadePage() {
                           {section.title}
                         </h2>
                         {section.content.map((paragraph, pIdx) => (
-                          <p key={pIdx} className="font-['Georgia',serif] md:text-xl leading-relaxed text-gray-800 text-[18px] mb-6">
+                          <p key={pIdx} className="font-['Georgia',serif] md:text-xl leading-relaxed text-gray-800 text-lg mb-6">
                             {paragraph}
                           </p>
                         ))}
@@ -1503,7 +1625,7 @@ export default function DecadePage() {
                       {/* Square image on right - first on mobile */}
                       <div className="md:col-span-5 md:order-2 order-1">
                         <ImageWithFallback
-                          src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&q=80"
+                          src={img_1953_team}
                           alt="Cricket highlights"
                           className="w-full aspect-square object-cover"
                         />
@@ -1520,7 +1642,7 @@ export default function DecadePage() {
                         {section.title}
                       </h2>
                       {section.content.map((paragraph, pIdx) => (
-                        <p key={pIdx} className="font-['Georgia',serif] md:text-xl leading-relaxed text-gray-800 text-[18px] mb-6">
+                        <p key={pIdx} className="font-['Georgia',serif] md:text-xl leading-relaxed text-gray-800 text-lg mb-6">
                           {paragraph}
                         </p>
                       ))}
@@ -1544,7 +1666,7 @@ export default function DecadePage() {
             style={{ willChange: visibleSections.has(decade.sections.length) ? 'auto' : 'opacity, transform' }}
           >
             <div className="max-w-7xl mx-auto px-6 md:px-12">
-              <h2 className="font-['Archivo_Black',sans-serif] text-[30px] md:text-[48px] text-[#8B1538] mb-8 text-center">
+              <h2 className="font-['Archivo_Black',sans-serif] text-3xl md:text-5xl text-[#8B1538] mb-8 text-center">
                 The Men that Served
               </h2>
               <p className="font-['Georgia',serif] text-lg md:text-xl text-gray-800 leading-relaxed max-w-4xl mx-auto text-center mb-12">
@@ -1709,7 +1831,7 @@ export default function DecadePage() {
               <div className="flex justify-center mt-12">
                 <Link
                   to="/obituaries"
-                  className="inline-flex items-center gap-2 md:gap-3 bg-[#8B1538] text-white px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-[16px] md:text-[18px] hover:bg-[#6d1029] transition-all duration-300"
+                  className="inline-flex items-center gap-2 md:gap-3 bg-[#8B1538] text-white px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-base md:text-lg hover:bg-[#6d1029] transition-all duration-300"
                 >
                   View Obituaries
                 </Link>
@@ -1803,7 +1925,7 @@ export default function DecadePage() {
           <div className="grid md:grid-cols-2 gap-6">
             {previousDecade && getDecadeKey(previousDecade) ? (
               <Link
-                to={previousDecade === "1847" ? "/first-fifty-years" : `/decades/${previousDecade}`}
+                to={`/decades/${previousDecade}`}
                 className="group border-2 border-[#8B1538] p-8 hover:bg-[#8B1538] transition-colors"
               >
                 <div className="flex items-center gap-3 mb-3">
@@ -1843,7 +1965,7 @@ export default function DecadePage() {
 
             {nextDecade && getDecadeKey(nextDecade) ? (
               <Link
-                to={nextDecade === "1847" ? "/first-fifty-years" : `/decades/${nextDecade}`}
+                to={`/decades/${nextDecade}`}
                 className="group border-2 border-white bg-[#8B1538] hover:bg-[#6d0f2a] p-8 transition-colors"
               >
                 <div className="flex items-center justify-end gap-3 mb-3">
@@ -1908,105 +2030,105 @@ export default function DecadePage() {
                     id: "1880s",
                     title: "Foundations Before Formation",
                     years: "1837-1847",
-                    image: "https://images.unsplash.com/photo-1677679122801-42ac74545507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMDE4ODBzJTIwdmljdG9yaWFufGVufDF8fHx8MTc2ODU3Mzk1N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1859_team,
                     link: "/decades/1837"
                   },
                   {
                     id: "1890s",
                     title: "The First Fifty Years",
                     years: "1847-1899",
-                    image: "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMHRlYW0lMjB2aWN0b3JpYW58ZW58MXx8fHwxNzY4NDY2NDUyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1892_team,
                     link: "/decades/1847"
                   },
                   {
                     id: "1900s",
-                    title: "The Turn of the Century",
-                    years: "1900-1909",
-                    image: "https://images.unsplash.com/photo-1687742909721-cb8dc3361e2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0JTIwdmludGFnZXxlbnwxfHx8fDE3Njg1NzQ2NDh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    title: "A Time of Change and Uncertainty",
+                    years: "1901-1909",
+                    image: img_1906_1stxi,
                     link: "/decades/1900"
                   },
                   {
                     id: "1910s",
-                    title: "The Great War Era",
+                    title: "A Decade of Transition and Challenge",
                     years: "1910-1919",
-                    image: "https://images.unsplash.com/photo-1596807996038-612df413be5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwd29ybGQlMjB3YXIlMjBzb2xkaWVyc3xlbnwxfHx8fDE3Njg1NzM5NTd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1910_1stxi,
                     link: "/decades/1910"
                   },
                   {
                     id: "1920s",
-                    title: "The Roaring Twenties",
+                    title: "The Golden Resurgence",
                     years: "1920-1929",
-                    image: "https://images.unsplash.com/photo-1660978692407-a7863eebe395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwd2lja2V0cyUyMHN0dW1wc3xlbnwxfHx8fDE3Njg1NzQ2NDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1921_team,
                     link: "/decades/1920"
                   },
                   {
                     id: "1930s",
                     title: "The Thirties",
                     years: "1930-1939",
-                    image: "https://images.unsplash.com/photo-1677785643764-179393bc3842?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmFsbCUyMGdyYXNzfGVufDF8fHx8MTc2ODU3NDY0OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1937_centenary,
                     link: "/decades/1930"
                   },
                   {
                     id: "1940s",
-                    title: "Second World War",
+                    title: "Wartime and Renewal",
                     years: "1940-1949",
-                    image: "https://images.unsplash.com/photo-1701766993323-cc05898df2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGF2aWxpb24lMjBjbHViaG91c2V8ZW58MXx8fHwxNzY4NTc0NjQ5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1947_mcc,
                     link: "/decades/1940"
                   },
                   {
                     id: "1950s",
-                    title: "Post-War Revival",
+                    title: "The Fabulous Fifties",
                     years: "1950-1959",
-                    image: "https://images.unsplash.com/photo-1589475201212-e0c77aa2d670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYm91bmRhcnklMjByb3BlfGVufDF8fHx8MTc2ODU3NDY1MHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1951_team,
                     link: "/decades/1950"
                   },
                   {
                     id: "1960s",
-                    title: "The Swinging Sixties",
+                    title: "Transformation and Tradition",
                     years: "1960-1969",
-                    image: "https://images.unsplash.com/photo-1759733841123-b8e1d75ee45c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGl0Y2glMjBmaWVsZHxlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1966_team,
                     link: "/decades/1960"
                   },
                   {
                     id: "1970s",
-                    title: "The Seventies",
+                    title: "Dixon's Decade",
                     years: "1970-1979",
-                    image: "https://images.unsplash.com/photo-1692859415442-94eabe7a7488?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZ2xvdmVzJTIwcGFkc3xlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1970_pavilion,
                     link: "/decades/1970"
                   },
                   {
                     id: "1980s",
-                    title: "The Eighties",
+                    title: "Trophies and Tragedy",
                     years: "1980-1989",
-                    image: "https://images.unsplash.com/photo-1714449349503-ea9b1d6ed9ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc2NvcmVib2FyZHxlbnwxfHx8fDE3Njg1NzQ2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1982_team,
                     link: "/decades/1980"
                   },
                   {
                     id: "1990s",
-                    title: "The Nineties",
+                    title: "Champions at Last",
                     years: "1990-1999",
-                    image: "https://images.unsplash.com/photo-1568290925324-9d30cded4223?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVycyUyMGZpZWxkfGVufDF8fHx8MTc2ODU3NDY1MXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_1993_champions,
                     link: "/decades/1990"
                   },
                   {
                     id: "2000s",
                     title: "The New Millennium",
                     years: "2000-2009",
-                    image: "https://images.unsplash.com/photo-1593341646782-e0b495cff86d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYmF0dGluZyUyMGFjdGlvbnxlbnwxfHx8fDE3Njg1NjUxMzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_2004_champions,
                     link: "/decades/2000"
                   },
                   {
                     id: "2010s",
                     title: "The Twenty-Tens",
                     years: "2010-2019",
-                    image: "https://images.unsplash.com/photo-1743342875460-366f386a364a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwYm93bGluZyUyMHNwZWVkfGVufDF8fHx8MTc2ODU3NDY1Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_2016_squad,
                     link: "/decades/2010"
                   },
                   {
                     id: "2020s",
                     title: "The Twenty-Twenties",
                     years: "2020-Present",
-                    image: "https://images.unsplash.com/photo-1722661840554-568357f77b80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc3Vuc2V0JTIwZ3JvdW5kfGVufDF8fHx8MTc2ODU3NDY1M3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+                    image: img_2022_blueteam,
                     link: "/decades/2020"
                   }
                 ].map((decade) => (

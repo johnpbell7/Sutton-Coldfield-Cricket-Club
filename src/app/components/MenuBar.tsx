@@ -67,13 +67,13 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
             <div className="flex flex-col justify-center text-[#181d27] font-['Archivo',sans-serif] md:translate-y-[2px]">
               {/* Mobile: Two lines */}
               <div className="md:hidden">
-                <p className="font-extrabold leading-none text-[16px] text-[rgb(0,0,0)] translate-y-[1px]">Sutton Coldfield</p>
-                <p className="font-bold leading-none text-[16px] text-[rgb(25,25,25)]">Cricket Club</p>
+                <p className="font-extrabold leading-none text-base text-[rgb(0,0,0)] translate-y-[1px]">Sutton Coldfield</p>
+                <p className="font-normal leading-none text-base text-[rgb(25,25,25)]">Cricket Club</p>
               </div>
               {/* Desktop: One line */}
               <p className="hidden md:block text-2xl leading-tight">
-                <span className="font-bold font-['Archivo']">Sutton Coldfield </span>
-                <span className="font-normal text-[rgb(0,0,0)]">Cricket Club</span>
+                <span className="font-['Archivo',sans-serif] font-extrabold">Sutton Coldfield </span>
+                <span className="font-['Archivo',sans-serif] font-normal text-[rgb(0,0,0)]">Cricket Club</span>
               </p>
             </div>
           </Link>
@@ -124,7 +124,7 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
         </div>
 
         {/* Menu Content */}
-        <nav className="overflow-y-auto h-[calc(100%-88px)] font-['Helvetica',sans-serif]">
+        <nav className="overflow-y-auto h-[calc(100%-88px-72px)] font-['Helvetica',sans-serif]">
           <ul className="p-6 space-y-2">
             {/* Home */}
             <li>
@@ -240,6 +240,22 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
             </li>
           </ul>
         </nav>
+
+        {/* Menu Footer */}
+        <div className="absolute bottom-0 left-0 right-0 px-6 py-4 border-t border-gray-200/80 bg-[#f8f6f3]">
+          <p className="text-[9px] tracking-[0.18em] uppercase text-gray-400 mb-2 font-['Helvetica',sans-serif]">Website Design &amp; Development</p>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <span className="text-[12px] font-semibold text-gray-700 font-['Helvetica',sans-serif]">John Bell</span>
+              <span className="text-[11px] text-gray-400 font-['Helvetica',sans-serif] ml-2">Graphic Design: Branding, Print &amp; Web</span>
+            </div>
+            <div className="flex items-center gap-3 text-[10px] text-gray-400 font-['Helvetica',sans-serif] shrink-0">
+              <span>johnpbell7@gmail.com</span>
+              <span className="text-gray-300">·</span>
+              <span>07428 728780</span>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

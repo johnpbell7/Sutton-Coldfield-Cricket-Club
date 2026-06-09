@@ -1,10 +1,5 @@
-import image_6a586d7a29e4b109fed30896e7cb6b0ce51df103 from '@/assets/6a586d7a29e4b109fed30896e7cb6b0ce51df103.png';
-import image_ef4304f5bdee3b1bf6b4285a696b64c9aea0762b from '@/assets/ef4304f5bdee3b1bf6b4285a696b64c9aea0762b.png';
-import image_65cb835619675e0e12e9db52c4d551c17ab4090f from '@/assets/65cb835619675e0e12e9db52c4d551c17ab4090f.png';
-import image_35d091ccf79929cac09220bc363fbc26a923d05c from '@/assets/35d091ccf79929cac09220bc363fbc26a923d05c.png';
-import image_ce487aeba746213d558fe22e4f7adf80db910680 from '@/assets/ce487aeba746213d558fe22e4f7adf80db910680.png';
-import image_46b1b5438f7230b782958ef739cc53489cee10a2 from '@/assets/46b1b5438f7230b782958ef739cc53489cee10a2.png';
-import cricketBallIcon from '@/assets/fc4c2d6cfb8d8e98a7717873f6d785a1e5b880e7.png';
+import paperTexture from '@/assets/ui/paper-texture.png';
+import cricketBallIcon from '@/assets/ui/cricket-ball-icon.png';
 // Historical archive images for timeline entries
 import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';
 import img_1863_team from '@/assets/decades/1860s/1863_part1_image5.jpg';
@@ -92,7 +87,7 @@ import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "@/app/components/CustomLink";
 import { TimelineItem } from "@/app/components/TimelineItem";
 import { MenuBar } from "@/app/components/MenuBar";
-import bannerImage from "@/assets/46b1b5438f7230b782958ef739cc53489cee10a2.png";
+import bannerImage from "@/assets/ui/page-banner.png";
 import DecadesOverview from "@/app/pages/DecadesOverview";
 import HomePage from "@/app/pages/HomePage";
 import AboutPage from "@/app/pages/AboutPage";
@@ -1672,7 +1667,7 @@ const timelineData = [
     closingSummary: "1972 marked the beginning of a new competitive era in the MCCC, confirming Sutton's status as one of the Midlands' leading club cricket outfits.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The MCCC's first season launched a new competitive era at Rectory Park, 1972.",
-    backgroundImage: image_65cb835619675e0e12e9db52c4d551c17ab4090f,
+    backgroundImage: paperTexture,
     images: [
       "https://images.unsplash.com/photo-1701766993323-cc05898df2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwY2x1YmhvdXNlJTIwYnVpbGRpbmd8ZW58MXx8fHwxNzY4MzA3MzEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
       "https://images.unsplash.com/photo-1755870191058-4f3bca31d2ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwaGlzdG9yaWMlMjBncm91bmRzfGVufDF8fHx8MTc2ODMwNzMxNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
@@ -1789,7 +1784,7 @@ const timelineData = [
     closingSummary: "The Christmas Day lease signing gave Sutton the long-term security to invest and plan — and Fred Trueman gave the dinner guests a night to remember.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The 30-year ground lease secured Sutton's future at Rectory Park. Signed Christmas Day 2001.",
-    backgroundImage: image_65cb835619675e0e12e9db52c4d551c17ab4090f,
+    backgroundImage: paperTexture,
     images: [
       "https://images.unsplash.com/photo-1701766993323-cc05898df2bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwY2x1YmhvdXNlJTIwYnVpbGRpbmd8ZW58MXx8fHwxNzY4MzA3MzEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
       "https://images.unsplash.com/photo-1764926125989-ae0acf67fbf8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZmllbGQlMjBhZXJpYWx8ZW58MXx8fHwxNzY4MzA3MzEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
@@ -1948,7 +1943,7 @@ const timelineData = [
     closingSummary: "178 years. The same ground. The same spirit. The story of Sutton Coldfield Cricket Club is the story of people who cared enough to keep turning up.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Rectory Park — where Sutton Coldfield Cricket Club has played since 1847.",
-    backgroundImage: image_65cb835619675e0e12e9db52c4d551c17ab4090f,
+    backgroundImage: paperTexture,
     images: [
       "https://images.unsplash.com/photo-1764926125989-ae0acf67fbf8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZmllbGQlMjBhZXJpYWx8ZW58MXx8fHwxNzY4MzA3MzEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
       "https://images.unsplash.com/photo-1755870191058-4f3bca31d2ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwaGlzdG9yaWMlMjBncm91bmRzfGVufDF8fHx8MTc2ODMwNzMxNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",

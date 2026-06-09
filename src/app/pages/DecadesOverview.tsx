@@ -2,7 +2,7 @@ import { Link, useNavigate } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
 import { useState, useEffect, useRef } from "react";
-import bannerImage from "@/assets/46b1b5438f7230b782958ef739cc53489cee10a2.png";
+import bannerImage from "@/assets/ui/page-banner.png";
 
 // Archive images for decade thumbnails
 import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';

@@ -1,11 +1,8 @@
-import image_35d091ccf79929cac09220bc363fbc26a923d05c from '@/assets/35d091ccf79929cac09220bc363fbc26a923d05c.png';
-import image_65cb835619675e0e12e9db52c4d551c17ab4090f from '@/assets/65cb835619675e0e12e9db52c4d551c17ab4090f.png';
 import { Link } from "@/app/components/CustomLink";
 import { Sheet, SheetContent, SheetTitle, SheetDescription } from "@/app/components/ui/sheet";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import svgPaths from "@/imports/svg-sp3yg7d05h";
-import headerImage from "@/assets/8d6d1648189121fee969ce1ec805ce12b0de0315.png";
 
 interface TimelineItemProps {
   year: string;

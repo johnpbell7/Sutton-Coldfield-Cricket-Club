@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { X, ChevronDown, ChevronUp } from "lucide-react";
 import { Link, useNavigate } from "@/app/components/CustomLink";
-import imgSutton1 from "@/assets/2c5265c6ea22021caad3fdfd90e59c1f5680e024.png";
+import imgSutton1 from "@/assets/ui/club-logo.png";
 
 interface MenuBarProps {
   isScrolled?: boolean;

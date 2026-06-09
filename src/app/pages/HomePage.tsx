@@ -1,6 +1,6 @@
-import image_fc4c2d6cfb8d8e98a7717873f6d785a1e5b880e7 from '@/assets/fc4c2d6cfb8d8e98a7717873f6d785a1e5b880e7.png';
-import image_f82377ba58d74186f1a05e52302988a3b22aba9e from '@/assets/f82377ba58d74186f1a05e52302988a3b22aba9e.png';
-import heroImage from '@/assets/Homepage.png';
+import cricketBallIcon from '@/assets/ui/cricket-ball-icon.png';
+import homeTeamsThroughTime from '@/assets/ui/home-teams-through-time.png';
+import heroImage from '@/assets/ui/home-hero.png';
 // cricketBall import removed as it's unused
 
 // Archive images for decade thumbnails
@@ -19,9 +19,9 @@ import img_1993_champions from '@/assets/decades/1990s/1993_part2_image22.jpg';
 import img_2004_champions from '@/assets/decades/2000s/2004_part2_image43.jpg';
 import img_2016_squad from '@/assets/decades/2010s/2016_part3_image2.jpg';
 import img_2022_blueteam from '@/assets/decades/2020s/2022_part3_image63.jpg';
-import img_1999_journey from '@/assets/ultra_denoised_cricket.jpg';
+import img_1999_journey from '@/assets/ui/home-1999-feature.jpg';
 import img_2021_community from '@/assets/decades/2020s/2021_part3_image48.jpeg';
-import img_decades from '@/assets/ChatGPT Image Apr 5, 2026, 10_32_11 AM.png';
+import img_decades from '@/assets/ui/home-decades-collage.png';
 import { Link } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
@@ -85,7 +85,7 @@ function BowlToScroll({ onInteract }: { onInteract: () => void }) {
           }}
         >
           <ImageWithFallback
-            src={image_fc4c2d6cfb8d8e98a7717873f6d785a1e5b880e7}
+            src={cricketBallIcon}
             alt="Cricket Ball"
             className="w-full h-full object-cover rounded-full"
           />
@@ -430,7 +430,7 @@ export default function HomePage() {
               {/* Image */}
               <div className="h-[500px] md:h-[700px]">
                 <ImageWithFallback
-                  src={image_f82377ba58d74186f1a05e52302988a3b22aba9e}
+                  src={homeTeamsThroughTime}
                   alt="Teams Through Time"
                   className="w-full h-full object-cover"
                   loading="lazy"

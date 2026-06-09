@@ -3,7 +3,7 @@ import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
 import { ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import heroImage from "@/assets/35d091ccf79929cac09220bc363fbc26a923d05c.png";
+import heroImage from "@/assets/ui/vintage-hero.png";
 
 interface Obituary {
   name: string;

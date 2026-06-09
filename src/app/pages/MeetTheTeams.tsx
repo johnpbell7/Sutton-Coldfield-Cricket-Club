@@ -5,7 +5,7 @@ import img_1984 from '@/assets/decades/1980s/1984_part2_image15.jpg';
 import img_1985 from '@/assets/decades/1980s/1985_part2_image16.jpg';
 import img_1989 from '@/assets/decades/1980s/1989_part2_image21.jpg';
 import img_2022 from '@/assets/decades/2020s/2022_part3_image63.jpg';
-import image_hero from '@/assets/0de4d0509d8f2c1c141ac6fea20a9fdf4667798c.png';
+import image_hero from '@/assets/ui/teams-hero.png';
 
 // Historical photos extracted from club archives — organized by decade
 import img_1859 from '@/assets/decades/1850s/1859_part1_image4.jpg';

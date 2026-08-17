@@ -83,6 +83,39 @@ import img_1963_team_a from '@/assets/decades/1960s/1963_part2_image38.jpg';
 import img_1963_team_b from '@/assets/decades/1960s/1963_part2_image39.jpg';
 import img_1963_team_c from '@/assets/decades/1960s/1963_part2_image40.jpg';
 import img_1966_team from '@/assets/decades/1960s/1966_part2_image1.jpg';
+// Modern era archive images (2016-2026) — extracted from the club's master history Part 3
+import img_2016_group from '@/assets/decades/2010s/2016_club_group_rectory_park.jpg';
+import img_2016_golden_oldies from '@/assets/decades/2010s/2016_golden_oldies_200_years.jpg';
+import img_2016_cake from '@/assets/decades/2010s/2017_ten_not_out_cake.jpg';
+import img_2017_trophy from '@/assets/decades/2010s/2017_part3_image3.png';
+import img_2017_sculpture from '@/assets/decades/2010s/2017_part3_image4.png';
+import img_2018_biddle from '@/assets/decades/2010s/2018_andy_biddle.jpg';
+import img_2018_coombs from '@/assets/decades/2010s/2018_roger_coombs.jpg';
+import img_2018_aaron from '@/assets/decades/2010s/2018_part3_image11.jpeg';
+import img_2019_tractor from '@/assets/decades/2010s/2019_president_tractor.jpg';
+import img_2019_banton from '@/assets/decades/2010s/2019_tom_banton_england.jpg';
+import img_2019_menu from '@/assets/decades/2010s/2019_annual_dinner_menu.jpg';
+import img_2020_fence from '@/assets/decades/2020s/2020_ground_sightscreen.jpg';
+import img_2020_menu from '@/assets/decades/2020s/2020_annual_dinner_menu.jpg';
+import img_2020_leaves_a from '@/assets/decades/2020s/2020_part3_image28.jpeg';
+import img_2020_leaves_b from '@/assets/decades/2020s/2020_part3_image30.png';
+import img_2021_air_ambulance from '@/assets/decades/2020s/2021_part3_image32.png';
+import img_2021_sunset from '@/assets/decades/2020s/2021_part3_image47.png';
+import img_2021_vets from '@/assets/decades/2020s/2021_vets_team.jpg';
+import img_2021_sunday from '@/assets/decades/2020s/2021_part3_image52.png';
+import img_2022_ground from '@/assets/decades/2020s/2022_part3_image61.png';
+import img_2022_first_xi from '@/assets/decades/2020s/2022_first_xi_blue_kit.jpg';
+import img_2022_ale from '@/assets/decades/2020s/2022_part3_image53.png';
+import img_2023_lgbtq from '@/assets/decades/2020s/2023_part3_image77.png';
+import img_2023_bears from '@/assets/decades/2020s/2023_bears_roadshow_juniors.jpg';
+import img_2023_mascot from '@/assets/decades/2020s/2023_bears_mascot_juniors.jpg';
+import img_2023_clock from '@/assets/decades/2020s/2023_stonehouse_clock.jpg';
+import img_2023_storm from '@/assets/decades/2020s/2023_storm_flooded_ground.jpg';
+import img_2024_lgbtq from '@/assets/decades/2020s/2024_part3_image88.jpg';
+import img_2025_first_xi from '@/assets/decades/2020s/2025_part3_image97.png';
+import img_2025_thirds from '@/assets/decades/2020s/2025_part3_image100.jpeg';
+import img_2025_fourths from '@/assets/decades/2020s/2025_part3_image101.png';
+import img_2026_girls from '@/assets/decades/2020s/2026_first_girls_team.jpg';
 import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "@/app/components/CustomLink";
 import { TimelineItem } from "@/app/components/TimelineItem";
@@ -1852,101 +1885,261 @@ const timelineData = [
   {
     year: "2016",
     title: "Ten Not Out — Honouring the Fallen",
-    shortDescription: "A moving WWI centenary performance by local schoolchildren commemorates the 40 club members lost in the Great War. The club wins the La Manga T20 tournament and hosts the Free Foresters' 160th anniversary match.",
-    fullDescription: "The 2016 season was memorable both on and off the field. On 3rd July, the club hosted 'A Cricket Match Like No Other' — a performance by students from Little Sutton Primary School and Birmingham Metropolitan College, in collaboration with Birmingham Hippodrome Creative, marking the centenary of the Battle of the Somme. Forty of the fifty Sutton Coldfield Cricket Club members who enlisted in the Great War never returned. The performance — which moved seamlessly from a cricket match to the battlefield — left many in the audience in tears. It was one of the most powerful days in the club's history. Earlier in the year, an SCCC XI had travelled to La Manga in Spain and won a T20 tournament with five wins from five games. In September, the Free Foresters — the wandering club founded on this very ground in July 1856 — returned for a 160th anniversary match, with Lee Thomason scoring a notable century. The 1st XI was competing in Division 1 of the B&DPCL and the Sutton Observer had named the team Sports Team of the Year for the third consecutive season.",
+    shortDescription: "A moving Somme centenary performance commemorates the club members lost in the Great War, an SCCC XI sweeps the La Manga T20 tournament, and the Free Foresters return for their 160th anniversary match.",
+    yearOverview: "No year in recent memory blended triumph and remembrance like 2016. In April an SCCC XI travelled to La Manga in Spain and won a ten-team T20 tournament with five wins from five, Pete McKay striking 126 not out against Findon and Steve Howard taking 4 for 18 in the final against a Spanish national side. Then, on 3rd July — a century after the Battle of the Somme — students from Little Sutton Primary School and Birmingham Metropolitan College staged 'A Cricket Match Like No Other' at Rectory Park, a performance that moved from cricket match to battlefield and left few dry eyes, honouring the forty club members who enlisted in the Great War and never returned. The schoolchildren's song 'Fifty Good Men' became Little Sutton's Remembrance anthem. In September the Free Foresters — founded on this very ground in 1856 — returned for their 160th anniversary match, won by SCCC with a notable Lee Thomason century. The 1st XI, named the Observer's Senior Team of the Year for a third consecutive season, endured a cruel run of injuries and slipped out of Division 1; at the November AGM Colin Greetham stood down after five years as Chairman, handing the baton to Steve Russell. Four Golden Oldies — John Robinson, Peter Bell, Neil Houghton and James Ross — marked a combined 200 years of membership.",
     keyEvents: [
-      "'A Cricket Match Like No Other' — WWI centenary performance hosted on 3rd July",
-      "Forty SCCC members who enlisted in the Great War and never returned commemorated",
-      "An SCCC XI wins La Manga T20 tournament — five wins from five games",
-      "Free Foresters return for their 160th anniversary match at Rectory Park"
+      "'A Cricket Match Like No Other' marks the Somme centenary on 3rd July",
+      "An SCCC XI wins the La Manga T20 tournament — five wins from five",
+      "Free Foresters return for their 160th anniversary match; Lee Thomason's century wins it",
+      "1st XI named Observer Senior Team of the Year for the third consecutive season",
+      "Record 130-plus juniors attend Friday evening training on 6th May",
+      "Colin Greetham retires after five years as Chairman; Steve Russell elected",
+      "Golden Oldies celebrate a combined 200 years of club membership",
     ],
     closingSummary: "2016 was a year of reflection and remembrance — the most moving day in the club's recent history, and a reminder of the debt owed to those who never returned.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "Ten Not Out — a cricket match like no other marked the centenary of the Battle of the Somme, 2016.",
-    backgroundImage: "https://images.unsplash.com/photo-1765429154824-b4a7dd58f7c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVycyUyMGFjdGlvbnxlbnwxfHx8fDE3NjgyMDc5NzF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    imageCaption: "Club members and guests gather at Rectory Park during the 2016 season.",
+    backgroundImage: img_2016_group,
     images: [
-      "https://images.unsplash.com/photo-1709134800935-d00e89d5b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwY29hY2hpbmclMjB5b3V0aHxlbnwxfHx8fDE3NjgzMDczMTV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      "https://images.unsplash.com/photo-1765429154824-b4a7dd58f7c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVycyUyMGFjdGlvbnxlbnwxfHx8fDE3NjgyMDc5NzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      img_2016_group,
+      img_2016_golden_oldies,
+      img_2016_cake,
+    ],
+  },
+  {
+    year: "2017",
+    title: "411 for 2 — A Record for the Ages",
+    shortDescription: "Lee Thomason's unbeaten 202 and Tom Eustace's 127 not out carry Sutton to 411 for 2 at Harborne — the first 400-plus total in the club's 170-year history.",
+    yearOverview: "Saturday 8th July 2017 produced the innings of a lifetime. Away at Harborne's Old Church Avenue ground, Sutton scored 411 for 2 from their 55 overs — the first time any Sutton side had passed 400 in 170 years of cricket. Captain and wicketkeeper Lee Thomason, aged 24, finished 202 not out from just 147 balls with 11 sixes and 18 fours, his second hundred arriving off only 32 deliveries; Tom Eustace, 22, made an unbeaten 127 from 84 balls as the pair added 290 without being parted — the visitors forcing Harborne to find nine replacement balls. Thomason ended the season with 878 runs and the highest individual score recorded anywhere in the Birmingham & District Premier Cricket League. Off the field the year brought equally lasting change: after more than a decade of unsightly storage containers, a new dark-green steel groundsman's store rose between the pavilion and the score box, funded largely by the Municipal Charities and project-managed by headline sponsors the Lane Group. New overseas professional Dinushka Nawarathnage arrived from Sri Lanka and claimed 31 wickets, while the popular Dan Childs returned to South Africa after five years' service. At the Annual Dinner, life memberships were bestowed on Ken Lancaster and Colin Greetham, and the specially commissioned Ten Not Out sculpture — a Lottery-funded memorial to the fallen of 1914–18 — found its permanent home at Rectory Park.",
+    keyEvents: [
+      "411 for 2 at Harborne — the club's first 400-plus total in 170 years",
+      "Lee Thomason hits 202 not out from 147 balls; Tom Eustace 127 not out from 84",
+      "Unbroken stand of 290 — still the club's highest away partnership",
+      "New groundsman's store ends a decade of storage containers at Rectory Park",
+      "Overseas all-rounder Dinushka Nawarathnage takes 31 wickets in his first season",
+      "Ten Not Out sculpture installed as a permanent Great War memorial",
+      "Ken Lancaster and Colin Greetham elected Life Members",
+    ],
+    closingSummary: "One July afternoon at Harborne rewrote the record books — and the Ten Not Out sculpture gave the club's Great War story a permanent home.",
+    location: "Rectory Park, Sutton Coldfield",
+    imageCaption: "The Ten Not Out trophy — first presented in 2017 and awarded for outstanding service ever since.",
+    backgroundImage: img_2017_trophy,
+    images: [
+      img_2017_trophy,
+      img_2017_sculpture,
+    ],
+  },
+  {
+    year: "2018",
+    title: "Farewell to Two Club Legends",
+    shortDescription: "The club mourns Roger Coombs and Andy Biddle — 'Mr Sutton Coldfield' — while a new Veterans XI takes the field and two centurions share one innings for the first time.",
+    yearOverview: "2018 was framed by loss. In February, Roger Coombs — the outstanding wicketkeeper whose 76 victims in 1961 remains a club record, and who claimed close to 900 in his career — passed away aged 83. In June came a blow felt across the whole town: Andy Biddle, 'Bids', suffered a heart attack while batting for the newly formed SCCC Veterans and died two days later, aged just 52. A junior member since 1978, a 1st XI wicketkeeper-batsman, a league champion in 1993 and a coach who guided a generation of juniors into senior cricket, he was mourned as 'Mr Sutton Coldfield'; his funeral filled Holy Trinity Parish Church, and the club installed a public defibrillator on the pavilion in his memory. There was cricket to celebrate too. The Veterans XI Biddle helped found competed in the Elford Vets T20 League under Mike Hepburn's management. On 19th May, Silva Jayahanthan (104) and Sergel Weerasuriya (140 not out) both reached centuries in the same 4th XI innings — a club first — as Sutton declared on 321 for 5 against Walmley. John Howard was made a Life Member at his 60th birthday celebration, Aaron Thomason signed a new Warwickshire contract, and with the Birmingham League reverting to two divisions, Sutton prepared to join the Warwickshire Cricket League for 2019.",
+    keyEvents: [
+      "Andy Biddle — 'Mr Sutton Coldfield' — dies aged 52 after a heart attack at the crease",
+      "Roger Coombs, record-setting wicketkeeper with nearly 900 victims, dies aged 83",
+      "Defibrillator installed at the pavilion in Andy Biddle's memory",
+      "SCCC Veterans XI formed, competing in the Elford Vets T20 League",
+      "Two centuries in one 4th XI innings — a club first — against Walmley",
+      "John Howard elected Life Member at his 60th birthday celebration",
+      "League restructure moves Sutton into the Warwickshire Cricket League for 2019",
+    ],
+    closingSummary: "The club said goodbye to two of its most beloved figures in 2018 — and answered the loss the way cricket clubs do: by forming new teams, protecting its players, and playing on.",
+    location: "Rectory Park, Sutton Coldfield",
+    imageCaption: "Andy Biddle — junior member, 1st XI wicketkeeper, league champion and coach — remembered as 'Mr Sutton Coldfield'.",
+    backgroundImage: img_2018_aaron,
+    images: [
+      img_2018_biddle,
+      img_2018_coombs,
+      img_2018_aaron,
+    ],
+  },
+  {
+    year: "2019",
+    title: "New League, New Stars",
+    shortDescription: "Sutton debuts in the Warwickshire Premier Division while two former juniors light up the professional game — Tom Banton named PCA Young Player of the Year and Aaron Thomason making a historic first-class debut.",
+    yearOverview: "The club's first season in the Warwickshire Cricket League Premier Division proved a test of depth — the 1st XI finished eighth as availability bit hard — but individual brilliance abounded. Lee Thomason piled up 854 runs at 53.4 with three hundreds, finishing runner-up in the Premier averages, while Sri Lankan overseas Dinushka Nawarathnage claimed 42 wickets at a remarkable 10.07 apiece, including 7 for 44 at Streetly. Beyond Rectory Park, two graduates of Sutton's junior system made national headlines. Tom Banton's breakthrough summer with Somerset brought 549 Vitality Blast runs at a strike rate above 160, the PCA Young Player of the Year award, an England T20 call-up and a Big Bash deal with Brisbane Heat. Aaron Thomason, newly signed by Sussex, scored 90 batting at number ten on his first-class debut — the third-highest score by a number ten on debut in the history of the first-class game. At home, the season had its comic interlude: with Grounds Chairman Mike Hepburn hospitalised, President James Ross took over the tractor and reported his outfield adventures with relish. At the October AGM Steve Russell stood down after three years as Chairman, Nick Baker was elected in his place, and a strategic review by Matt Appleby set the course for the club's next chapter.",
+    keyEvents: [
+      "First season in the Warwickshire Cricket League Premier Division",
+      "Tom Banton named PCA Young Player of the Year and called up by England",
+      "Aaron Thomason's 90 on first-class debut — third-highest ever by a No. 10",
+      "Lee Thomason scores 854 runs at 53.4; Dinushka Nawarathnage takes 42 wickets at 10.07",
+      "President James Ross serves as emergency groundsman, tractor and all",
+      "2nd XI beat Streetly in the final game to survive",
+      "Nick Baker elected Chairman as Steve Russell stands down after three years",
+    ],
+    closingSummary: "A hard first season at Warwickshire's top table — but with two Rectory Park juniors starring on the national stage, the club's production line had never looked better.",
+    location: "Rectory Park, Sutton Coldfield",
+    imageCaption: "President James Ross learns to drive the tractor — the club's acting groundsman, summer 2019.",
+    backgroundImage: img_2019_tractor,
+    images: [
+      img_2019_tractor,
+      img_2019_banton,
+      img_2019_menu,
     ],
   },
   {
     year: "2020",
     title: "Cricket Stops — the Club Holds Together",
-    shortDescription: "COVID-19 suspends cricket for the first time since the Second World War. President James Ross raises £3,500 in donations. Sport England and ECB grants keep the club afloat.",
-    fullDescription: "In March 2020, the COVID-19 pandemic brought cricket — and almost everything else — to a halt. For Sutton Coldfield Cricket Club, it was the first suspension of competitive play since the Second World War. The club's committee began holding video meetings to manage the budget. With no bar income, no subscriptions coming in, and fixed costs continuing, the financial pressure was real. President James Ross responded with characteristic determination, writing personally to all life members and vice presidents to explain the situation. Over £3,500 in donations arrived by post. The club also secured a £7,000 grant from Sport England and a £10,000 grant through the Small Businesses and Hospitality Group for the pavilion's overheads. The pitches were tended through lockdown, the fences painted, and the club held together. When a compressed season eventually resumed, the first ball bowled at Rectory Park was met with the kind of relief and joy that only a long absence from something you love can produce.",
+    shortDescription: "COVID-19 suspends cricket for the first time since the Second World War. President James Ross raises over £3,500 in donations, and Sport England and hospitality grants keep the club afloat.",
+    yearOverview: "In March 2020 the COVID-19 pandemic brought cricket — and almost everything else — to a halt: the first suspension of play at Rectory Park since the Second World War. With the bar in lockdown, no subscriptions coming in and fixed costs continuing, President James Ross wrote personally to every life member and vice president; over £3,500 in donations arrived by post, each acknowledged with a personal letter of thanks. Dave Hands secured a £7,000 Sport England grant and the joint clubs obtained £10,000 through the Small Businesses and Hospitality fund. The President also spent thirty hours painting the fence panels by the score box — and repainted them after a storm-felled branch undid his work. The club grieved with young player Ben Dunnington, whose father and both grandparents were lost to the virus within weeks — a tragedy reported across the national press. When a shortened Warwickshire League season began in June, cricket returned with relief and joy: Lee Thomason averaged 101 with the bat, Nasar Ali's 21 wickets cost just 9.33 each, and the Sunday XI finished runners-up in their division. In November, forty members aged eight to sixty-six turned out in the rain to clear the season's leaves — the club, quite literally, holding together.",
     keyEvents: [
-      "COVID-19 pandemic suspends cricket — first stoppage since World War II",
-      "President James Ross raises over £3,500 in donations from life members and vice presidents",
-      "Club secures £7,000 Sport England grant and £10,000 Small Businesses grant",
-      "Pitches maintained, fences painted, club held together through lockdown"
+      "COVID-19 suspends cricket — the first stoppage since the Second World War",
+      "President James Ross's appeal raises over £3,500 from life members and vice presidents",
+      "£7,000 Sport England grant and £10,000 hospitality grant secured",
+      "Shortened league season played from June; Lee Thomason averages 101",
+      "Club mourns three generations of the Dunnington family, lost to the virus",
+      "Forty volunteers aged 8 to 66 clear the ground's leaves in November rain",
     ],
     closingSummary: "When cricket stopped, the club held together — through donations, determination, and the kind of community spirit that has defined Rectory Park for nearly 180 years.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "After months of lockdown, cricket returned to Rectory Park in the summer of 2020.",
-    backgroundImage: "https://images.unsplash.com/photo-1743612135955-7ec949bfa2ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZmllbGQlMjBoaXN0b3JpY3xlbnwxfHx8fDE3NjgzMDg4MTN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    imageCaption: "Rectory Park kept ready for cricket's return, summer 2020.",
+    backgroundImage: img_2020_fence,
     images: [
-      "https://images.unsplash.com/photo-1759733841123-b8e1d75ee45c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc3RhZGl1bSUyMGZpZWxkfGVufDF8fHx8MTc2ODI5MjU2Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "https://images.unsplash.com/photo-1765429154824-b4a7dd58f7c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVycyUyMGFjdGlvbnxlbnwxfHx8fDE3NjgyMDc5NzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      img_2020_fence,
+      img_2020_leaves_a,
+      img_2020_leaves_b,
+      img_2020_menu,
+    ],
+  },
+  {
+    year: "2021",
+    title: "Survival on the Final Day",
+    shortDescription: "Martin Ball takes 7 for 11 as visitors are skittled for 20, the 3rd XI are champions, and a final-day victory over Walmley keeps Premier League status — while denying the old rivals the title.",
+    yearOverview: "The year began under lockdown — the Annual Dinner cancelled for the first time since 1940–41, and two air ambulances landing together on a snow-covered Rectory Park in January — but ended in scenes of celebration. On 29th May, Martin Ball produced one of the great spells in club history: 7 for 11 from eight overs as Old Edwardians 2nds were bowled out for 20, believed to be the lowest total ever recorded by a visiting side at Rectory Park, in a match lasting under two hours. On Presidents Day the 1st XI upset league leaders Stratford-upon-Avon by 53 runs, and on the final day of the season they beat top-of-the-table Walmley by 42 — young Felix Haines removing both key batsmen in a miserly opening spell and Jacob Squire-Wood conceding just 13 runs from 12 overs. The win preserved Sutton's Premier League status and denied Walmley the championship in the same stroke — a 'double whammy' savoured long into the evening. The 3rd XI won their division by 66 clear points, the Sunday side earned promotion to Division 1, and young Shailan Srikanthan played at Lord's for MCC Schools. With membership at 453 and six Saturday and Sunday sides fielded weekly, the club emerged from the pandemic in remarkable heart — and began planning its 175th anniversary.",
+    keyEvents: [
+      "Martin Ball's 7 for 11 skittles Old Edwardians for 20 — the lowest visiting total ever at Rectory Park",
+      "Final-day win over Walmley secures survival and denies the rivals the title",
+      "3rd XI crowned champions of Division 8 North West by 66 points",
+      "Sunday XI promoted to Arden League Division 1",
+      "Shailan Srikanthan plays at Lord's for MCC Schools",
+      "Two air ambulances land together on a snow-covered Rectory Park",
+      "Annual Dinner cancelled for the first time since the Second World War",
+    ],
+    closingSummary: "From a snowbound, locked-down January to a final-day triumph over the old rivals — 2021 ended with silverware, survival and a club in rude health.",
+    location: "Rectory Park, Sutton Coldfield",
+    imageCaption: "Sunset over Rectory Park after an evening Veterans match, June 2021.",
+    backgroundImage: img_2021_sunset,
+    images: [
+      img_2021_air_ambulance,
+      img_2021_vets,
+      img_2021_sunday,
+    ],
+  },
+  {
+    year: "2022",
+    title: "175 Years at Rectory Park",
+    shortDescription: "The club celebrates its 175th anniversary with a commemorative ale, a dinner archived at Lord's, smashed batting records against Attock — and the 2nd XI lifting the Division 5 championship.",
+    yearOverview: "Founded in 1847, Sutton Coldfield Cricket Club marked 175 years on the same ground in 2022 — and celebrated in style. A 175th Anniversary golden ale was brewed with the town's Brewhouse & Kitchen on St Patrick's Day and served in the pavilion all season; the anniversary dinner at Moor Hall, compered by President James Ross with Test Match Special's Charles Dagnall as guest speaker, produced a 44-page history brochure now held in the MCC Library at Lord's. On the field, the records tumbled. On 30th April against Attock, Raul Ram (95) and a returning Aaron Thomason (114) added 203 for the fifth wicket — a club record — as Sutton posted 314 for 6, their highest-ever total at Rectory Park, and won by a record margin of 211 runs; across two April weekends 994 runs were scored on the same Lee Thomason-prepared wicket. The 2nd XI provided the anniversary silverware, storming to the Division 5 title with 15 wins under Nas Ali — Spencer Gray-Nimmo scoring 704 runs and Nadeem Ahmed taking 43 wickets at 13.5 — while the 1st XI finished third in the Premier Division. A Help for Heroes charity fixture, an over-35s tournament for the Andy Biddle Foundation and an anniversary ball closed the year. Amid the celebration came farewells: Life Member Ken Lancaster, 92, and 1960s batting great Martin Bloomer were among those lost during the year.",
+    keyEvents: [
+      "Club celebrates 175 years of cricket at Rectory Park",
+      "314 for 6 v Attock — highest home total — and victory by a record 211 runs",
+      "Ram and Thomason's 203 sets a new fifth-wicket partnership record",
+      "2nd XI crowned Division 5 champions with 15 wins",
+      "175th Anniversary Ale brewed with the Brewhouse & Kitchen",
+      "Anniversary dinner brochure archived in the MCC Library at Lord's",
+      "Help for Heroes fixture, Andy Biddle Foundation tournament and anniversary ball",
+    ],
+    closingSummary: "175 years young — a season of records, silverware and celebration that honoured everyone who has kept cricket alive at Rectory Park since 1847.",
+    location: "Rectory Park, Sutton Coldfield",
+    imageCaption: "The top ground at Rectory Park in the club's 175th anniversary year, 2022.",
+    backgroundImage: img_2022_ground,
+    images: [
+      img_2022_first_xi,
+      img_2022_ale,
+      img_2022_ground,
     ],
   },
   {
     year: "2023",
-    title: "Rebuilding and Looking Forward",
-    shortDescription: "The club focuses on rebuilding its senior playing strength, developing coaching pathways, and securing its long-term future through sponsorship and community engagement.",
-    fullDescription: "In the years following the COVID disruption, Sutton Coldfield Cricket Club has focused on rebuilding the depth and consistency of its senior sides while continuing to invest in junior cricket — the foundation that has sustained the club through every era. Friday evening junior sessions regularly attract over 100 young players to Rectory Park, and the pipeline of talent emerging into senior cricket gives genuine cause for optimism. The club has been clear-eyed about the challenges facing all amateur cricket clubs: player availability, competition from other sports and leisure activities, and the need for sponsorship income to fund coaching and ground maintenance. The committee's focus on building more coaching pathways, retaining senior players, and strengthening community ties reflects the same pragmatic determination that has kept this club alive and thriving for over 175 years. The story at Rectory Park is still being written.",
+    title: "A Club for Everyone",
+    shortDescription: "Rectory Park hosts the first-ever Inter-County LGBTQ+ cricket tournament and a Warwickshire Bears roadshow before crowds of hundreds — in a season of hard lessons on the field.",
+    yearOverview: "In 2023 Sutton Coldfield Cricket Club showed what a community cricket ground can be. On 11th June, Rectory Park staged the first Inter-County LGBTQ+ cricket tournament — five county sides, around 200 spectators, national media coverage and international umpire Sue Redfern officiating — with Middlesex, drawn from Graces CC, the world's first LGBTQ+ cricket club, crowned inaugural champions. Warwickshire's high performance manager Paul Greetham, a Sutton player of twenty years, called it a proud day for his home club. Seven weeks later the Warwickshire Bears arrived for a T20 roadshow against a Best of the Warwickshire League XI — Ed Barnard blasting 89 from 42 balls before a crowd of up to 500, with Bears players coaching juniors and signing autographs late into the evening. The playing season itself was unsparing: weakened by winter departures, both the 1st and 2nd XIs were relegated, the firsts' cause not helped by 23 penalty points, and a July storm washed out a probable first win on Presidents Day inside fifteen minutes. There were quieter victories — the club's letter-writing campaign helped persuade the council to drop proposed Rectory Park parking charges, the Under-13s won the Warwickshire championship, and the Stonehouse family presented the ground's handsome memorial clock. The club also mourned Peter Yates, holder of over 70 years' continuous membership, and U15 manager Dave Thornton, whose team bravely took the field days after his passing.",
     keyEvents: [
-      "Post-COVID rebuild of senior playing squads across all Saturday and Sunday XIs",
-      "Friday evening junior sessions regularly draw over 100 young players",
-      "Development pathway from All Stars to senior cricket strengthened",
-      "Sponsorship and community engagement prioritised for long-term sustainability"
+      "First-ever Inter-County LGBTQ+ cricket tournament hosted at Rectory Park",
+      "Warwickshire Bears T20 roadshow draws a crowd of up to 500",
+      "Under-13s win the Warwickshire championship and midweek league",
+      "Club campaign helps defeat proposed Rectory Park parking charges",
+      "Syd & Lily Stonehouse memorial clock presented to the ground",
+      "1st and 2nd XIs both relegated in a punishing season",
+      "Club mourns Peter Yates — over 70 years a member — and U15 manager Dave Thornton",
     ],
-    closingSummary: "The years after COVID tested every amateur cricket club — Sutton's response was to invest in junior cricket and build for the future with clear-eyed pragmatism.",
+    closingSummary: "Results on the field stung in 2023 — but as a host, a campaigner and a community, Sutton Coldfield Cricket Club had rarely stood taller.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "Rectory Park — 175 years of cricket and counting.",
-    backgroundImage: "https://images.unsplash.com/photo-1764408721535-2dcb912db83e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdHJvcGh5JTIwY2hhbXBpb25zaGlwfGVufDF8fHx8MTc2ODI5MjU2Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    imageCaption: "The first Inter-County LGBTQ+ cricket tournament at Rectory Park, June 2023.",
+    backgroundImage: img_2023_lgbtq,
     images: [
-      "https://images.unsplash.com/photo-1759733841123-b8e1d75ee45c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwc3RhZGl1bSUyMGZpZWxkfGVufDF8fHx8MTc2ODI5MjU2Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "https://images.unsplash.com/photo-1685541001104-91fe7ae1d8e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwY3JpY2tldCUyMGhpc3RvcmljfGVufDF8fHx8MTc2ODI5MjU2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      img_2023_bears,
+      img_2023_mascot,
+      img_2023_clock,
+      img_2023_storm,
     ],
   },
   {
     year: "2024",
-    title: "Junior Cricket Thrives",
-    shortDescription: "Friday evening junior sessions draw over 100 young players to Rectory Park every week. The club's development pathway from All Stars through to senior cricket is stronger than it has ever been.",
-    fullDescription: "Sutton Coldfield Cricket Club's junior cricket programme has become one of the most active in the region. Friday evenings at Rectory Park draw more than 100 young cricketers each week, with children from Under-9 through Under-17 age groups filling the ground with the energy and noise that cricket at this level is all about. The coaches who run these sessions — many of them former players who came through the club themselves — give their time freely, continuing the tradition of voluntary service that has defined the club since 1847. Young players who began with All Stars cricket are now appearing in the senior 3rd and 4th XIs, completing a development pathway that the club has carefully built over decades. The names of the next generation of Sutton cricketers are already being written into scorebooks at Rectory Park — the same ground where the first ones were written nearly 180 years ago.",
+    title: "New Traditions Take Root",
+    shortDescription: "Girls' cricket launches at Rectory Park, the Sunday XI wins the Arden Division 1 title, and the Annual Dinner comes home to the pavilion for the first time since 1987.",
+    yearOverview: "2024 planted seeds that will shape the club for decades. On 15th June, girls' and ladies' cricket began in earnest at Rectory Park: fifteen girls received blue club shirts at the first Saturday-morning session of a grass-roots programme personally sponsored by Life Member Peter Bell. A week earlier the club hosted its second Inter-County LGBTQ+ tournament, now grown to six county sides, with Kent defeating Gloucestershire in the final. On the field, the Sunday 1st XI delivered the season's silverware, winning the Arden Sunday Cricket League Division 1 under Ben Dunnington with eleven victories from fourteen. The Saturday 1st XI steadied the ship in Division 1, captain Jacob Squire-Wood signing off the season with a defiant 124 against Harborne, while July brought a 110-run win over old rivals Coventry & North Warwickshire on the Golden Oldies' sponsorship day. In September a piece of history came full circle: the Annual Dinner was held in the club's own pavilion for the first time since January 1987, with 73 members — more than half of them active players — dining where generations had dined before. The Ten Not Out award was presented posthumously to Geoff Gray, and the club pressed on with ground improvements including new disabled parking at the pavilion.",
     keyEvents: [
-      "Friday junior sessions draw 100+ players every week — Under-9 through Under-17",
-      "Young All Stars players now appearing in senior 3rd and 4th XIs",
-      "Volunteer coaches — many former club players — giving time freely to the next generation",
-      "Development pathway stronger than at any point in the club's recent history"
+      "Girls' cricket launches — fifteen girls receive their first club shirts",
+      "Sunday 1st XI win the Arden League Division 1 title under Ben Dunnington",
+      "Second LGBTQ+ tournament grows to six counties; Kent lift the trophy",
+      "Annual Dinner returns to the club's own pavilion — first time since 1987",
+      "Jacob Squire-Wood's 124 against Harborne caps his season as captain",
+      "110-run win over Coventry & NW on the Golden Oldies' sponsorship day",
+      "Ten Not Out award presented posthumously to Geoff Gray",
     ],
-    closingSummary: "Junior cricket at Rectory Park has never been healthier — and the next generation of Sutton cricketers is already filling the scorebooks.",
+    closingSummary: "A championship on Sundays, girls' cricket at last, and dinner back in the pavilion — 2024 was the year new traditions took root at Rectory Park.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "Friday evening junior cricket at Rectory Park — over 100 youngsters each week.",
-    backgroundImage: "https://images.unsplash.com/photo-1765429154824-b4a7dd58f7c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwcGxheWVycyUyMGFjdGlvbnxlbnwxfHx8fDE3NjgyMDc5NzF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    imageCaption: "Community cricket at Rectory Park, 2024 — the club's second Inter-County LGBTQ+ tournament.",
+    backgroundImage: img_2024_lgbtq,
     images: [
-      "https://images.unsplash.com/photo-1624897174291-1bd715e371d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdGVhbSUyMGNlbGVicmF0aW9ufGVufDF8fHx8MTc2ODE5MjAzOXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "https://images.unsplash.com/photo-1764408721535-2dcb912db83e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwdHJvcGh5JTIwYXdhcmRzfGVufDF8fHx8MTc2ODMwNzMxNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      img_2024_lgbtq,
+    ],
+  },
+  {
+    year: "2025",
+    title: "The Greatest All-Round Season",
+    shortDescription: "All four Saturday teams win on the same day, the 3rd XI are champions, the 4th XI promoted, and Phil Dunnett's century crowns Presidents Day — the finest collective season in the club's 178 years.",
+    yearOverview: "The Chairman called 2025 'probably the most successful playing record across all teams the Club has ever had' — and the evidence was everywhere. On Saturday 31st May all four Saturday XIs won on the same afternoon for the first time since the 1980s: the 2nd XI's Jack Allen took 6 for 11 as Solihull Municipal were dismissed for just 20, while Ian Hay and Qasim Arif's unbroken opening stand of 158 completed a 10-wicket derby win for the 4ths. The 3rd XI won Division 8 West — Jim Little carrying his bat for 142 not out at Moseley in a record 218-run third-wicket stand with Darren Fry, and Ben Dawson bowling the final Shenley Fields batter to seal a one-run win that brought the crowd onto the pitch. The 4th XI joined them in promotion as runners-up in Division 10 West. Presidents Day produced an innings for the ages: Phil Dunnett struck 116, farming the strike in a last-wicket stand of 74 with James Dalton (3 not out) — a club record for the tenth wicket — before Sutton defended 194 to beat Harborne by 15 runs. Felix Haines completed a superb all-round year with 441 runs and 41 wickets at 15.39, the winter's £20,000-plus investment delivered a new artificial pitch, rebuilt nets and new covers, and the Under-17s reached the county T20 semi-final. At the year's end, Nick Baker retired after six years as Chairman and was offered Life Membership for outstanding service.",
+    keyEvents: [
+      "All four Saturday teams win on the same day — 31st May — for the first time since the 1980s",
+      "3rd XI crowned Division 8 West champions; 4th XI promoted as runners-up",
+      "Jack Allen's 6 for 11 dismisses Solihull Municipal for just 20",
+      "Phil Dunnett's 116 and a record last-wicket stand of 74 win Presidents Day",
+      "Jim Little's 142 not out anchors a record 218-run third-wicket partnership",
+      "Felix Haines: 441 runs and 41 wickets at 15.39 — third-best in the league",
+      "New artificial pitch, rebuilt nets and covers — over £20,000 invested in the ground",
+      "Nick Baker retires as Chairman and is offered Life Membership",
+    ],
+    closingSummary: "Champions, promotions, records and a four-win Saturday — by the club's own reckoning, 2025 was the finest all-round season in 178 years of cricket at Rectory Park.",
+    location: "Rectory Park, Sutton Coldfield",
+    imageCaption: "The 1st XI of 2025 — sixth in Division 1 in the club's most successful all-round season.",
+    backgroundImage: img_2025_first_xi,
+    images: [
+      img_2025_first_xi,
+      img_2025_thirds,
+      img_2025_fourths,
     ],
   },
   {
     year: "2026",
-    title: "178 Years — The Story Continues",
-    shortDescription: "Sutton Coldfield Cricket Club continues to play cricket at Rectory Park — the same ground the Rev. Riland Bedford laid out in 1847.",
-    fullDescription: "In 1847, the Reverend W.K. Riland Bedford — Rector of Sutton Coldfield — laid out a cricket ground in the meadows beside his rectory, creating a new home for a small group of cricketers who had previously played in Sutton Park. Nearly 180 years later, Sutton Coldfield Cricket Club still plays on that same ground. The ground has been flooded, burnt, vandalized and threatened with development. The club has won championships and suffered relegations, produced Test cricketers and lost forty members to the First World War. It has hosted the ICC World Cup and welcomed overseas professionals from Zimbabwe, South Africa and Australia. Through all of it, volunteers have prepared the pitches, put on the teas, kept the scorebooks, and passed the club on to the next generation. That is the real story of Sutton Coldfield Cricket Club — not any single season or trophy, but 178 years of people who cared enough to keep turning up.",
+    title: "Girls Make History — and the Story Continues",
+    shortDescription: "The club's first-ever girls' hardball team takes the field, 179 years after the Rev. Riland Bedford laid out his cricket ground — and the story of Rectory Park keeps being written.",
+    yearOverview: "On Tuesday 9th June 2026, history was made at Sutton Coldfield Cricket Club: the first-ever girls' hardball team — the Under-11 Academy, joined by three guests from Kings Heath — played their first match, away against Olton & West Warwickshire Girls. A week later they made history again with the first girls' hardball game ever played at Rectory Park, a heart-stopping final-ball tie against Harborne, 132 apiece, sealed by a scampered single off the penultimate delivery. Hafsah, Abigail, Naomi, Asiyah, Grace, Mahnoor and Ahana wrote their names into a club record book that began in 1847 — the fruit of the girls' programme begun in 2024. The season also brought the fourth Inter-County LGBTQ+ tournament, now eight teams strong, with Birmingham Unicorns lifting their first hardball title on home soil, and a new era of leadership as Rob Haines was elected Chairperson. Nearly 180 years after cricket was first recorded in Rectory Park — research now traces it to 1837 — the ground has been flooded, burnt, vandalised and threatened with development; the club has won championships, suffered relegations, produced Test cricketers and lost forty members to the Great War. Through it all, volunteers have prepared the pitches, put on the teas and passed the club to the next generation. That next generation now includes the girls of the Under-11 Academy — and the story continues.",
     keyEvents: [
-      "Cricket played at Rectory Park continuously since 1847 — 178 years and counting",
-      "Club has hosted ICC matches, produced Test cricketers and survived two World Wars",
-      "The same ground laid out by Rev. Riland Bedford still in use today",
-      "Volunteers continue to prepare pitches, keep scorebooks and pass the club on"
+      "First-ever SCCC girls' hardball team plays its first match on 9th June",
+      "First girls' hardball game at Rectory Park ends in a final-ball tie with Harborne",
+      "Fourth LGBTQ+ tournament — Birmingham Unicorns win the hardball title at home",
+      "Rob Haines elected Chairperson at the March EGM",
+      "New research dates cricket at Rectory Park back to 1837",
+      "Cricket played continuously at Rectory Park since 1847 — 179 years and counting",
     ],
-    closingSummary: "178 years. The same ground. The same spirit. The story of Sutton Coldfield Cricket Club is the story of people who cared enough to keep turning up.",
+    closingSummary: "179 years. The same ground. The same spirit — now shared by the club's first generation of girl cricketers. The story of Sutton Coldfield Cricket Club is still being written.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "Rectory Park — where Sutton Coldfield Cricket Club has played since 1847.",
-    backgroundImage: paperTexture,
+    imageCaption: "The club's first girls' hardball team — with guests from Kings Heath — make history, June 2026.",
+    backgroundImage: img_2026_girls,
     images: [
-      "https://images.unsplash.com/photo-1764926125989-ae0acf67fbf8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwZmllbGQlMjBhZXJpYWx8ZW58MXx8fHwxNzY4MzA3MzEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      "https://images.unsplash.com/photo-1755870191058-4f3bca31d2ce?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmlja2V0JTIwaGlzdG9yaWMlMjBncm91bmRzfGVufDF8fHx8MTc2ODMwNzMxNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+      img_2026_girls,
     ],
   },
 ];

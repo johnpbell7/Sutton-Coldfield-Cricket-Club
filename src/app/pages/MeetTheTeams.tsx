@@ -47,6 +47,9 @@ import img_1998 from '@/assets/decades/1990s/1998_part2_image28.jpg';
 import img_2012 from '@/assets/decades/2010s/2012_part2_image65.jpg';
 import img_2013 from '@/assets/decades/1980s/1986_part2_image75.jpg';
 import img_2016_200yrs from '@/assets/decades/2010s/2016_part3_image1.jpg';
+import img_2021_vets from '@/assets/decades/2020s/2021_vets_team.jpg';
+import img_2021_sunday from '@/assets/decades/2020s/2021_part3_image52.png';
+import img_2026_girls from '@/assets/decades/2020s/2026_first_girls_team.jpg';
 
 import { Link } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
@@ -893,6 +896,47 @@ const teamPhotos: TeamPhoto[] = [
     ]
   },
   {
+    year: "2021",
+    title: "The Veterans XI — A New Team Takes the Field",
+    description: "The SCCC Veterans in their 2021 season. The Vets XI was founded in 2018 by the much-missed Andy Biddle for players over 40, competing in the Elford Vets T20 League with evening matches at Rectory Park. By 2021 the side captained by Simon Matthews had become a fixture of the club's summer — proof that at Sutton Coldfield, a cricketer's career never really ends.",
+    image: img_2021_vets,
+    background: "white",
+    players: [
+      { name: "Dave Hands", position: "Back row" },
+      { name: "Ade Cotton", position: "Back row" },
+      { name: "Gary Camp", position: "Back row" },
+      { name: "Paul Wright", position: "Back row" },
+      { name: "Dave Steggles", position: "Back row" },
+      { name: "J. Crawshaw", position: "Back row" },
+      { name: "James Little", position: "Front row" },
+      { name: "Ian Hay", position: "Front row" },
+      { name: "Simon Matthews", position: "Front row", role: "Captain" },
+      { name: "Nick Baker", position: "Front row" },
+      { name: "JP Shanahan", position: "Front row" },
+    ]
+  },
+  {
+    year: "2021",
+    title: "Sunday XI — Promotion Season",
+    description: "The Sunday 1st XI of 2021, captained by Jacob Squire-Wood, who finished runners-up in Division 2 of the Arden Sunday Cricket League to earn promotion to Division 1. A young side blending emerging juniors with senior experience — exactly the pathway the club's Sunday cricket is designed to provide.",
+    image: img_2021_sunday,
+    background: "cream",
+    players: [
+      { name: "Will Burford", position: "Back row" },
+      { name: "Shailan Srikanthan", position: "Back row" },
+      { name: "Jacob Squire-Wood", position: "Back row", role: "Captain" },
+      { name: "Elliot Needle", position: "Back row" },
+      { name: "Spencer Gray-Nimmo", position: "Back row" },
+      { name: "John Howard", position: "Back row", role: "Umpire" },
+      { name: "Ollie Gray-Nimmo", position: "Front row" },
+      { name: "George Dyche", position: "Front row" },
+      { name: "Farhan Choudhry", position: "Front row" },
+      { name: "Ollie Atkins", position: "Front row" },
+      { name: "Spike Whitehouse", position: "Front row" },
+      { name: "Umair Choudhry", position: "Front row" },
+    ]
+  },
+  {
     year: "2022",
     title: "The 1st Team — White Ball Kit",
     description: "Sutton Coldfield's 1st Team in their 2022 white ball kit, photographed at Rectory Park during one of the most memorable early-season spells in recent memory. Over two consecutive Saturdays in April, the team scored 994 runs for the loss of just 26 wickets. The standout performance was a fifth-wicket partnership of 203 between Raul Ram (95) and Aaron Thomason (114) against Attock CC — a new club record for that wicket at Rectory Park.",
@@ -910,6 +954,25 @@ const teamPhotos: TeamPhoto[] = [
       { name: "Jack Smith" },
       { name: "Raul Ram" },
       { name: "N. Lawrence" },
+    ]
+  },
+  {
+    year: "2026",
+    title: "The First Girls' Hardball Team",
+    description: "History-makers. On Tuesday 9th June 2026 the club's first-ever girls' hardball team — the Under-11 Academy, joined by three guests from Kings Heath CC — played their first match, away against Olton & West Warwickshire Girls. A week later they played the first girls' hardball game ever staged at Rectory Park, a final-ball 132–132 tie against Harborne. The team is the fruit of the girls' grass-roots programme launched in June 2024 under a five-year sponsorship from Life Member Peter Bell.",
+    image: img_2026_girls,
+    background: "cream",
+    players: [
+      { name: "Hafsah" },
+      { name: "Abigail" },
+      { name: "Naomi" },
+      { name: "Asiyah" },
+      { name: "Grace" },
+      { name: "Mahnoor" },
+      { name: "Ahana" },
+      { name: "Becky", role: "Guest — Kings Heath CC" },
+      { name: "Esther", role: "Guest — Kings Heath CC" },
+      { name: "Brook", role: "Guest — Kings Heath CC" },
     ]
   },
 ];

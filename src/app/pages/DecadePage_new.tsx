@@ -35,6 +35,9 @@ import img_2016_veterans from '@/assets/decades/2010s/2016_part3_image1.jpg';
 import img_2022_blueteam from '@/assets/decades/2020s/2022_part3_image63.jpg';
 import img_2021_team from '@/assets/decades/2020s/2021_part3_image51.jpg';
 import img_2022_175th from '@/assets/decades/2020s/2022_part3_image56.jpeg';
+import img_2023_lgbtq_event from '@/assets/decades/2020s/2023_part3_image77.png';
+import img_2025_first_xi_squad from '@/assets/decades/2020s/2025_part3_image97.png';
+import img_2026_girls_team from '@/assets/decades/2020s/2026_first_girls_team.jpg';
 
 // 1850s–1860s archive images
 import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';
@@ -1285,6 +1288,16 @@ const decadeData: Record<string, DecadeData> = {
         description: "A moving centenary performance by schoolchildren and students commemorates the 40 club members lost in the First World War"
       },
       {
+        year: "2017",
+        title: "411 for 2 at Harborne",
+        description: "Lee Thomason's 202 not out and Tom Eustace's unbeaten 127 produce the club's first 400-plus total in 170 years of cricket"
+      },
+      {
+        year: "2018",
+        title: "Farewell to 'Mr Sutton Coldfield'",
+        description: "The club mourns Andy Biddle and Roger Coombs; the Veterans XI Biddle founded plays on, and a defibrillator is installed in his memory"
+      },
+      {
         year: "2019",
         title: "Tom Banton — PCA Young Player of the Year",
         description: "Former SCCC junior Tom Banton wins PCA Young Player of the Year and joins England's T20 squad"
@@ -1302,7 +1315,7 @@ const decadeData: Record<string, DecadeData> = {
     heroSubtitle: "From Pandemic to the Present",
     heroImage: img_2022_blueteam,
     introLarge: "The 2020s opened with the COVID-19 pandemic bringing cricket to a standstill for the first time since the Second World War — and the club responded with the same quiet determination that has defined it for over 175 years.",
-    introBody: "President James Ross galvanised members and vice presidents with personal letters, raising over £3,500 in donations. Grants were secured from Sport England and the ECB. The pitches were tended, the pavilion maintained, and the community held together until cricket could return. In 2022 the club celebrated its 175th anniversary — a milestone reached on the same ground, in the same park, where it all began.",
+    introBody: "President James Ross galvanised members and vice presidents with personal letters, raising over £3,500 in donations. Grants were secured from Sport England and the ECB. The pitches were tended, the pavilion maintained, and the community held together until cricket could return. What followed was a decade of renewal: a 175th anniversary celebrated with records and silverware in 2022, pioneering community tournaments that made Rectory Park a stage for cricket's most inclusive events, the launch of girls' cricket, and — in 2025 — what the club itself called the finest all-round playing season in its history.",
     sections: [
       {
         title: "Lockdown and the Long Return",
@@ -1325,6 +1338,28 @@ const decadeData: Record<string, DecadeData> = {
         ],
         image: img_2022_175th,
         imageCaption: "175th Anniversary Dinner — 8th April 2022, Moor Hall Golf Club, marking 175 years of cricket at Rectory Park"
+      },
+      {
+        title: "A Ground for the Whole Community",
+        background: "cream",
+        content: [
+          "In the 2020s Rectory Park became a stage for cricket far beyond the club's own fixtures. On 11th June 2023 the club hosted the first-ever Inter-County LGBTQ+ cricket tournament — five county sides, national media coverage and international umpire Sue Redfern among the officials — an event so successful it became annual, growing to eight teams by 2026 when Birmingham Unicorns lifted the hardball title on home soil. Weeks after that first tournament, the Warwickshire Bears arrived for a T20 roadshow against a Best of the Warwickshire League XI, drawing a crowd of up to 500 to Rectory Park, with Bears players coaching juniors and signing autographs into the evening.",
+          "The most significant new chapter opened on 15th June 2024, when girls' and ladies' cricket began in earnest: fifteen girls received blue club shirts at the first Saturday-morning session of a grass-roots programme sponsored by Life Member Peter Bell. Two years later, on 9th June 2026, the club's first-ever girls' hardball team — the Under-11 Academy, with guests from Kings Heath — played their first match, and a week after that contested the first girls' hardball game ever staged at Rectory Park: a final-ball tie against Harborne, 132 runs apiece.",
+          "Junior cricket meanwhile went from strength to strength — over 100 youngsters at Friday night sessions, the Under-13s winning the Warwickshire championship in 2023, and a steady stream of juniors graduating into the senior XIs, several via coaching qualifications funded by the Andy Biddle Foundation."
+        ],
+        image: img_2023_lgbtq_event,
+        imageCaption: "The first Inter-County LGBTQ+ cricket tournament, hosted at Rectory Park on 11th June 2023"
+      },
+      {
+        title: "2025 — The Finest All-Round Season",
+        background: "white",
+        content: [
+          "After the difficult 2023 season, in which both the 1st and 2nd XIs were relegated, the club rebuilt around its own young players — and in 2025 the recovery bore remarkable fruit. The Chairman described it as 'probably the most successful playing record across all teams the Club has ever had'. On Saturday 31st May, all four Saturday XIs won on the same afternoon for the first time since the 1980s — the 2nd XI dismissing Solihull Municipal for just 20 runs, with Jack Allen taking 6 for 11.",
+          "The 3rd XI won the Division 8 West championship, Jim Little carrying his bat for 142 not out in a record 218-run third-wicket stand with Darren Fry along the way; the 4th XI were promoted as runners-up in Division 10 West; and the Sunday XI — Arden Division 1 champions in 2024 under Ben Dunnington — consolidated in the Premier. On Presidents Day, Phil Dunnett struck 116 and shared a club-record last-wicket stand of 74 with James Dalton to set up a 15-run win over Harborne.",
+          "Underpinning it all was investment: a new artificial pitch on the lower ground, comprehensively rebuilt practice nets and new covers — more than £20,000 committed to facilities in a single winter — and a new generation of leadership, with Rob Haines elected Chairperson in 2026 following Nick Baker's retirement after six years of service that earned him Life Membership."
+        ],
+        image: img_2025_first_xi_squad,
+        imageCaption: "The 1st XI of 2025 — part of what the club called the finest all-round season in its 178-year history"
       }
     ],
     keyMoments: [
@@ -1334,24 +1369,34 @@ const decadeData: Record<string, DecadeData> = {
         description: "COVID-19 halts cricket for the first time since WWII; the club raises £3,500 in donations and secures £17,000 in grants to stay afloat"
       },
       {
-        year: "2020",
-        title: "Cricket Returns",
-        description: "A compressed season resumes under protocols — the first ball bowled is celebrated like a championship victory"
+        year: "2021",
+        title: "Survival on the Final Day",
+        description: "Victory over Walmley preserves Premier League status and denies the rivals the title; Martin Ball's 7 for 11 skittles Old Edwardians for 20; the 3rd XI win their division by 66 points"
       },
       {
-        year: "2019",
-        title: "Strategic Review",
-        description: "The club commissions a strategic review to plan its future — coaching, recruitment and sustainability are the priorities"
+        year: "2022",
+        title: "175 Years — Records and Silverware",
+        description: "The club's 175th anniversary brings a commemorative ale, a dinner archived at Lord's, a record 314-6 and 211-run win over Attock, and the 2nd XI's Division 5 championship"
       },
       {
-        year: "2021+",
-        title: "Junior Cricket Thrives",
-        description: "Friday evening junior sessions regularly draw over 100 young players to Rectory Park — the pipeline for future senior teams"
+        year: "2023",
+        title: "First LGBTQ+ Tournament and the Bears at Rectory Park",
+        description: "The first Inter-County LGBTQ+ cricket tournament and a Warwickshire Bears T20 roadshow bring crowds of hundreds to the ground"
+      },
+      {
+        year: "2024",
+        title: "Girls' Cricket Launches; Sunday XI Champions",
+        description: "Fifteen girls receive their first club shirts as girls' cricket begins; the Sunday 1st XI win the Arden Division 1 title; the Annual Dinner returns to the pavilion for the first time since 1987"
       },
       {
         year: "2025",
-        title: "178 Years and Counting",
-        description: "Still playing cricket on the same Rectory Park ground founded by the Rev. Riland Bedford in 1847"
+        title: "The Greatest All-Round Season",
+        description: "All four Saturday teams win on the same day; the 3rd XI are champions, the 4th XI promoted — the club's finest collective season in 178 years"
+      },
+      {
+        year: "2026",
+        title: "The First Girls' Hardball Team",
+        description: "The Under-11 Girls' Academy plays the first girls' hardball cricket in the club's history — including a final-ball tie in the first girls' match at Rectory Park"
       }
     ],
     quote: {

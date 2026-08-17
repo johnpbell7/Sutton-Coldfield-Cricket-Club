@@ -84,7 +84,7 @@ import img_1963_team_b from '@/assets/decades/1960s/1963_part2_image39.jpg';
 import img_1963_team_c from '@/assets/decades/1960s/1963_part2_image40.jpg';
 import img_1966_team from '@/assets/decades/1960s/1966_part2_image1.jpg';
 // Modern era archive images (2016-2026) — extracted from the club's master history Part 3
-import img_2016_group from '@/assets/decades/2010s/2016_club_group_rectory_park.jpg';
+import img_2016_free_foresters from '@/assets/decades/2010s/2016_free_foresters_160th.jpg';
 import img_2016_golden_oldies from '@/assets/decades/2010s/2016_golden_oldies_200_years.jpg';
 import img_2016_cake from '@/assets/decades/2010s/2017_ten_not_out_cake.jpg';
 import img_2017_trophy from '@/assets/decades/2010s/2017_part3_image3.png';
@@ -94,6 +94,7 @@ import img_2018_coombs from '@/assets/decades/2010s/2018_roger_coombs.jpg';
 import img_2018_aaron from '@/assets/decades/2010s/2018_part3_image11.jpeg';
 import img_2019_tractor from '@/assets/decades/2010s/2019_president_tractor.jpg';
 import img_2019_banton from '@/assets/decades/2010s/2019_tom_banton_england.jpg';
+import img_2019_pca_awards from '@/assets/decades/2010s/2019_part3_image19.jpeg';
 import img_2019_menu from '@/assets/decades/2010s/2019_annual_dinner_menu.jpg';
 import img_2020_fence from '@/assets/decades/2020s/2020_ground_sightscreen.jpg';
 import img_2020_menu from '@/assets/decades/2020s/2020_annual_dinner_menu.jpg';
@@ -106,6 +107,7 @@ import img_2021_sunday from '@/assets/decades/2020s/2021_part3_image52.png';
 import img_2022_ground from '@/assets/decades/2020s/2022_part3_image61.png';
 import img_2022_first_xi from '@/assets/decades/2020s/2022_first_xi_blue_kit.jpg';
 import img_2022_ale from '@/assets/decades/2020s/2022_part3_image53.png';
+import img_2022_175_badge from '@/assets/decades/2020s/2022_part3_image54.png';
 import img_2023_lgbtq from '@/assets/decades/2020s/2023_part3_image77.png';
 import img_2023_bears from '@/assets/decades/2020s/2023_bears_roadshow_juniors.jpg';
 import img_2023_mascot from '@/assets/decades/2020s/2023_bears_mascot_juniors.jpg';
@@ -1900,10 +1902,10 @@ const timelineData = [
     ],
     closingSummary: "2016 blended sporting disappointment with one of the most moving community events in the club's history, ending an era of leadership as attention turned to rebuilding.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "Club members and guests gather at Rectory Park during the 2016 season.",
-    backgroundImage: img_2016_group,
+    imageCaption: "The Free Foresters return to their inaugural ground for the 160th anniversary match, 11th September 2016 — won by SCCC with a Lee Thomason century.",
+    backgroundImage: img_2016_free_foresters,
     images: [
-      img_2016_group,
+      img_2016_free_foresters,
       img_2016_golden_oldies,
       img_2016_cake,
     ],
@@ -1951,7 +1953,7 @@ const timelineData = [
     closingSummary: "A season of mourning for two of the club's most cherished servants, met with resilience, remembrance and practical action that would protect players for years to come.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Andy Biddle — junior member, 1st XI wicketkeeper, league champion and coach — remembered as 'Mr Sutton Coldfield'.",
-    backgroundImage: img_2018_aaron,
+    backgroundImage: img_2018_biddle,
     images: [
       img_2018_biddle,
       img_2018_coombs,
@@ -1979,8 +1981,8 @@ const timelineData = [
     backgroundImage: img_2019_tractor,
     images: [
       img_2019_tractor,
+      img_2019_pca_awards,
       img_2019_banton,
-      img_2019_menu,
     ],
   },
   {
@@ -2027,12 +2029,13 @@ const timelineData = [
     ],
     closingSummary: "From lockdown gloom to last-day heroics, 2021 delivered survival, silverware and surging membership — the perfect springboard into the club's 175th year.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "Sunset over Rectory Park after an evening Veterans match, June 2021.",
-    backgroundImage: img_2021_sunset,
+    imageCaption: "Two air ambulances land together on a snow-covered Rectory Park, 25th January 2021 — believed to be the first time it has happened.",
+    backgroundImage: img_2021_air_ambulance,
     images: [
       img_2021_air_ambulance,
       img_2021_vets,
       img_2021_sunday,
+      img_2021_sunset,
     ],
   },
   {
@@ -2053,10 +2056,11 @@ const timelineData = [
     ],
     closingSummary: "A milestone year worthy of the occasion: records broken, a championship won, and 175 years of history honoured from Rectory Park to Lord's.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "The top ground at Rectory Park in the club's 175th anniversary year, 2022.",
-    backgroundImage: img_2022_ground,
+    imageCaption: "The 1st XI in the 2022 white-ball kit — the season the club marked 175 years at Rectory Park.",
+    backgroundImage: img_2022_first_xi,
     images: [
       img_2022_first_xi,
+      img_2022_175_badge,
       img_2022_ale,
       img_2022_ground,
     ],
@@ -2079,13 +2083,14 @@ const timelineData = [
     ],
     closingSummary: "Relegations tested the club's spirit, but landmark community events and junior glory proved that Sutton Coldfield's foundations remained rock-solid.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "The first Inter-County LGBTQ+ cricket tournament at Rectory Park, June 2023.",
-    backgroundImage: img_2023_lgbtq,
+    imageCaption: "Storm clouds over Rectory Park — the downpour that washed away a probable first win of the season on President's Day, July 2023.",
+    backgroundImage: img_2023_storm,
     images: [
       img_2023_bears,
+      img_2023_storm,
+      img_2023_lgbtq,
       img_2023_mascot,
       img_2023_clock,
-      img_2023_storm,
     ],
   },
   {

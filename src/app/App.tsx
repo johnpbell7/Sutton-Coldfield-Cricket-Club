@@ -83,7 +83,6 @@ import img_1963_team_c from '@/assets/decades/1960s/1963_part2_image40.jpg';
 import img_1966_team from '@/assets/decades/1960s/1966_part2_image1.jpg';
 // Modern era archive images (2016-2026) — extracted from the club's master history Part 3
 import img_2016_free_foresters from '@/assets/decades/2010s/2016_free_foresters_160th.jpg';
-import img_2016_golden_oldies from '@/assets/decades/2010s/2016_golden_oldies_200_years.jpg';
 import img_2016_cake from '@/assets/decades/2010s/2017_ten_not_out_cake.jpg';
 import img_2017_trophy from '@/assets/decades/2010s/2017_part3_image3.png';
 import img_2017_sculpture from '@/assets/decades/2010s/2017_part3_image4.png';
@@ -105,7 +104,6 @@ import img_2021_sunday from '@/assets/decades/2020s/2021_part3_image52.png';
 import img_2022_ground from '@/assets/decades/2020s/2022_part3_image61.png';
 import img_2022_first_xi from '@/assets/decades/2020s/2022_first_xi_blue_kit.jpg';
 import img_2022_ale from '@/assets/decades/2020s/2022_part3_image53.png';
-import img_2022_175_badge from '@/assets/decades/2020s/2022_part3_image54.png';
 import img_2023_lgbtq from '@/assets/decades/2020s/2023_part3_image77.png';
 import img_2023_bears from '@/assets/decades/2020s/2023_bears_roadshow_juniors.jpg';
 import img_2023_mascot from '@/assets/decades/2020s/2023_bears_mascot_juniors.jpg';
@@ -138,7 +136,6 @@ import img_2010_part2_image58 from '@/assets/decades/2010s/2010_part2_image58.jp
 import img_2010_part2_image60 from '@/assets/decades/2010s/2010_part2_image60.jpg';
 import img_2010_part2_image61 from '@/assets/decades/2010s/2010_part2_image61.jpg';
 import img_2013_part2_image66 from '@/assets/decades/2010s/2013_part2_image66.jpg';
-import img_2013_part2_image67 from '@/assets/decades/2010s/2013_part2_image67.jpg';
 import img_2013_part2_image68 from '@/assets/decades/2010s/2013_part2_image68.jpg';
 import img_2013_part2_image71 from '@/assets/decades/2010s/2013_part2_image71.jpg';
 import img_2016_part3_image1 from '@/assets/decades/2010s/2016_part3_image1.jpg';
@@ -147,14 +144,10 @@ import img_2017_part3_image5 from '@/assets/decades/2010s/2017_part3_image5.jpg'
 import img_2017_part3_image6 from '@/assets/decades/2010s/2017_part3_image7.jpeg';
 import img_2018_part3_image10 from '@/assets/decades/2010s/2018_part3_image10.jpg';
 import img_2018_part3_image9 from '@/assets/decades/2010s/2018_part3_image9.jpg';
-import img_2019_part3_image12 from '@/assets/decades/2010s/2019_part3_image12.jpg';
 import img_2019_part3_image13 from '@/assets/decades/2010s/2019_part3_image22.jpg';
 import img_2020_annual_dinner_menu_food from '@/assets/decades/2020s/2020_annual_dinner_menu_food.jpg';
 import img_2020_part3_image27 from '@/assets/decades/2020s/2020_part3_image27.jpg';
-import img_2021_part3_image25 from '@/assets/decades/2020s/2021_part3_image25.jpg';
-import img_2021_part3_image26 from '@/assets/decades/2020s/2021_part3_image26.jpg';
 import img_2021_part3_image33 from '@/assets/decades/2020s/2021_part3_image33.png';
-import img_2022_part3_image55 from '@/assets/decades/2020s/2022_part3_image55.png';
 import img_2023_annual_dinner_menu from '@/assets/decades/2020s/2023_annual_dinner_menu.jpg';
 import img_2023_annual_dinner_programme from '@/assets/decades/2020s/2023_annual_dinner_programme.jpg';
 import img_2024_part3_image89 from '@/assets/decades/2020s/2024_part3_image89.jpg';
@@ -228,13 +221,10 @@ import img_2022_part3_image62 from '@/assets/decades/2020s/2022_part3_image62.pn
 import img_2022_part3_image64 from '@/assets/decades/2020s/2022_part3_image64.png';
 import img_2022_part3_image65 from '@/assets/decades/2020s/2022_part3_image65.jpg';
 import img_2022_part3_image66 from '@/assets/decades/2020s/2022_part3_image66.png';
-import img_2022_part3_image73 from '@/assets/decades/2020s/2022_part3_image73.jpg';
-import img_2022_part3_image74 from '@/assets/decades/2020s/2022_part3_image74.jpg';
 import img_2023_part3_image75 from '@/assets/decades/2020s/2023_part3_image75.jpg';
 import img_2023_part3_image78 from '@/assets/decades/2020s/2023_part3_image78.jpeg';
 import img_2023_part3_image79 from '@/assets/decades/2020s/2023_part3_image79.jpg';
 import img_2023_part3_image80 from '@/assets/decades/2020s/2023_part3_image80.jpg';
-import img_2023_part3_image81 from '@/assets/decades/2020s/2023_part3_image81.jpg';
 import img_2023_part3_image82 from '@/assets/decades/2020s/2023_part3_image82.jpg';
 import img_2023_part3_image83 from '@/assets/decades/2020s/2023_part3_image83.jpeg';
 import img_2023_part3_image84 from '@/assets/decades/2020s/2023_part3_image84.jpeg';
@@ -3143,7 +3133,6 @@ const timelineData: TimelineEntry[] = [
     backgroundImage: img_2013_part2_image66,
     images: [
       img_2013_part2_image66,
-      img_2013_part2_image67,
       img_2013_part2_image68,
       img_2013_part2_image71,
     ],
@@ -3221,7 +3210,6 @@ const timelineData: TimelineEntry[] = [
     backgroundImage: img_2016_free_foresters,
     images: [
       img_2016_free_foresters,
-      img_2016_golden_oldies,
       img_2016_part3_image1,
       img_2016_part3_image2,
     ],
@@ -3305,7 +3293,6 @@ const timelineData: TimelineEntry[] = [
     images: [
       img_2019_tractor,
       img_2019_menu,
-      img_2019_part3_image12,
       img_2019_part3_image13,
       img_2019_part3_image14,
       img_2019_part3_image20,
@@ -3364,8 +3351,6 @@ const timelineData: TimelineEntry[] = [
     backgroundImage: img_2021_air_ambulance,
     images: [
       img_2021_air_ambulance,
-      img_2021_part3_image25,
-      img_2021_part3_image26,
       img_2021_part3_image33,
       img_2021_part3_image34,
       img_2021_part3_image35,
@@ -3406,16 +3391,12 @@ const timelineData: TimelineEntry[] = [
     images: [
       img_2022_first_xi,
       img_2022_ale,
-      img_2022_175_badge,
-      img_2022_part3_image55,
       img_2022_part3_image57,
       img_2022_part3_image58,
       img_2022_part3_image62,
       img_2022_part3_image64,
       img_2022_part3_image65,
       img_2022_part3_image66,
-      img_2022_part3_image73,
-      img_2022_part3_image74,
     ],
   },
 
@@ -3448,7 +3429,6 @@ const timelineData: TimelineEntry[] = [
       img_2023_part3_image78,
       img_2023_part3_image79,
       img_2023_part3_image80,
-      img_2023_part3_image81,
       img_2023_part3_image82,
       img_2023_part3_image83,
       img_2023_part3_image84,

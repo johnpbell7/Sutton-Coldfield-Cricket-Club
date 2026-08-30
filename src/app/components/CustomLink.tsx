@@ -1,4 +1,5 @@
 import { MouseEvent, ReactNode, forwardRef } from "react";
+import { appPath, currentAppPath, href } from "@/app/routing";
 
 interface CustomLinkProps {
   to: string;
@@ -10,13 +11,15 @@ interface CustomLinkProps {
 export const CustomLink = forwardRef<HTMLAnchorElement, CustomLinkProps>(
   ({ to, children, className, onClick }, ref) => {
     const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+      // Leave the browser to handle opening in a new tab or window.
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
       e.preventDefault();
       (window as any).navigateTo(to);
       if (onClick) onClick();
     };
 
     return (
-      <a ref={ref} href={to} onClick={handleClick} className={className}>
+      <a ref={ref} href={href(to)} onClick={handleClick} className={className}>
         {children}
       </a>
     );
@@ -34,21 +37,21 @@ export function useNavigate() {
 
 // Custom useParams hook
 export function useParams<T = any>(): T {
-  const path = window.location.pathname;
+  const path = currentAppPath();
   const parts = path.split('/');
-  
+
   // For /decades/:year pattern
   if (path.startsWith('/decades/')) {
     return { year: parts[2] } as T;
   }
-  
+
   return {} as T;
 }
 
 // Custom useLocation hook
 export function useLocation() {
   return {
-    pathname: window.location.pathname,
+    pathname: appPath(window.location.pathname),
     search: window.location.search,
     hash: window.location.hash,
   };

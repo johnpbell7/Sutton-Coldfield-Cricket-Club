@@ -208,6 +208,7 @@ import DecadePage from "@/app/pages/DecadePage_new";
 import MeetTheTeams from "@/app/pages/MeetTheTeams";
 import Obituaries from "@/app/pages/Obituaries";
 import ClubhouseMode from "@/app/pages/ClubhouseMode";
+import { currentAppPath, href } from "@/app/routing";
 
 
 
@@ -3947,11 +3948,14 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  
+  // Paths here are always app paths, with the GitHub Pages sub-path stripped
+  // off, so a link works the same whether the site is served from the root or
+  // from /Sutton-Coldfield-Cricket-Club/.
+  const [currentPath, setCurrentPath] = useState(currentAppPath);
+
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname);
+      setCurrentPath(currentAppPath());
       window.scrollTo(0, 0);
     };
     window.addEventListener('popstate', handlePopState);
@@ -3959,7 +3963,7 @@ export default function App() {
   }, []);
 
   (window as any).navigateTo = (path: string) => {
-    window.history.pushState({}, '', path);
+    window.history.pushState({}, '', href(path));
     setCurrentPath(path);
     window.scrollTo(0, 0);
   };

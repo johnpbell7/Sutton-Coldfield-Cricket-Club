@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "@/app/components/CustomLink";
+import { href } from "@/app/routing";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 
 /**
@@ -64,6 +65,8 @@ export function DecadeCard({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Leave the browser to handle opening in a new tab or window.
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
 
     // A hover device has already played the animation, so go straight there.
@@ -85,7 +88,7 @@ export function DecadeCard({
 
   return (
     <a
-      href={link}
+      href={href(link)}
       onClick={handleClick}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchCancel}

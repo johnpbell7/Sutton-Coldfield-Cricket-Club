@@ -106,7 +106,6 @@ import img_1960_part1_image78 from '@/assets/decades/1960s/1960_part1_image78.jp
 import img_1963_part2_image39 from '@/assets/decades/1960s/1963_part2_image39.jpg';
 import img_1963_part2_image40 from '@/assets/decades/1960s/1963_part2_image40.jpg';
 import img_2013_part2_image66 from '@/assets/decades/2010s/2013_part2_image66.jpg';
-import img_2013_part2_image67 from '@/assets/decades/2010s/2013_part2_image67.jpg';
 import img_2015_part2_image75 from '@/assets/decades/2010s/2015_part2_image75.jpg';
 import img_2016_free_foresters_160th from '@/assets/decades/2010s/2016_free_foresters_160th.jpg';
 import img_2019_tom_banton_england from '@/assets/decades/2010s/2019_tom_banton_england.jpg';
@@ -1705,8 +1704,6 @@ const decadeData: Record<string, DecadeData> = {
           "Lee Thomason just failed to reach a thousand runs in the division, finishing with 969 at over 60.6, including 112 not out against Nuneaton and 100 not out against Bablake. Mark Guest made 641 at 37.7 with a hundred off 100 balls against Kenilworth, James Hunt 604 at 50.3, and Jack Smith 135 not out against Olton. Promotion back into the Birmingham League was celebrated as a watershed, the 2nd XI going up alongside them as runners-up in their own Premier Division.",
           "Four more titles followed. The Sunday 1st XI were champions of the Warwickshire Sunday League; the WCL T20 final was won at Hampton & Solihull, Bedworth held to 128 for 7 before Lee Thomason's 62 and Aaron Thomason's unbeaten 40 saw Sutton home in 17.3 overs; Walmley's floodlit round-robin was taken with three wins from three; and on Sunday 22nd September Aldridge were beaten in the Last Man Stands final, 147 answered with 148 for 7. Five titles in one summer.",
         ],
-        image: img_2013_part2_image67,
-        imageCaption: "Sutton Coldfield CC, 2013 — unbeaten champions of the Warwickshire Cricket League Premier Division with a league record 426 points"
       },
       {
         title: "Promotion, Remembrance and a Knock-Out Cup (2014–2015)",

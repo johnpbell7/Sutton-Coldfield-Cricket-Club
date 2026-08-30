@@ -118,7 +118,6 @@ import img_1913_part1_image74 from '@/assets/decades/1910s/1913_part1_image74.jp
 import img_1913_part1_image75 from '@/assets/decades/1910s/1913_part1_image75.jpg';
 import img_1916_part1_image34 from '@/assets/decades/1910s/1916_part1_image34.jpeg';
 import img_1916_part1_image35 from '@/assets/decades/1910s/1916_part1_image35.png';
-import img_1916_part1_image36 from '@/assets/decades/1910s/1916_part1_image36.png';
 import img_1916_part1_image37 from '@/assets/decades/1910s/1916_part1_image37.png';
 import img_1916_part1_image38 from '@/assets/decades/1910s/1916_part1_image38.png';
 import img_1916_part1_image39 from '@/assets/decades/1910s/1916_part1_image39.jpeg';
@@ -135,7 +134,6 @@ import img_2006_part2_image46 from '@/assets/decades/2000s/2006_part2_image46.jp
 import img_2010_part2_image58 from '@/assets/decades/2010s/2010_part2_image58.jpg';
 import img_2010_part2_image60 from '@/assets/decades/2010s/2010_part2_image60.jpg';
 import img_2010_part2_image61 from '@/assets/decades/2010s/2010_part2_image61.jpg';
-import img_2013_part2_image66 from '@/assets/decades/2010s/2013_part2_image66.jpg';
 import img_2013_part2_image68 from '@/assets/decades/2010s/2013_part2_image68.jpg';
 import img_2013_part2_image71 from '@/assets/decades/2010s/2013_part2_image71.jpg';
 import img_2016_part3_image1 from '@/assets/decades/2010s/2016_part3_image1.jpg';
@@ -154,7 +152,6 @@ import img_2024_part3_image89 from '@/assets/decades/2020s/2024_part3_image89.jp
 import img_2024_part3_image90 from '@/assets/decades/2020s/2024_part3_image90.jpeg';
 import img_2025_part3_image104 from '@/assets/decades/2020s/2025_part3_image104.jpeg';
 import img_1905_part1_image13 from '@/assets/decades/1900s/1905_part1_image13.jpg';
-import img_1916_part1_image40 from '@/assets/decades/1910s/1916_part1_image40.png';
 import img_1916_part1_image41 from '@/assets/decades/1910s/1916_part1_image41.jpg';
 import img_1916_part1_image42 from '@/assets/decades/1910s/1916_part1_image42.jpg';
 import img_1916_part1_image43 from '@/assets/decades/1910s/1916_part1_image43.png';
@@ -867,7 +864,7 @@ const timelineData: TimelineEntry[] = [
     closingSummary: "Even in wartime the Club sustained limited activity and preserved its foundations, while its members paid a price recorded on memorials far from Rectory Park.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Wartime administration and remembrance, 1915–1918.",
-    backgroundImage: img_1916_part1_image36,
+    backgroundImage: img_1916_part1_image37,
     images: [
       img_1916_part1_image37,
       img_1916_part1_image39,
@@ -892,8 +889,8 @@ const timelineData: TimelineEntry[] = [
     ],
     closingSummary: "1916 cost the club both its Secretary and its Treasurer, and left four photographs of a ground whose summer work had ceased to be cricket.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "Four photographs from 1916, the year the club lost both its Honorary Secretary and its Honorary Treasurer.",
-    backgroundImage: img_1916_part1_image40,
+    imageCaption: "Second Lieutenant Esmond Hallewell Rogers, one of the men lost in 1916 — the year the club lost both its Honorary Secretary and its Honorary Treasurer.",
+    backgroundImage: img_1916_part1_image41,
     images: [
       img_1916_part1_image41,
       img_1916_part1_image42,
@@ -3129,10 +3126,9 @@ const timelineData: TimelineEntry[] = [
     ],
     closingSummary: "Five titles, an unbeaten league campaign and a record points haul — by common consent the finest season in Sutton Coldfield's modern history, and the making of a very young side.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "The Warwickshire Cricket League Premier Division champions of 2013 — unbeaten all season and back in the Birmingham League.",
-    backgroundImage: img_2013_part2_image66,
+    imageCaption: "A member of the 2013 side, unbeaten champions of the Warwickshire Cricket League Premier Division and back in the Birmingham League. No team photograph of that season survives in the archive.",
+    backgroundImage: img_2013_part2_image68,
     images: [
-      img_2013_part2_image66,
       img_2013_part2_image68,
       img_2013_part2_image71,
     ],

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useNavigate } from "@/app/components/CustomLink";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "@/app/components/CustomLink";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 
 /**
@@ -39,18 +39,28 @@ export function DecadeCard({
 }: DecadeCardProps) {
   const navigate = useNavigate();
   const [entering, setEntering] = useState(false);
+  const timer = useRef<number>();
 
-  const handleClick = (e: React.MouseEvent) => {
-    // Desktop keeps the plain link; hover has already shown the animation.
-    if (window.innerWidth >= 1024 || entering) return;
+  useEffect(() => () => window.clearTimeout(timer.current), []);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+
+    // Desktop has already shown the animation on hover, so go straight there.
+    if (window.innerWidth >= 1024) {
+      navigate(link);
+      return;
+    }
+
+    // Below lg a tap plays the animation first. Ignore repeat taps.
+    if (entering) return;
     setEntering(true);
-    window.setTimeout(() => navigate(link), MOBILE_HOLD_MS);
+    timer.current = window.setTimeout(() => navigate(link), MOBILE_HOLD_MS);
   };
 
   return (
-    <Link
-      to={link}
+    <a
+      href={link}
       onClick={handleClick}
       aria-label={`${title}, ${years}`}
       className={`group block overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 relative ${className}`}
@@ -99,6 +109,6 @@ export function DecadeCard({
           <span className="hidden lg:inline">Explore this decade</span>
         </span>
       </div>
-    </Link>
+    </a>
   );
 }

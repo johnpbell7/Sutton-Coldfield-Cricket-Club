@@ -1,6 +1,7 @@
 import { useParams, Link } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
+import { DecadeCard } from "@/app/components/DecadeCard";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { useState, useEffect, useRef } from "react";
@@ -2062,7 +2063,7 @@ export default function DecadePage() {
               />
               <div className="border-b border-[#d9c9ca] py-3 mt-4">
                 <p className="font-['Georgia',serif] text-sm md:text-base text-[#4a4a4a]">
-                  {decade.name}, {decade.period}
+                  {decade.name}, {decade.years}
                 </p>
               </div>
             </div>
@@ -2667,48 +2668,16 @@ export default function DecadePage() {
                     link: "/decades/2020"
                   }
                 ].map((decade) => (
-                  <Link
-                    key={decade.id}
-                    to={decade.link}
-                    className="group overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 relative flex-shrink-0 w-[280px] md:w-[320px] h-80"
-                  >
-                    <img
-                      src={decade.image}
-                      alt={decade.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent md:from-black/50" />
-                    
-                    {/* Angled red overlay - appears on hover */}
-                    <div 
-                      className="absolute bottom-0 left-0 right-0 h-32 bg-[#8B1538] transition-transform duration-300 translate-y-full group-hover:translate-y-0"
-                      style={{
-                        clipPath: 'polygon(0 30%, 100% 0, 100% 100%, 0 100%)'
-                      }}
-                    />
-
-                    {/* Title and Years - slide up on hover */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 z-10 transition-transform duration-300 group-hover:-translate-y-8">
-                      <h3 className="font-['Archivo_Black',sans-serif] text-3xl font-bold text-white">
-                        {decade.title}
-                      </h3>
-                      <p className="font-['Helvetica',sans-serif] text-sm text-white/90 mt-1">
-                        {decade.years}
-                      </p>
-                    </div>
-
-                    {/* Explore text - revealed on hover */}
-                    <div className="absolute bottom-6 left-6 right-6 flex items-center text-white transition-opacity duration-300 z-0 opacity-0 group-hover:opacity-100">
-                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                      <span className="font-['Helvetica',sans-serif] text-base font-semibold">
-                        Explore this decade
-                      </span>
-                    </div>
-                  </Link>
-                ))}
+                      <DecadeCard
+                        key={decade.id}
+                        id={decade.id}
+                        title={decade.title}
+                        years={decade.years}
+                        image={decade.image}
+                        link={decade.link}
+                        className="flex-shrink-0 w-[280px] md:w-[320px] h-80"
+                        lazy={true}
+                      />))}
               </div>
             </div>
           </div>

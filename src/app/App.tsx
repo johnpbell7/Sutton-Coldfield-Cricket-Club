@@ -210,7 +210,22 @@ import Obituaries from "@/app/pages/Obituaries";
 
 
 
-const timelineData = [
+interface TimelineEntry {
+  year: string;
+  title: string;
+  shortDescription: string;
+  yearOverview?: string;
+  keyEvents?: string[];
+  closingSummary?: string;
+  fullDescription?: string;
+  location: string;
+  imageCaption?: string;
+  images: string[];
+  video?: string;
+  backgroundImage?: string;
+}
+
+const timelineData: TimelineEntry[] = [
   {
     year: "1837",
     title: "Early Cricket in Sutton Coldfield",
@@ -225,8 +240,6 @@ const timelineData = [
     closingSummary: "1837 represents the earliest known evidence of cricket in Sutton Coldfield, laying the foundations for the Club's later formation.",
     location: "Rectory Park & Sutton Park",
     imageCaption: "Early cricket in Sutton Coldfield's parks, 1837.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -250,8 +263,6 @@ const timelineData = [
     location: "Sutton Park & Rectory Park, Sutton Coldfield",
     imageCaption: "The club's foundation under Rev. W.K. Riland Bedford, 1847.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -273,8 +284,6 @@ const timelineData = [
     closingSummary: "1856 secured the Club's survival through reorganisation and gave the game a wandering club of national standing, born on Sutton Coldfield's own turf.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The club's revival and the founding of the Free Foresters, 1856.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -352,8 +361,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The restored square and new pavilion, 1869.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -398,8 +405,6 @@ const timelineData = [
     location: "Rectory Park",
     imageCaption: "Growing organisation at Rectory Park, 1875.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -416,8 +421,6 @@ const timelineData = [
     closingSummary: "1883 was a pivotal year in which the Club narrowly avoided closure through collective support and financial recovery.",
     location: "Rectory Park",
     imageCaption: "Survival against the odds at Rectory Park, 1883.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -511,8 +514,6 @@ const timelineData = [
     location: "Rectory Park",
     imageCaption: "The Golden Jubilee celebrations, 1896.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -535,8 +536,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "A settled season at Rectory Park, 1899.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -555,8 +554,6 @@ const timelineData = [
     location: "Rectory Park",
     imageCaption: "The first Gymkhana event at Rectory Park, 1902.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -574,8 +571,6 @@ const timelineData = [
     closingSummary: "This period combined progress in professionalism with the significant loss of the Club's founder, marking a transition in leadership.",
     location: "Rectory Park",
     imageCaption: "Professional coaching begins at Rectory Park, 1904.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -920,8 +915,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Rebuilding and remembrance at Rectory Park, 1919.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -943,8 +936,6 @@ const timelineData = [
     closingSummary: "The 1919 season saw a strong return to competitive cricket despite lingering post-war challenges, and left behind score books that still record it.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Return to cricket at Rectory Park, 1919 season.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -992,8 +983,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "New talent emerging at Rectory Park, 1922.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1015,8 +1004,6 @@ const timelineData = [
     closingSummary: "1923 combined strong cricketing success with ongoing financial challenges, and sent a Sutton batsman out to open the season's most unexpected door at Edgbaston.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The Sutton Coldfield First XI of 1923, the season Norman Sharp played his only first-class match.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1063,8 +1050,6 @@ const timelineData = [
     closingSummary: "1925 was a steady year of consolidation, strengthening organisation and maintaining the improvements made to the Club.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Competitive cricket continues, 1925.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1116,8 +1101,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Rectory Park in 1927, the season Harold Robinson first took charge of the First XI scorebook.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1140,8 +1123,6 @@ const timelineData = [
     closingSummary: "1928 was a standout year for batting strength, highlighted by record-breaking performances and one of the strongest sides the Club has ever fielded.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The 1928 side at Rectory Park — seven county cricketers and an England man among them.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1167,8 +1148,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Modernisation at Rectory Park, 1929.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1191,8 +1170,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Cricket at Rectory Park, 1930 — the first season of E.H. Walters's decade as Hon. Secretary.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1210,8 +1187,6 @@ const timelineData = [
     closingSummary: "1931 was a successful and stable season, with strong leadership and consistent performances across the club.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "A successful season at Rectory Park, 1931.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1231,8 +1206,6 @@ const timelineData = [
     closingSummary: "1932 combined reflection and progress, with key losses balanced by investment and strong on-field performances.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Rectory Park improvements, 1932.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1281,8 +1254,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "High-scoring cricket at Rectory Park, 1934.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1304,8 +1275,6 @@ const timelineData = [
     closingSummary: "1935 was a difficult season on the field, but an important one: it brought the Free Foresters home and closed the career of one of the Club's finest all-rounders.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Rectory Park in 1935, the season the Free Foresters returned and F.B. Clark retired.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1402,8 +1371,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The final season before war: Sutton Coldfield, 1939.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1426,8 +1393,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Cricket under war conditions at Rectory Park, 1940.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1445,8 +1410,6 @@ const timelineData = [
     closingSummary: "1941 marked a sharp decline in cricketing activity as war pressures intensified and key figures were lost.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Declining activity at Rectory Park, 1941.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1488,8 +1451,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Cricket maintained against all odds, 1943–1944.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1511,8 +1472,6 @@ const timelineData = [
     closingSummary: "1945 marked the beginning of recovery, with rebuilding under way both on the field and across a ground worn thin by six years of war.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Return to peacetime cricket at Rectory Park, 1945.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1586,8 +1545,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Rebuilding continues at Rectory Park, 1948, in Norman Sharp's last season as captain.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1635,8 +1592,6 @@ const timelineData = [
     closingSummary: "1950 marked a transition into stability — stronger organisation and a new entrance for the motoring age, set against the loss of a key player.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The approach to the cricket ground through the new top gate, Rectory Park, 1950.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1729,8 +1684,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "A young intake at Rectory Park, 1954, the year the club's development policy came good.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1802,8 +1755,6 @@ const timelineData = [
     closingSummary: "1957 reinforced the club's organisational strength, ensuring continuity and sustained success across teams, and staged a county benefit match against Warwickshire.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Warwickshire visit Rectory Park for Dick Spooner's benefit, 1957.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -1902,8 +1853,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Roger Coombs behind the stumps in his record season, 1961.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -1978,8 +1927,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The thatched pavilion, judged in 1964 to have a limited life left.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -2049,8 +1996,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Pavilion plans take shape at Rectory Park, 1967.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -2073,8 +2018,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Amalgamation with the Hockey Club paved the way for a new pavilion, 1968.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -2093,8 +2036,6 @@ const timelineData = [
     closingSummary: "1969 combined the Club's best playing season on record with the dramatic destruction of the eighty-year-old thatched pavilion on the eve of its planned demolition.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The old thatched pavilion in its final months at Rectory Park, 1969.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -2143,8 +2084,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The new pavilion at Rectory Park in its first full season, host to the Annual Dinner for the first time in 1971.",
     images: [],
-    images: [],
-    images: [],
   },
 
   {
@@ -2192,7 +2131,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The lower ground at Rectory Park, whose western boundary had long been marked by the great ash tree blown down in the gales of spring 1973.",
     images: [],
-    images: [],
   },
 
   {
@@ -2214,7 +2152,6 @@ const timelineData = [
     closingSummary: "The year the Association mortgaged its future to improve its pavilion, and the year its historian laid down his pen after a lifetime of writing the Club's story.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The pavilion at Rectory Park, whose bar, kitchen and lounge were to be remodelled with the £9,500 Greenall Whitley loan agreed at the Special General Meeting of March 1974.",
-    images: [],
     images: [],
   },
 
@@ -2262,7 +2199,6 @@ const timelineData = [
     closingSummary: "A steady season of familiar names and familiar figures, remembered chiefly for the one run that got away from John Payne at Stratford.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The pavilion at Rectory Park, where the Annual Dinner of Friday 30th January 1976 was held with Norman Gifford of Worcestershire and England as the principal guest.",
-    images: [],
     images: [],
   },
 
@@ -2365,7 +2301,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The Sutton Coldfield News report of the summer of 1980, recording John Robinson's 7 for 22 against Solihull at Rectory Park and the rain that denied Sutton the victory.",
     images: [],
-    images: [],
   },
 
   {
@@ -2387,7 +2322,6 @@ const timelineData = [
     closingSummary: "A season thinly recorded on the field but eventful off it, in which the Club lost a score-box, gave up its Donkey Derby and won a shield with its third eleven.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The top-ground score-box at Rectory Park, destroyed by a petrol bomb in 1981 and rebuilt by Frank Lamb with funds subscribed by the members.",
-    images: [],
     images: [],
   },
 
@@ -2436,7 +2370,6 @@ const timelineData = [
     closingSummary: "A drawn-out league season redeemed by the emergence of Andy Hodder as one of the finest all-rounders the Club had produced.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Andy Hodder, leg spinner and all-rounder, whose 84 wickets at 15.2 and 724 runs at 31.5 made him the outstanding Sutton cricketer of 1983.",
-    images: [],
     images: [],
   },
 
@@ -2611,7 +2544,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Andy Luckhurst, first eleven captain from 1990, whose 116 and Chris Munn’s 102 not out added 216 for the fourth wicket against Solihull at Rectory Park.",
     images: [],
-    images: [],
   },
 
   {
@@ -2634,7 +2566,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The second eleven of the early 1990s, whose 21 wins from 40 matches are the best-recorded cricket of the 1991 season; the club’s papers preserve little else from the summer.",
     images: [],
-    images: [],
   },
 
   {
@@ -2656,8 +2587,6 @@ const timelineData = [
     closingSummary: "A year of no upheaval and one signing — but the settled committee and the settled side were exactly what the championship of 1993 was built on.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Adam Bacher, the South African batsman engaged as Sutton Coldfield’s overseas professional for the 1992 season, and later a Test opener for his country.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -2709,7 +2638,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The pavilion after the 1994 rebuild, its wood and asbestos framework now faced in brick inside and out and a pitched roof raised above the old flat one.",
     images: [],
-    images: [],
   },
 
   {
@@ -2731,7 +2659,6 @@ const timelineData = [
     closingSummary: "An even season on the field, but a landmark one off it: the club dined in its own rebuilt pavilion, and a Sunday trophy went into the cabinet.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Chris Cowdrey of Kent and England, guest of honour at the annual dinner held in the club’s refurbished pavilion on Friday 28th January 1995.",
-    images: [],
     images: [],
   },
 
@@ -2859,7 +2786,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Fred Trueman OBE, Yorkshire and England, principal guest at the annual dinner at Aston Wood Golf Club on Friday 28th January 2000.",
     images: [],
-    images: [],
   },
 
   {
@@ -2881,8 +2807,6 @@ const timelineData = [
     closingSummary: "A signature on Christmas Day secured Rectory Park for a generation, while the Sunday sides made the summer sing with 300-plus totals and hundreds by the handful.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Rectory Park, secured for a further thirty years by the lease signed with Birmingham City Council on 25th December 2001.",
-    images: [],
-    images: [],
     images: [],
   },
 
@@ -2906,7 +2830,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The club’s first set of roll-on, roll-off covers, bought in 2002 when the cricket club took over full responsibility for maintaining the Rectory Park ground.",
     images: [],
-    images: [],
   },
 
   {
@@ -2928,7 +2851,6 @@ const timelineData = [
     closingSummary: "A season the club would rather have forgotten on Saturdays, and one it could never forget off the field — Graham Williamson’s name now on a trophy of its own.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Graham Williamson, Sutton Coldfield’s first eleven captain from 1985 to 1987, who died on 19th July 2003 and is remembered in the Birmingham League’s Graham Williamson K.O. Trophy.",
-    images: [],
     images: [],
   },
 
@@ -3028,7 +2950,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The 3rd XI’s unbroken third-wicket stand of 253 against Berkswell — John Klapper 123 not out and his thirteen-year-old son James 113 not out in forty overs.",
     images: [],
-    images: [],
   },
 
   {
@@ -3078,7 +2999,6 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Peter Wells, known throughout the club as “Seam” — player from 1949, chairman, Life Member and President, and the originator of Sutton’s junior cricket, who died in March 2009.",
     images: [],
-    images: [],
   },
 
   {
@@ -3127,7 +3047,6 @@ const timelineData = [
     closingSummary: "The season the club fell out of the Birmingham League altogether — and, in a head coach and a set of nets, the year the recovery quietly began.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The new practice nets at Rectory Park, funded mainly by the ECB and opened on Saturday 30th April 2011, the season Steve Perryman arrived as head coach.",
-    images: [],
     images: [],
   },
 
@@ -3228,7 +3147,6 @@ const timelineData = [
     closingSummary: "A third promotion in three seasons and a Birmingham League Twenty20 won by four runs — the young side of 2013 proving it could take trophies in senior company.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The 1st XI of 2015, named on the print: James Hunt, Tom Wright, Steven Howard, Paul Griffiths, Dan Childs and Eustace; Mark Guest, Lee Thomason, Graham Clark (captain), Jack Smith and Lewis Harrison.",
-    images: [],
     backgroundImage: img_2015_part2_image75,
     images: [
       img_2015_part2_image75,

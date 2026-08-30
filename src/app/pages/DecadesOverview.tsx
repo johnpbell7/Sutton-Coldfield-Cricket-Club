@@ -1,6 +1,7 @@
-import { Link, useNavigate } from "@/app/components/CustomLink";
+import { Link } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
+import { DecadeCard } from "@/app/components/DecadeCard";
 import { useState, useEffect, useRef } from "react";
 import bannerImage from "@/assets/ui/page-banner.png";
 
@@ -145,25 +146,8 @@ const decades = [
 ];
 
 export default function DecadesOverview() {
-  const navigate = useNavigate();
-  const [clickedCard, setClickedCard] = useState<string | null>(null);
-  const cardRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const observerRef = useRef<IntersectionObserver | null>(null);
-
-  const handleCardClick = (e: React.MouseEvent, decadeId: string, link: string) => {
-    // Only intercept on mobile/tablet (below lg breakpoint)
-    if (window.innerWidth < 1024) {
-      e.preventDefault();
-      setClickedCard(decadeId);
-      
-      // Navigate after animation completes (increased delay for smoother experience)
-      setTimeout(() => {
-        navigate(link);
-      }, 600);
-    }
-    // On desktop, let the Link work normally
-  };
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -186,13 +170,6 @@ export default function DecadesOverview() {
       }
     };
   }, []);
-
-  useEffect(() => {
-    const currentRef = cardRefs.current[clickedCard || ''];
-    if (currentRef) {
-      currentRef.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }, [clickedCard]);
 
   return (
     <div className="min-h-screen bg-[#f8f6f3]">
@@ -224,59 +201,16 @@ export default function DecadesOverview() {
 
         {/* Decades Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {decades.map((decade, index) => (
-            <Link
+          {decades.map((decade) => (
+            <DecadeCard
               key={decade.id}
-              to={decade.link}
-              className="group overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 relative h-80"
-              onClick={(e) => handleCardClick(e, decade.id, decade.link)}
-              ref={(el) => {
-                cardRefs.current[decade.id] = el;
-              }}
-            >
-              <img
-                src={decade.image}
-                alt={decade.title}
-                loading="lazy"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent md:from-black/50" />
-              
-              {/* Angled red overlay - appears on hover (desktop), slides up on click (mobile/tablet) */}
-              <div 
-                className={`absolute bottom-0 left-0 right-0 h-32 bg-[#8B1538] transition-transform duration-300 ${
-                  clickedCard === decade.id ? 'translate-y-0' : 'translate-y-full'
-                } md:translate-y-full md:group-hover:translate-y-0`}
-                style={{
-                  clipPath: 'polygon(0 30%, 100% 0, 100% 100%, 0 100%)'
-                }}
-              />
-
-              {/* Title and Years - slide up on hover (desktop) or click (mobile/tablet) */}
-              <div className={`absolute bottom-0 left-0 right-0 p-6 z-10 transition-transform duration-300 ${
-                clickedCard === decade.id ? '-translate-y-8' : ''
-              } md:translate-y-0 md:group-hover:-translate-y-8`}>
-                <h3 className="font-['Archivo_Black',sans-serif] text-3xl font-bold text-white">
-                  {decade.title}
-                </h3>
-                <p className="font-['Helvetica',sans-serif] text-sm text-white/90 mt-1">
-                  {decade.years}
-                </p>
-              </div>
-
-              {/* Explore/Entering text - revealed on hover (desktop) or click (mobile/tablet) */}
-              <div className={`absolute bottom-6 left-6 right-6 flex items-center text-white transition-opacity duration-300 z-0 ${
-                clickedCard === decade.id ? 'opacity-100' : 'opacity-0'
-              } md:opacity-0 md:group-hover:opacity-100`}>
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-                <span className="font-['Helvetica',sans-serif] text-base font-semibold">
-                  <span className="lg:hidden">Entering this decade</span>
-                  <span className="hidden lg:inline">Explore this decade</span>
-                </span>
-              </div>
-            </Link>
+              id={decade.id}
+              title={decade.title}
+              years={decade.years}
+              image={decade.image}
+              link={decade.link}
+              className="h-80"
+            />
           ))}
           
           {/* Our Journey Timeline Link Block */}

@@ -123,6 +123,12 @@ import img_1977_part2_image7 from '@/assets/decades/1970s/1977_part2_image7.jpg'
 import img_1984_part2_image15 from '@/assets/decades/1980s/1984_part2_image15.jpg';
 import img_1982_part2_image13 from '@/assets/decades/1980s/1982_part2_image13.jpg';
 import img_1986_part2_image18 from '@/assets/decades/1980s/1986_part2_image18.jpg';
+import img_1906_part1_image15 from '@/assets/decades/1900s/1906_part1_image15.jpg';
+import img_1905_part1_image13 from '@/assets/decades/1900s/1905_part1_image13.jpg';
+import img_1907_part1_image17 from '@/assets/decades/1900s/1907_part1_image17.jpg';
+import img_1912_part1_image23 from '@/assets/decades/1910s/1912_part1_image23.jpg';
+import img_1914_part1_image26 from '@/assets/decades/1910s/1914_part1_image26.jpg';
+import img_1916_part1_image41 from '@/assets/decades/1910s/1916_part1_image41.jpg';
 
 // Decade page component with split introduction text
 interface DecadeData {
@@ -373,228 +379,248 @@ const decadeData: Record<string, DecadeData> = {
     }
   },
   "1900s": {
-    name: "A Time of Change and Uncertainty",
-    years: "1901-1909",
-    heroTitle: "A Time of Change and Uncertainty",
-    heroSubtitle: "Growth, Loss, and the Question of the Ground",
+    name: "The Turn of the Century",
+    years: "1900-1909",
+    heroTitle: "The Edwardian Club",
+    heroSubtitle: "A Professional, a Fourth Team, and the Founder's Last Winter",
     heroImage: img_1906_1stxi,
-    introLarge: "The opening years of the twentieth century were a period of transition for Sutton Coldfield Cricket Club.",
-    introBody: "While the foundations laid in the previous decades continued to support the club, these years were marked by administrative change, social events, and emerging uncertainty over the long-term security of Rectory Park. Membership increased, playing standards improved, and fundraising activities became more structured, yet the club also experienced the loss of its founder and the challenges of maintaining facilities and finances in a changing social landscape.",
+    introLarge: "The Edwardian decade gave Sutton Coldfield Cricket Club a paid professional, a fourth Saturday side and a membership of 114 — and, in January 1905, took from it the founder who had made all of it possible.",
+    introBody: "These were years of quiet consolidation rather than crisis. W.H. Sidney was engaged in 1904 as groundsman, coach and professional player; the lower ground was brought into use for extra matches and given a pavilion of its own, paid for by open-air concerts; and a Gymkhana of novelty races, first held in 1902, settled into an annual fixture of its own. Yet the club never owned the field it played on, and by 1907 the ecclesiastical ownership of Rectory Park had become an open question. The most consequential arrivals of the decade were the quietest: a four-year-old boy who came to Sutton behind his father in 1905, and a generation of Bishop Vesey's and King Edward's schoolboys who joined the club as young men and whose names would end up on memorials in France.",
     sections: [
       {
-        title: "Leadership and Administration",
+        title: "Twopence in the Tin",
         background: "cream",
         content: [
-          "In 1901, William Fowler retired after more than a decade of service as Hon. Secretary and Treasurer. His careful administration had provided stability, and his departure marked a turning point in club governance.",
-          "1902 saw C. Shelvoke serve as captain for a single season. R.S. Walters, Hon. Treasurer, experimented with supplying refreshments for members, an effort quickly abandoned after financial impracticality. These years illustrated both the continuity of leadership and the challenges of informal club management."
+          "The early years of the century saw gradual changes in the men who ran the club. T.A. Vaughton, one of the batsmen of the 1893 side, concluded his period as captain, and C. Shelvoke took the side for 1902; both were noted batsmen, and playing standards held steady through the handover. R.S. Walters took on the office of Honorary Treasurer, and the pattern of captain, secretary and treasurer that had been formalised in the 1880s carried on much as before.",
+          "One episode of 1902 says more about the club's culture than any minute of business. The committee introduced a system by which drinks were supplied on trust, members being expected to place their payments in a secured tin. When the container was eventually opened it was found to contain twopence. The experiment was brought to an immediate end, and the club went back to ordering its refreshments in the older way.",
+          "The gap in the accounts had to be filled somehow, and in the same year the club organised its first Gymkhana — novelty races and competitions of skill, open to members and their families. It proved popular enough to become a recurring feature of the season for years afterwards. Open-air concerts served the same purpose, relied entirely on volunteer organisation, and were recognised as vital to keeping the books in balance.",
         ],
         image: img_1905_team_a,
-        imageCaption: "Sutton Coldfield CC, 1905"
+        imageCaption: "Sutton Coldfield CC, 1905 — one of three photographs surviving from that season."
       },
       {
-        title: "Cricketing Activity and Team Development",
+        title: "A Professional, a Second Ground, and a Horse",
         background: "white",
         content: [
-          "W.H. Sidney, appointed in 1904 as groundsman, coach, and professional player, significantly improved playing standards and pitch quality. His influence would be felt for years to come.",
-          "By 1906, the club fielded a fourth Saturday team, reflecting growing participation. Performance highlights included centuries by J.B. Russell, R.E. Yates, F.B. Clark, and E.B. Crockford, alongside notable bowling achievements.",
-          "Fixtures included Camp Hill O.E., Erdington, Wolverhampton, Barnt Green, and Harborne. The variety of opponents helped strengthen the club's competitive standards and regional reputation."
-        ]
-      },
-      {
-        title: "Social and Fundraising Events",
-        background: "cream",
-        content: [
-          "A new fundraising event was introduced in 1902—the Gymkhana—featuring novelty races and throwing competitions. This quickly became an annual tradition, fostering community engagement and supporting club finances.",
-          "Open-air concerts were held in 1906 and subsequent years, combining entertainment with fundraising. They relied on volunteer organisation and were vital for balancing the club's finances.",
-          "Regular club activities, including social gatherings and prize presentations, reinforced a strong sense of community among members and their families."
+          "In 1904 the club took an important step forward with the appointment of W.H. Sidney as groundsman, coach and professional player. His arrival improved both the standard of play and the preparation of the square, and marked a deliberate move towards greater professionalism in a club that had until then run almost entirely on voluntary labour. He was retained in the post through the seasons that followed.",
+          "The same period saw the lower ground, across the two-foot ditch that had separated the two pitches since the Rector's day, developed for additional matches, with a pavilion built there and funded through community events such as the open-air concerts. By 1906 the club was fielding a fourth Saturday team alongside its midweek sides, and membership had reached 114. The ground was let in a limited way to football teams, on conditions carefully framed to protect the cricket square.",
+          "Much of the ground work still depended on a horse. Every morning it was dressed not only in its harness but in two pairs of steel shoes with leather straps, to prevent it damaging the playing surface, and for an hour or more it walked the heavy roller over the strip next to be played on. It lived out in Rectory Park all year, going back to a local farmer only in severe frost. The club's papers never gave it a name — it was always 'The Horse' — and from the 1900s to the 1940s the public kept well away from it, its temperament being unknown.",
         ],
-        image: img_1905_team_b,
-        imageCaption: "Sutton Coldfield CC members at Rectory Park, 1905"
+        image: img_1906_part1_image15,
+        imageCaption: "Sutton Coldfield CC, 1906 — the season the club fielded a fourth Saturday team."
       },
       {
-        title: "Honouring Legacy and Life Members",
-        background: "white",
-        content: [
-          "In 1905, the club's founder, Rev. W.K.R. Bedford, passed away at age 78, ending an era of direct guidance. Bedford's influence included literary contributions, historical works, and the establishment of the Free Foresters Cricket Club.",
-          "Life Memberships were awarded to Rev. R.A. Morley in 1903 and H.E.R. Bedford in 1907, recognising their service on and off the field. These honours marked the club's growing appreciation for long-term commitment and dedication."
-        ]
-      },
-      {
-        title: "Facilities and the Ground",
+        title: "The Founder's Last Winter",
         background: "cream",
         content: [
-          "In 1905, the lower ground was taken over for third-team matches, and a pavilion was erected at the northwest corner. Open-air concerts helped fund improvements, including lighting and maintenance.",
-          "By 1907, the Ecclesiastical Commissioners' plans for the Rectory raised uncertainty about the club's future tenancy. The club faced the ongoing challenge of securing a permanent lease for its historic playing ground—an issue that would persist for years to come."
+          "In January 1905 the Rev. W.K. Riland Bedford died. He had circulated the letter that founded the club in 1847, laid out its ground on the Rectory Glebes, and served as its President from 1847 until 1892; in 1856 he had founded the Free Foresters on the same field, and the silver salver his friends gave him in 1863 is held to this day at Lord's. His death closed the life of the man most responsible for the club's creation and its repeated survival.",
+          "The family did not disappear from Rectory Park with him. H.E.R. Bedford was still turning out for the 1st XI in 1906 and was made a Life Member in 1907, and the presidency remained in Bedford hands until 1910. But the direct, personal guidance of the founder was gone, and the club that continued was one increasingly run by its committee rather than by its Rector.",
+          "In the same year George Sharp moved into Sutton Coldfield and joined the club, bringing with him his four-year-old son. The club dates Norman Sharp's association from 1905 — a period of seventy-two years — though its own papers differ on his birth, one obituary heading giving 1900 and its text 15th April 1901. He would fill the pre-war score books in his own hand and serve the club until his death in 1977. Also in 1905, I.W. Smith of Sutton Coldfield played first-class cricket for Warwickshire.",
+        ],
+        image: img_1905_part1_image13,
+        imageCaption: "One of the three photographs surviving from 1905, the year the founder died."
+      },
+      {
+        title: "The Boys in the School Photographs",
+        background: "white",
+        content: [
+          "Percival Allen Grove — Percy to the club — was born in Sutton Coldfield on 29th September 1888, eldest son of Allen and Elizabeth Whilock Grove of 'Copsewood', Tudor Hill. He was at Bishop Vesey's Grammar School from 1899 to 1905, taking the Victor Ludorum in his last year, and became a chartered accountant with Harrison, West & Ledsam in Birmingham. He joined the cricket club in 1906 and made himself a bowler: 6 for 13 at Wolverhampton for the 2nd XI in 1908, and, as a 1st XI regular in 1909, 7 for 14 against Yardley at Rectory Park.",
+          "Arthur John Lilly was born in Hackney in 1881 and grew up in Sutton as the adopted son and nephew of Mr and Mrs Harry J. Lilly of 'The Mount', working in the family business, Lilly & Lilly, gentlemen's outfitters of Birmingham. He joined in 1904 and took 7 for 14 against Olton at Rectory Park for the 2nd XI in 1906 — the year he became Honorary Treasurer, an office he held for the rest of his life. He is remembered as a cheerful and lively member with a flair for practical jokes and stage comedy.",
+          "Behind them a whole generation was at school. Walter Bladen Sampson was at Bishop Vesey's from 1899 to 1907, took the Victor Ludorum in 1902 and was a founder member of the Vesey Old Boys' Club; Septimus Eric Parsons was there from 1902 to 1906 before Mill Hill, Reginald Chopping from 1902 to 1907, Edward Markwick from 1905 to 1912. Esmond Hallewell Rogers was the only son of Sir Hallewell Rogers, Lord Mayor of Birmingham in 1903–04. Rowland Wilson-Browne won the gymnastic Open Championship at King Edward's three years running and belonged to the Dolobran club, whose Balsall Heath gymnasium had staged the first international gymnastics match between England, Ireland and Scotland in March 1900. John Howard Felton was born on 30th December 1899 at 'Brooklyn', Rectory Road, a few hundred yards from the ground. Not one of them survived the war.",
         ],
         image: img_1906_2ndxi,
-        imageCaption: "Sutton Coldfield CC 2nd XI, 1906"
+        imageCaption: "The club's 2nd XI of 1906; the name P.A. Grove stands in the photograph's caption."
       },
       {
-        title: "Season Highlights and Statistics",
-        background: "white",
+        title: "Draws, Averages and the Question of the Ground",
+        background: "cream",
         content: [
-          "Matches were played across 1st, 2nd, 'A', 'B', and Wednesday teams. Batting and bowling highlights included Horace Lott leading averages in 1909, E.B. Crockford with century scores and strong bowling, and R.E. Yates and F.B. Clark with multiple centuries.",
-          "Despite strong individual performances, many matches ended in draws due to inconsistent bowling support and weather impacts. Gymkhanas and open-air concerts mitigated financial challenges caused by poor summer conditions.",
-          "By 1909, comprehensive match and player statistics were being introduced, reflecting a growing professionalism in club record-keeping and administration."
-        ]
-      }
+          "The 1907 season was overshadowed by uncertainty about Rectory Park itself. Reports suggested that the land, held by ecclesiastical authorities, might be redeveloped because of its rising value, and the club had no security beyond an annual tenancy. Cricket went on regardless, with a full fixture list and competitive results, but the tension between stability on the field and insecurity off it would run for years.",
+          "On the field the batting was the strength. In 1909 Horace Lott headed both the batting and the bowling averages, and centuries were recorded by E.B. Crockford, F.B. Clark and R.E. Yates. Results, though, were often inconclusive: a high proportion of matches were drawn, the side lacking the bowling to force a finish, and wet summers took their toll on both the cricket and the gate.",
+          "With the Rector's retirement in prospect, the club explored the possibility of securing a formal lease from the Ecclesiastical Commissioners. The attempt was unsuccessful and the annual tenancy continued. What did improve was the record-keeping: by 1909 fuller match and player statistics were being kept, and it is largely from these books — many of them soon to be written up by a schoolboy scorer — that the club's account of its Edwardian seasons survives at all.",
+        ],
+        image: img_1907_part1_image17,
+        imageCaption: "Sutton Coldfield CC, 1907 — the year the club's tenure at Rectory Park was first questioned."
+      },
     ],
     keyMoments: [
       {
-        year: "1901",
-        title: "Officer Retirement",
-        description: "William Fowler steps down after long service as Hon. Secretary and Treasurer"
+        year: "1902",
+        title: "Twopence in the Tin",
+        description: "The experiment of supplying drinks on trust ended when the payment tin was opened and found to hold twopence."
       },
       {
         year: "1902",
-        title: "Gymkhana Introduced",
-        description: "First fundraising Gymkhana held at Rectory Park"
-      },
-      {
-        year: "1903",
-        title: "New Life Member",
-        description: "Rev. R.A. Morley elected first Life Member"
+        title: "The First Gymkhana",
+        description: "A fundraising Gymkhana of novelty races and skill competitions was held at Rectory Park and became an annual tradition."
       },
       {
         year: "1904",
-        title: "Professional Appointment",
-        description: "W.H. Sidney engaged as groundsman, coach, and professional player"
+        title: "A Professional Engaged",
+        description: "W.H. Sidney was appointed groundsman, coach and professional player, raising both playing standards and pitch preparation."
+      },
+      {
+        year: "1904",
+        title: "The Lower Ground Developed",
+        description: "The lower ground was brought into use for additional matches and given a pavilion funded through open-air concerts."
       },
       {
         year: "1905",
-        title: "Death of Founder",
-        description: "Rev. W.K.R. Bedford passes away, ending the club's founding era"
+        title: "Death of the Founder",
+        description: "The Rev. W.K. Riland Bedford, founder and President from 1847 to 1892, died in January 1905."
+      },
+      {
+        year: "1905",
+        title: "The Sharps Come to Sutton",
+        description: "George Sharp joined the club and brought with him his four-year-old son Norman, whose association would last seventy-two years."
       },
       {
         year: "1906",
-        title: "Fourth Team Formed",
-        description: "Membership grows; multiple teams compete across Saturday fixtures"
+        title: "A Fourth Saturday Team",
+        description: "Membership reached 114 and the club fielded a fourth Saturday side alongside its midweek teams."
+      },
+      {
+        year: "1906",
+        title: "Lilly's Seven for Fourteen",
+        description: "Arthur Lilly took 7 for 14 against Olton at Rectory Park for the 2nd XI, and became Honorary Treasurer that year."
       },
       {
         year: "1907",
-        title: "Ground Uncertainty",
-        description: "Concerns arise regarding Rectory Park's future under ecclesiastical transfer plans"
-      },
-      {
-        year: "1908",
-        title: "Financial Strain and Sporting Highlights",
-        description: "Season impacted by weather; R.F. Yates scores century; F.R. and W.H. Foster achieve notable performance"
+        title: "The Ground in Question",
+        description: "Ecclesiastical plans for the Rectory raised the prospect that the club might lose Rectory Park altogether."
       },
       {
         year: "1909",
-        title: "Statistical Records Begin",
-        description: "Comprehensive match and player statistics introduced; ongoing tenancy issues persist"
-      }
+        title: "Lott Tops Both Averages",
+        description: "Horace Lott led the batting and the bowling, with centuries from Crockford, Clark and Yates in a season of many draws."
+      },
     ],
     quote: {
-      text: "We continue to grow and adapt, even as we face uncertainty about the very ground beneath our feet.",
-      author: "Club Secretary, 1907"
+      text: "The horse will last another season.",
+      author: "The club's minute books, on the ground horse — a refrain of the first half of the twentieth century"
     }
   },
   "1910s": {
-    name: "A Decade of Transition and Challenge",
+    name: "The Last Summers",
     years: "1910-1919",
-    heroTitle: "A Decade of Transition and Challenge",
-    heroSubtitle: "Achievement, Resilience, and the Great War",
-    heroImage: img_1910_1stxi,
-    introLarge: "The 1910s were a decade of achievement, resilience, and upheaval for Sutton Coldfield Cricket Club.",
-    introBody: "The decade began with a period of consolidation following the retirement of the long-serving Rev. W.C.R. Bedford, who had guided the club with wisdom and dedication for over six decades. The club saw the rise of exceptional players whose records would be remembered for years: L.C. Crockford, J.B. Russell, E.B. Crockford, F.B. Clark, and H. Lott all displayed outstanding skill and commitment. During this period, the club strengthened its role as a centre of social and community life. Concerts, annual dinners, and gymkhanas became regular highlights, reinforcing camaraderie among members and families. The integration of the Sutton Coldfield Hockey Club in 1910, along with hosting football and school matches, illustrated the club's expanding influence in local recreational life. The outbreak of the First World War in 1914 dramatically affected the club's operations. Many members enlisted, some paying the ultimate price, while others supported the war effort locally. Despite the disruption, the club maintained its facilities, hosted convalescent soldiers, and ensured cricket could resume smoothly after hostilities ended. This decade exemplified resilience, adaptability, and the enduring cultural significance of sport in Sutton Coldfield.",
+    heroTitle: "The Last Summers",
+    heroSubtitle: "Record Scores, the Eighth of August, and the Names That Followed",
+    heroImage: img_1913_team,
+    introLarge: "The decade opened with the last Bedford stepping down from the presidency and a schoolboy taking up the score book. It closed with a memorial tablet accepted for the pavilion, and a club that had very nearly lacked the men to reconvene at all.",
+    introBody: "Between those points lie the best cricket Sutton Coldfield had played — J.B. Russell's 172 and F.B. Clark's 89 wickets in the summer of 1914 — and the abrupt silence that followed the last fixture on 8th August. The men who filled the team photographs of 1911, 1912 and 1913 were, within four years, scattered across the Somme, Flanders, Arras and the Royal Flying Corps, and twelve of them are the subject of full biographies in the club's own records. How many went and how many came home the club has never been able to state: its accounts give figures that cannot be reconciled, and the Roll of Honour that hung in the pavilion was destroyed before anyone thought to copy down the names.",
     sections: [
       {
-        title: "Club Leadership and Administration",
+        title: "The Last Bedford, and a New Hand on the Book",
         background: "cream",
         content: [
-          "The decade was marked by a smooth transition in leadership. Canon C.W. Barnard became President in 1911, succeeding Rev. Bedford, providing stability and continuity. John B. Russell assumed the first XI captaincy, guiding teams to consistent victories. Club committees carefully managed finances and membership, even during wartime, ensuring long-term sustainability. Decisions regarding fixtures, ground use, and community engagement were increasingly professional and strategic, laying the foundations for post-war resurgence.",
-          "After the Great War, the club faced the challenge of rebuilding both its membership and infrastructure. At a committee meeting on 3rd March 1919, attention was given to practical matters such as hiring a groundsman, replacing a collapsed sight screen, and ordering four tons of Nottinghamshire marl to improve the pitches. A provisional list of fixtures for 1919 was circulated, signalling the club's determination to return to full activity.",
-          "The war had taken a dreadful toll on members, including Percy Grove, Honorary Secretary since 1911, and Arthur Lilly, Honorary Treasurer from 1906. Both men had served their country and made the ultimate sacrifice on the battlefield. The club mourned their loss deeply, acknowledging their contributions on and off the field.",
-          "At the Annual General Meeting on 24th March 1919, chaired by Rev. Canon Barnard, the club elected new officers: J.H. Cornwell as Treasurer, George Sharp as Secretary, L.C. Crockford as 1st XI Captain, and George Sharp as 2nd XI Captain. Subscriptions were revised to reflect post-war economic realities, and the club received generous support from local dignitaries and clergy as vice presidents. Notably, a memorial tablet to honour members who had died in the war was offered and funded by Canon Barnard himself, ensuring their sacrifice was permanently remembered in the Pavilion."
+          "In 1910 the Rev. W.C.R. Bedford retired as President, ending more than six decades in which the Bedford family had led the club from its foundation to stability. The following year the Rev. Canon C.W. Barnard was elected in his place — the first president from outside the founding family, and proof that the club could continue beyond it. The season itself was a good one, with strong batting from L.C. Crockford, J.B. Russell and E.B. Crockford and consistent bowling led by Dr. Sproat.",
+          "1910 also gave the club its finest recorder. Norman Sharp, whose father had joined five years earlier, became 2nd XI scorer that year; many of the pre-First World War score books were completed in his hand, and he appears in a great many of the pre-war team photographs. The books of 1913 and 1919 survive, filled in by a schoolboy of fourteen, and it is largely through them that these seasons can still be read. He played his first game for the club in 1915, while still at school.",
+          "Off the field the club was busy in a small way. The top and lower grounds were let in winter to hockey and football clubs, arrangements carefully managed to protect the square while bringing in useful income, and W.L. Mortimore joined in 1912, contributing both as a player and in the club's organisation. The horse remained on the establishment, though not always in good standing: a minute of 1912 records it 'being sacked for kicking the groundsman'.",
+        ],
+        image: img_1910_1stxi,
+        imageCaption: "The 1st XI of 1910, the year the last Bedford president retired."
+      },
+      {
+        title: "Heavy Scoring Before the War",
+        background: "white",
+        content: [
+          "The cricket of the early 1910s was as strong as any the club had known. The 1911 season included a remarkable bowling sequence against Nuneaton in which several wickets fell in consecutive deliveries; J.B. Russell and E.B. Crockford went on contributing heavily with the bat, Frank Hanmer emerged as the leading fast bowler, and club characters such as C. Lowe gave the side its flavour of long-serving amateur enthusiasm.",
+          "Crockford's own rise was the story of the summer. Eric Bertram Crockford, known as Tom, began in 1911 a first-class career with Warwickshire that would run to 1922. He would go on to win an Olympic gold medal in the hockey tournament at Antwerp in 1920, represent England on seventeen occasions, and hold a number of records for the highest break at billiards.",
+          "1912 brought multiple centuries in single matches, with Roger Evans, Crockford and H. Lott all producing significant innings, and in 1913 J.B. Russell took the captaincy — batsman, wicketkeeper and captain, and one of the club's most influential figures. F.B. Clark led the bowling, several men averaged over thirty, and a public flying display was watched from the ground. The side was drawn largely from the professions of the town: clergy, doctors, ex-military officers, accountants, solicitors, aldermen, councillors, justices of the peace and former mayors. Horace Shenton, from a Staffordshire farming family and employed in the automotive machine trade, was not the sort of man one expected to find among them.",
         ],
         image: img_1911_team,
-        imageCaption: "Sutton Coldfield CC, 1911"
+        imageCaption: "Sutton Coldfield CC, 1911 — the first season under Canon Barnard's presidency."
       },
       {
-        title: "Sporting Excellence and Player Highlights",
-        background: "white",
-        content: [
-          "Despite the disruption caused by the war, the club's cricketing tradition continued. In 1919, the 1st XI included returning stalwarts L.C. and E.B. Crockford, F.B. Clark, H. Lott, and F.H. Beardshaw. F.B. Clark led both with bat and ball, scoring 814 runs at an average of 26.3 and taking 74 wickets at 14.3 runs per wicket. Beardshaw scored 502 runs at 31 and took 30 wickets, while A.E. Terry contributed 57 wickets at 9.1 runs per wicket. E.B. Crockford added 574 runs and 54 wickets at 16.9, reflecting the depth and versatility of the team. The 1st XI played 21 Saturday games (won 8, lost 7, drew 6), while the midweek side played 14 games (won 5, lost 3, drew 6).",
-          "The 2nd XI faced challenges due to stronger opposition fielding first-team players unexpectedly, notably from Hall Green, Pickwick, and Bournville. Despite these handicaps, they completed 21 games, winning 8, losing 11, and drawing 2. A remarkable moment came when Sutton's 2nd XI conceded 318 runs to Harborne away, surpassing their previous record of 298 in 1910."
-        ],
-        image: img_1913_team,
-        imageCaption: "Sutton Coldfield CC, 1913"
-      },
-      {
-        title: "Facilities, Grounds, and Multi-Sport Use",
+        title: "The Men Who Joined, 1910–1913",
         background: "cream",
         content: [
-          "The club's grounds remained central to both sporting success and community engagement. Investments in rollers, sheds, and wicket preparation allowed for high-quality cricket, while top and lower grounds were shared with hockey, football, and school teams. In 1919, marling of the ground ensured readiness for the opening match on 26th April."
+          "Walter Bladen Sampson was elected a member on 25th January 1910. Little of his cricket is recorded, but he had served six years as Colour Sergeant with the University of Birmingham OTC before declining a commission, and worked first for the Royal Insurance Company and then with Allison Chains Ltd. Frederick Howard Sturgess needs no such qualification: he topped the 'A' Team batting and bowling in 1910 with 134 runs at 22.3 and 24 wickets at 5.8, and in 1911 led the 2nd Team averages with 285 runs at 40.7, including 126 not out, and 11 wickets at 11.9. For all that, and although his father was a key committee member, he was not elected a full member until 10th March 1913.",
+          "Reginald Bertram Clive Chopping joined on 10th May 1911 and played several seasons for the 'A' Team without great distinction. Septimus Eric Parsons joined the same year at nineteen, a competent batsman who generally went in at No. 7 because of the seasoned men above him; on 10th June 1911 he shared a sixth-wicket partnership of 92 with E.B. Crockford at Barnt Green, making 41 not out, and opened the innings for 28 in the drawn return at Rectory Park. Percy Grove, meanwhile, recorded match figures of 6 for 11 at Harborne in 1911 and became the club's Honorary Secretary.",
+          "Rowland Murray Wilson-Browne was elected on 29th May 1912 and belonged to the swimming club as well; his sporting life was so busy that he scarcely figures in the club's match records. Esmond Hallewell Rogers, of Shrewsbury and Gonville and Caius, played for Warwickshire's 2nd XI in May 1912, scoring 46 and 16 against Northamptonshire at Edgbaston with Percy Jeeves batting immediately after him. John Howard Felton — Jack — was at Bishop Vesey's from 1912 to 1914 and played for the 'A' Team, as did Lawrence Jack Preedy of King Edward's Grammar School, who was also organist at All Saints Church, Streetly.",
         ],
-        image: img_1910_grounds,
-        imageCaption: "Rectory Park, 1910"
+        image: img_1912_part1_image23,
+        imageCaption: "Sutton Coldfield CC, 1912 — the season Rowland Wilson-Browne was elected a member."
       },
       {
-        title: "Social Events and Community Engagement",
+        title: "The Eighth of August",
         background: "white",
         content: [
-          "Beyond sport, the club continued to foster community spirit through annual dinners, concerts, gymkhanas, and garden fetes. Post-war, it became a focal point for remembrance and recovery, with the memorial tablet commemorating fallen members reinforcing the club's civic role."
-        ]
+          "The 1914 season began under entirely normal conditions. The Annual General Meeting was held on 6th March at the Masonic Hall Chambers, the accounts for 1913 showed a stable club, and the annual supper went ahead at the Royal Hotel. Committee business ran to such matters as tea arrangements, which produced a decision to build a shed for the 'A' Team on the lower ground — funded, characteristically, through a Derby sweepstake.",
+          "The cricket was outstanding. J.B. Russell made 172, the highest individual score the club had recorded, and F.B. Clark took 89 wickets at under ten runs each, including 10 for 35 against Yardley, the finest analysis of a career that spanned sixty-two years of membership, over a thousand wickets and well over ten thousand runs. On 4th July, in the 2nd XI away at Wolverhampton, Horace Shenton played his last game for the club: batting at No. 6 he made 18, then bowled six overs, one of them a maiden, taking 1 for 27. He enlisted with the Birmingham City Battalion on its formation.",
+          "Nothing was played after 8th August, when the last pre-war 1st XI fixture was completed at home to Camp Hill Old Edwardians, and the score books were never collected in from the teams' captains. Fixture cards gave way to circulars. Convalescent camps were built in Sutton Park, where across the four years of the war some 90 officers and 3,000 men were billeted, and the clubhouse itself was given over to wounded men recovering before they returned to their units. Such matches as there were consisted mainly of scratch sides against service elevens stationed locally — and in September 1917 Edward Markwick, invalided home with rheumatic fever, turned out for the club while he recovered.",
+        ],
+        image: img_1914_part1_image26,
+        imageCaption: "Sutton Coldfield CC, 1914 — the last summer before the war."
       },
       {
-        title: "Wartime Impact (1914–1918)",
+        title: "The Roll of Honour",
         background: "cream",
         content: [
-          "The First World War interrupted normal play, but did not halt the club's operations. Of the members who served, 39 went to war and 13 lost their lives. Matches during these years were limited, often featuring scratch sides. Committee members maintained facilities, coordinated events for convalescent soldiers, and ensured finances remained stable. The war years left a profound impact on both personnel and infrastructure, shaping the club's post-war priorities."
+          "1916 took five of them. Percy Grove, the Honorary Secretary, was severely wounded by a bomb on 1st July on the Somme and died at the 2nd British Red Cross Hospital in Rouen on the 5th, aged 27. Esmond Rogers of the 10th Royal Warwickshires was killed on 3rd July supporting the attack at La Boisselle. Walter Sampson, by then a captain in the Rifle Brigade, was killed in the attack near La Boisselle on 10th July, aged 25. Rowland Wilson-Browne, a Second Lieutenant with 21 Squadron of the Royal Flying Corps, was shot down on a bombing raid on 21st July, taken prisoner and died of his wounds at nineteen. Reginald Chopping, a signaller, was killed at Delville Wood on 27th–28th August and has no known grave.",
+          "The list lengthened. Arthur Lilly, treasurer since 1906, was killed by a sniper at Tertry on 4th April 1917, aged 35. Horace Shenton, wounded by shrapnel the previous August, died of his wounds on 27th August 1917, aged 38, and was buried at Sutton Coldfield Cemetery with a full military funeral. Lawrence Preedy was killed instantly by a sniper on 31st March 1918 while trying to bring in a wounded man; Jack Felton, nineteen and only lately arrived in France, was killed on 10th April in his first battle; Septimus Parsons, by then a captain, was killed by shelling near Robecq on 14th April. Edward Markwick died of pneumonia at Awoingt on 9th November 1918, two days before the Armistice, his headstone inscribed 'What more could he give'. Frederick Sturgess, gassed and concussed near Loos in November 1917, died of acute pneumonia in 1919. The club's Annual General Meeting of 24th April 1917 recorded Wilson-Browne and Rogers by name.",
+          "How many members served, and how many did not return, the club cannot say. Its own accounts give a minute-book reading that fifty went to the Great War and only ten came back; another that forty of fifty playing members were lost; another that nearly fifty enlisted; a later researched conclusion that thirty-nine went and fourteen did not return; and the club's own memorial page that thirty-nine served and thirteen died. Twelve men have full biographies in the club's records, and a thirteenth, Albert Edward Wakefield of the 'A' Team, was killed near St Julien on 17th August 1917, aged twenty. The Roll of Honour that had hung in the pavilion was, in Norman Sharp's words, 'destroyed by hooligans', and no record of the names was ever set down in writing. A memorial tablet was proposed and accepted in 1919, the year cricket returned: F.B. Clark scored 814 runs and took 74 wickets in a first-team season of twenty-one matches, eight of them won, and Norman Sharp, leaving Bishop Vesey's, became a full member at last.",
         ],
-        image: img_1916_war,
-        imageCaption: "Members of Sutton Coldfield CC who served in the Great War, 1916"
-      }
+        image: img_1916_part1_image41,
+        imageCaption: "1916 — one of the few photographs surviving from the war years at Rectory Park."
+      },
     ],
     keyMoments: [
       {
         year: "1910",
-        title: "Hockey Club Integration",
-        description: "Sutton Coldfield Hockey Club integrated, expanding the club's multi-sport role"
+        title: "The Last Bedford President",
+        description: "The Rev. W.C.R. Bedford retired as President, ending more than six decades of Bedford leadership at Rectory Park."
+      },
+      {
+        year: "1910",
+        title: "A New Hand on the Score Book",
+        description: "Norman Sharp became 2nd XI scorer and began filling the pre-war score books in his own hand."
       },
       {
         year: "1911",
-        title: "New President",
-        description: "Canon C.W. Barnard becomes President, succeeding Rev. Bedford"
+        title: "A President from Outside the Family",
+        description: "The Rev. Canon C.W. Barnard was elected President, the first from outside the founding family."
+      },
+      {
+        year: "1911",
+        title: "Grove Becomes Secretary",
+        description: "Percy Grove took 6 for 11 at Harborne and became the club's Honorary Secretary."
+      },
+      {
+        year: "1912",
+        title: "The Horse Dismissed",
+        description: "A club minute of 1912 records the ground horse being sacked for kicking the groundsman."
       },
       {
         year: "1914",
-        title: "World War I Begins",
-        description: "Outbreak of WWI dramatically affects club operations as members enlist"
+        title: "A Record Summer",
+        description: "J.B. Russell made 172, the club's highest individual score to that date, and F.B. Clark took 89 wickets at under ten runs each."
       },
       {
-        year: "1914-1918",
-        title: "Wartime Cricket",
-        description: "Limited matches played with scratch sides; facilities maintained for post-war resumption"
+        year: "1914",
+        title: "The Eighth of August",
+        description: "The last pre-war 1st XI fixture was played at home to Camp Hill Old Edwardians; the score books were never collected from the captains."
       },
       {
-        year: "1918",
-        title: "War Ends",
-        description: "Armistice signed; club begins planning for post-war cricket"
+        year: "1916",
+        title: "Grove Dies at Rouen",
+        description: "Wounded on the Somme on 1st July, the Honorary Secretary died in hospital at Rouen four days later, aged 27."
       },
       {
-        year: "March 1919",
-        title: "Committee Meeting",
-        description: "Groundsman hired, sight screen replaced, and Nottinghamshire marl ordered for pitches"
-      },
-      {
-        year: "March 1919",
-        title: "Annual General Meeting",
-        description: "New officers elected, subscriptions revised, memorial tablet funded by Canon Barnard"
-      },
-      {
-        year: "April 1919",
-        title: "Season Resumes",
-        description: "Opening match on 26th April marks full return to competitive cricket"
+        year: "1917",
+        title: "Remembered at the AGM",
+        description: "The Annual General Meeting of 24th April 1917 recorded Rowland Wilson-Browne and Esmond Rogers among the club's dead."
       },
       {
         year: "1919",
-        title: "Memorial Tablet Dedicated",
-        description: "Memorial tablet honoring fallen members permanently installed in Pavilion"
-      }
-    ]
+        title: "Cricket Returns",
+        description: "A memorial tablet was accepted for the pavilion and F.B. Clark scored 814 runs and took 74 wickets as the 1st XI played twenty-one matches."
+      },
+    ],
+    quote: {
+      text: "He was a great personal friend of mine, and in his quiet way had a great influence with his company. He was always a quiet, conscientious Christian, never made a complaint, and was always the first to do anything that was wanted – nothing upset him.",
+      author: "A battalion chaplain, writing of Private Reginald Chopping, killed at Delville Wood in August 1916"
+    }
   },
   "1920s": {
     name: "The Golden Resurgence",

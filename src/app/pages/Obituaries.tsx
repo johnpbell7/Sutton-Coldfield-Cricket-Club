@@ -4,6 +4,15 @@ import { Footer } from "@/app/components/Footer";
 import { ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import heroImage from "@/assets/ui/vintage-hero.png";
+import img_badge_warwickshire from '@/assets/decades/1910s/1916_part1_image35.png';
+import img_badge_engineers from '@/assets/decades/1910s/1916_part1_image36.png';
+import img_badge_rifle_brigade from '@/assets/decades/1910s/1916_part1_image38.png';
+import img_badge_south_staffs from '@/assets/decades/1910s/1916_part1_image40.png';
+import img_badge_worcestershire from '@/assets/decades/1910s/1916_part1_image43.png';
+import img_sampson_memorial from '@/assets/decades/1910s/1916_part1_image39.jpeg';
+import img_rogers_certificate from '@/assets/decades/1910s/1916_part1_image42.jpg';
+import img_roll_of_honour from '@/assets/decades/1910s/1918_part1_image29.jpg';
+import img_entertaining_wounded from '@/assets/decades/1910s/1917_part1_image31.jpg';
 
 interface Obituary {
   name: string;
@@ -14,6 +23,7 @@ interface Obituary {
     content: string[];
   }[];
   imageUrl: string;
+  imageCaption?: string;
 }
 
 const obituariesData: Obituary[] = [
@@ -50,7 +60,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_warwickshire,
+    imageCaption: "The cap badge of the Royal Warwickshire Regiment, with which Percival Grove served."
   },
   {
     name: "Arthur John Lilly",
@@ -83,7 +94,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_warwickshire,
+    imageCaption: "The cap badge of the Royal Warwickshire Regiment, with which Arthur Lilly served."
   },
   {
     name: "Horace Edgar Shenton",
@@ -115,7 +127,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_worcestershire,
+    imageCaption: "The cap badge of the Worcestershire Regiment, with which Horace Shenton served."
   },
   {
     name: "Septimus Eric Parsons",
@@ -149,7 +162,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_warwickshire,
+    imageCaption: "The cap badge of the Royal Warwickshire Regiment, with which Septimus Parsons served."
   },
   {
     name: "Rowland Murray Wilson-Browne",
@@ -181,7 +195,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_roll_of_honour,
+    imageCaption: "The Sutton Coldfield Roll of Honour, tenth list, recording club members then serving."
   },
   {
     name: "Reginald Bertram Clive Chopping",
@@ -213,7 +228,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_warwickshire,
+    imageCaption: "The cap badge of the Royal Warwickshire Regiment, with which Reginald Chopping served."
   },
   {
     name: "John Howard Felton",
@@ -239,7 +255,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_warwickshire,
+    imageCaption: "The cap badge of the Royal Warwickshire Regiment, with which John Felton served."
   },
   {
     name: "Edward Baguley Markwick",
@@ -271,7 +288,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_engineers,
+    imageCaption: "The cap badge of the Royal Engineers, with which Edward Markwick served."
   },
   {
     name: "Lawrence Jack Preedy",
@@ -297,7 +315,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_warwickshire,
+    imageCaption: "The cap badge of the Royal Warwickshire Regiment, with which Lawrence Preedy served."
   },
   {
     name: "Walter Bladen Sampson",
@@ -330,7 +349,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_sampson_memorial,
+    imageCaption: "The brass plaque recording the chancel window erected by his parents: \"Walter Bladon Sampson, Captain The Rifle Brigade, killed on active service in the Great War, July 11th 1916, aged 25 years.\" The plaque spells his middle name Bladon."
   },
   {
     name: "Frederick Howard Sturgess",
@@ -362,7 +382,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_badge_south_staffs,
+    imageCaption: "The cap badge of the South Staffordshire Regiment, with which Frederick Sturgess served."
   },
   {
     name: "Esmond Hallewell Rogers",
@@ -388,7 +409,8 @@ const obituariesData: Obituary[] = [
         ]
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBzb2xkaWVyJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzM3Mjk5MDA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    imageUrl: img_rogers_certificate,
+    imageCaption: "The Commonwealth War Graves Commission certificate for Second Lieutenant Esmond Hallewell Rogers, 10th Battalion Royal Warwickshire Regiment, commemorated on the Thiepval Memorial."
   }
 ];
 
@@ -443,7 +465,7 @@ export default function Obituaries() {
             {/* Square Image */}
             <div className="md:col-span-5">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3d3clMjBtZW1vcmlhbCUyMHBvcHB5fGVufDF8fHx8MTczNzI5OTAwN3ww&ixlib=rb-4.1.0&q=80&w=1080"
+                src={img_entertaining_wounded}
                 alt="War Memorial"
                 className="w-full aspect-square object-cover"
               />
@@ -479,12 +501,17 @@ export default function Obituaries() {
                     <ImageWithFallback
                       src={obituary.imageUrl}
                       alt={obituary.name}
-                      className="w-full h-[300px] md:h-[400px] object-cover"
+                      className="w-full h-auto object-contain bg-[#f4f1ec]"
                     />
                     <div className="border-b border-[#d9c9ca] py-3 mt-4">
                       <p className="font-['Georgia',serif] text-sm md:text-base text-[#4a4a4a]">
                         In memory of {obituary.name}, {obituary.years}
                       </p>
+                      {obituary.imageCaption && (
+                        <p className="font-['Georgia',serif] text-sm text-[#9b9b9b] mt-1">
+                          {obituary.imageCaption}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

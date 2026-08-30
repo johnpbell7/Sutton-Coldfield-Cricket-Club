@@ -117,6 +117,12 @@ import img_2005_part2_image44 from '@/assets/decades/2000s/2005_part2_image44.jp
 import img_2005_part2_image45 from '@/assets/decades/2000s/2005_part2_image45.png';
 import img_2006_part2_image46 from '@/assets/decades/2000s/2006_part2_image46.jpeg';
 import img_2008_part2_image55 from '@/assets/decades/2000s/2008_part2_image55.png';
+import img_1972_part2_image3 from '@/assets/decades/1970s/1972_part2_image3.jpg';
+import img_1975_part2_image4 from '@/assets/decades/1970s/1975_part2_image4.jpg';
+import img_1977_part2_image7 from '@/assets/decades/1970s/1977_part2_image7.jpg';
+import img_1984_part2_image15 from '@/assets/decades/1980s/1984_part2_image15.jpg';
+import img_1982_part2_image13 from '@/assets/decades/1980s/1982_part2_image13.jpg';
+import img_1986_part2_image18 from '@/assets/decades/1980s/1986_part2_image18.jpg';
 
 // Decade page component with split introduction text
 interface DecadeData {
@@ -1154,128 +1160,244 @@ const decadeData: Record<string, DecadeData> = {
     name: "The Seventies",
     years: "1970-1979",
     heroTitle: "Dixon's Decade",
-    heroSubtitle: "Records, the MCCC and a New Pavilion",
-    heroImage: img_1970_pavilion,
-    introLarge: "The 1970s opened with a landmark moment — the inauguration of the new Rectory Park pavilion on 25th July 1970 — and proceeded to deliver a decade of remarkable individual achievement.",
-    introBody: "At the heart of it all stood Michael Dixon, who produced a sequence of run-scoring that had no precedent in the club's history. Around him, the Midland Club Cricket Conference gave Sutton a new league stage, junior cricket flourished, and the club umpires stepped onto the world stage. In 1977 the Alpine Soft Drink Company launched an under-16 youth competition, and Sutton's squad — organised by Peter Yates and led by David Stokes — won the inaugural title, with Stokes receiving the Alec Hastilow Trophy as best under-16 cricketer in the Midlands.",
+    heroSubtitle: "A New Pavilion, a New League and a Record-Breaking Batsman",
+    heroImage: img_1977_mccc_composite,
+    introLarge: "The seventies opened with a tape being cut on a new pavilion and closed with the Canadian national side at Rectory Park. In between, Sutton entered league cricket for the first time in its history — and Michael Dixon passed a thousand runs in every season of the decade.",
+    introBody: "It was a decade of building, in every sense. The pavilion that members of the cricket and hockey clubs had laboured through the winter to finish was officially opened in July 1970, and the bill — £16,369 in all — was settled the following spring. Then, in 1971, a handful of members quietly signed the club into the Willis Faber-sponsored Midland Club Cricket Championship, ending more than 120 years of purely friendly cricket and dividing opinion sharply; the club historian, Norman Sharp, could find no reference to the decision anywhere in the Minute Book. Six seasons later that same league brought Sutton its finest hour, when Michael Dixon's attacking side were crowned champions in 1977 and a plaque was hung in the pavilion with pride. The same summer produced the club's first Alpine Under 16 champions and, in July, the death of Norman Sharp himself.",
     sections: [
       {
-        title: "Michael Dixon — A Batsman of the Ages",
+        title: "A Pavilion at Last",
         background: "cream",
         content: [
-          "No single player has dominated a decade at Sutton Coldfield as Michael Dixon dominated the 1970s. In 1973 he scored a club record 1,630 runs, including four centuries, and the team struck seven centuries in the season — itself a new record. The following year he took the MCCC Cricketer of the Year award, the first of two such honours in the decade.",
-          "Dixon topped 1,000 runs in every season from 1970 to 1979 — ten consecutive seasons — a feat of consistency that astonished contemporaries. In 1978 he scored four centuries in a season in which the side reached eight centuries in total, another club record. By the time he announced his retirement in 1980, he had scored over 12,500 runs for the club, placing him among the greatest batsmen in Sutton's history.",
-          "He was ably supported by Warwick Tidy with the ball. Tidy took 81 wickets in 1975 and was consistently among the wickets throughout the decade, bringing an attacking edge to the club's bowling that complemented Dixon's batting dominance. Around them, Gavin Weston — 51 dismissals behind the stumps in 1974 alone — gave the side an exceptional foundation."
+          "Work had begun the previous autumn and continued through the winter, but weather, drainage and the usual delays meant the new pavilion was usable rather than finished when the 1970 season opened. Members of both the cricket and hockey clubs worked on to the end of May to make it presentable, and the official ceremony followed on the evening of Friday 25th July, when Edmund H. King, Chairman of Warwickshire C.C.C., cut the tape before a large gathering.",
+          "Arthur Spencer, President of the Hockey Club, deputised for Norman Sharp, who was ill in hospital, and welcomed the Mayor and Mayoress, Alderman and Mrs H.J.C. Musgrave; a tankard went to Charles Groves in recognition of his services to the undertaking. Peter Cadman put figures to it early in 1971 — £15,752 on the building and £617 on furnishings and equipment, £16,369 in all. Paving slabs and turfing followed that autumn at the expense of Joe Holman, a playing member.",
+          "Not everything went the club's way. In the autumn of 1970 vandals gutted the lower ground pavilion, the insurers meeting a claim for £800. Two great servants died that year: F. Bernard \"Bengy\" Clark, a member of sixty-two years who took over a thousand wickets, his best 10 for 35 against Yardley in 1914; and Paul I. Terry, the wartime Hon Secretary in whose memory the new pavilion clock was erected. Alex Harvey, groundsman since 1953, retired in 1971 with a handsome testimonial.",
         ],
-        image: img_1977_mccc_composite,
-        imageCaption: "The 1977 MCCC Championship — the plaque and portraits hung in the Rectory Park pavilion"
+        image: img_1970_pavilion,
+        imageCaption: "Edmund H. King, Chairman of Warwickshire C.C.C., cuts the tape at the official opening of the new pavilion on the evening of Friday 25th July 1970."
       },
       {
-        title: "The MCCC, the ICC and the Hawks",
+        title: "The Coming of League Cricket",
         background: "white",
         content: [
-          "The formation of the Midland Club Cricket Conference in 1972 gave Sutton's senior cricket a new competitive framework, and the club rose to the challenge. In 1977 the 1st XI won the MCCC Championship — a triumph built on Dixon's 1,047 runs, Tidy's 69 wickets, and the attacking captaincy of Michael Dixon himself, whose philosophy of chasing every target made the side compelling to watch.",
-          "The club also made its mark on the international stage in 1979 when the ICC World Cup came to England. Sutton hosted a warm-up match against Canada, and umpires Peter Bell and Phil Berry officiated in the USA versus Sri Lanka ICC Trophy tie — a remarkable honour for a club side. Phil Berry's photograph from that occasion subsequently appeared in The Ultimate Encyclopaedia of Cricket.",
-          "The decade ended on a poignant note with the death of club historian Norman Sharp on 14th July 1977 — aged 76 — whose meticulous record-keeping had preserved so much of the club's early history. His legacy lives on in every story the club tells of its first century."
+          "Sutton had played non-competitive cricket for over 120 years and had declined invitations to join the Birmingham League on a number of occasions. It seemed a pity to the club's historian, then, that a few members should decide on their own initiative to enter a league — a matter he judged unconstitutional, and of which no record appears in the Minute Book. The Midland Club Cricket Championship was born for the 1972 season, sponsored by Willis Faber, with Sutton among its clubs.",
+          "The early evidence did little to settle the argument. In 1972 the 1st XI won only eight of forty matches and drew twenty-one — 52 per cent of completed games, by far the highest proportion in one season in the club's history, against 31 per cent over the previous decade — and won just one of its twenty Championship fixtures. Little apparent interest, the historian wrote, was shown by either players or spectators, and very few seemed to know the state of the league table.",
+          "Knockout cricket, by contrast, flourished in the long evenings. Peter Bell's new Sutton News Cup drew sixteen of the leading Midland clubs in 1971, Dennis Amiss presenting the trophy to Aston Unity, and Bell went on to found the Sutton Coldfield & District Association of Cricket Umpires. In 1973 Sutton beat Streetly, Nuneaton and West Bromwich Dartmouth before losing the final to Aston Unity. Cricket Week in August 1972 marked 125 years since the foundation, the Midlands Club Cricket Conference meeting the M.C.C. on the Thursday.",
         ],
-        image: img_1979_hawks,
-        imageCaption: "The Hawks XI — Sutton's 3rd XI — photographed during the 1979 season"
-      }
+        image: img_1972_part2_image3,
+        imageCaption: "Cricket Week at Rectory Park, August 1972, held to mark 125 years since the club's foundation."
+      },
+      {
+        title: "Dixon, Tidy and the Doctor",
+        background: "cream",
+        content: [
+          "Michael Dixon made his name as an opener in 1970, when he and his captain Martin Bloomer both passed a thousand runs; by 1972 he was the club's Cricketer of the Year with 1,278. Then came 1973. Dixon made 1,630 runs, beating Brian Clewer's club record of 1,472 set in 1959, with four centuries — 101 not out at Aston Unity, 115 against Harborne, 140 against Bromsgrove and 125 not out against Little Aston Stragglers. The side's seven hundreds that summer beat the six of 1928.",
+          "The runs simply kept coming: 1,234 at 36.29 in 1974, including hundreds on consecutive days — 104 away at Stafford on the Saturday, 103 away at Leamington on the Sunday — for which the Midland Club Cricket Conference named him its Cricketer of the Year; 1,445 at 41.29 in 1975; 1,134 in 1976; 1,047 in 1977; 1,298 in 1978; and 1,109 in 1979, a thousand runs in a season for the tenth successive year.",
+          "He was well served around him. Warwick Tidy, awarded the Sir Frank Worrell Trophy in 1970 as the most promising young cricketer in the country, took 81 wickets at 16.35 in 1975 and 69 in each of the two seasons that followed. Gavin Weston claimed 51 dismissals behind the stumps in 1974 and 57 in 1975, of which 35 were stumpings. And Dr Bob Strachan, a local GP, was twice honoured by Willis Faber in 1975 — a Duncan Fearnley bat for his bowling against Leamington in May, and a case to keep it in after a fifty in forty-five minutes against Solihull in June.",
+        ],
+        image: img_1975_part2_image4,
+        imageCaption: "George Lindsay of Willis Faber presents Bob Strachan with his Duncan Fearnley bat in 1975, his team-mates looking on — among them Ian Nuttall, Roger Coombs, Dave Edmunds, Warwick Tidy, John Robinson and James Ross."
+      },
+      {
+        title: "Champions of the Midlands",
+        background: "white",
+        content: [
+          "The highlight of 1977 was the 1st XI finishing as winners of the Midland Club Cricket Championship, having won as many games as they lost — seven each. The club's record is unambiguous about the cause: it was the result of the captain Michael Dixon's attitude to attacking cricket, great to watch even when the side lost, for many a side would never have attempted the chases Sutton took on and would have settled for a tame draw. The plaque was hung in the pavilion with pride and copied in 2022.",
+          "Dixon again headed the aggregates with 1,047 runs at 29.91, Keith Gardom made 784 at 25.29 and Ross Rayburn a fine century of 102 away at Moseley Ashfield. The bowling was shared three ways: Warwick Tidy took 69 wickets at 15.0, Dave Torry 51 with his left-arm spin at 16.08 and Gardom 49 with his leg breaks at 15.07. Around them in the champions' photograph stood M. Hepburn, T. Yomens, G. Tidy, D. Edmunds, G. Weston, N. Houghton and J. Robinson, with H. Lock scoring and P. Berry umpiring.",
+          "Gardom's own story ran through the decade. Born in Birmingham on 31st December 1952 and a product of Bishop Vesey's Grammar School, he toured the West Indies with the England Young Cricketers in 1972 and joined the Warwickshire staff, making his first-class debut against Cambridge University in 1973; in seventeen first-class matches he scored 427 runs at 18.56, his highest 79 not out against Surrey. The family business proved stronger than the county's persuasion. He took the Sutton captaincy in 1978 and made 1,285 runs to Dixon's 1,298, the side's eight centuries setting another club record.",
+        ],
+        image: img_1977_mccc_team,
+        imageCaption: "Sutton Coldfield Cricket Club, Midland Club Cricket Championship champions of 1977 — the photograph at the centre of the plaque hung in the pavilion."
+      },
+      {
+        title: "Young Cricketers and the Wider World",
+        background: "cream",
+        content: [
+          "Junior cricket had been growing all decade — as early as 1972 eight teenagers were representing the county's junior elevens, among them John Maynard's sons Steve and Chris and Simon Berry, while Peter Wells's schoolboy cricket in the summer holidays was judged a great success and continued. It came good in 1977, when the Alpine Soft Drink Company launched an under-16 competition and Peter Yates organised a squad of some eighteen talented young cricketers who, captained by David Stokes, won the first Alpine Under 16 Championship. Stokes, then fifteen, took the Conference's Alec Hastilow Trophy as the best under-16 cricketer.",
+          "In 1979 the wider game came to Rectory Park. The club played Canada in a warm-up before the I.C.C. World Cup: the Canadians, invited to bat, made 254 for one in their sixtieth over and bowled Sutton out for 170. Peter Bell and Phil Berry were appointed to the 60-over tie between the U.S.A. and Sri Lanka at Northampton, the U.S.A. making 168 and Sri Lanka 170 for four, and Bell's photograph from the occasion later appeared in The Ultimate Encyclopedia of Cricket. The 2nd XI, meanwhile, were runaway winners of the Midland Club Cricket Championship.",
+          "The decade's greatest loss came on 14th July 1977, when Norman Sharp died suddenly at the age of seventy-six. His association with the club had begun in 1905 and ran seventy-two years: 2nd XI scorer as a boy, the regular 1st XI opening batsman for thirty years and captain from 1941 to 1948, fixture secretary from 1930 to 1947, then treasurer, chairman and President from 1966 until his death. He scored nearly 25,000 runs in club cricket, 19,710 of them for Sutton, and wrote the history that carries the club's story down to 1975.",
+        ],
+        image: img_1977_part2_image7,
+        imageCaption: "Peter Yates's under-16 squad, winners of the first Alpine Under 16 Championship in 1977, captained by David Stokes."
+      },
     ],
     keyMoments: [
       {
         year: "1970",
-        title: "New Pavilion Opens",
-        description: "The new Rectory Park pavilion is inaugurated on 25th July — a landmark in the club's infrastructure"
+        title: "The New Pavilion Opens",
+        description: "Edmund H. King, Chairman of Warwickshire C.C.C., cut the tape on the evening of Friday 25th July before the Mayor, Alderman H.J.C. Musgrave, and a large gathering"
+      },
+      {
+        year: "1970",
+        title: "A Trophy for Warwick Tidy",
+        description: "Tidy was awarded the Sir Frank Worrell Trophy as the most promising young cricketer in the country, and the club presented him with a tankard to commemorate it"
       },
       {
         year: "1972",
-        title: "MCCC Era Begins",
-        description: "The Midland Club Cricket Conference starts; Keith Gardom makes his first-class debut for Warwickshire"
+        title: "Sutton Joins a League",
+        description: "The Willis Faber-sponsored Midland Club Cricket Championship began, ending more than 120 years of friendly cricket — a decision the club historian judged unconstitutional and could not find in the Minute Book"
       },
       {
         year: "1973",
         title: "Dixon's Record Season",
-        description: "Michael Dixon scores a club record 1,630 runs including four centuries; seven centuries in the season — another new record"
+        description: "Michael Dixon made 1,630 runs, beating Brian Clewer's club record of 1,472 set in 1959, with four centuries; the side's seven hundreds beat the six of 1928"
+      },
+      {
+        year: "1974",
+        title: "Cricketer of the Year",
+        description: "The Midland Club Cricket Conference named Dixon its Cricketer of the Year after 1,234 runs at 36.29, including 104 at Stafford and 103 at Leamington on consecutive days"
+      },
+      {
+        year: "1975",
+        title: "Two Awards for the Doctor",
+        description: "Willis Faber honoured Dr Bob Strachan twice — a Duncan Fearnley bat from their director George Lindsay for his bowling against Leamington, and a case for it after a fifty in forty-five minutes against Solihull"
       },
       {
         year: "1977",
-        title: "MCCC Champions",
-        description: "The 1st XI wins the MCCC Championship; Norman Sharp, the club's historian, dies aged 76"
+        title: "Champions of the Midlands",
+        description: "The 1st XI won the Midland Club Cricket Championship under Michael Dixon, winning seven matches and losing seven, and Peter Yates's under-16s won the first Alpine Championship"
+      },
+      {
+        year: "1977",
+        title: "The Death of Norman Sharp",
+        description: "The club's President and historian died on 14th July aged 76, ending an association with Sutton Coldfield that had begun in 1905 and run seventy-two years"
+      },
+      {
+        year: "1978",
+        title: "Eight Hundreds in a Summer",
+        description: "Keith Gardom, the new captain, made 1,285 runs and Michael Dixon 1,298; the eight centuries scored by the 1st XI beat the seven of 1973 and set a club record"
       },
       {
         year: "1979",
-        title: "On the World Stage",
-        description: "Peter Bell and Phil Berry umpire at the ICC Trophy; Dixon completes his tenth consecutive 1,000-run season"
-      }
+        title: "The World Cup Comes Calling",
+        description: "Canada made 254 for 1 at Rectory Park and bowled Sutton out for 170; Peter Bell and Phil Berry umpired the U.S.A. against Sri Lanka at Northampton"
+      },
     ],
     quote: {
-      text: "Michael Dixon was simply the most complete batsman I ever played alongside. Season after season, he found a way to get runs.",
-      author: "Keith Gardom, 1970s 1st XI"
+      text: "So ends this history of the first 128 years of the Sutton Coldfield Cricket Club, a club, which with the Sutton Coldfield Hockey Club, has given me a lifetime of pleasure and the privilege of numbering many great sportsmen amongst my friends.",
+      author: "Norman Sharp, closing his history of the club in 1975; he died on 14th July 1977"
     }
   },
   "1980s": {
     name: "The Eighties",
     years: "1980-1989",
     heroTitle: "Trophies and Tragedy",
-    heroSubtitle: "The Hawks Era and an Overseas First",
+    heroSubtitle: "The Hawks' Hat-Trick and an Overseas First",
     heroImage: img_1982_team,
-    introLarge: "The 1980s were a decade of contrasts — league honours piling up for the 3rd XI, international cricket arriving at Rectory Park, and the club welcoming its first-ever overseas professional.",
-    introBody: "Against a backdrop of recurring vandalism and the tragic early death of beloved fixture secretary Andrew Beach, the club's playing strength deepened and its community bonds tightened. Michael Dixon retired at the close of 1980 having scored 1,022 runs in his final season — completing eleven consecutive 1,000-run campaigns. In his place, a new generation stepped forward, and the club's competitive structure expanded with the formation of the Warwickshire Sunday League in 1984.",
+    introLarge: "Michael Dixon walked off for the last time at the end of 1980, and the club that followed him won more than it had ever won before — cups, championships and Sunday leagues at every level — while the wider cricketing world kept arriving at Rectory Park.",
+    introBody: "The decade began with four batsmen past a thousand runs in a single season and ended with a nineteen-year-old off spinner from Harare coaching Sutton's juniors. In between, the ground staged I.C.C. World Cup warm-up matches involving Holland, Canada, the United States, Kenya and Zimbabwe; the Warwickshire Sunday League was founded and Sutton entered both elevens; and the 3rd XI, the Hawks, won three championships in a row. It was not all triumph. Vandals burnt down the lower ground pavilion and petrol-bombed the score-box, and in the middle of the decade the club lost Andrew Beach, its fixture secretary and one of the best-loved men ever to play for Sutton, at the age of forty-one. The trophy raised in his memory, contested between the cricket and hockey clubs, is the decade's most enduring legacy.",
     sections: [
       {
-        title: "The Hawks Fly High",
+        title: "The Last Runs of Michael Dixon",
         background: "cream",
         content: [
-          "While the 1st XI consolidated its position in the MCCC, it was the club's 3rd XI — the Hawks — who became the story of the decade. Under a succession of committed captains, the Hawks won the MCCC 3rd XI League Championship in 1987, 1988 and 1989 — three consecutive titles that brought the club enormous pride and demonstrated the quality throughout the ranks.",
-          "The 2nd XI Sunday side also thrived, winning the Warwickshire Sunday League in both 1988 and 1989, while the club's own knockout competition was won for the first time in 1985 — a side captained by Graham Williamson that beat local rivals Aston Unity four times in the same season. The Wishaw Six-a-Side Cup was claimed that same day, a remarkable double.",
-          "Andy Luckhurst emerged as the outstanding all-round player of the era. The MCCC named him Cricketer of the Year in both 1988 and 1989, and he regularly headed both batting and bowling averages for the 1st XI — a remarkable achievement in a club well stocked with talent."
+          "Michael Dixon completed over a thousand runs in 1980 for the eleventh consecutive season, finishing with 1,022 and announcing his retirement at the season's end. He left as one of only three batsmen to have passed 12,500 runs for the club, with a grand total of 12,591, and still found time for two centuries in his final summer — 105 against Aston Unity and 110 against Stratford. What a player, the club's record says of him: captain, batsman and a fine fielder in the slips with a very safe pair of hands.",
+          "He was not alone in his run-making. Four 1st XI batsmen passed a thousand runs in 1980: Chris Barber with 1,169, including 195 at home to Moseley Ashfield; Graham Williamson with 1,022 and 105 not out against Aldridge; and James Ross with 1,003. Mike Joseph added a hundred against Olton. The best bowling came from a very fiery young fast bowler, Rod Long, who took 9 for 38 against Leamington, while Keith Gardom took 5 for 34 with his leg spin against Barnt Green.",
+          "The weather could be as cruel as any opponent. On one Rectory Park Saturday Sutton had Solihull at 55 for nine — John Robinson bowling superbly for 7 for 22, Bob Strachan finishing with 2 for 28 and Graham Williamson holding three fine catches — when the heavens opened and denied the side their first Duncan Fearnley League victory of the season. The next day, against Milford Hall, Sutton declared generously at 195 for three, Chris Barber hitting a sparkling 92, before rain ended that match too.",
         ],
-        image: img_1985_ko,
-        imageCaption: "The 1985 Cup KO Winners — Sutton's first victory in their own knockout competition"
+        image: img_1984_part2_image15,
+        imageCaption: "The Sutton Coldfield 1st XI of 1984: back row, Phil Berry (umpire), Kate Hodder (scorer), Graham Clarke, Graham Williamson, Andy Luckhurst, Bruce McLaren, Garry Moore and Mark Rogers; front row, Neil Houghton, James Ross, Mike Hepburn and Bob Strachan."
       },
       {
-        title: "International Cricket, an Overseas Pioneer and Andrew Beach",
+        title: "The World Comes to Rectory Park",
         background: "white",
         content: [
-          "Rectory Park became an international venue in the early 1980s when Sutton hosted ICC World Cup warm-up games. In 1982 the Netherlands scored 293 for 4 in a 60-over match against Sutton; Canada and the USA played their 100th meeting on the same ground; and Peter Bell umpired games involving Kenya, Papua New Guinea and Gibraltar — a remarkable series of connections for a club side.",
-          "In 1989 the club took another landmark step, engaging 19-year-old Zimbabwean Steve Peall as Sutton's first overseas professional. A right-arm off-spinner and hard-hitting left-handed batsman, Peall went on to play four Test matches and 21 One Day Internationals for Zimbabwe. He returned to visit Rectory Park in 2016, renewing acquaintances with the friends he had made thirty years earlier.",
-          "The decade was shadowed by the sudden death of fixture secretary Andrew Beach in 1986, aged 41. A gifted off-spinner who had taken 94 wickets in his debut season in 1963, Andrew was a gentleman of the game — small in stature but immense in heart. The Andrew Beach Memorial Trophy, competed between the cricket and hockey clubs, honours his memory to this day."
+          "In 1982 a strong Sutton side entertained the Royal Netherlands Cricket Association in a 60-over I.C.C. warm-up match: Holland scored 293 for four before bowling Sutton out for 178 in the last over. The same ground staged an I.C.C. cup tie in which Canada made 233 and the United States were all out for 95 — the hundredth meeting between the two countries. Four years later Rectory Park hosted Kenya, all out for 82, against Zimbabwe, who replied with 85 for three.",
+          "Sutton's umpires were as much in demand as its ground. Peter Bell umpired the I.C.C. knockout tie in which Kenya's 210 for eight proved too many for Papua New Guinea, all out for 173, and was presented afterwards with a pair of cuff links by the beaten side. In 1986 he stood in another 60-over I.C.C. game, at Swindon C.C. in Gloucestershire, where Gibraltar were bowled out for 46 and Canada knocked off 48 without loss in 3.5 overs on a wet wicket after heavy morning rain.",
+          "The club's own cricket kept good company that summer. Graham Williamson made 105 not out against Olton and a young Andrew Hodder his maiden century, 100 against Fordhouse, following it with 6 for 49 at Streetly. Three other bowlers took six in an innings: Bob Strachan 6 for 24 against Stratford, Derrick Murphy 6 for 67 against Ashby and Dave Torry 6 for 67 against Coventry & North Warwickshire. George Griffith marked his debut with 115 not out for the 2nd XI at Bewdley, and the nets were relaid on concrete beside the roadway.",
+        ],
+        image: img_1982_part2_image13,
+        imageCaption: "The plate beneath the team photograph naming the Sutton Coldfield 1st XI that met Holland on 4th July 1982 — C. Massey and P. Berry (umpires), A. Hodder, D. Jackson, B. McClaren, M. Joseph, J. Ross, C. Barber, R. Strachan, G. Williamson, M. Hepburn (captain), J. Robinson and A. Luckhurst."
+      },
+      {
+        title: "The Committee Room, the Colts and a Sunday League",
+        background: "cream",
+        content: [
+          "The club's administration changed hands steadily. Peter Wells became chairman in 1980 and was elected a Life Member when he stood down three years later; Peter Bell took the chair from 1983 to 1987 with George Griffith as secretary, and Dr Bob Strachan succeeded him. Roger Coombs retired in 1984 as ground secretary, a post he had held since 1975, and was elected a Life Member with Paul McCarthy in 1986. Three more followed in 1989 — the umpires Peter Bell and Phil Berry, for officiating respected by club and opposition alike, and Neil Houghton, elected Treasurer of Warwickshire C.C.C. in 1987.",
+          "The decade's most consequential meeting was held elsewhere. John Whitehouse, lately retired from Warwickshire for a career in accountancy, argued that the Sunday one-day game offered an opening to good class players with no wish for a full-time career in cricket, and called the senior Warwickshire clubs together; his proposal was agreed, the Warwickshire Sunday League was born in 1984 as a 40-over competition, and Sutton entered both elevens. Peter Wells's Colts side for boys under eighteen became a committee position in 1980, and the Colts toured East Anglia in 1983 and Cambridgeshire in 1986 under Andy Biddle.",
+          "Club life had its farces as well as its losses. The lower ground pavilion was burnt down and rebuilt by the members; in 1981 vandals destroyed the top ground score-box with a petrol bomb and Frank Lamb rebuilt it with subscribed funds. Best remembered is the goodwill of the local Citizens Band radio group, who rented the premises on Thursday evenings and offered to paint the outside of the pavilion in the summer of 1980 for a small fee. They did — and painted the old pine bench seats too, with the very slow-drying paint required for asbestos. For seasons afterwards you could recognise anyone who had played at Rectory Park that summer by the green stripes on their flannels, which no dry cleaner could shift.",
+        ],
+        image: img_1986_part2_image18,
+        imageCaption: "Carol Griffith's cartoon of the chairman, Peter Bell, and the secretary, George Griffith, from the club's 1986 handbook and fixture card."
+      },
+      {
+        title: "Cups Won, and a Friend Lost",
+        background: "white",
+        content: [
+          "1985 was the summer of cups. The 1st XI beat their local rivals Aston Unity four times over — in the Warwickshire Sunday League, in the club's own knockout competition, in the Walmley tournament of fifteen eight-ball overs and in the Wishaw six-a-side — and went on to win their own K.O. Cup for the first time, following it the very next day with the Wishaw Six-a-Side Cup. The winning side was Andrew Hodder, Richard Abel, Gary Moore, Graham Clarke, Bob McGowan, Andy Biddle behind the stumps, Geoff Hopkinson, Andy Luckhurst, Graham Williamson as captain, Mike Hepburn and Bob Strachan.",
+          "The following year brought narrow wins and more short-form silverware. Graham Clarke took the last Halesowen wicket off the last ball of the match to finish with 6 for 57, and bowled twenty-three overs for 5 for 98 against Walsall, who declared at 215 for five before Sutton were dismissed for 96. In the 2nd XI's most remarkable afternoon Neil Gamble took 6 for 18 in twelve overs and Derrick Murphy 4 for 16 in eleven to bowl Stratford out for 34, Sutton winning by seven wickets. The club also won the Winter eight-a-side indoor league and the Wishaw six-a-side for a second year.",
+          "Against all of that stood the loss of Andrew Beach, the club's fixture secretary, who died after a short illness at the age of forty-one; the club's own papers place the loss before the 1985 season in one account and in 1986 in another, and the year cannot now be settled. Known to his friends as \"Chub\" or \"Beachey\", he had joined from Taunton School in 1963 and taken 94 wickets in his first season, forty of them stumped by his friend Roger Coombs. He batted, by his own choosing, at \"10A\" because it sounded better than last man, and hit two consecutive sixes onto the lower ground against the Canadian national side. Mike Hepburn organised a trophy in his memory, played for whenever the cricket and hockey clubs met.",
+        ],
+        image: img_1985_ko,
+        imageCaption: "The winners of the Sutton Coldfield K.O. Cup, 1985: back row, Andrew Hodder, Richard Abel, Gary Moore, Graham Clarke, Bob McGowan and Andy Biddle (wicket-keeper); front row, Geoff Hopkinson, Andy Luckhurst, Graham Williamson (captain), Mike Hepburn and Bob Strachan."
+      },
+      {
+        title: "The Hawks' Hat-Trick and a Professional from Harare",
+        background: "cream",
+        content: [
+          "The closing seasons belonged to the lower elevens. The Hawks won the M.C.C.C. championship — by then sponsored and known as the Chesshire Gibson League — in 1987 under Ian Wood, again in 1988, and for a third successive season in 1989. A Sutton 3rd XI had already carried off the Jubilee Shield in 1981 and 1983, and a joint side of Hawks and Grasshoppers won it again in 1988. That was a year of silverware at almost every level: the club took the Warwickshire Winter Six-a-Side indoor league, the 2nd XI won the Warwickshire Sunday League — as they did again in 1989 — and Geoff Pritchett was named Cricketer of the Year by the Midland Club Cricket Conference.",
+          "Two all-rounders shaped the decade's cricket. Andrew Hodder, a musician studying the French horn and a fine fieldsman besides, blossomed into a top-class leg spinner: in 1983 he took 84 wickets at 15.2, including 4 for 3 against Bromsgrove and 6 for 47 at Water Orton, and finished second in the batting aggregates with 724 runs at 31.5. Andy Luckhurst made 103 not out against Kings Heath in 1984 and took 6 for 28 against Coventry & N.W. to win the M.C.C.C. 1st XI league bowling trophy; he carried off both the 1st XI batting and bowling awards at the 1988 dinner, and in 1989, after eight years at the club, was the Conference's Cricketer of the Year.",
+          "The last innovation of the decade was to look abroad. Stephen Guy Peall, a nineteen-year-old born in Salisbury — now Harare — joined in 1989 as Sutton's first overseas professional: a right-arm off spinner and hard-hitting left-handed lower-order batsman who had played for Harare Sports, coached the club's youth players and turned out for the Warwickshire Imps and the Conference. Between 1992 and 1996 he played four Test matches and twenty-one One Day Internationals for Zimbabwe, and while visiting the United Kingdom in 2016 he called at Rectory Park to renew acquaintances. Behind him the future looked bright: that same season the under-15s won the Warwickshire Under 15 League.",
         ],
         image: img_1988_1stxi,
-        imageCaption: "Sutton Coldfield CC 1st XI 1988 — captioned: Leave, Mackey, Canon, P. Jones, Gosfith, D. Gullett; W. Hipburn, G. Williamson, G. Josephson, A. Luckhurst, J. Bone"
-      }
+        imageCaption: "The Sutton Coldfield Sunday 2nd XI, winners of the Warwickshire Sunday League in 1988 and 1989: standing, Harry Walker (scorer), Richard Jerman, Maurice Watts, Jonathan Miller, Justine Roy, Mark Jerman and Chris Munn; seated, Adrian Colledge, Ken Lancaster, Chris Barber (captain), Bob Strachan and Mick Hooper."
+      },
     ],
     keyMoments: [
       {
+        year: "1980",
+        title: "Michael Dixon Retires",
+        description: "Dixon passed a thousand runs for the eleventh consecutive season with 1,022 and retired with 12,591 runs for the club, one of only three men to pass 12,500"
+      },
+      {
+        year: "1981",
+        title: "The Score-box Burned",
+        description: "Vandals destroyed the top ground score-box with a petrol bomb and Frank Lamb rebuilt it with funds subscribed by members; a Sutton 3rd XI won the Jubilee Shield"
+      },
+      {
         year: "1982",
-        title: "International Cricket at Rectory Park",
-        description: "ICC World Cup warm-up matches hosted; Peter Bell umpires ICC games involving Kenya, PNG and Gibraltar"
+        title: "An International Summer",
+        description: "Holland made 293 for 4 against Sutton in a 60-over I.C.C. warm-up, Canada beat the U.S.A. at Rectory Park in the hundredth meeting of the two countries, and Peter Bell umpired Kenya against Papua New Guinea"
+      },
+      {
+        year: "1983",
+        title: "Andy Hodder's Season",
+        description: "Hodder took 84 wickets at 15.2 and made 724 runs at 31.5, while Chris Barber headed the aggregates with 856 runs at 34.2, including 140 against Leicester Ivanhoe"
+      },
+      {
+        year: "1984",
+        title: "The Sunday League Begins",
+        description: "The Warwickshire Sunday League was founded as a 40-over competition at John Whitehouse's instigation, with Sutton entering both elevens; Andy Luckhurst won the M.C.C.C. 1st XI bowling trophy"
       },
       {
         year: "1985",
-        title: "Cup Double",
-        description: "1st XI wins the club's own KO Cup for the first time, and the Wishaw Six-a-Side, on consecutive days"
+        title: "First Cup, and Then Another",
+        description: "Graham Williamson's side won the club's own K.O. Cup for the first time and the Wishaw Six-a-Side Cup the following day, having beaten Aston Unity four times that season"
       },
       {
         year: "1986",
-        title: "Andrew Beach Memorial",
-        description: "Fixture secretary and club stalwart Andrew Beach dies aged 41; memorial trophy created in his honour"
+        title: "Andrew Beach Remembered",
+        description: "The club's fixture secretary died at 41 and Mike Hepburn founded the Andrew Beach Memorial Trophy for matches between the cricket and hockey clubs; the club's papers differ over whether the loss fell in 1985 or 1986"
       },
       {
-        year: "1987-1989",
-        title: "Hawks Hat-Trick",
-        description: "The 3rd XI wins the MCCC Championship three seasons in succession"
+        year: "1987",
+        title: "The Hawks Begin Their Run",
+        description: "The 3rd XI won the M.C.C.C. championship, by then the Chesshire Gibson League, the first of three in succession; Neil Houghton was elected Treasurer of Warwickshire C.C.C."
+      },
+      {
+        year: "1988",
+        title: "Silverware at Every Level",
+        description: "The 2nd XI won the Warwickshire Sunday League, the Hawks their championship and a joint Hawks and Grasshoppers side the Jubilee Shield; Mick Hooper made 100 not out for the Conference at Chedworth's centenary"
       },
       {
         year: "1989",
-        title: "First Overseas Professional",
-        description: "Steve Peall of Zimbabwe joins as Sutton's first overseas player; he goes on to play for his country"
-      }
+        title: "A Professional from Harare",
+        description: "Steve Peall, aged 19, became Sutton's first overseas professional and went on to play 4 Tests and 21 One Day Internationals for Zimbabwe; Andy Luckhurst was Cricketer of the Year and the under-15s won their county league"
+      },
     ],
     quote: {
-      text: "Andrew was a gentleman, small in stature but big in heart. Everyone was most welcome in his company.",
-      author: "Club tribute to Andrew Beach, 1986"
+      text: "Andrew was a gentleman, small in stature but big in heart, everyone was most welcome to join his company; any new member was especially welcome.",
+      author: "The club's obituary of Andrew Beach, fixture secretary, who died at the age of 41"
     }
   },
   "1990s": {
@@ -1844,7 +1966,7 @@ export default function DecadePage() {
       <section className="relative h-[500px] md:h-[700px] overflow-hidden mt-[73px]">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-contain bg-no-repeat bg-center bg-[#1c1c1c]"
           style={{ backgroundImage: `url(${decade.heroImage})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
@@ -1904,7 +2026,7 @@ export default function DecadePage() {
               <ImageWithFallback
                 src={decade.heroImage}
                 alt={`${decade.name} era`}
-                className="w-full aspect-square object-cover"
+                className="w-full h-auto object-contain bg-[#f4f1ec]"
               />
               <div className="border-b border-[#d9c9ca] py-3 mt-4">
                 <p className="font-['Georgia',serif] text-sm md:text-base text-[#4a4a4a]">
@@ -1960,7 +2082,7 @@ export default function DecadePage() {
                       <ImageWithFallback
                         src={section.image}
                         alt={section.title}
-                        className="w-full h-[300px] md:h-[400px] object-cover"
+                        className="w-full h-auto object-contain bg-[#f4f1ec]"
                       />
                       {section.imageCaption && (
                         <div className="border-b border-[#d9c9ca] py-3 mt-4">

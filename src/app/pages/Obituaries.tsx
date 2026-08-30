@@ -3,7 +3,7 @@ import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
 import { ArrowLeft } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import heroImage from "@/assets/ui/vintage-hero.png";
+import heroImage from "@/assets/ui/vintage-hero.jpg";
 import img_badge_warwickshire from '@/assets/decades/1910s/1916_part1_image35.png';
 import img_badge_engineers from '@/assets/decades/1910s/1916_part1_image36.png';
 import img_badge_rifle_brigade from '@/assets/decades/1910s/1916_part1_image38.png';

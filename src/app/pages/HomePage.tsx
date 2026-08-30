@@ -1,6 +1,6 @@
 import cricketBallIcon from '@/assets/ui/cricket-ball-icon.png';
-import homeTeamsThroughTime from '@/assets/ui/home-teams-through-time.png';
-import heroImage from '@/assets/ui/home-hero.png';
+import homeTeamsThroughTime from '@/assets/ui/home-teams-through-time.jpg';
+import heroImage from '@/assets/ui/home-hero.jpg';
 // cricketBall import removed as it's unused
 
 // Archive images for decade thumbnails
@@ -21,7 +21,7 @@ import img_2016_squad from '@/assets/decades/2010s/2016_part3_image2.jpg';
 import img_2022_blueteam from '@/assets/decades/2020s/2022_part3_image63.jpg';
 import img_1999_journey from '@/assets/ui/home-1999-feature.jpg';
 import img_2021_community from '@/assets/decades/2020s/2021_part3_image48.jpeg';
-import img_decades from '@/assets/ui/home-decades-collage.png';
+import img_decades from '@/assets/ui/home-decades-collage.jpg';
 import { Link } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
@@ -270,9 +270,20 @@ export default function HomePage() {
       
       {/* Hero Section - Full Screen */}
       <section className="relative h-screen overflow-hidden">
-        <div 
+        {/* Decoded off-screen at high priority so the hero paints as early as
+            possible; a CSS background alone is not discovered until the
+            stylesheet has been parsed. */}
+        <img
+          src={heroImage}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute h-0 w-0 opacity-0 pointer-events-none"
+        />
+        <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ 
+          style={{
             backgroundImage: `url(${heroImage})`,
             transform: `translateY(${scrollY * 0.5}px)`,
             transition: 'transform 0.1s ease-out'

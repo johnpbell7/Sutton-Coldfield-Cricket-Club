@@ -1,4 +1,4 @@
-import paperTexture from '@/assets/ui/paper-texture.png';
+import paperTexture from '@/assets/ui/paper-texture.jpg';
 import cricketBallIcon from '@/assets/ui/cricket-ball-icon.png';
 // Historical archive images for timeline entries
 import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';

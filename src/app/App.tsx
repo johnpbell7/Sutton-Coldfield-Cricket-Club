@@ -597,11 +597,11 @@ const timelineData = [
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Three photographs surviving from the 1905 season, held in the club's archive.",
     images: [],
-    backgroundImage: img_1905_team_a,
+    backgroundImage: img_1905_part1_image13,
     images: [
+      img_1905_part1_image13,
       img_1905_team_a,
       img_1905_team_b,
-      img_1905_part1_image13,
     ],
   },
 
@@ -688,10 +688,10 @@ const timelineData = [
     closingSummary: "1910 marked the end of the Bedford era while maintaining strong performances, settled social traditions and a new hand upon the scorebook.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "A successful season at Rectory Park, 1910.",
-    backgroundImage: img_1910_grounds,
+    backgroundImage: img_1910_1stxi,
     images: [
-      img_1910_grounds,
       img_1910_1stxi,
+      img_1910_grounds,
     ],
   },
 
@@ -785,10 +785,10 @@ const timelineData = [
     closingSummary: "1914 combined exceptional cricketing performances with a sudden ending on 8th August, after which the score books were simply left where they lay.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The last summer before the war, Rectory Park 1914.",
-    backgroundImage: img_1914_team_a,
+    backgroundImage: img_1914_team_b,
     images: [
-      img_1914_team_a,
       img_1914_team_b,
+      img_1914_team_a,
     ],
   },
 
@@ -968,12 +968,12 @@ const timelineData = [
     closingSummary: "1920–1921 saw financial recovery and the steady rebuilding of the Club's playing strength, crowned by an Olympic gold medal won by one of its own.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The Sutton Coldfield sides of 1920–1921, rebuilding after the war — and celebrating Tom Crockford's Olympic gold.",
-    backgroundImage: img_1920_team_a,
+    backgroundImage: img_1921_team_b,
     images: [
+      img_1921_team_b,
       img_1920_team_a,
       img_1920_team_b,
       img_1921_team_a,
-      img_1921_team_b,
     ],
   },
 
@@ -1757,11 +1757,11 @@ const timelineData = [
     closingSummary: "1956 combined major facility upgrades with strong on-field results, reflecting a maturing and well-organised club.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "Modernisation at Rectory Park, 1956.",
-    backgroundImage: img_1956_team_a,
+    backgroundImage: img_1956_team_c,
     images: [
+      img_1956_team_c,
       img_1956_team_a,
       img_1956_team_b,
-      img_1956_team_c,
     ],
   },
 
@@ -1930,10 +1930,10 @@ const timelineData = [
     closingSummary: "1963 survives in unusual detail: a young captain, fourteen players, forty-four matches, and a collection box carried round the boundary while Sutton batted.",
     location: "Rectory Park, Sutton Coldfield",
     imageCaption: "The old thatched pavilion and its changing hut at Rectory Park, 1963.",
-    backgroundImage: img_1963_team_a,
+    backgroundImage: img_1963_team_b,
     images: [
-      img_1963_team_a,
       img_1963_team_b,
+      img_1963_team_a,
       img_1963_team_c,
     ],
   },

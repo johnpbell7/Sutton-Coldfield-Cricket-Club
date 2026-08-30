@@ -26,7 +26,7 @@ import img_1951 from '@/assets/decades/1950s/1951_part1_image65.jpg';
 import img_1952 from '@/assets/decades/1950s/1952_part1_image66.jpg';
 import img_1953 from '@/assets/decades/1950s/1953_part1_image67.jpg';
 import img_1956 from '@/assets/decades/1950s/1956_part1_image69.png';
-import img_1960 from '@/assets/decades/1960s/1960_part1_image79.jpg';
+import img_1960 from '@/assets/decades/1960s/1960_part1_image78.jpg';
 import img_1962 from '@/assets/decades/1960s/1962_part1_image80.jpg';
 import img_1966 from '@/assets/decades/1960s/1966_part2_image1.jpg';
 import img_1975 from '@/assets/decades/1970s/1975_part2_image4.jpg';

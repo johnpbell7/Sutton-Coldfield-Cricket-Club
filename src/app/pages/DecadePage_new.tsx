@@ -129,6 +129,8 @@ import img_1907_part1_image17 from '@/assets/decades/1900s/1907_part1_image17.jp
 import img_1912_part1_image23 from '@/assets/decades/1910s/1912_part1_image23.jpg';
 import img_1914_part1_image26 from '@/assets/decades/1910s/1914_part1_image26.jpg';
 import img_1916_part1_image41 from '@/assets/decades/1910s/1916_part1_image41.jpg';
+import img_1938_lost_building from '@/assets/decades/1930s/1938_part1_image55.jpeg';
+import img_1921_group from '@/assets/decades/1920s/1921_part1_image48.jpeg';
 
 // Decade page component with split introduction text
 interface DecadeData {
@@ -175,8 +177,8 @@ const decadeData: Record<string, DecadeData> = {
           "These early matches were simple in arrangement but regular in occurrence. Played on unfenced ground and shared with the wider parkland, the game relied on mutual understanding rather than formal rules of enclosure or ownership. Pitches were prepared by hand, often by the players themselves, and the boundaries of play were as much agreed as measured.",
           "Despite these limitations, cricket flourished. It quickly became a defining feature of local leisure, drawing participants and spectators alike and embedding itself within the identity of Sutton Coldfield."
         ],
-        image: img_1859_team,
-        imageCaption: "Sutton Coldfield CC 1st XI, 1859 — the earliest surviving team photograph"
+        image: img_1873_team_b,
+        imageCaption: "An early Sutton Coldfield fixture list, naming the season's matches and the managers responsible for raising each side"
       },
       {
         title: "Towards Formation: Cricket in the 1840s",
@@ -668,8 +670,8 @@ const decadeData: Record<string, DecadeData> = {
           "Beneath the First XI, the Second and \"A\" teams played a vital role in sustaining the Club's cricketing health. Veterans of the war years blended with emerging younger players, many of whom progressed to senior cricket. Despite limited resources, particularly for the \"A\" team, dedication and enthusiasm ensured the continuation of competitive cricket at all levels.",
           "The decade was also rich in character and anecdote—benefit matches, humorous on-field incidents, evening cricket under daylight-saving, and shared use of the ground with other sports all contributed to a vibrant and enduring club culture."
         ],
-        image: img_1921_team,
-        imageCaption: "Sutton Coldfield CC, 1921 — the blend of post-war veterans and emerging talent"
+        image: img_1921_group,
+        imageCaption: "The club photographed in front of the thatched pavilion, 1921"
       }
     ],
     keyMoments: [
@@ -736,7 +738,7 @@ const decadeData: Record<string, DecadeData> = {
           "At the same time, the period marked the retirement of figures whose association with the club stretched back several decades. These transitions were handled with care and respect, ensuring that experience and tradition were not lost but passed on. The stability provided by committed officers and captains allowed the club to navigate fluctuating fortunes without compromising its identity or standards."
         ],
         image: img_1933_team,
-        imageCaption: "Sutton Coldfield CC, 1933"
+        imageCaption: "A Sutton Coldfield cricketer photographed in club colours, 1933"
       },
       {
         title: "Cricketing Excellence and Individual Distinction",
@@ -755,8 +757,8 @@ const decadeData: Record<string, DecadeData> = {
           "The physical development and preservation of the club's facilities formed a crucial theme of the decade. Practical improvements, such as the installation of new sight screens and the reconstruction of pavilion structures, reflected a determination to maintain modern standards and provide a suitable environment for high-quality cricket.",
           "Most significant was the threat to Rectory Park itself when the landowners considered its sale for building development. Through the intervention of local authorities, the ground was purchased by the Corporation and preserved as an open space. This decisive action safeguarded not only the club's immediate future but also its long-term place within the town, ensuring that cricket at Rectory Park would continue beyond the uncertainties of the age."
         ],
-        image: img_1938_team,
-        imageCaption: "Sutton Coldfield CC, 1938 — the year Rectory Park was purchased by the Corporation and secured as open space"
+        image: img_1938_lost_building,
+        imageCaption: "\"It disappeared just 25 years ago\" — a press cutting on a lost Sutton Coldfield building, from the years in which the future of Rectory Park itself was in question"
       },
       {
         title: "Club, Community, and Civic Identity",
@@ -775,8 +777,8 @@ const decadeData: Record<string, DecadeData> = {
           "The latter years of the decade were marked by growing uncertainty. Extreme weather disrupted several seasons, testing the resilience of players and administrators alike. Beyond these immediate challenges, the approach of the Second World War cast an ever-lengthening shadow over sporting life.",
           "By 1939, international tensions brought cricket to an abrupt halt, with fixtures cancelled and members preparing for service. The decade closed not with decline, but with interruption. The endurance shown throughout the 1930s—through poor seasons, difficult conditions, and external pressures—ensured that the club entered wartime with its traditions intact and its sense of purpose undiminished."
         ],
-        image: img_1933_team,
-        imageCaption: "Sutton Coldfield CC during the difficult years of the 1930s"
+        image: img_1938_team,
+        imageCaption: "\"Notable Midland Cricket Clubs\" \u2014 the Sutton Coldfield 1st XI in the Sunday Mercury, 29th May 1938, among the last full seasons before the war"
       }
     ],
     keyMoments: [

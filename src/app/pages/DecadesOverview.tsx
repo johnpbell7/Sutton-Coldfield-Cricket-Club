@@ -218,7 +218,7 @@ export default function DecadesOverview() {
         >
           <h2 className="text-4xl mb-4">Our Journey in Time</h2>
           <p className="font-['Georgia',serif] text-lg md:text-xl text-gray-700 leading-relaxed">
-            Explore over 140 years of cricket history at Sutton Coldfield Cricket Club. From our humble beginnings in 1880 to the thriving club we are today, each decade tells a unique story of triumph, resilience, and community spirit. Click on any era below to discover the players, matches, and moments that shaped our legacy.
+            Explore over 175 years of cricket history at Sutton Coldfield Cricket Club. From the club's formation in 1847 — on a ground where cricket was already being played a decade earlier — to the thriving club we are today, each decade tells a unique story of triumph, resilience, and community spirit. Click on any era below to discover the players, matches, and moments that shaped our legacy.
           </p>
         </div>
 

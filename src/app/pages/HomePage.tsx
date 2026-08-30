@@ -335,7 +335,7 @@ export default function HomePage() {
                   </FadeIn>
                   <FadeIn delay={200}>
                     <p className="font-['Georgia',serif] text-lg md:text-xl text-gray-800 leading-relaxed mb-10">
-                      From humble beginnings in 1880 to a thriving modern club, explore the remarkable timeline of Sutton Coldfield Cricket Club. Discover the moments, matches, and members that shaped our legacy.
+                      From the club's formation in 1847 to a thriving modern club, explore the remarkable timeline of Sutton Coldfield Cricket Club. Discover the moments, matches, and members that shaped our legacy.
                     </p>
                   </FadeIn>
                   <FadeIn delay={400}>

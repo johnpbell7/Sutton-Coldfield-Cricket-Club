@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetTitle, SheetDescription } from "@/app/compone
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import svgPaths from "@/imports/svg-sp3yg7d05h";
+import { ArchiveGallery } from "@/app/components/ArchiveGallery";
 
 interface TimelineItemProps {
   year: string;
@@ -408,29 +409,9 @@ export function TimelineItem({
                       </div>
                     )}
 
-                    {/* Everything else the archive holds for this year. Until
-                        now only images[0] was ever shown, so these sat unseen. */}
+                    {/* Everything else the archive holds for this year */}
                     {galleryImages.length > 0 && (
-                      <div>
-                        <h3 className="font-['Archivo_Black',sans-serif] text-xl md:text-2xl text-[#8B1538] mb-4 md:mb-6">
-                          {galleryImages.length === 1 ? "Also from this year" : "More from this year"}
-                        </h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-                          {galleryImages.map((src, idx) => (
-                            <figure key={idx} className="m-0">
-                              <ImageWithFallback
-                                src={src}
-                                alt={`${title}, ${year} — archive photograph ${idx + 2}`}
-                                loading="lazy"
-                                className="w-full h-auto object-contain bg-[#f4f1ec]"
-                              />
-                            </figure>
-                          ))}
-                        </div>
-                        <p className="font-['Georgia',serif] text-sm text-[#9b9b9b] mt-3">
-                          Club Archives
-                        </p>
-                      </div>
+                      <ArchiveGallery images={galleryImages} year={year} title={title} />
                     )}
 
                     {/* Video section */}

@@ -855,7 +855,6 @@ const timelineData: TimelineEntry[] = [
       img_1916_war_a,
       img_1916_war_b,
       img_1916_part1_image34,
-      img_1916_part1_image35,
     ],
   },
 
@@ -880,9 +879,7 @@ const timelineData: TimelineEntry[] = [
     imageCaption: "Wartime administration and remembrance, 1915–1918.",
     backgroundImage: img_1916_part1_image36,
     images: [
-      img_1916_part1_image36,
       img_1916_part1_image37,
-      img_1916_part1_image38,
       img_1916_part1_image39,
     ],
   },
@@ -908,10 +905,8 @@ const timelineData: TimelineEntry[] = [
     imageCaption: "Four photographs from 1916, the year the club lost both its Honorary Secretary and its Honorary Treasurer.",
     backgroundImage: img_1916_part1_image40,
     images: [
-      img_1916_part1_image40,
       img_1916_part1_image41,
       img_1916_part1_image42,
-      img_1916_part1_image43,
       img_1916_part1_image30_season_circular,
     ],
   },

@@ -238,6 +238,17 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
                 Meet the Teams
               </Link>
             </li>
+
+            {/* Clubhouse Mode */}
+            <li>
+              <Link
+                to="/clubhouse"
+                className="block py-3 px-4 text-lg transition-colors text-gray-800 font-medium"
+                onClick={toggleMenu}
+              >
+                Clubhouse Mode
+              </Link>
+            </li>
           </ul>
         </nav>
 

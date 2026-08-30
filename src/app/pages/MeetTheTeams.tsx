@@ -45,7 +45,7 @@ import img_1993_hawks from '@/assets/decades/1990s/1993_part2_image23.jpg';
 import img_1996 from '@/assets/decades/1990s/1996_part2_image25.jpeg';
 import img_1998 from '@/assets/decades/1990s/1998_part2_image28.jpg';
 import img_2012 from '@/assets/decades/2010s/2012_part2_image65.jpg';
-import img_2013 from '@/assets/decades/1980s/1986_part2_image75.jpg';
+import img_2015_first_xi from '@/assets/decades/2010s/2015_part2_image75.jpg';
 import img_2016_200yrs from '@/assets/decades/2010s/2016_part3_image1.jpg';
 import img_2021_vets from '@/assets/decades/2020s/2021_vets_team.jpg';
 import img_2021_sunday from '@/assets/decades/2020s/2021_part3_image52.png';
@@ -865,21 +865,23 @@ const teamPhotos: TeamPhoto[] = [
     players: NAMES_PENDING
   },
   {
-    year: "2013",
-    title: "2013 First XI",
-    description: "The 2013 1st XI at Rectory Park. Graham Clark's side combined experienced club stalwarts with younger emerging players, continuing the club's strong tradition in the Birmingham & District Premier Cricket League.",
-    image: img_2013,
+    year: "2015",
+    title: "2015 First XI",
+    description: "The 1st XI of 2015, photographed at Rectory Park and named on the print itself. Graham Clark's side won promotion as runners-up that season and lifted the B&DPCL Twenty20 knock-out. The photograph was for many years filed under the wrong date in the club's archive; its own caption settles the matter.",
+    image: img_2015_first_xi,
     background: "white",
     players: [
-      { name: "Simon Head" },
-      { name: "Tom Wright" },
-      { name: "Huw Farrell" },
-      { name: "Paul Griffiths" },
-      { name: "Dan Childs", role: "Overseas" },
-      { name: "Mark Guest" },
-      { name: "Lee Thomason" },
-      { name: "Graham Clark", role: "Captain" },
-      { name: "Jack Smith" },
+      { name: "James Hunt", position: "Back row" },
+      { name: "Tom Wright", position: "Back row" },
+      { name: "Steven Howard", position: "Back row" },
+      { name: "Paul Griffiths", position: "Back row" },
+      { name: "Dan Childs", position: "Back row", role: "Overseas" },
+      { name: "Eustace", position: "Back row" },
+      { name: "Mark Guest", position: "Front row" },
+      { name: "Lee Thomason", position: "Front row" },
+      { name: "Graham Clark", position: "Front row", role: "Captain" },
+      { name: "Jack Smith", position: "Front row" },
+      { name: "Lewis Harrison", position: "Front row" },
     ]
   },
   {

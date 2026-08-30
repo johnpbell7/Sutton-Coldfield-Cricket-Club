@@ -187,12 +187,23 @@ export function TimelineItem({
             onClick={() => onOpen()}
             className="hover:opacity-80 transition-opacity cursor-pointer"
           >
-            {images[0] && (
+            {images[0] ? (
               <ImageWithFallback
                 src={images[0]}
                 alt={title}
                 className="w-40 h-28 object-cover"
               />
+            ) : (
+              <div
+                className="w-40 h-28 flex items-center justify-center border border-dashed border-neutral-300 bg-neutral-50 text-neutral-400 text-center px-2"
+                aria-label="No image available for this entry"
+              >
+                <span className="text-[11px] leading-tight tracking-wide uppercase">
+                  No image
+                  <br />
+                  available
+                </span>
+              </div>
             )}
           </button>
         </div>

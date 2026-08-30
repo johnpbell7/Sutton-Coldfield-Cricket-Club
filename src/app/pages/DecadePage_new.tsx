@@ -42,7 +42,7 @@ import img_2026_girls_team from '@/assets/decades/2020s/2026_first_girls_team.jp
 // 1850s–1860s archive images
 import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';
 import img_1863_team from '@/assets/decades/1860s/1863_part1_image5.jpg';
-import img_1863_salver from '@/assets/decades/1860s/1863_part3_image49.png';
+import img_1863_team_photo from '@/assets/decades/1860s/1863_part1_image5.jpg';
 
 // 1870s archive images
 import img_1873_team_a from '@/assets/decades/1870s/1873_part1_image6.jpg';
@@ -121,9 +121,9 @@ import img_1972_part2_image3 from '@/assets/decades/1970s/1972_part2_image3.jpg'
 import img_1975_part2_image4 from '@/assets/decades/1970s/1975_part2_image4.jpg';
 import img_1977_part2_image7 from '@/assets/decades/1970s/1977_part2_image7.jpg';
 import img_1984_part2_image15 from '@/assets/decades/1980s/1984_part2_image15.jpg';
-import img_1982_part2_image13 from '@/assets/decades/1980s/1982_part2_image13.jpg';
+import img_1982_part2_image13 from '@/assets/decades/1980s/1982_part2_image14.jpg';
 import img_1986_part2_image18 from '@/assets/decades/1980s/1986_part2_image18.jpg';
-import img_1906_part1_image15 from '@/assets/decades/1900s/1906_part1_image15.jpg';
+import img_1906_part1_image15 from '@/assets/decades/1900s/1909_part1_image18.jpg';
 import img_1905_part1_image13 from '@/assets/decades/1900s/1905_part1_image13.jpg';
 import img_1907_part1_image17 from '@/assets/decades/1900s/1907_part1_image17.jpg';
 import img_1912_part1_image23 from '@/assets/decades/1910s/1912_part1_image23.jpg';
@@ -285,8 +285,8 @@ const decadeData: Record<string, DecadeData> = {
           "In 1856, Bedford also founded the Free Foresters Cricket Club, a nomadic side built on principles of fellowship and goodwill. Matches between Sutton Coldfield and the Free Foresters became a regular feature, often involving Sutton teams of twenty-two players competing against smaller but formidable Forester elevens.",
           "Between 1859 and 1862, several highly reported encounters took place. Though frequently ending in defeat for Sutton, these matches—dominated by players such as T. Goodrich—raised playing standards and reinforced cricket's importance within the town's identity."
         ],
-        image: img_1863_salver,
-        imageCaption: "The silver salver presented to Rev. Bedford by the Free Foresters, 1863 — now held at Lord's Cricket Ground"
+        image: img_1863_team_photo,
+        imageCaption: "The Sutton Coldfield XI of 1863, the year the Free Foresters presented Rev. Bedford with a silver salver now held at Lord's"
       },
       {
         title: "Facilities, Grounds, and the Pavilion",
@@ -413,7 +413,7 @@ const decadeData: Record<string, DecadeData> = {
           "Much of the ground work still depended on a horse. Every morning it was dressed not only in its harness but in two pairs of steel shoes with leather straps, to prevent it damaging the playing surface, and for an hour or more it walked the heavy roller over the strip next to be played on. It lived out in Rectory Park all year, going back to a local farmer only in severe frost. The club's papers never gave it a name — it was always 'The Horse' — and from the 1900s to the 1940s the public kept well away from it, its temperament being unknown.",
         ],
         image: img_1906_part1_image15,
-        imageCaption: "Sutton Coldfield CC, 1906 — the season the club fielded a fourth Saturday team."
+        imageCaption: "Sutton Coldfield CC, 1909 — by the end of the decade the club was fielding four Saturday sides."
       },
       {
         title: "The Founder's Last Winter",

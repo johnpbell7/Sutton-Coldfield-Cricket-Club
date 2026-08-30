@@ -2,7 +2,6 @@ import cricketBallIcon from '@/assets/ui/cricket-ball-icon.png';
 // Historical archive images for timeline entries
 import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';
 import img_1863_team from '@/assets/decades/1860s/1863_part1_image5.jpg';
-import img_1863_salver from '@/assets/decades/1860s/1863_part3_image49.png';
 import img_1873_team_a from '@/assets/decades/1870s/1873_part1_image6.jpg';
 import img_1873_team_b from '@/assets/decades/1870s/1873_part1_image7.jpg';
 import img_1890_team from '@/assets/decades/1890s/1890_part1_image8.jpg';
@@ -117,7 +116,6 @@ import img_2025_first_xi from '@/assets/decades/2020s/2025_part3_image97.png';
 import img_2025_thirds from '@/assets/decades/2020s/2025_part3_image100.jpeg';
 import img_2025_fourths from '@/assets/decades/2020s/2025_part3_image101.png';
 import img_2026_girls from '@/assets/decades/2020s/2026_first_girls_team.jpg';
-import img_1906_part1_image15 from '@/assets/decades/1900s/1906_part1_image15.jpg';
 import img_1913_part1_image74 from '@/assets/decades/1910s/1913_part1_image74.jpg';
 import img_1913_part1_image75 from '@/assets/decades/1910s/1913_part1_image75.jpg';
 import img_1916_part1_image34 from '@/assets/decades/1910s/1916_part1_image34.jpeg';
@@ -132,7 +130,6 @@ import img_1972_part2_image3 from '@/assets/decades/1970s/1972_part2_image3.jpg'
 import img_1978_part2_image10 from '@/assets/decades/1970s/1978_part2_image10.jpeg';
 import img_1978_part2_image9 from '@/assets/decades/1970s/1978_part2_image9.png';
 import img_1982_part2_image12 from '@/assets/decades/1980s/1982_part2_image12.jpg';
-import img_1982_part2_image13 from '@/assets/decades/1980s/1982_part2_image13.jpg';
 import img_1982_part2_image14 from '@/assets/decades/1980s/1982_part2_image14.jpg';
 import img_1988_part2_image20 from '@/assets/decades/1980s/1988_part2_image20.jpg';
 import img_1998_part2_image28 from '@/assets/decades/1990s/1998_part2_image28.jpg';
@@ -147,11 +144,11 @@ import img_2013_part2_image71 from '@/assets/decades/2010s/2013_part2_image71.jp
 import img_2016_part3_image1 from '@/assets/decades/2010s/2016_part3_image1.jpg';
 import img_2016_part3_image2 from '@/assets/decades/2010s/2016_part3_image2.jpg';
 import img_2017_part3_image5 from '@/assets/decades/2010s/2017_part3_image5.jpg';
-import img_2017_part3_image6 from '@/assets/decades/2010s/2017_part3_image6.png';
+import img_2017_part3_image6 from '@/assets/decades/2010s/2017_part3_image7.jpeg';
 import img_2018_part3_image10 from '@/assets/decades/2010s/2018_part3_image10.jpg';
 import img_2018_part3_image9 from '@/assets/decades/2010s/2018_part3_image9.jpg';
 import img_2019_part3_image12 from '@/assets/decades/2010s/2019_part3_image12.jpg';
-import img_2019_part3_image13 from '@/assets/decades/2010s/2019_part3_image13.jpeg';
+import img_2019_part3_image13 from '@/assets/decades/2010s/2019_part3_image22.jpg';
 import img_2020_annual_dinner_menu_food from '@/assets/decades/2020s/2020_annual_dinner_menu_food.jpg';
 import img_2020_part3_image27 from '@/assets/decades/2020s/2020_part3_image27.jpg';
 import img_2021_part3_image25 from '@/assets/decades/2020s/2021_part3_image25.jpg';
@@ -332,7 +329,6 @@ const timelineData = [
     backgroundImage: img_1863_team,
     images: [
       img_1863_team,
-      img_1863_salver,
     ],
   },
 
@@ -627,7 +623,6 @@ const timelineData = [
     backgroundImage: img_1906_1stxi,
     images: [
       img_1906_1stxi,
-      img_1906_part1_image15,
       img_1906_2ndxi,
     ],
   },
@@ -2418,7 +2413,6 @@ const timelineData = [
     backgroundImage: img_1982_part2_image12,
     images: [
       img_1982_part2_image12,
-      img_1982_part2_image13,
       img_1982_part2_image14,
     ],
   },

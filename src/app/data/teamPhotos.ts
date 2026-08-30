@@ -18,6 +18,7 @@ import img_1913b from '@/assets/decades/1910s/1913_part1_image25.jpg';
 import img_1921 from '@/assets/decades/1920s/1921_part1_image47.jpg';
 import img_1947a from '@/assets/decades/1940s/1947_part1_image58.jpg';
 import img_1947b from '@/assets/decades/1940s/1947_part1_image59.jpeg';
+import img_1947c from '@/assets/decades/1940s/1947_part1_image62.jpg';
 import img_1949 from '@/assets/decades/1940s/1949_part1_image63.jpg';
 import img_1951 from '@/assets/decades/1950s/1951_part1_image65.jpg';
 import img_1952 from '@/assets/decades/1950s/1952_part1_image66.jpg';
@@ -361,6 +362,14 @@ export const teamPhotos: TeamPhoto[] = [
       { name: "J.G. Pugh" },
       { name: "W.K. Wyatt" },
     ]
+  },
+  {
+    year: "1947",
+    title: "The Club XI at the Thatched Pavilion",
+    description: "Fifteen men before the old thatched pavilion — eleven players, an umpire in his white coat at the left of the back row, and a scorer in jacket and tie at the right. The pavilion behind them stood until the brazier fire of 1969 destroyed it, which makes photographs taken in front of it a record of a ground that no longer exists. Nobody wrote the names beneath this print, and none survives in the club's papers.",
+    image: img_1947c,
+    background: "white",
+    players: noNamesRecorded("This print carries no caption, and none survives in the club's papers")
   },
   {
     year: "1949",

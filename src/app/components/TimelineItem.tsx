@@ -51,6 +51,14 @@ export function TimelineItem({
   hasPrevious,
   isVisible,
 }: TimelineItemProps) {
+  /**
+   * The photographs to show below the story. images[0] is already the
+   * thumbnail and backgroundImage the hero, so neither is repeated here.
+   */
+  const galleryImages = images.filter(
+    (src, idx) => idx > 0 && src !== backgroundImage && src !== images[0]
+  );
+
   // Calculate decade for the button
   const getDecadeInfo = (yearString: string) => {
     const yearNum = parseInt(yearString);
@@ -396,6 +404,31 @@ export function TimelineItem({
                         </h3>
                         <p className="font-['Georgia',serif] text-sm md:text-base leading-relaxed text-white italic font-medium">
                           {closingSummary}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Everything else the archive holds for this year. Until
+                        now only images[0] was ever shown, so these sat unseen. */}
+                    {galleryImages.length > 0 && (
+                      <div>
+                        <h3 className="font-['Archivo_Black',sans-serif] text-xl md:text-2xl text-[#8B1538] mb-4 md:mb-6">
+                          {galleryImages.length === 1 ? "Also from this year" : "More from this year"}
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+                          {galleryImages.map((src, idx) => (
+                            <figure key={idx} className="m-0">
+                              <ImageWithFallback
+                                src={src}
+                                alt={`${title}, ${year} — archive photograph ${idx + 2}`}
+                                loading="lazy"
+                                className="w-full h-auto object-contain bg-[#f4f1ec]"
+                              />
+                            </figure>
+                          ))}
+                        </div>
+                        <p className="font-['Georgia',serif] text-sm text-[#9b9b9b] mt-3">
+                          Club Archives
                         </p>
                       </div>
                     )}

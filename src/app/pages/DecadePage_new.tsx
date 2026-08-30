@@ -131,6 +131,10 @@ import img_1914_part1_image26 from '@/assets/decades/1910s/1914_part1_image26.jp
 import img_1916_part1_image41 from '@/assets/decades/1910s/1916_part1_image41.jpg';
 import img_1938_lost_building from '@/assets/decades/1930s/1938_part1_image55.jpeg';
 import img_1921_group from '@/assets/decades/1920s/1921_part1_image48.jpeg';
+import img_1952_xi from '@/assets/decades/1950s/1952_part1_image66.jpg';
+import img_1962_xi from '@/assets/decades/1960s/1962_part1_image80.jpg';
+import img_2012_xi from '@/assets/decades/2010s/2012_part2_image65.jpg';
+import img_1933_crockford from '@/assets/decades/1930s/1933_part1_image52.jpg';
 
 // Decade page component with split introduction text
 interface DecadeData {
@@ -726,7 +730,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1930-1939",
     heroTitle: "Cricket in Changing Times",
     heroSubtitle: "Resilience, Distinction, and the Defence of Rectory Park",
-    heroImage: img_1937_centenary,
+    heroImage: img_1938_team,
     introLarge: "The 1930s were a testing yet formative period in the history of Sutton Coldfield Cricket Club, shaped by resilience, individual distinction, and an unwavering commitment to tradition.",
     introBody: "Set against economic uncertainty, severe weather, and growing international tension, the club continued to uphold the values and standards established in its earlier years. Although results fluctuated, Sutton Coldfield remained a respected presence within Midlands cricket, sustained by strong leadership and a deep sense of purpose.\n\nOn the field, the quality of cricket remained consistently high. The decade featured county players, international representatives, and outstanding all-round sportsmen in Sutton colours, producing memorable performances at Rectory Park. Fine batting, skilful bowling, and notable partnerships characterised many matches, even during seasons disrupted by rain or constrained by limited resources. Capable captains ensured competitiveness and maintained the club's reputation during both successful and difficult campaigns.\n\nBeyond play, the 1930s were marked by transition and consolidation. Long-serving players, officials, and umpires concluded distinguished periods of service, while new figures assumed responsibility, preserving continuity and identity. Investment in facilities and, crucially, the safeguarding of Rectory Park as a permanent open space secured the club's future. As war brought cricket to an abrupt halt in 1939, Sutton Coldfield Cricket Club entered the next chapter of its history with its heritage, home, and community firmly protected.",
     sections: [
@@ -777,8 +781,8 @@ const decadeData: Record<string, DecadeData> = {
           "The latter years of the decade were marked by growing uncertainty. Extreme weather disrupted several seasons, testing the resilience of players and administrators alike. Beyond these immediate challenges, the approach of the Second World War cast an ever-lengthening shadow over sporting life.",
           "By 1939, international tensions brought cricket to an abrupt halt, with fixtures cancelled and members preparing for service. The decade closed not with decline, but with interruption. The endurance shown throughout the 1930s—through poor seasons, difficult conditions, and external pressures—ensured that the club entered wartime with its traditions intact and its sense of purpose undiminished."
         ],
-        image: img_1938_team,
-        imageCaption: "\"Notable Midland Cricket Clubs\" \u2014 the Sutton Coldfield 1st XI in the Sunday Mercury, 29th May 1938, among the last full seasons before the war"
+        image: img_1933_crockford,
+        imageCaption: "Colonel L. C. Crockford, M.C., T.D. \u2014 one of several Sutton cricketers whose military service spanned the years either side of the club's cricket"
       }
     ],
     keyMoments: [
@@ -954,7 +958,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1950-1959",
     heroTitle: "Seven Sides on a Saturday",
     heroSubtitle: "Norfolk Reed, Electric Light and a Thousand Runs a Man",
-    heroImage: img_1955_part1_image68,
+    heroImage: img_1952_xi,
     introLarge: "The fifties were the Club's most expansive decade: up to seven sides in the field on a summer weekend, five men past a thousand runs in a single season, and a thatched pavilion re-roofed in Norfolk reed and wired for electricity for the first time.",
     introBody: "Sutton came out of austerity growing. A Sunday third team arrived in 1953, the Annual Dinner was revived after some fifty years, and twenty-four new members — most of them young — joined in 1954 as the Club's selection and development policy took hold. None of this was league cricket: Sutton played the friendly fixture list it had guarded for a century, declining invitations to the Birmingham League as it always had, and measured itself instead by aggregates, averages and the calibre of its visitors, who in these years included Warwickshire themselves before a crowd of some three thousand. Behind it stood a small group of remarkable cricketers — P.E.S. Bowerbank, captain for eight seasons; Geoff Pritchett, twice past a thousand runs; Les Pellow, twice past a hundred wickets; Peter Yates and his left-arm swing — and, arriving quietly in 1955, a young batsman and off-spinner named Neil Houghton.",
     sections: [
@@ -1065,7 +1069,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1960-1969",
     heroTitle: "Forty-Four Matches, Fourteen Men",
     heroSubtitle: "The Club at Its Height, and the Burning of the Old Pavilion",
-    heroImage: img_1963_team,
+    heroImage: img_1962_xi,
     introLarge: "In 1962 Sutton counted 351 members and fielded sides at every level; by 1965 it was struggling to raise the lower elevens. The decade carried the Club from its highest point to a hard reckoning, and ended with the old thatched pavilion burning down the day before the demolition men were due.",
     introBody: "The sixties are unusually well recorded at Rectory Park, partly because the fixture cards survive with their membership tables printed inside — a President, three Life Members, seventy-odd Vice Presidents and well over a hundred non-playing members supporting a playing strength that peaked at 107 in 1963 — and partly because Neil Houghton, captain from that season, left a first-hand account of what the cricket was actually like. It was non-league cricket, as it had been for more than a century: no points, only the toss, matches regulated by the pavilion clock from half past two until a quarter to eight, and a declaration expected at five o'clock. It was also cricket of a high standard, producing a record run of ten straight victories in 1960, a wicket-keeping record in 1961 that stood for more than fifty years, and in 1969 the most successful first-team season the Club had ever had.",
     sections: [
@@ -1189,7 +1193,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "1970-1979",
     heroTitle: "Dixon's Decade",
     heroSubtitle: "A New Pavilion, a New League and a Record-Breaking Batsman",
-    heroImage: img_1977_mccc_composite,
+    heroImage: img_1979_hawks,
     introLarge: "The seventies opened with a tape being cut on a new pavilion and closed with the Canadian national side at Rectory Park. In between, Sutton entered league cricket for the first time in its history — and Michael Dixon passed a thousand runs in every season of the decade.",
     introBody: "It was a decade of building, in every sense. The pavilion that members of the cricket and hockey clubs had laboured through the winter to finish was officially opened in July 1970, and the bill — £16,369 in all — was settled the following spring. Then, in 1971, a handful of members quietly signed the club into the Willis Faber-sponsored Midland Club Cricket Championship, ending more than 120 years of purely friendly cricket and dividing opinion sharply; the club historian, Norman Sharp, could find no reference to the decision anywhere in the Minute Book. Six seasons later that same league brought Sutton its finest hour, when Michael Dixon's attacking side were crowned champions in 1977 and a plaque was hung in the pavilion with pride. The same summer produced the club's first Alpine Under 16 champions and, in July, the death of Norman Sharp himself.",
     sections: [
@@ -1677,7 +1681,7 @@ const decadeData: Record<string, DecadeData> = {
     years: "2010-2019",
     heroTitle: "Five Titles in Seven Years",
     heroSubtitle: "Relegation, Rebuilding and a Golden Era",
-    heroImage: img_2013_part2_image66,
+    heroImage: img_2012_xi,
     introLarge: "The decade began with the club falling out of the Birmingham League altogether, and ended with two of its own juniors playing first-class and international cricket. In between came the finest season Sutton Coldfield has ever played.",
     introBody: "Relegated from the Birmingham & District Premier Cricket League in 2011, the club answered not with panic but with patience. Steve Perryman, the former Warwickshire and Worcestershire player and coach, was appointed head coach and new ECB-funded practice nets were opened; Dan Childs arrived from Boland to bowl fast and mow the square; and a Saturday side largely under the age of twenty-two learned to win together. By 2013 they were unbeaten champions with five trophies in a single summer, and promotion followed in 2014 and again in 2015. The years that followed brought a tour trophy from Spain, a club record score of 411 for 2, a moving Great War centenary that reconnected Rectory Park with its own lost generation, and the deaths of two much-loved clubmen whose memory the club still carries.",
     sections: [

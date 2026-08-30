@@ -1,5 +1,5 @@
 import cricketBallIcon from '@/assets/ui/cricket-ball-icon.png';
-import homeTeamsThroughTime from '@/assets/ui/home-teams-through-time.jpg';
+import homeTeamsThroughTime from '@/assets/ui/home-teams-through-time.gif';
 import heroImage from '@/assets/ui/home-hero.jpg';
 // cricketBall import removed as it's unused
 

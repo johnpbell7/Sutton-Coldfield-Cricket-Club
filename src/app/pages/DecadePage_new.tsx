@@ -1966,7 +1966,7 @@ export default function DecadePage() {
       <section className="relative h-[500px] md:h-[700px] overflow-hidden mt-[73px]">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-contain bg-no-repeat bg-center bg-[#1c1c1c]"
+          className="absolute inset-0 bg-cover md:bg-contain bg-no-repeat bg-center bg-[#1c1c1c]"
           style={{ backgroundImage: `url(${decade.heroImage})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />

@@ -207,11 +207,9 @@ import { MenuBar } from "@/app/components/MenuBar";
 import bannerImage from "@/assets/ui/page-banner.png";
 import DecadesOverview from "@/app/pages/DecadesOverview";
 import HomePage from "@/app/pages/HomePage";
-import AboutPage from "@/app/pages/AboutPage";
 import DecadePage from "@/app/pages/DecadePage_new";
 import MeetTheTeams from "@/app/pages/MeetTheTeams";
 import Obituaries from "@/app/pages/Obituaries";
-import FirstFiftyYears from "@/app/pages/FirstFiftyYears";
 
 
 
@@ -3648,9 +3646,7 @@ export default function App() {
     if (currentPath === '/timeline') return <TimelinePage />;
     if (currentPath === '/decades' || currentPath === '/view-all-decades') return <DecadesOverview />;
     if (currentPath.startsWith('/decades/')) return <DecadePage />;
-    if (currentPath === '/first-fifty-years') return <FirstFiftyYears />;
     if (currentPath === '/teams') return <MeetTheTeams />;
-    if (currentPath === '/about') return <AboutPage />;
     if (currentPath === '/obituaries') return <Obituaries />;
     return <HomePage />;
   };

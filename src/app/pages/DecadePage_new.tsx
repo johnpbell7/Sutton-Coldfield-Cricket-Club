@@ -264,7 +264,7 @@ const decadeData: Record<string, DecadeData> = {
         title: "The Founding Years (1847–1856)",
         background: "cream",
         content: [
-          "The club's story began on 27 July 1847, when the Rev. Bedford circulated a letter to local residents proposing the formation of a cricket club. His aim was both progressive and inclusive: to provide healthy recreation through a club open to all classes, supported by modest subscriptions.",
+          "The club's story began in 1847, when the Rev. Bedford circulated a letter to local residents proposing the formation of a cricket club. His aim was both progressive and inclusive: to provide healthy recreation through a club open to all classes, supported by modest subscriptions. No surviving record gives the day the circular went out.",
           "Early cricket was played in Sutton Park, but proposed railway developments in the 1840s raised concerns over long-term access. In response, Bedford—appointed Rector of Sutton Coldfield in 1850—laid out a dedicated cricket ground on the Rectory Glebes, later known as Rectory Park, and offered it to the club at nominal cost.",
           "Despite this generosity, sustained activity proved difficult. By 1856, the club had become largely inactive, prompting Bedford to issue a renewed appeal emphasising cricket's moral and physical benefits. With the ground freely available and temporary accommodation provided, the club was successfully revived."
         ],
@@ -328,9 +328,9 @@ const decadeData: Record<string, DecadeData> = {
         description: "Rev. Bedford circulates proposal to local residents"
       },
       {
-        year: "1850",
+        year: "1847",
         title: "Establishment at Rectory Park",
-        description: "Cricket ground laid out on the Rectory Glebes"
+        description: "Rev. Bedford lays out a cricket ground on the Rectory Glebes, prompted by the Government's 1845 railway plans threatening the ground in Sutton Park"
       },
       {
         year: "1856",

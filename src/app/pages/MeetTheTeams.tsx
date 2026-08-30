@@ -5,7 +5,7 @@ import img_1984 from '@/assets/decades/1980s/1984_part2_image15.jpg';
 import img_1985 from '@/assets/decades/1980s/1985_part2_image16.jpg';
 import img_1989 from '@/assets/decades/1980s/1989_part2_image21.jpg';
 import img_2022 from '@/assets/decades/2020s/2022_part3_image63.jpg';
-import image_hero from '@/assets/ui/teams-hero.png';
+import image_hero from '@/assets/decades/1940s/1946_part1_image57.jpeg';
 
 // Historical photos extracted from club archives — organized by decade
 import img_1859 from '@/assets/decades/1850s/1859_part1_image4.jpg';
@@ -1013,7 +1013,7 @@ export default function MeetTheTeams() {
       {/* Hero */}
       <section className="relative h-[500px] md:h-[700px] overflow-hidden mt-[73px]">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-contain bg-no-repeat bg-center bg-[#1c1c1c]"
           style={{ backgroundImage: `url(${image_hero})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
@@ -1090,7 +1090,7 @@ export default function MeetTheTeams() {
                 <ImageWithFallback
                   src={team.image}
                   alt={`${team.title} - ${team.year}`}
-                  className="w-full h-[400px] md:h-[600px] object-cover"
+                  className="w-full h-auto object-contain bg-[#f4f1ec]"
                 />
                 <div className="border-b border-[#d9c9ca] py-3 mt-4">
                   <p className="font-['Georgia',serif] text-sm md:text-base text-[#4a4a4a]">

@@ -26,10 +26,10 @@ const DESKTOP_SLOTS = [
 ];
 
 const MOBILE_SLOTS = [
-  { left: "2%", top: "1%", rotate: -6 },
-  { left: "42%", top: "8%", rotate: 5 },
-  { left: "5%", top: "48%", rotate: 7 },
-  { left: "45%", top: "55%", rotate: -4 },
+  { left: "0%", top: "0%", rotate: -6 },
+  { left: "45%", top: "15%", rotate: 5 },
+  { left: "3%", top: "40%", rotate: 7 },
+  { left: "47%", top: "55%", rotate: -4 },
 ];
 
 function shuffle<T>(items: T[]): T[] {
@@ -165,7 +165,7 @@ export default function ClubhouseMode() {
                 type="button"
                 onClick={() => setFocused(photoIndex)}
                 aria-label={`Enlarge ${photo.title}`}
-                className="absolute w-[54%] md:w-[32%] max-w-[340px] bg-[#fdfcf8] p-2 pb-10 md:p-3 md:pb-12 shadow-[0_10px_30px_rgba(0,0,0,0.55)] transition-all duration-700 ease-out hover:z-30 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538] text-left"
+                className="absolute w-[52%] md:w-[32%] max-w-[340px] bg-[#fdfcf8] p-2 pb-10 md:p-3 md:pb-12 shadow-[0_10px_30px_rgba(0,0,0,0.55)] transition-all duration-700 ease-out hover:z-30 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538] text-left"
                 style={{
                   left: slot.left,
                   top: slot.top,

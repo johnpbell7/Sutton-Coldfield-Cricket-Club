@@ -14,7 +14,10 @@ import { teamPhotos, type TeamPhoto } from '@/app/data/teamPhotos';
 
 
 export default function MeetTheTeams() {
-  const [expandedTeam, setExpandedTeam] = useState<number | null>(null);
+  // Rosters open independently. Sharing one slot meant that opening a roster
+  // closed whichever was open above it, and the page jumped as that content
+  // collapsed — often carrying the names you had just asked for off screen.
+  const [expandedTeams, setExpandedTeams] = useState<Set<number>>(new Set());
   const [isLoaded, setIsLoaded] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -23,6 +26,16 @@ export default function MeetTheTeams() {
     const timer = setTimeout(() => setIsLoaded(true), 100);
     return () => clearTimeout(timer);
   }, []);
+
+  /** Open or close one roster. The names unfold beneath the button pressed. */
+  const toggleTeam = (index: number) => {
+    setExpandedTeams((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -136,13 +149,14 @@ export default function MeetTheTeams() {
 
               <div className="mt-10">
                 <button
-                  onClick={() => setExpandedTeam(expandedTeam === index ? null : index)}
+                  onClick={() => toggleTeam(index)}
+                  aria-expanded={expandedTeams.has(index)}
                   className="w-full md:w-auto bg-[#8B1538] hover:bg-[#6d1029] text-white px-8 py-4 font-['Helvetica',sans-serif] text-base md:text-lg font-semibold transition-colors mb-6"
                 >
-                  {expandedTeam === index ? "Hide Player Names" : "View Player Names"}
+                  {expandedTeams.has(index) ? "Hide Player Names" : "View Player Names"}
                 </button>
 
-                {expandedTeam === index && (
+                {expandedTeams.has(index) && (
                   <div className="bg-white/50 p-6 md:p-8 border-l-4 border-[#8B1538]">
                     <h3 className="font-['Archivo_Black',sans-serif] text-2xl md:text-3xl text-[#1a472a] mb-6">
                       Team Roster

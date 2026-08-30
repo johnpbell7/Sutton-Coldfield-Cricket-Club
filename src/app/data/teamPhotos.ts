@@ -63,8 +63,12 @@ export interface TeamPhoto {
   background: "white" | "cream";
 }
 
-const NAMES_PENDING: Player[] = [
-  { name: "Names pending", role: "Caption not recorded in club archives" }
+/**
+ * Some photographs carry no caption at all. Rather than implying the names
+ * are simply awaiting transcription, each says what is actually the case.
+ */
+const noNamesRecorded = (why: string): Player[] => [
+  { name: "No names recorded", role: why }
 ];
 
 export const teamPhotos: TeamPhoto[] = [
@@ -202,7 +206,20 @@ export const teamPhotos: TeamPhoto[] = [
     description: "The 1911 2nd XI. The years immediately before the First World War saw strong membership and competitive fixtures at all levels. Many of the players in this photograph would have their cricket interrupted — or ended — by the war that began three years later.",
     image: img_1911,
     background: "cream",
-    players: NAMES_PENDING
+    players: [
+      { name: "J.A. Yates", role: "Standing" },
+      { name: "J.B. Russell", role: "Standing" },
+      { name: "A.J. Batsley", role: "Standing — pencil caption, reading uncertain" },
+      { name: "F. Harmer", role: "Standing — pencil caption, reading uncertain" },
+      { name: "J.L. Parsons", role: "Standing — pencil caption, initials uncertain" },
+      { name: "O.H. Stone", role: "Standing" },
+      { name: "F.O. Clark", role: "Standing — pencil caption, middle initial uncertain" },
+      { name: "J.H. Silcott", role: "Standing — pencil caption, reading uncertain" },
+      { name: "E.B. Crockford", role: "Standing — Eric Bertram Crockford, Warwickshire 1911-22" },
+      { name: "A.O. Grove", role: "Seated — pencil caption, first initial uncertain" },
+      { name: "R.E. Yates", role: "Seated" },
+      { name: "H. Lott", role: "Seated" },
+    ]
   },
   {
     year: "1912",
@@ -210,7 +227,7 @@ export const teamPhotos: TeamPhoto[] = [
     description: "The 1912 1st XI. No names were recorded alongside this photograph in the club's archives. The 1912 season was played in the shadow of growing tensions in Europe, though cricket continued with characteristic English optimism.",
     image: img_1912,
     background: "white",
-    players: NAMES_PENDING
+    players: noNamesRecorded("This print carries no caption, and none survives in the club's papers")
   },
   {
     year: "1913",
@@ -433,11 +450,26 @@ export const teamPhotos: TeamPhoto[] = [
   },
   {
     year: "1956",
-    title: "1956 First XI — Bank Holiday Press Photo",
-    description: "A press photograph of Sutton Coldfield Cricket Club's 1st Team, taken on Bank Holiday Saturday 4th August 1956 at the Kings & Diamonds ground. Press photographs of this era capture the club's public profile — Sutton were a club of genuine standing in Birmingham club cricket, attracting press coverage for key fixtures.",
+    title: "The 1956 First XI — the Club's Season Statistics",
+    description: "Not a photograph but the club's own typed record of the 1956 season, headed \"Sutton Coldfield Cricket Club. Season 1956\", and the fullest surviving account of who played that year. Seven sides took the field: the 1st XI on Saturdays (P25 W12 L5 D8) and Sundays (P15 W9 L1 D5), the 2nd XI on both days, the Hawks, the Owls and the Grasshoppers. The sheet sets out batting and bowling averages, every score over fifty, every five-wicket haul, the wicket-keeping and catching returns, and the century partnerships — a picture of a season that no team photograph could give.",
     image: img_1956,
     background: "white",
-    players: NAMES_PENDING
+    players: [
+      { name: "D. Glover", role: "1361 runs at 40.0, highest 101 not out" },
+      { name: "P. Bowerbank", role: "1173 runs at 31.7, and 34 catches" },
+      { name: "G. Pritchett", role: "970 runs at 27.7, highest 114 not out; 67 wicket-keeping dismissals — 44 stumped, 23 caught" },
+      { name: "B. Clewer", role: "886 runs at 23.3" },
+      { name: "V. Gabriel", role: "319 runs at 22.7" },
+      { name: "H. Hodgson", role: "465 runs at 18.6" },
+      { name: "J. Olsen", role: "81 wickets at 15.4, best 7 for 25 against Bromsgrove" },
+      { name: "D. Alford", role: "213 runs at 15.2" },
+      { name: "L. Pellow", role: "116 wickets at 14.5 from 609 overs — the season's leading bowler" },
+      { name: "J. Harrison", role: "47 wickets at 15.2, best 6 for 25 against Hinckley" },
+      { name: "P. Yates", role: "47 wickets at 15.8, and a hat-trick against Burton" },
+      { name: "A. Bedggood", role: "15 wickets at 16.6, best 6 for 91 against Ashfield" },
+      { name: "D. Dewsbury", role: "15 wickets at 17.2" },
+      { name: "V. Fitzgerald", role: "5 for 17 against Aldridge" },
+    ]
   },
   {
     year: "1960",
@@ -636,7 +668,7 @@ export const teamPhotos: TeamPhoto[] = [
     description: "The Royal Netherlands Cricket Association touring party photographed at Rectory Park during their ICC World Cup warm-up match on 4th July 1982. In their distinctive light blue and red tracksuits, the Dutch side scored 293 for 4 in 60 overs before bowling Sutton out for 178 in the final over. It was one of three international matches staged at Rectory Park that summer, alongside Canada v USA and Kenya v Papua New Guinea.",
     image: img_1982_netherlands,
     background: "white",
-    players: NAMES_PENDING
+    players: noNamesRecorded("The touring party was not named in the club's record of the match")
   },
   {
     year: "1984",
@@ -706,7 +738,19 @@ export const teamPhotos: TeamPhoto[] = [
     description: "The 1st XI in 1988 — one of the most decorated years in the club's history. That season the Sunday 2nd XI won the Warwickshire Sunday League Championship, the 3rd XI (the Hawks) won the MCCC Championship, a joint Hawks and Grasshoppers side won the Jubilee Shield, and the club won the Warwickshire Winter Six-a-Side indoor league. The 1st XI were at the heart of this era of sustained success.",
     image: img_1988,
     background: "white",
-    players: NAMES_PENDING
+    players: [
+      { name: "T. Cave", role: "Back row" },
+      { name: "M. Mackey", role: "Back row" },
+      { name: "C. Munn", role: "Back row" },
+      { name: "P. Junkin", role: "Back row" },
+      { name: "G. Griffith", role: "Back row" },
+      { name: "D. Collett", role: "Back row" },
+      { name: "M. Hepburn", role: "Front row" },
+      { name: "G. Williamson", role: "Front row" },
+      { name: "G. Hopkinson", role: "Front row" },
+      { name: "A. Luckhurst", role: "Front row" },
+      { name: "J. Ross", role: "Front row" },
+    ]
   },
   {
     year: "1988 & 1989",
@@ -809,11 +853,11 @@ export const teamPhotos: TeamPhoto[] = [
   },
   {
     year: "1998",
-    title: "Lord's 1998 — Club Visit",
-    description: "A group photograph taken at Lord's Cricket Ground in 1998 — a memorable club outing to the home of cricket. The visit reflects the club's strong social traditions alongside its competitive cricket, with members making the trip to one of the game's most iconic venues.",
+    title: "Lord's 1998 — Cross Arrows v S.C.C.C.",
+    description: "The brass plate beneath this photograph reads \"Lord's 1998 — Cross Arrows v S.C.C.C.\": Sutton Coldfield playing the Cross Arrows, the MCC's own club, at the home of cricket. The party is pictured in front of the pavilion, jackets and ties, a few pints on the paving. The plate names the match but not the men in the photograph.",
     image: img_1998,
     background: "white",
-    players: NAMES_PENDING
+    players: noNamesRecorded("The plate beneath this photograph names the fixture only")
   },
   {
     year: "2004",
@@ -821,7 +865,7 @@ export const teamPhotos: TeamPhoto[] = [
     description: "The 2004 1st XI, winners of the Birmingham & District Premier Cricket League 2nd Division Championship. A group photograph with the trophy captures the moment. The early 2000s saw continued investment in junior development, with the next generation beginning to establish themselves in the senior sides and results coming through.",
     image: img_2004,
     background: "white",
-    players: NAMES_PENDING
+    players: noNamesRecorded("The caption records the title won, not the side that won it")
   },
   {
     year: "2010",
@@ -852,7 +896,7 @@ export const teamPhotos: TeamPhoto[] = [
     description: "The 2012 1st XI, pictured in their kit sponsored by Diverse Living. A settled, experienced squad competing at the top level of Midlands club cricket. Aaron Thomason — who would go on to represent Warwickshire CCC — was already a key figure in the side.",
     image: img_2012,
     background: "cream",
-    players: NAMES_PENDING
+    players: noNamesRecorded("This photograph was printed without a name plate")
   },
   {
     year: "2015",

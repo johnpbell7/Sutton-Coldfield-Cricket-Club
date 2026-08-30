@@ -96,7 +96,7 @@ export default function MeetTheTeams() {
       >
         <div className={`max-w-4xl mx-auto px-6 transition-all duration-1000 ${visibleSections.has('intro') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="font-['Georgia',serif] text-xl md:text-2xl leading-relaxed text-gray-800">
-            From the earliest surviving photograph of 1859 to the 2022 team that rewrote Rectory Park's batting records, these photographs capture over 160 years of Sutton Coldfield Cricket Club. Behind every team picture is a story — of seasons won and narrowly missed, of players who gave their summers to this club, and of the friendships that outlasted the cricket.
+            From the earliest surviving photograph of 1859 to the 2022 team that rewrote Rectory Park's batting records, these photographs capture over 165 years of Sutton Coldfield Cricket Club. Behind every team picture is a story — of seasons won and narrowly missed, of players who gave their summers to this club, and of the friendships that outlasted the cricket.
           </p>
         </div>
       </section>
@@ -166,7 +166,7 @@ export default function MeetTheTeams() {
                         <div key={pIndex} className="flex items-start gap-3 py-2">
                           <div className="w-2 h-2 bg-[#8B1538] rounded-full mt-2 flex-shrink-0" />
                           <div>
-                            <p className={`font-['Georgia',serif] text-lg md:text-xl font-semibold ${player.name === 'Names pending' ? 'text-gray-400 italic' : 'text-gray-900'}`}>
+                            <p className={`font-['Georgia',serif] text-lg md:text-xl font-semibold ${player.name === 'No names recorded' ? 'text-gray-400 italic' : 'text-gray-900'}`}>
                               {player.name}
                             </p>
                             {player.role && (

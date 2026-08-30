@@ -55,11 +55,19 @@ export function TimelineItem({
   const getDecadeInfo = (yearString: string) => {
     const yearNum = parseInt(yearString);
     
-    // Map years to their correct decade overview pages
-    if (yearNum >= 1800 && yearNum < 1900) {
+    // The two nineteenth-century pages are not decades: one covers the years
+    // before the club was formed, the other its first fifty years.
+    if (yearNum < 1847) {
       return {
-        url: '/decades/1880',
-        label: `1880's Overview`
+        url: '/decades/1837',
+        label: `Before the Club, 1837-1847`
+      };
+    }
+
+    if (yearNum >= 1847 && yearNum < 1900) {
+      return {
+        url: '/decades/1847',
+        label: `The First Fifty Years, 1847-1899`
       };
     }
     

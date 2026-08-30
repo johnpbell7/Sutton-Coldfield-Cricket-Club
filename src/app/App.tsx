@@ -3721,7 +3721,7 @@ function TimelinePage() {
         {/* Content */}
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-5xl mb-4 font-['Archivo_Black',sans-serif]">Our Journey Through Time</h1>
-          <p className="text-xl opacity-90">A Century of Cricket Excellence Since 1880</p>
+          <p className="text-xl opacity-90">Over 180 Years at Rectory Park — 1837 to the Present Day</p>
         </div>
       </header>
 
@@ -3796,7 +3796,7 @@ function TimelinePage() {
               Sutton Coldfield Cricket Club
             </p>
             <p className="font-['Georgia',serif] text-base opacity-80">
-              Celebrating Over 140 Years of Cricket Excellence
+              Celebrating Over 180 Years of Cricket Excellence
             </p>
           </div>
           

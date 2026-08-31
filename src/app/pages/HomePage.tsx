@@ -30,22 +30,19 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { ArrowRight, ArrowUp } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
-// Bowl to Scroll Component
-function BowlToScroll({ onInteract }: { onInteract: () => void }) {
-  const [isBowling, setIsBowling] = useState(false);
+/**
+ * The cricket ball on the hero.
+ *
+ * The ball is decoration: the whole hero acts as the control, so a click
+ * anywhere, a scroll in either direction, a swipe or a key all launch it. The
+ * ball simply plays the animation when the page says it has been launched.
+ */
+function BowlToScroll({ isBowling, onLaunch }: { isBowling: boolean; onLaunch: () => void }) {
   const [isPressed, setIsPressed] = useState(false);
 
-  const triggerBowl = () => {
-    if (isBowling) return;
-    
-    setIsBowling(true);
-    // Trigger immediately to ensure it works on first click
-    onInteract();
-    
-    // Reset the bowling state after animation completes so ball can be clicked again
-    setTimeout(() => {
-      setIsBowling(false);
-    }, 400); // Slightly longer than the 0.35s animation duration
+  const triggerBowl = (e: React.MouseEvent) => {
+    e.stopPropagation();   // the hero handles its own clicks
+    onLaunch();
   };
 
   const handleMouseDown = () => setIsPressed(true);
@@ -207,7 +204,9 @@ export default function HomePage() {
   const [scrollY, setScrollY] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [showBowl, setShowBowl] = useState(true);
+  const [isBowling, setIsBowling] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const launching = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -226,9 +225,17 @@ export default function HomePage() {
   }, [hasInteracted]);
 
   const handleBowlInteract = () => {
+    if (launching.current) return;
+    launching.current = true;
+    setIsBowling(true);
     setHasInteracted(true);
     setShowBowl(false);
-    
+    // Let the ball be bowled again if the reader comes back to the top.
+    window.setTimeout(() => {
+      launching.current = false;
+      setIsBowling(false);
+    }, 1200);
+
     // Wait for content to render before scrolling
     requestAnimationFrame(() => {
       setTimeout(() => {
@@ -269,8 +276,31 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <MenuBar />
       
-      {/* Hero Section - Full Screen */}
-      <section className="relative h-screen overflow-hidden">
+      {/*
+        Hero Section - Full Screen.
+
+        Until the reader interacts there is no content beneath the hero, so the
+        page cannot scroll and a wheel or a swipe would do nothing at all. The
+        whole hero is therefore the control: a click, a scroll in either
+        direction, a swipe or a key all bowl the ball and carry you down. The
+        wheel and touch handlers are only armed while the hero is the whole
+        page - once the content is there, ordinary scrolling takes over.
+      */}
+      <section
+        className="relative h-screen overflow-hidden cursor-pointer"
+        onClick={handleBowlInteract}
+        onWheel={hasInteracted ? undefined : handleBowlInteract}
+        onTouchMove={hasInteracted ? undefined : handleBowlInteract}
+        onKeyDown={(e) => {
+          if (["Enter", " ", "ArrowDown", "ArrowUp", "PageDown", "PageUp"].includes(e.key)) {
+            e.preventDefault();
+            handleBowlInteract();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label="Enter the site"
+      >
         {/* Decoded off-screen at high priority so the hero paints as early as
             possible; a CSS background alone is not discovered until the
             stylesheet has been parsed. */}
@@ -307,7 +337,7 @@ export default function HomePage() {
         
         {/* Bowl to Scroll Component */}
         {showBowl && (
-          <BowlToScroll onInteract={handleBowlInteract} />
+          <BowlToScroll isBowling={isBowling} onLaunch={handleBowlInteract} />
         )}
       </section>
 

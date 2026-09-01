@@ -2104,11 +2104,14 @@ export default function DecadePage() {
 
           <section className={`${section.background === "cream" ? "bg-[#f8f6f3]" : "bg-white"} py-16 md:py-20 -mt-px`}>
             <div className="max-w-6xl mx-auto px-6">
-              <div className="grid md:grid-cols-12 gap-8 md:gap-12">
+              {/* items-start, or the grid stretches the picture column to match
+                  the prose beside it and leaves up to 500px of empty white
+                  below the photograph. */}
+              <div className="grid md:grid-cols-12 gap-8 md:gap-12 items-start">
                 {/* Image - always appears first on mobile, alternates left/right on desktop */}
                 {section.image && (
                   <div className={`md:col-span-5 order-1 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
-                    <div className="sticky top-24">
+                    <div>
                       <ImageWithFallback
                         src={section.image}
                         alt={section.title}

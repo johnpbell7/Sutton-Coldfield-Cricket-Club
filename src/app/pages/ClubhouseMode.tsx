@@ -15,22 +15,95 @@ import woodTable from "@/assets/ui/wood-table.jpg";
 
 const CYCLE_MS = 10000;
 
-/** Where each photograph lies on the table, and how far it is turned. */
+/**
+ * Where each photograph lies on the table.
+ *
+ * Given as a column and a row rather than a percentage across the page. A
+ * percentage flings the cards to the edges of a wide monitor while a max-width
+ * keeps them small, so the six sat marooned in a lot of empty wood. Instead the
+ * card size is worked out from the height of the table — the binding
+ * constraint, since two rows must fit above the button — and the group is
+ * then laid out at that size and centred, so it stays tight at any width.
+ *
+ * dx and dy nudge each card by a fraction of its own size so the arrangement
+ * reads as photographs dropped on a table rather than a grid.
+ */
 const DESKTOP_SLOTS = [
-  { left: "3%", top: "5%", rotate: -7 },
-  { left: "31%", top: "0%", rotate: 4 },
-  { left: "59%", top: "6%", rotate: -3 },
-  { left: "10%", top: "44%", rotate: 6 },
-  { left: "37%", top: "50%", rotate: -5 },
-  { left: "64%", top: "43%", rotate: 8 },
+  { col: 0, row: 0, dx: 0.00, dy: 0.06, rotate: -7 },
+  { col: 1, row: 0, dx: 0.03, dy: -0.03, rotate: 4 },
+  { col: 2, row: 0, dx: -0.02, dy: 0.05, rotate: -3 },
+  { col: 0, row: 1, dx: 0.07, dy: 0.01, rotate: 6 },
+  { col: 1, row: 1, dx: 0.01, dy: 0.06, rotate: -5 },
+  { col: 2, row: 1, dx: -0.05, dy: -0.02, rotate: 8 },
 ];
 
 const MOBILE_SLOTS = [
-  { left: "0%", top: "0%", rotate: -6 },
-  { left: "45%", top: "15%", rotate: 5 },
-  { left: "3%", top: "40%", rotate: 7 },
-  { left: "47%", top: "55%", rotate: -4 },
+  { col: 0, row: 0, dx: 0.00, dy: 0.00, rotate: -6 },
+  { col: 1, row: 0, dx: 0.00, dy: 0.13, rotate: 5 },
+  { col: 0, row: 1, dx: 0.04, dy: 0.00, rotate: 7 },
+  { col: 1, row: 1, dx: 0.02, dy: 0.13, rotate: -4 },
 ];
+
+/**
+ * How much of a card the next one along covers. Across, the overlap is
+ * generous - that is what makes the group read as a pile rather than a row.
+ * Down, it stops short of the caption band of the row above, because a
+ * photograph whose caption you cannot read is just a photograph.
+ */
+const COL_STEP = 0.76;
+const ROW_STEP = 0.86;
+const MARGIN = 16;
+
+/**
+ * Work out how big each Polaroid can be, and where each one sits.
+ *
+ * The card is turned on the table, and a rotated rectangle needs a taller box
+ * than an upright one — a 450x396 card at 8 degrees stands 454 tall, nearly
+ * 60px more. Leaving that out is what pushed the bottom row over the button,
+ * so the rotation is part of the sum rather than an afterthought.
+ */
+function layout(stageW: number, stageH: number, desktop: boolean) {
+  const slots = desktop ? DESKTOP_SLOTS : MOBILE_SLOTS;
+  const cols = desktop ? 3 : 2;
+  const pad = desktop ? 12 : 8;          // p-3 / p-2
+  const caption = desktop ? 48 : 40;     // pb-12 / pb-10
+  const maxDy = Math.max(...slots.map((s) => Math.abs(s.dy)));
+  const maxDx = Math.max(...slots.map((s) => Math.abs(s.dx)));
+  const theta = (Math.max(...slots.map((s) => Math.abs(s.rotate))) * Math.PI) / 180;
+  const cos = Math.cos(theta);
+  const sin = Math.sin(theta);
+
+  // card height as a function of card width: H = a*W + b
+  const a = 0.75;
+  const b = caption - pad / 2;
+
+  // The lowest edge is (ROW_STEP + maxDy)*H down, plus half the extra a
+  // rotated card claims: H/2 + (W*sin + H*cos)/2.
+  const K = ROW_STEP + maxDy;
+  const denom = K * a + (a * (1 + cos)) / 2 + sin / 2;
+  const fromHeight = (stageH - MARGIN - b * (K + (1 + cos) / 2)) / denom;
+
+  // Across, the group plus the overhang of the two turned end cards must fit.
+  const spanFactor = COL_STEP * (cols - 1) + 1 + maxDx;
+  const fromWidth = (stageW - MARGIN) / (spanFactor + sin * a) - (b * sin) / (spanFactor + sin * a);
+
+  const cardW = Math.max(120, Math.min(fromHeight, fromWidth, desktop ? 520 : 320));
+  const cardH = a * cardW + b;
+
+  const groupW = COL_STEP * (cols - 1) * cardW + cardW;
+  const originX = Math.max(0, (stageW - groupW) / 2);
+  // Rotation also lifts the top edge, so start the first row below it.
+  const lift = (cardW * sin + cardH * cos - cardH) / 2;
+
+  return {
+    cardW,
+    positions: slots.map((s) => ({
+      rotate: s.rotate,
+      left: originX + s.col * COL_STEP * cardW + s.dx * cardW,
+      top: lift + s.row * ROW_STEP * cardH + s.dy * cardH,
+    })),
+  };
+}
 
 function shuffle<T>(items: T[]): T[] {
   const out = items.slice();
@@ -56,6 +129,24 @@ export default function ClubhouseMode() {
 
   const slots = isDesktop ? DESKTOP_SLOTS : MOBILE_SLOTS;
   const perBatch = slots.length;
+
+  // The table is measured rather than assumed, so the Polaroids grow to fill
+  // whatever screen they are on and stay grouped in the middle of it.
+  const stageRef = useRef<HTMLDivElement>(null);
+  const [stage, setStage] = useState({ w: 0, h: 0 });
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const measure = () => setStage({ w: el.clientWidth, h: el.clientHeight });
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+  const { cardW, positions } = useMemo(
+    () => layout(stage.w, stage.h, isDesktop),
+    [stage.w, stage.h, isDesktop]
+  );
 
   const draw = useCallback((count: number) => {
     const picked: number[] = [];
@@ -143,34 +234,35 @@ export default function ClubhouseMode() {
       </div>
 
       {/* Everything sits above the table */}
-      <div className="relative h-full flex flex-col pt-[88px] pb-4 md:pt-[104px] md:pb-6 px-3 md:px-6">
+      <div className="relative h-full flex flex-col pt-[84px] pb-3 md:pt-[92px] md:pb-4 px-3 md:px-6">
         <div className="text-center shrink-0">
-          <h1 className="font-['Archivo_Black',sans-serif] text-2xl md:text-4xl text-white drop-shadow-lg">
+          <h1 className="font-['Archivo_Black',sans-serif] text-2xl md:text-3xl text-white drop-shadow-lg">
             Clubhouse Mode
           </h1>
-          <p className="font-['Georgia',serif] text-xs md:text-base text-white/70 mt-1">
+          <p className="font-['Georgia',serif] text-xs md:text-sm text-white/70 mt-0.5">
             Photographs from the club archive, laid out on the table
           </p>
         </div>
 
         {/* Table top */}
-        <div className="relative flex-1 mt-3 md:mt-5">
+        <div ref={stageRef} className="relative flex-1 mt-2 md:mt-3">
           {batch.map((photoIndex, slotIndex) => {
             const photo = teamPhotos[photoIndex];
-            const slot = slots[slotIndex];
-            if (!slot) return null;
+            const pos = positions[slotIndex];
+            if (!pos || !cardW) return null;
             return (
               <button
                 key={`${photoIndex}-${slotIndex}`}
                 type="button"
                 onClick={() => setFocused(photoIndex)}
                 aria-label={`Enlarge ${photo.title}`}
-                className="absolute w-[52%] md:w-[32%] max-w-[340px] bg-[#fdfcf8] p-2 pb-10 md:p-3 md:pb-12 shadow-[0_10px_30px_rgba(0,0,0,0.55)] transition-all duration-700 ease-out hover:z-30 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538] text-left"
+                className="absolute bg-[#fdfcf8] p-2 pb-10 md:p-3 md:pb-12 shadow-[0_10px_30px_rgba(0,0,0,0.55)] transition-all duration-700 ease-out hover:z-30 hover:scale-105 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538] text-left"
                 style={{
-                  left: slot.left,
-                  top: slot.top,
+                  width: cardW,
+                  left: pos.left,
+                  top: pos.top,
                   zIndex: slotIndex + 1,
-                  transform: `rotate(${slot.rotate}deg) ${dealt ? "translateY(0) scale(1)" : "translateY(14px) scale(0.94)"}`,
+                  transform: `rotate(${pos.rotate}deg) ${dealt ? "translateY(0) scale(1)" : "translateY(14px) scale(0.94)"}`,
                   opacity: dealt ? 1 : 0,
                 }}
               >
@@ -179,7 +271,7 @@ export default function ClubhouseMode() {
                     src={photo.image}
                     alt={photo.title}
                     loading="lazy"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <p className="absolute bottom-2 md:bottom-3 left-2 right-2 md:left-3 md:right-3 font-['Georgia',serif] text-[10px] md:text-sm text-[#3a3a3a] text-center leading-tight line-clamp-2">
@@ -191,7 +283,7 @@ export default function ClubhouseMode() {
         </div>
 
         {/* Deal again */}
-        <div className="shrink-0 flex justify-center pt-2">
+        <div className="shrink-0 flex justify-center pt-1">
           <button
             type="button"
             onClick={() => deal(perBatch)}

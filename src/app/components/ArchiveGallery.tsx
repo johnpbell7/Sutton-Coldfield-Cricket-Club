@@ -5,12 +5,10 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 /**
  * The rest of the archive for one year.
  *
- * Shown as a small contact sheet rather than a column of full-width pictures.
- * Much of this material is small - portraits, press cuttings, badges, a few
- * only two or three hundred pixels across - and printing those the width of
- * the page magnified them two or three times, which looked poor and pushed
- * the useful photographs far down the article. As thumbnails they read as a
- * set, and a tap opens the picture at its own size, never enlarged past it.
+ * Shown as a contact sheet rather than a column of full-width pictures. Laid
+ * out in full, sixteen photographs ran to some eight thousand pixels of
+ * scrolling and almost nobody reached them. As a grid of squares they read as
+ * a set and take a couple of hundred pixels, and a tap opens one full screen.
  */
 
 export function ArchiveGallery({
@@ -51,7 +49,7 @@ export function ArchiveGallery({
         </span>
       </div>
 
-      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2 md:gap-3">
+      <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2 md:gap-4">
         {images.map((src, i) => (
           <button
             key={i}
@@ -95,12 +93,12 @@ export function ArchiveGallery({
             </button>
           </div>
 
-          <div className="flex-1 min-h-0 flex items-center justify-center px-2 pb-4">
+          <div className="flex-1 min-h-0 flex items-center justify-center px-3 pb-4 md:px-16">
             <ImageWithFallback
               src={images[open]}
               alt={`${title}, ${year} — archive image ${open + 1}`}
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
-              className="max-w-full max-h-full w-auto h-auto object-contain"
+              className="w-full h-full object-contain"
             />
           </div>
 

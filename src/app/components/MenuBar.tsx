@@ -78,21 +78,15 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
             </div>
           </Link>
 
-          {/* Menu Button */}
+          {/* Menu Button — the word rather than three bars, so it reads as a
+              menu on a phone and on a desktop without having to be decoded. */}
           <button
             onClick={toggleMenu}
-            className="w-6 h-6 flex items-center justify-center hover:opacity-70 transition-opacity"
-            aria-label="Toggle menu"
+            className="shrink-0 font-['Helvetica',sans-serif] text-sm md:text-base font-semibold uppercase tracking-wide text-[#181d27] hover:text-[#8B1538] transition-colors py-1"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
           >
-            <svg className="w-full h-full" fill="none" viewBox="0 0 24 24">
-              <path 
-                d="M3 12H21M3 6H21M3 18H21" 
-                stroke="black" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth="2" 
-              />
-            </svg>
+            Menu
           </button>
         </div>
       </div>

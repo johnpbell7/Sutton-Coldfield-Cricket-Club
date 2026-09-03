@@ -78,7 +78,8 @@ import img_1926_team from '@/assets/decades/1920s/1926_part1_image50.jpg';
 import img_1933_team from '@/assets/decades/1930s/1933_part1_image51.jpg';
 import img_1936_team from '@/assets/decades/1930s/1936_part1_image53.jpg';
 import img_1937_centenary from '@/assets/decades/1930s/1937_part1_image1.jpg';
-import img_1937_team_b from '@/assets/decades/1930s/1937_part1_image2.jpg';
+import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
+import img_rectory_ground_1850 from '@/assets/decades/1850s/1850_sutton_rectory_cricket_ground.jpg';
 import img_1938_team from '@/assets/decades/1930s/1938_part1_image54.jpg';
 
 // 1940s archive images
@@ -191,7 +192,9 @@ const decadeData: Record<string, DecadeData> = {
           "By the early 1840s, cricket in Sutton Coldfield had begun to assume a more organised character. What had started as informal recreation was gradually evolving into something more structured and enduring.",
           "Regular participation, the increasing involvement of local families, and the steady guidance of figures such as Rev. Bedford contributed to a growing sense that the game required permanence. Matches were no longer purely spontaneous; they reflected continuity, expectation, and community investment.",
           "Though still lacking formal constitution, these years represent the crucial transition from casual play to organised club cricket. By the middle of the decade, the conditions were in place for the formal founding of Sutton Coldfield Cricket Club — an act that would give lasting identity to what had already become an established tradition."
-        ]
+        ],
+        image: img_rectory_house,
+        imageCaption: "Sutton Rectory, from the plates of Rev. W.K.R. Bedford's book - the house that gave Rectory Park its name, with the cricket lawn in front of it. The plate carries no date."
       },
       {
         title: "Rectory Road and the Early Landscape",
@@ -201,8 +204,8 @@ const decadeData: Record<string, DecadeData> = {
           "Access to matches was dictated by the limitations of the time. Players and visitors travelled on foot or horseback, and hospitality formed an essential part of the cricketing experience. Visiting sides were often accommodated at nearby farms, including School Farm, where overnight stays were common.",
           "To support these gatherings, a modest structure — remembered as the 'Tin Hut' near the Boot Inn — was erected. Though simple, it reflects the practical efforts made to sustain the game during its earliest years."
         ],
-        image: img_1873_team_a,
-        imageCaption: "Members of Sutton Coldfield CC, 1873"
+        image: img_rectory_ground_1850,
+        imageCaption: "\"Sutton Rectory Cricket-Ground. 1850\" - a match in progress, the Rectory just visible through the trees at the centre. Three years after the club was formed, and the earliest known view of the ground it was founded on."
       },
       {
         title: "The Bedford Family and Rectory Park",
@@ -771,8 +774,6 @@ const decadeData: Record<string, DecadeData> = {
           "During the 1930s, Sutton Coldfield Cricket Club remained deeply embedded in the social and civic life of the town. Its presidents and senior members included prominent local figures—doctors, aldermen, and mayors—whose involvement reinforced the club's status as a respected community institution.",
           "Matches, social gatherings, and ceremonial occasions reflected a close relationship between the club and the wider public. The passing of distinguished members, such as Sir Alfred Evans, was felt not only within the club but across the town, symbolising the strength of this connection. In an era increasingly shaped by national and international events, the club continued to serve as a stable focal point for community life."
         ],
-        image: img_1937_team_b,
-        imageCaption: "Sutton Coldfield CC, 1937 — the club's centenary year"
       },
       {
         title: "Uncertainty, Resilience, and the Approach of War",

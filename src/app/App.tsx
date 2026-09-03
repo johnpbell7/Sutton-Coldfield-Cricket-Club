@@ -59,7 +59,7 @@ import img_1921_team_b from '@/assets/decades/1920s/1921_part1_image47.jpg';
 import img_1921_mcc from '@/assets/decades/1920s/1921_part1_image48.jpeg';
 import img_1933_team_a from '@/assets/decades/1930s/1933_part1_image51.jpg';
 import img_1933_team_b from '@/assets/decades/1930s/1933_part1_image52.jpg';
-import img_1937_team_b from '@/assets/decades/1930s/1937_part1_image2.jpg';
+import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
 import img_1938_team_a from '@/assets/decades/1930s/1938_part1_image54.jpg';
 import img_1938_team_b from '@/assets/decades/1930s/1938_part1_image55.jpeg';
 import img_1947_team_b from '@/assets/decades/1940s/1947_part1_image59.jpeg';
@@ -121,7 +121,7 @@ import img_1916_part1_image35 from '@/assets/decades/1910s/1916_part1_image35.pn
 import img_1916_part1_image37 from '@/assets/decades/1910s/1916_part1_image37.png';
 import img_1916_part1_image38 from '@/assets/decades/1910s/1916_part1_image38.png';
 import img_1916_part1_image39 from '@/assets/decades/1910s/1916_part1_image39.jpeg';
-import img_1937_part1_image3 from '@/assets/decades/1930s/1937_part1_image3.jpg';
+import img_rectory_ground_1850 from '@/assets/decades/1850s/1850_sutton_rectory_cricket_ground.jpg';
 import img_1970_part2_image2 from '@/assets/decades/1970s/1970_part2_image2.jpg';
 import img_1972_part2_image3 from '@/assets/decades/1970s/1972_part2_image3.jpg';
 import img_1978_part2_image10 from '@/assets/decades/1970s/1978_part2_image10.jpeg';
@@ -271,8 +271,11 @@ const timelineData: TimelineEntry[] = [
     ],
     closingSummary: "1837 represents the earliest known evidence of cricket in Sutton Coldfield, laying the foundations for the Club's later formation.",
     location: "Rectory Park & Sutton Park",
-    imageCaption: "Early cricket in Sutton Coldfield's parks, 1837.",
-    images: [],
+    imageCaption: "Sutton Rectory, from the plates of Rev. W.K.R. Bedford's book. The lawn in front of it is the ground on which cricket was already being played when this record begins, ten years before the club was formed. The plate itself carries no date.",
+    backgroundImage: img_rectory_house,
+    images: [
+      img_rectory_house,
+    ],
   },
 
   {
@@ -293,8 +296,11 @@ const timelineData: TimelineEntry[] = [
     ],
     closingSummary: "1847 gave the Club its founder, its structure and the ground it has never left, together with a minute book that would record its affairs until 1926.",
     location: "Sutton Park & Rectory Park, Sutton Coldfield",
-    imageCaption: "The club's foundation under Rev. W.K. Riland Bedford, 1847.",
-    images: [],
+    imageCaption: "\"Sutton Rectory Cricket-Ground. 1850\" — a match in progress, with the Rectory itself just visible through the trees at the centre. Taken three years after the club was formed, it is the earliest known view of the ground.",
+    backgroundImage: img_rectory_ground_1850,
+    images: [
+      img_rectory_ground_1850,
+    ],
   },
 
   {
@@ -1348,8 +1354,6 @@ const timelineData: TimelineEntry[] = [
     backgroundImage: img_1937_centenary,
     images: [
       img_1937_centenary,
-      img_1937_team_b,
-      img_1937_part1_image3,
     ],
   },
 

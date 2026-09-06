@@ -61,6 +61,7 @@ import img_1933_team_a from '@/assets/decades/1930s/1933_part1_image51.jpg';
 import img_1933_team_b from '@/assets/decades/1930s/1933_part1_image52.jpg';
 import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
 import img_glebe_map_1761 from '@/assets/decades/1760s/1761_snape_map_of_the_glebe.png';
+import img_glebe_map_1761b from '@/assets/decades/1760s/1761_snape_map_of_the_glebe_second_sheet.jpg';
 import img_foundation_1847 from '@/assets/decades/1840s/1847_foundation_notice_and_circular.png';
 import img_pavilion_card_1970 from '@/assets/decades/1970s/1970_pavilion_opening_card.jpeg';
 import img_t20_2015 from '@/assets/decades/2010s/2015_t20_champions.jpeg';
@@ -267,13 +268,14 @@ const timelineData: TimelineEntry[] = [
     year: "1761",
     title: "A Map of the Glebe Land",
     shortDescription: "John Snape surveys the Rector's glebe, eighty-six years before the cricket ground is laid out on it — and the index already names a bowling green.",
-    yearOverview: "The earliest document the club holds is not about cricket at all. In 1761 the surveyor John Snape was engaged to map the glebe land belonging to the Rectory of Sutton Coldfield, in the county of Warwick, for the Rev. Mr Riland, Rector — an ancestor of the W.K. Riland Bedford who would found the cricket club. Snape drew the whole holding field by field, each named and measured in acres, roods and perches: the Bailiff's Cage, Gilbert's Close, the Boyce's Close, the Breeding Close, Hare Acre, the Long Close and the Meadow, bounded by the lands of Mr Holbeach, Mr Arisland and Mr Croke and by the roads to Lichfield and Sutton. Around the map he set an inset plan of part of Sutton town, the arms of the Rectory, an elevation and ground plan of the Mansion House, and a scale of chains and perches. His index lists twenty features of the estate — the Mansion House, the Parsonage House, the Rectory House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Meadow, the Pasture, the Nursery, the Bridge, the Common — and, among them, the Bowling Green. Games were already being played on the Rector's land a full generation before anyone thought of laying out a cricket ground there.",
+    yearOverview: "The earliest documents the club holds are not about cricket at all. In 1761 the surveyor John Snape was engaged to map the glebe land belonging to the Rectory of Sutton Coldfield, in the county of Warwick, for the Rev. Mr Riland, Rector - an ancestor of the W.K. Riland Bedford who would found the cricket club. Two sheets survive. One carries an index naming twenty features of the estate: the Mansion House, the Parsonage House, the Rectory House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Meadow, the Pasture, the Nursery, the Bridge, the Common - and, among them, a Bowling Green. The other carries a table of names and contents, every parcel measured in acres, roods and perches. Between them they map the holding field by field: the Bailiff's Cage, Gilbert's Close, the Boyce's Close, the Breeding Close, Hare Acre, the Long Close, the Merchants Acre, the Long Acre and the Meadow, running down to Workhouse Lane and the Lichfield road, and bounded by the lands of Mr Holbeach, Mr Croke, Mr Riddell and Mr Morgan. Each sheet carries the arms of the Rectory, an elevation and ground plan of the Mansion House, a compass rose and a scale of chains and perches. Games were already being played on the Rector's land eighty-six years before a cricket ground was laid out on it.",
     keyEvents: [
-      "\"A Map of the Glebe Land belonging to the Rectory of Sutton Coldfield in the County of Warwick\", surveyed by John Snape",
+      "\"A Map of the Glebe Land belonging to the Rectory of Sutton Coldfield in the County of Warwick\", surveyed by John Snape - two sheets survive",
       "Commissioned by the Rev. Mr Riland, Rector — the family from whom W.K. Riland Bedford descended",
       "Every field named and measured in acres, roods and perches",
-      "The index names twenty features of the estate, including a Bowling Green",
-      "Neighbouring landowners recorded as Mr Holbeach, Mr Arisland and Mr Croke",
+      "One sheet indexes twenty features of the estate, including a Bowling Green",
+      "The other tabulates every parcel by name and contents in acres, roods and perches",
+      "Neighbouring landowners recorded as Mr Holbeach, Mr Croke, Mr Riddell and Mr Morgan",
       "An elevation and ground plan of the Mansion House drawn in the margin",
     ],
     closingSummary: "The ground the club has played on since 1847 was first put on paper in 1761, by a surveyor working for the founder's own family.",
@@ -282,6 +284,7 @@ const timelineData: TimelineEntry[] = [
     backgroundImage: img_glebe_map_1761,
     images: [
       img_glebe_map_1761,
+      img_glebe_map_1761b,
     ],
   },
   {

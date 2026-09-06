@@ -80,6 +80,7 @@ import img_1936_team from '@/assets/decades/1930s/1936_part1_image53.jpg';
 import img_1937_centenary from '@/assets/decades/1930s/1937_part1_image1.jpg';
 import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
 import img_foundation_1847 from '@/assets/decades/1840s/1847_foundation_notice_and_circular.png';
+import img_pavilion_card_1970 from '@/assets/decades/1970s/1970_pavilion_opening_card.jpeg';
 import img_rectory_ground_1850 from '@/assets/decades/1850s/1850_sutton_rectory_cricket_ground.jpg';
 import img_1938_team from '@/assets/decades/1930s/1938_part1_image54.jpg';
 
@@ -1206,12 +1207,12 @@ const decadeData: Record<string, DecadeData> = {
         title: "A Pavilion at Last",
         background: "cream",
         content: [
-          "Work had begun the previous autumn and continued through the winter, but weather, drainage and the usual delays meant the new pavilion was usable rather than finished when the 1970 season opened. Members of both the cricket and hockey clubs worked on to the end of May to make it presentable, and the official ceremony followed on the evening of Friday 25th July, when Edmund H. King, Chairman of Warwickshire C.C.C., cut the tape before a large gathering.",
+          "Work had begun the previous autumn and continued through the winter, but weather, drainage and the usual delays meant the new pavilion was usable rather than finished when the 1970 season opened. Members of both the cricket and hockey clubs worked on to the end of May to make it presentable, and the official ceremony followed on the evening of Friday 24th July, when Edmund H. King, Chairman of Warwickshire C.C.C., cut the tape before a large gathering.",
           "Arthur Spencer, President of the Hockey Club, deputised for Norman Sharp, who was ill in hospital, and welcomed the Mayor and Mayoress, Alderman and Mrs H.J.C. Musgrave; a tankard went to Charles Groves in recognition of his services to the undertaking. Peter Cadman put figures to it early in 1971 — £15,752 on the building and £617 on furnishings and equipment, £16,369 in all. Paving slabs and turfing followed that autumn at the expense of Joe Holman, a playing member.",
           "Not everything went the club's way. In the autumn of 1970 vandals gutted the lower ground pavilion, the insurers meeting a claim for £800. Two great servants died that year: F. Bernard \"Bengy\" Clark, a member of sixty-two years who took over a thousand wickets, his best 10 for 35 against Yardley in 1914; and Paul I. Terry, the wartime Hon Secretary in whose memory the new pavilion clock was erected. Alex Harvey, groundsman since 1953, retired in 1971 with a handsome testimonial.",
         ],
-        image: img_1970_pavilion,
-        imageCaption: "Edmund H. King, Chairman of Warwickshire C.C.C., cuts the tape at the official opening of the new pavilion on the evening of Friday 25th July 1970."
+        image: img_pavilion_card_1970,
+        imageCaption: "The card printed for the opening, headed \"Opening of New Pavilion, July 24th 1970\" over \"Norman Sharp Esq., President\", and signed by some sixty members beneath the words \"Very Best Wishes for a Speedy and Complete Recovery\". Sharp was in hospital; Arthur Spencer deputised for him at the ceremony."
       },
       {
         title: "The Coming of League Cricket",
@@ -1262,7 +1263,7 @@ const decadeData: Record<string, DecadeData> = {
       {
         year: "1970",
         title: "The New Pavilion Opens",
-        description: "Edmund H. King, Chairman of Warwickshire C.C.C., cut the tape on the evening of Friday 25th July before the Mayor, Alderman H.J.C. Musgrave, and a large gathering"
+        description: "Edmund H. King, Chairman of Warwickshire C.C.C., cut the tape on the evening of Friday 24th July before the Mayor, Alderman H.J.C. Musgrave, and a large gathering"
       },
       {
         year: "1970",

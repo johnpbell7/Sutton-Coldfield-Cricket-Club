@@ -17,7 +17,7 @@ import img_xi_1924 from '@/assets/decades/1920s/1924_part1_image49.jpg';
 import img_group_1946 from '@/assets/decades/1940s/1946_part1_image57.jpeg';
 import img_thatch_1947 from '@/assets/decades/1940s/1947_part1_image61.jpg';
 import img_ground_1949 from '@/assets/decades/1940s/1949_part1_image64.jpg';
-import img_pavilion_card_1970 from '@/assets/decades/1970s/1970_pavilion_opening_card.jpeg';
+import img_opening_1970 from '@/assets/decades/1970s/1970_part2_image2.jpg';
 import img_shed_2005 from '@/assets/decades/2000s/2005_part2_image44.jpg';
 import img_painting_2021 from '@/assets/decades/2020s/2021_part3_image37.jpeg';
 import img_flooded_2023 from '@/assets/decades/2020s/2023_part3_image79.jpg';
@@ -53,8 +53,8 @@ export const rectoryParkSections: GroundSection[] = [
     background: "white",
     content: [
       "The ground has a paper trail that begins long before the cricket. In 1761 the surveyor John Snape was engaged to map the glebe land belonging to the Rectory of Sutton Coldfield for the Rev. Mr Riland, Rector — of the family from whom the club's founder, W.K. Riland Bedford, descended.",
-      "Snape drew the whole holding field by field, each one named and measured in acres, roods and perches: the Bailiff's Cage, Gilbert's Close, the Boyce's Close, the Breeding Close, Hare Acre, the Long Close and the Meadow, bounded by the lands of Mr Holbeach, Mr Arisland and Mr Croke and by the roads to Lichfield and Sutton. Round the edge he set an inset plan of part of Sutton town, the arms of the Rectory, an elevation and ground plan of the Mansion House, and a scale of chains and perches.",
-      "His index names twenty features of the estate — the Mansion House, the Parsonage House, the Rectory House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Meadow, the Pasture, the Nursery, the Bridge, the Common — and among them, a Bowling Green. Games were being played on the Rector's land eighty-six years before a cricket ground was laid out on it.",
+      "Two sheets survive between them mapping the holding field by field, each parcel named and measured in acres, roods and perches: the Bailiff's Cage, Gilbert's Close, the Boyce's Close, the Breeding Close, Hare Acre, the Long Close, the Merchants Acre, the Long Acre and the Meadow, running down to Workhouse Lane and the Lichfield road and bounded by the lands of Mr Holbeach, Mr Croke, Mr Riddell and Mr Morgan. Round the edge he set an inset plan of part of Sutton town, the arms of the Rectory, an elevation and ground plan of the Mansion House, and a scale of chains and perches.",
+      "One of the two surviving sheets indexes twenty features of the estate — the Mansion House, the Parsonage House, the Rectory House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Meadow, the Pasture, the Nursery, the Bridge, the Common — and among them, a Bowling Green. Games were being played on the Rector's land eighty-six years before a cricket ground was laid out on it.",
     ],
     image: img_glebe_map_1761,
     imageCaption:
@@ -146,9 +146,9 @@ export const rectoryParkSections: GroundSection[] = [
       "1969 remains the club's best playing season on record, and it ended with the building that had watched over the ground since 1890 gone in a night. Contractors moved on site in early November.",
       "The replacement was not ready for the start of the season. Delays, weather and surface drainage problems left it usable but, in the club's own words, \"in a somewhat chaotic state\" — the club muddled through to the end of May 1970, by which time it was seasonably presentable, though a good deal of finishing remained. The building was formally opened on the evening of Friday 24th July 1970 by Edmund H. King, Chairman of Warwickshire C.C.C., with Norman Sharp as President - the date is printed on the card produced for the occasion and signed by the members. One later account puts the opening at 1974 and the eventual cost between twelve and fifteen thousand pounds; the card and the club's contemporary record agree on 1970.",
     ],
-    image: img_pavilion_card_1970,
+    image: img_opening_1970,
     imageCaption:
-      'The card printed for the opening, headed "Opening of New Pavilion, July 24th 1970" over "Norman Sharp Esq., President", and signed by some sixty members beneath the words "Very Best Wishes for a Speedy and Complete Recovery". The club opened its new pavilion while its President was too unwell to be there.',
+      "Edmund H. King, Chairman of Warwickshire C.C.C., cuts the tape on the evening of Friday 24th July 1970. Norman Sharp, the President, was in hospital; the members signed a card for him instead.",
   },
   {
     period: "1971 – 1999",

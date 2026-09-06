@@ -40,11 +40,11 @@ const DESKTOP_SLOTS = [
 
 const MOBILE_SLOTS = [
   { col: 0, row: 0, dx: 0.00, dy: 0.00, rotate: -6 },
-  { col: 1, row: 0, dx: 0.01, dy: 0.09, rotate: 5 },
-  { col: 2, row: 0, dx: -0.01, dy: 0.02, rotate: -4 },
+  { col: 1, row: 0, dx: 0.02, dy: 0.07, rotate: 5 },
   { col: 0, row: 1, dx: 0.05, dy: 0.02, rotate: 7 },
-  { col: 1, row: 1, dx: 0.00, dy: 0.09, rotate: -5 },
-  { col: 2, row: 1, dx: -0.04, dy: 0.01, rotate: 6 },
+  { col: 1, row: 1, dx: 0.00, dy: 0.08, rotate: -5 },
+  { col: 0, row: 2, dx: 0.02, dy: 0.01, rotate: -4 },
+  { col: 1, row: 2, dx: 0.04, dy: 0.07, rotate: 6 },
 ];
 
 /**
@@ -54,7 +54,7 @@ const MOBILE_SLOTS = [
  * photograph whose caption you cannot read is just a photograph.
  */
 const COL_STEP_DESKTOP = 0.76;
-const COL_STEP_MOBILE = 0.60;
+const COL_STEP_MOBILE = 0.68;
 const ROW_STEP = 0.86;
 const MARGIN = 16;
 
@@ -68,7 +68,8 @@ const MARGIN = 16;
  */
 function layout(stageW: number, stageH: number, desktop: boolean) {
   const slots = desktop ? DESKTOP_SLOTS : MOBILE_SLOTS;
-  const cols = 3;
+  const cols = Math.max(...slots.map((s) => s.col)) + 1;
+  const rows = Math.max(...slots.map((s) => s.row)) + 1;
   const COL_STEP = desktop ? COL_STEP_DESKTOP : COL_STEP_MOBILE;
   const pad = desktop ? 12 : 8;          // p-3 / p-2
   const caption = desktop ? 48 : 40;     // pb-12 / pb-10
@@ -84,7 +85,7 @@ function layout(stageW: number, stageH: number, desktop: boolean) {
 
   // The lowest edge is (ROW_STEP + maxDy)*H down, plus half the extra a
   // rotated card claims: H/2 + (W*sin + H*cos)/2.
-  const K = ROW_STEP + maxDy;
+  const K = (rows - 1) * ROW_STEP + maxDy;
   const denom = K * a + (a * (1 + cos)) / 2 + sin / 2;
   const fromHeight = (stageH - MARGIN - b * (K + (1 + cos) / 2)) / denom;
 
@@ -105,7 +106,6 @@ function layout(stageW: number, stageH: number, desktop: boolean) {
   // two tightly packed rows left more than a third of the table bare beneath
   // them. Rows are therefore spread over whatever height is going, down to
   // the packed spacing when there is none to spare.
-  const rows = Math.max(...slots.map((s) => s.row)) + 1;
   const spread = stageH - MARGIN - effCardH - maxDy * cardH;
   const rowGap = rows > 1 ? Math.max(spread / (rows - 1), ROW_STEP * cardH) : 0;
 

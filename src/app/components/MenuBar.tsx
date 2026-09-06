@@ -82,7 +82,7 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
               menu on a phone and on a desktop without having to be decoded. */}
           <button
             onClick={toggleMenu}
-            className="shrink-0 font-['Helvetica',sans-serif] text-sm md:text-base font-semibold uppercase tracking-wide text-[#181d27] hover:text-[#8B1538] transition-colors py-1"
+            className="shrink-0 border-l border-gray-300 pl-4 md:pl-6 ml-4 md:ml-6 font-['Helvetica',sans-serif] text-sm md:text-base font-semibold uppercase tracking-wide text-[#181d27] hover:text-[#8B1538] transition-colors py-1"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
           >
@@ -230,6 +230,17 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
                 onClick={toggleMenu}
               >
                 Meet the Teams
+              </Link>
+            </li>
+
+            {/* Rectory Park */}
+            <li>
+              <Link
+                to="/rectory-park"
+                className="block py-3 px-4 text-lg transition-colors text-gray-800 font-medium"
+                onClick={toggleMenu}
+              >
+                Rectory Park
               </Link>
             </li>
 

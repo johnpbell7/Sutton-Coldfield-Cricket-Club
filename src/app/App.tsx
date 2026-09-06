@@ -238,6 +238,7 @@ import DecadePage from "@/app/pages/DecadePage_new";
 import MeetTheTeams from "@/app/pages/MeetTheTeams";
 import Obituaries from "@/app/pages/Obituaries";
 import Showreel from "@/app/pages/Showreel";
+import RectoryPark from "@/app/pages/RectoryPark";
 import { currentAppPath, href } from "@/app/routing";
 
 
@@ -4038,6 +4039,7 @@ export default function App() {
     if (currentPath === '/teams') return <MeetTheTeams />;
     if (currentPath === '/obituaries') return <Obituaries />;
     if (currentPath === '/showreel' || currentPath === '/clubhouse') return <Showreel />;
+    if (currentPath === '/rectory-park') return <RectoryPark />;
     return <HomePage />;
   };
 

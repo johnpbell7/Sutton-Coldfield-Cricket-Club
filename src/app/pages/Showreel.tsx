@@ -98,14 +98,23 @@ function layout(stageW: number, stageH: number, desktop: boolean) {
   const groupW = COL_STEP * (cols - 1) * cardW + cardW;
   const originX = Math.max(0, (stageW - groupW) / 2);
   // Rotation also lifts the top edge, so start the first row below it.
-  const lift = (cardW * sin + cardH * cos - cardH) / 2;
+  const effCardH = cardW * sin + cardH * cos;
+  const lift = (effCardH - cardH) / 2;
+
+  // On a phone the card size is set by the width - three across 366px - so
+  // two tightly packed rows left more than a third of the table bare beneath
+  // them. Rows are therefore spread over whatever height is going, down to
+  // the packed spacing when there is none to spare.
+  const rows = Math.max(...slots.map((s) => s.row)) + 1;
+  const spread = stageH - MARGIN - effCardH - maxDy * cardH;
+  const rowGap = rows > 1 ? Math.max(spread / (rows - 1), ROW_STEP * cardH) : 0;
 
   return {
     cardW,
     positions: slots.map((s) => ({
       rotate: s.rotate,
       left: originX + s.col * COL_STEP * cardW + s.dx * cardW,
-      top: lift + s.row * ROW_STEP * cardH + s.dy * cardH,
+      top: lift + s.row * rowGap + s.dy * cardH,
     })),
   };
 }

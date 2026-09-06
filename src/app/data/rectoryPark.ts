@@ -7,7 +7,9 @@
  * finished — the disagreement is stated rather than settled.
  */
 
+import img_glebe_map_1761 from '@/assets/decades/1760s/1761_snape_map_of_the_glebe.png';
 import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
+import img_foundation_1847 from '@/assets/decades/1840s/1847_foundation_notice_and_circular.png';
 import img_ground_1850 from '@/assets/decades/1850s/1850_sutton_rectory_cricket_ground.jpg';
 import img_pavilion_plan from '@/assets/decades/1890s/1890_part1_image8.jpg';
 import img_wounded_1917 from '@/assets/decades/1910s/1917_part1_image31.jpg';
@@ -15,7 +17,7 @@ import img_xi_1924 from '@/assets/decades/1920s/1924_part1_image49.jpg';
 import img_group_1946 from '@/assets/decades/1940s/1946_part1_image57.jpeg';
 import img_thatch_1947 from '@/assets/decades/1940s/1947_part1_image61.jpg';
 import img_ground_1949 from '@/assets/decades/1940s/1949_part1_image64.jpg';
-import img_opening_1970 from '@/assets/decades/1970s/1970_part2_image2.jpg';
+import img_pavilion_card_1970 from '@/assets/decades/1970s/1970_pavilion_opening_card.jpeg';
 import img_shed_2005 from '@/assets/decades/2000s/2005_part2_image44.jpg';
 import img_painting_2021 from '@/assets/decades/2020s/2021_part3_image37.jpeg';
 import img_flooded_2023 from '@/assets/decades/2020s/2023_part3_image79.jpg';
@@ -32,7 +34,7 @@ export interface GroundSection {
 
 export const rectoryParkHero = {
   image: img_ground_2022,
-  years: "1847 to the present day",
+  years: "Surveyed 1761 · played on since 1847",
   title: "Rectory Park",
   subtitle: "The ground the club laid out for itself, and has never left",
 };
@@ -45,6 +47,19 @@ export const rectoryParkIntro = {
 };
 
 export const rectoryParkSections: GroundSection[] = [
+  {
+    period: "1761",
+    title: "The Glebe, Mapped",
+    background: "white",
+    content: [
+      "The ground has a paper trail that begins long before the cricket. In 1761 the surveyor John Snape was engaged to map the glebe land belonging to the Rectory of Sutton Coldfield for the Rev. Mr Riland, Rector — of the family from whom the club's founder, W.K. Riland Bedford, descended.",
+      "Snape drew the whole holding field by field, each one named and measured in acres, roods and perches: the Bailiff's Cage, Gilbert's Close, the Boyce's Close, the Breeding Close, Hare Acre, the Long Close and the Meadow, bounded by the lands of Mr Holbeach, Mr Arisland and Mr Croke and by the roads to Lichfield and Sutton. Round the edge he set an inset plan of part of Sutton town, the arms of the Rectory, an elevation and ground plan of the Mansion House, and a scale of chains and perches.",
+      "His index names twenty features of the estate — the Mansion House, the Parsonage House, the Rectory House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Meadow, the Pasture, the Nursery, the Bridge, the Common — and among them, a Bowling Green. Games were being played on the Rector's land eighty-six years before a cricket ground was laid out on it.",
+    ],
+    image: img_glebe_map_1761,
+    imageCaption:
+      '"A Map of the Glebe Land belonging to the Rectory of Sutton Coldfield in the County of Warwick. Surveyed for the Revd. Mr Riland, Rector, by Jn. Snape. 1761." The earliest document the club holds.',
+  },
   {
     period: "Before 1847",
     title: "The Meadow Platt",
@@ -66,9 +81,9 @@ export const rectoryParkSections: GroundSection[] = [
       "The parsonage was the home of the Bedford family for very many years, and the cricket was played directly in front of it. Bedford served as President from 1847 until 1892, a tenure of forty-five years. In 1856 he founded the Free Foresters on this same field, in a match between the Pilgrims of the Dee from Cheshire and a side drawn from the forests of Needwood and Arden — so the ground is the birthplace of a wandering club that still plays today.",
       "In 1863 his fellow Foresters honoured him with a silver salver, which is held at Lord's to this day, and the Rectory ground was opened to the whole town for a day of sport and amusement.",
     ],
-    image: img_ground_1850,
+    image: img_foundation_1847,
     imageCaption:
-      '"Sutton Rectory Cricket-Ground. 1850" — a match in progress, the Rectory just visible through the trees at the centre. Three years after the club was formed, and the earliest known view of the ground.',
+      'The notice of 17th July 1847 in which the Rector proposed a cricket club "to be composed of members of all classes willing to join", mounted with the printed circular calling the inaugural meeting for Saturday 24th July and listing the twelve subscriptions already received. The originals are held by Birmingham City Libraries.',
   },
   {
     period: "1869 – 1899",
@@ -79,9 +94,9 @@ export const rectoryParkSections: GroundSection[] = [
       "The decisive step came in 1890, when a permanent pavilion was built — an eighty-year building, thatched, that would define the look of the ground for four generations. The drawing survives.",
       "By the end of the century the ground had settled into a rhythm governed by daylight, the fixture card and the patient work of horse and roller. Play ran from half past two to a quarter to eight by the pavilion clock, with a five o'clock declaration the accepted convention.",
     ],
-    image: img_pavilion_plan,
+    image: img_ground_1850,
     imageCaption:
-      "The architect's drawing for the thatched pavilion — floor plan above, elevation below, the clock set in the gable. It stood for eighty years.",
+      '"Sutton Rectory Cricket-Ground. 1850" — a match in progress, the Rectory just visible through the trees. The earliest known view of the ground, taken between the club\'s founding and the building of the thatched pavilion.',
   },
   {
     period: "1900 – 1918",
@@ -131,9 +146,9 @@ export const rectoryParkSections: GroundSection[] = [
       "1969 remains the club's best playing season on record, and it ended with the building that had watched over the ground since 1890 gone in a night. Contractors moved on site in early November.",
       "The replacement was not ready for the start of the season. Delays, weather and surface drainage problems left it usable but, in the club's own words, \"in a somewhat chaotic state\" — the club muddled through to the end of May 1970, by which time it was seasonably presentable, though a good deal of finishing remained. The building was formally opened on the evening of Friday 24th July 1970 by Edmund H. King, Chairman of Warwickshire C.C.C., with Norman Sharp as President - the date is printed on the card produced for the occasion and signed by the members. One later account puts the opening at 1974 and the eventual cost between twelve and fifteen thousand pounds; the card and the club's contemporary record agree on 1970.",
     ],
-    image: img_opening_1970,
+    image: img_pavilion_card_1970,
     imageCaption:
-      "The ribbon cut on the new pavilion. The building that replaced eighty years of thatch.",
+      'The card printed for the opening, headed "Opening of New Pavilion, July 24th 1970" over "Norman Sharp Esq., President", and signed by some sixty members beneath the words "Very Best Wishes for a Speedy and Complete Recovery". The club opened its new pavilion while its President was too unwell to be there.',
   },
   {
     period: "1971 – 1999",
@@ -189,6 +204,7 @@ export const rectoryParkSections: GroundSection[] = [
 ];
 
 export const rectoryParkMoments = [
+  { year: "1761", title: "The glebe is surveyed", description: "John Snape maps the Rectory's land for the Rev. Mr Riland. The index already names a bowling green." },
   { year: "1837", title: "Cricket on the Meadow Platt", description: "A small group playing in Sutton Park, a decade before the club was constituted." },
   { year: "1845", title: "The railways threaten the park", description: "Government plans for the lines put the cricketers' ground in Sutton Park at risk." },
   { year: "1847", title: "The ground is laid out", description: "Rev. W.K.R. Bedford lays out a cricket ground on the Rectory Glebes. The club has played there ever since." },

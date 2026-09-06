@@ -79,6 +79,7 @@ import img_1933_team from '@/assets/decades/1930s/1933_part1_image51.jpg';
 import img_1936_team from '@/assets/decades/1930s/1936_part1_image53.jpg';
 import img_1937_centenary from '@/assets/decades/1930s/1937_part1_image1.jpg';
 import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
+import img_foundation_1847 from '@/assets/decades/1840s/1847_foundation_notice_and_circular.png';
 import img_rectory_ground_1850 from '@/assets/decades/1850s/1850_sutton_rectory_cricket_ground.jpg';
 import img_1938_team from '@/assets/decades/1930s/1938_part1_image54.jpg';
 
@@ -224,8 +225,11 @@ const decadeData: Record<string, DecadeData> = {
         content: [
           "The story of these early years survives not through continuous record, but through later dedication to preservation. It was not until 1937, on the eve of the club's centenary, that Frank S. Styles undertook the first serious effort to reconstruct its early history. Working from fragmentary evidence, recollection, and surviving documentation, he established the foundation upon which all subsequent histories would rely.",
           "His work was later extended by Norman Sharp and, in the modern era, by Peter Bell, whose efforts to compile and digitise records ensured that the club's origins would not be lost to time.",
-          "The absence of early minute books remains a reminder of how easily history can fade — and how vital such preservation has been in maintaining the continuity of the club's story."
-        ]
+          "The absence of early minute books remains a reminder of how easily history can fade — and how vital such preservation has been in maintaining the continuity of the club's story.",
+          "Two of those documents survive as photostats. The first, in the Rector's own hand and dated 17th July 1847, reads: \"There being an evident want of recreation and amusement for the inhabitants of this neighbourhood it is proposed to form a cricket club to be composed of members of all classes willing to join. The funds required to support the Club will be trifling and the subscription therefore very moderate.\" The second is the printed circular that followed, signed by W.K. Riland Bedford as Hon. Secretary pro tem, calling a meeting for Saturday 24th July at which rules would be passed and a President, Committee and Secretary appointed - and listing the twelve subscriptions already received. Three gave a pound apiece, the Rector among them, and nine gave ten shillings; the Garnett name appears three times, and the licensee of the Three Tuns is among them. The originals belong to Birmingham City Libraries."
+        ],
+        image: img_foundation_1847,
+        imageCaption: "The notice of 17th July 1847 in which the Rector proposed a cricket club, mounted with the printed circular that followed it. The originals are held by Birmingham City Libraries, and these photostats were given to the club by the Hon. Librarian, Mr T. Sykes."
       }
     ],
     keyMoments: [

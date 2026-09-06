@@ -44,6 +44,7 @@ import img_1996 from '@/assets/decades/1990s/1996_part2_image25.jpeg';
 import img_1998 from '@/assets/decades/1990s/1998_part2_image28.jpg';
 import img_2012 from '@/assets/decades/2010s/2012_part2_image65.jpg';
 import img_2015_first_xi from '@/assets/decades/2010s/2015_part2_image75.jpg';
+import img_2015_t20 from '@/assets/decades/2010s/2015_t20_champions.jpeg';
 import img_2016_200yrs from '@/assets/decades/2010s/2016_part3_image1.jpg';
 import img_2021_vets from '@/assets/decades/2020s/2021_vets_team.jpg';
 import img_2021_sunday from '@/assets/decades/2020s/2021_part3_image52.png';
@@ -925,6 +926,28 @@ export const teamPhotos: TeamPhoto[] = [
       { name: "Graham Clark", position: "Front row", role: "Captain" },
       { name: "Jack Smith", position: "Front row" },
       { name: "Lewis Harrison", position: "Front row" },
+    ]
+  },
+  {
+    year: "2015",
+    title: "B&DPCL Twenty20 Champions",
+    description: "Birmingham & District Premier Cricket League Twenty20 Champions, 2015, photographed with the cup in front of the pavilion in the Lane Roofing kit. Every man is named on the mount beneath the print, and the boy kneeling at the end of the front row is named with them.",
+    image: img_2015_t20,
+    background: "cream",
+    players: [
+      { name: "Graham Clark", role: "Back row" },
+      { name: "James Lunn", role: "Back row" },
+      { name: "James Hunt", role: "Back row" },
+      { name: "Tom Wright", role: "Back row" },
+      { name: "Jack Smith", role: "Back row" },
+      { name: "Tom Eustace", role: "Back row" },
+      { name: "Harry Betts", role: "Back row" },
+      { name: "Luke Humpage", role: "Front row" },
+      { name: "Lee Thomason", role: "Front row" },
+      { name: "Jon Sargent", role: "Front row" },
+      { name: "Lewis Harrison", role: "Front row" },
+      { name: "Dan Childs", role: "Front row" },
+      { name: "Felix Haines", role: "With the team" },
     ]
   },
   {

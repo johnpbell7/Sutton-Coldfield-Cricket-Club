@@ -60,6 +60,10 @@ import img_1921_mcc from '@/assets/decades/1920s/1921_part1_image48.jpeg';
 import img_1933_team_a from '@/assets/decades/1930s/1933_part1_image51.jpg';
 import img_1933_team_b from '@/assets/decades/1930s/1933_part1_image52.jpg';
 import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
+import img_glebe_map_1761 from '@/assets/decades/1760s/1761_snape_map_of_the_glebe.png';
+import img_foundation_1847 from '@/assets/decades/1840s/1847_foundation_notice_and_circular.png';
+import img_pavilion_card_1970 from '@/assets/decades/1970s/1970_pavilion_opening_card.jpeg';
+import img_t20_2015 from '@/assets/decades/2010s/2015_t20_champions.jpeg';
 import img_1938_team_a from '@/assets/decades/1930s/1938_part1_image54.jpg';
 import img_1938_team_b from '@/assets/decades/1930s/1938_part1_image55.jpeg';
 import img_1947_team_b from '@/assets/decades/1940s/1947_part1_image59.jpeg';
@@ -260,6 +264,27 @@ interface TimelineEntry {
 
 const timelineData: TimelineEntry[] = [
   {
+    year: "1761",
+    title: "A Map of the Glebe Land",
+    shortDescription: "John Snape surveys the Rector's glebe, eighty-six years before the cricket ground is laid out on it — and the index already names a bowling green.",
+    yearOverview: "The earliest document the club holds is not about cricket at all. In 1761 the surveyor John Snape was engaged to map the glebe land belonging to the Rectory of Sutton Coldfield, in the county of Warwick, for the Rev. Mr Riland, Rector — an ancestor of the W.K. Riland Bedford who would found the cricket club. Snape drew the whole holding field by field, each named and measured in acres, roods and perches: the Bailiff's Cage, Gilbert's Close, the Boyce's Close, the Breeding Close, Hare Acre, the Long Close and the Meadow, bounded by the lands of Mr Holbeach, Mr Arisland and Mr Croke and by the roads to Lichfield and Sutton. Around the map he set an inset plan of part of Sutton town, the arms of the Rectory, an elevation and ground plan of the Mansion House, and a scale of chains and perches. His index lists twenty features of the estate — the Mansion House, the Parsonage House, the Rectory House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Meadow, the Pasture, the Nursery, the Bridge, the Common — and, among them, the Bowling Green. Games were already being played on the Rector's land a full generation before anyone thought of laying out a cricket ground there.",
+    keyEvents: [
+      "\"A Map of the Glebe Land belonging to the Rectory of Sutton Coldfield in the County of Warwick\", surveyed by John Snape",
+      "Commissioned by the Rev. Mr Riland, Rector — the family from whom W.K. Riland Bedford descended",
+      "Every field named and measured in acres, roods and perches",
+      "The index names twenty features of the estate, including a Bowling Green",
+      "Neighbouring landowners recorded as Mr Holbeach, Mr Arisland and Mr Croke",
+      "An elevation and ground plan of the Mansion House drawn in the margin",
+    ],
+    closingSummary: "The ground the club has played on since 1847 was first put on paper in 1761, by a surveyor working for the founder's own family.",
+    location: "The Rectory Glebe, Sutton Coldfield",
+    imageCaption: "\"A Map of the Glebe Land belonging to the Rectory of Sutton Coldfield in the County of Warwick. Surveyed for the Revd. Mr Riland, Rector, by Jn. Snape. 1761.\"",
+    backgroundImage: img_glebe_map_1761,
+    images: [
+      img_glebe_map_1761,
+    ],
+  },
+  {
     year: "1837",
     title: "Early Cricket in Sutton Coldfield",
     shortDescription: "Evidence suggests cricket was being played in the area as early as 1837, a decade before the Club's formal foundation.",
@@ -297,9 +322,10 @@ const timelineData: TimelineEntry[] = [
     ],
     closingSummary: "1847 gave the Club its founder, its structure and the ground it has never left, together with a minute book that would record its affairs until 1926.",
     location: "Sutton Park & Rectory Park, Sutton Coldfield",
-    imageCaption: "\"Sutton Rectory Cricket-Ground. 1850\" — a match in progress, with the Rectory itself just visible through the trees at the centre. Taken three years after the club was formed, it is the earliest known view of the ground.",
-    backgroundImage: img_rectory_ground_1850,
+    imageCaption: "The notice of 17th July 1847 in which the Rector proposed forming a cricket club \"to be composed of members of all classes willing to join\", mounted with the printed circular that called the inaugural meeting. The originals are held by Birmingham City Libraries; these photostats were given to the club by the Hon. Librarian, Mr T. Sykes.",
+    backgroundImage: img_foundation_1847,
     images: [
+      img_foundation_1847,
       img_rectory_ground_1850,
     ],
   },
@@ -2095,6 +2121,7 @@ const timelineData: TimelineEntry[] = [
     backgroundImage: img_1970_part2_image2,
     images: [
       img_1970_part2_image2,
+      img_pavilion_card_1970,
     ],
   },
 
@@ -3186,6 +3213,7 @@ const timelineData: TimelineEntry[] = [
     backgroundImage: img_2015_part2_image75,
     images: [
       img_2015_part2_image75,
+      img_t20_2015,
     ],
   },
 

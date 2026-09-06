@@ -233,14 +233,14 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
               </Link>
             </li>
 
-            {/* Clubhouse Mode */}
+            {/* Showreel */}
             <li>
               <Link
-                to="/clubhouse"
+                to="/showreel"
                 className="block py-3 px-4 text-lg transition-colors text-gray-800 font-medium"
                 onClick={toggleMenu}
               >
-                Clubhouse Mode
+                Showreel
               </Link>
             </li>
           </ul>

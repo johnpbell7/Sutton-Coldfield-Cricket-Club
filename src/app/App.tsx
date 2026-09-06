@@ -237,7 +237,7 @@ import HomePage from "@/app/pages/HomePage";
 import DecadePage from "@/app/pages/DecadePage_new";
 import MeetTheTeams from "@/app/pages/MeetTheTeams";
 import Obituaries from "@/app/pages/Obituaries";
-import ClubhouseMode from "@/app/pages/ClubhouseMode";
+import Showreel from "@/app/pages/Showreel";
 import { currentAppPath, href } from "@/app/routing";
 
 
@@ -4037,7 +4037,7 @@ export default function App() {
     if (currentPath.startsWith('/decades/')) return <DecadePage />;
     if (currentPath === '/teams') return <MeetTheTeams />;
     if (currentPath === '/obituaries') return <Obituaries />;
-    if (currentPath === '/clubhouse') return <ClubhouseMode />;
+    if (currentPath === '/showreel' || currentPath === '/clubhouse') return <Showreel />;
     return <HomePage />;
   };
 

@@ -5,12 +5,13 @@ import { teamPhotos } from "@/app/data/teamPhotos";
 import woodTable from "@/assets/ui/wood-table.jpg";
 
 /**
- * Clubhouse Mode — photographs laid out on the clubhouse table.
+ * Showreel — photographs laid out on the clubhouse table.
  *
- * A single screen, no scrolling: a handful of team photographs sit on a dark
- * wooden table as Polaroids, slightly overlapping and each at its own angle.
- * Tapping one lifts it to the front with its caption and the names recorded in
- * the archive. A fresh batch is dealt every ten seconds, or on demand.
+ * A single screen, no scrolling and no wording: six team photographs sit on a
+ * dark wooden table as Polaroids, overlapping and each at its own angle. The
+ * pictures are the whole of it. Tapping one lifts it to the front with its
+ * caption and the names recorded in the archive, and a fresh six is dealt
+ * every ten seconds or on demand.
  */
 
 const CYCLE_MS = 10000;
@@ -39,9 +40,11 @@ const DESKTOP_SLOTS = [
 
 const MOBILE_SLOTS = [
   { col: 0, row: 0, dx: 0.00, dy: 0.00, rotate: -6 },
-  { col: 1, row: 0, dx: 0.00, dy: 0.13, rotate: 5 },
-  { col: 0, row: 1, dx: 0.04, dy: 0.00, rotate: 7 },
-  { col: 1, row: 1, dx: 0.02, dy: 0.13, rotate: -4 },
+  { col: 1, row: 0, dx: 0.01, dy: 0.09, rotate: 5 },
+  { col: 2, row: 0, dx: -0.01, dy: 0.02, rotate: -4 },
+  { col: 0, row: 1, dx: 0.05, dy: 0.02, rotate: 7 },
+  { col: 1, row: 1, dx: 0.00, dy: 0.09, rotate: -5 },
+  { col: 2, row: 1, dx: -0.04, dy: 0.01, rotate: 6 },
 ];
 
 /**
@@ -50,7 +53,8 @@ const MOBILE_SLOTS = [
  * Down, it stops short of the caption band of the row above, because a
  * photograph whose caption you cannot read is just a photograph.
  */
-const COL_STEP = 0.76;
+const COL_STEP_DESKTOP = 0.76;
+const COL_STEP_MOBILE = 0.60;
 const ROW_STEP = 0.86;
 const MARGIN = 16;
 
@@ -64,7 +68,8 @@ const MARGIN = 16;
  */
 function layout(stageW: number, stageH: number, desktop: boolean) {
   const slots = desktop ? DESKTOP_SLOTS : MOBILE_SLOTS;
-  const cols = desktop ? 3 : 2;
+  const cols = 3;
+  const COL_STEP = desktop ? COL_STEP_DESKTOP : COL_STEP_MOBILE;
   const pad = desktop ? 12 : 8;          // p-3 / p-2
   const caption = desktop ? 48 : 40;     // pb-12 / pb-10
   const maxDy = Math.max(...slots.map((s) => Math.abs(s.dy)));
@@ -114,7 +119,7 @@ function shuffle<T>(items: T[]): T[] {
   return out;
 }
 
-export default function ClubhouseMode() {
+export default function Showreel() {
   const [isDesktop, setIsDesktop] = useState(
     () => typeof window !== "undefined" && window.innerWidth >= 768
   );
@@ -199,7 +204,7 @@ export default function ClubhouseMode() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Clubhouse Mode is a single screen; stop the page behind it scrolling.
+  // The showreel is a single screen; stop the page behind it scrolling.
   useEffect(() => {
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -235,17 +240,8 @@ export default function ClubhouseMode() {
 
       {/* Everything sits above the table */}
       <div className="relative h-full flex flex-col pt-[84px] pb-3 md:pt-[92px] md:pb-4 px-3 md:px-6">
-        <div className="text-center shrink-0">
-          <h1 className="font-['Archivo_Black',sans-serif] text-2xl md:text-3xl text-white drop-shadow-lg">
-            Clubhouse Mode
-          </h1>
-          <p className="font-['Georgia',serif] text-xs md:text-sm text-white/70 mt-0.5">
-            Photographs from the club archive, laid out on the table
-          </p>
-        </div>
-
         {/* Table top */}
-        <div ref={stageRef} className="relative flex-1 mt-2 md:mt-3">
+        <div ref={stageRef} className="relative flex-1">
           {batch.map((photoIndex, slotIndex) => {
             const photo = teamPhotos[photoIndex];
             const pos = positions[slotIndex];

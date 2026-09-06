@@ -11,6 +11,7 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { useState, useEffect, useRef } from "react";
 
 import { teamPhotos, type TeamPhoto } from '@/app/data/teamPhotos';
+import { PhotoViewer } from "@/app/components/PhotoViewer";
 
 
 export default function MeetTheTeams() {
@@ -18,6 +19,8 @@ export default function MeetTheTeams() {
   // closed whichever was open above it, and the page jumped as that content
   // collapsed — often carrying the names you had just asked for off screen.
   const [expandedTeams, setExpandedTeams] = useState<Set<number>>(new Set());
+  // Which photograph is open full screen, if any.
+  const [viewing, setViewing] = useState<number | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -134,11 +137,18 @@ export default function MeetTheTeams() {
               </p>
 
               <div className="mb-8">
-                <ImageWithFallback
-                  src={team.image}
-                  alt={`${team.title} - ${team.year}`}
-                  className="w-full h-auto object-contain bg-[#f4f1ec]"
-                />
+                <button
+                  type="button"
+                  onClick={() => setViewing(index)}
+                  aria-label={`Enlarge ${team.title}`}
+                  className="group block w-full cursor-zoom-in focus:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538]"
+                >
+                  <ImageWithFallback
+                    src={team.image}
+                    alt={`${team.title} - ${team.year}`}
+                    className="w-full h-auto object-contain bg-[#f4f1ec] transition-opacity group-hover:opacity-90"
+                  />
+                </button>
                 <div className="border-b border-[#d9c9ca] py-3 mt-4">
                   <p className="font-['Georgia',serif] text-sm md:text-base text-[#4a4a4a]">
                     Sutton Coldfield Cricket Club, {team.year}
@@ -241,6 +251,15 @@ export default function MeetTheTeams() {
       </section>
 
       <Footer />
+
+      {viewing !== null && (
+        <PhotoViewer
+          src={teamPhotos[viewing].image}
+          alt={`${teamPhotos[viewing].title}, ${teamPhotos[viewing].year}`}
+          caption={`${teamPhotos[viewing].title} — Sutton Coldfield Cricket Club, ${teamPhotos[viewing].year}`}
+          onClose={() => setViewing(null)}
+        />
+      )}
     </div>
   );
 }

@@ -25,7 +25,9 @@ function githubPagesSpaFallback() {
 }
 
 export default defineConfig({
-  base: '/Sutton-Coldfield-Cricket-Club/',
+  // Served from the root of the custom domain (sccc-heritage.co.uk); the
+  // CNAME file in public/ keeps that domain set on every deploy.
+  base: '/',
   plugins: [
     // The React and Tailwind plugins are both required for Make, even if
     // Tailwind is not being actively used – do not remove them

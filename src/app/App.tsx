@@ -4041,9 +4041,8 @@ function ScrollToTop() {
 }
 
 export default function App() {
-  // Paths here are always app paths, with the GitHub Pages sub-path stripped
-  // off, so a link works the same whether the site is served from the root or
-  // from /Sutton-Coldfield-Cricket-Club/.
+  // Paths here are always app paths, with any serving sub-path stripped off, so
+  // a link works the same on the custom domain as under a sub-path.
   const [currentPath, setCurrentPath] = useState(currentAppPath);
 
   useEffect(() => {

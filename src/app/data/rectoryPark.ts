@@ -7,7 +7,7 @@
  * finished — the disagreement is stated rather than settled.
  */
 
-import img_glebe_map_1761 from '@/assets/decades/1760s/1761_snape_map_of_the_glebe.png';
+import img_glebe_map_1761_second_sheet from '@/assets/decades/1760s/1761_snape_map_of_the_glebe_second_sheet.jpg';
 import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
 import img_foundation_1847 from '@/assets/decades/1840s/1847_foundation_notice_and_circular.png';
 import img_ground_1850 from '@/assets/decades/1850s/1850_sutton_rectory_cricket_ground.jpg';
@@ -56,7 +56,7 @@ export const rectoryParkSections: GroundSection[] = [
       "Two sheets survive between them mapping the holding field by field, each parcel named and measured in acres, roods and perches: the Bailiff's Cage, Gilbert's Close, the Boyce's Close, the Breeding Close, Hare Acre, the Long Close, the Merchants Acre, the Long Acre and the Meadow, running down to Workhouse Lane and the Lichfield road and bounded by the lands of Mr Holbeach, Mr Croke, Mr Riddell and Mr Morgan. Round the edge he set an inset plan of part of Sutton town, the arms of the Rectory, an elevation and ground plan of the Mansion House, and a scale of chains and perches.",
       "One of the two surviving sheets indexes twenty features of the estate — the Mansion House, the Parsonage House, the Rectory House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Meadow, the Pasture, the Nursery, the Bridge, the Common — and among them, a Bowling Green. Games were being played on the Rector's land eighty-six years before a cricket ground was laid out on it.",
     ],
-    image: img_glebe_map_1761,
+    image: img_glebe_map_1761_second_sheet,
     imageCaption:
       '"A Map of the Glebe Land belonging to the Rectory of Sutton Coldfield in the County of Warwick. Surveyed for the Revd. Mr Riland, Rector, by Jn. Snape. 1761." The earliest document the club holds.',
   },

@@ -281,10 +281,10 @@ const timelineData: TimelineEntry[] = [
     closingSummary: "The ground the club has played on since 1847 was first put on paper in 1761, by a surveyor working for the founder's own family.",
     location: "The Rectory Glebe, Sutton Coldfield",
     imageCaption: "\"A Map of the Glebe Land belonging to the Rectory of Sutton Coldfield in the County of Warwick. Surveyed for the Revd. Mr Riland, Rector, by Jn. Snape. 1761.\"",
-    backgroundImage: img_glebe_map_1761,
+    backgroundImage: img_glebe_map_1761b,
     images: [
-      img_glebe_map_1761,
       img_glebe_map_1761b,
+      img_glebe_map_1761,
     ],
   },
   {

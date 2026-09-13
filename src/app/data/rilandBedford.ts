@@ -16,7 +16,7 @@ import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plat
 export const rilandHero = {
   image: img_rectory_house,
   years: "1689 - 1907",
-  title: "The Riland & The Bedford",
+  title: "The Riland & The Bedford Family",
   subtitle: "Five generations of one family in the living of Sutton Coldfield",
 };
 

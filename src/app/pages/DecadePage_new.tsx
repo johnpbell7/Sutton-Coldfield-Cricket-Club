@@ -182,7 +182,7 @@ const decadeData: Record<string, DecadeData> = {
     introLarge: "Long before the formal establishment of Sutton Coldfield Cricket Club in 1847, cricket had already taken firm root in the town.",
     introBody: "By at least 1837, the game was being played regularly on the open expanses of Rectory Park and Sutton Park. These early matches, informal in organisation yet consistent in spirit, formed part of the social rhythm of the community. Cricket was not merely recreation; it was a gathering point — a shared pastime that reflected the character of a growing town in the early Victorian age.\n\nCentral to this formative period was the influence of the Rev. W.K. Riland Bedford. His enthusiasm for the game, combined with a strong sense of duty to parish and community, provided the leadership necessary to sustain and shape these early efforts. Though formal records from this era are scarce, later recollections and historical research allow a picture to emerge of a game sustained by volunteerism, local pride, and quiet organisation.\n\nThis was an age before committees, subscriptions, or structured competition — yet it laid the essential foundations upon which the club would soon be built.",
     introCta: {
-      label: "The Riland & The Bedford",
+      label: "The Riland & The Bedford Family",
       to: "/riland-bedford",
       note: "Rev. W.K. Riland Bedford was the fifth generation of his family to make their livelihood in Sutton Coldfield — and the ground the club plays on was their glebe land.",
     },

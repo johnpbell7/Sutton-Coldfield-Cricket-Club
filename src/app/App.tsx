@@ -240,6 +240,7 @@ import bannerImage from "@/assets/ui/page-banner.png";
 import DecadesOverview from "@/app/pages/DecadesOverview";
 import HomePage from "@/app/pages/HomePage";
 import DecadePage from "@/app/pages/DecadePage_new";
+import RilandBedford from "@/app/pages/RilandBedford";
 import MeetTheTeams from "@/app/pages/MeetTheTeams";
 import Obituaries from "@/app/pages/Obituaries";
 import Showreel from "@/app/pages/Showreel";
@@ -4070,6 +4071,7 @@ export default function App() {
     if (currentPath === '/obituaries') return <Obituaries />;
     if (currentPath === '/showreel' || currentPath === '/clubhouse') return <Showreel />;
     if (currentPath === '/rectory-park') return <RectoryPark />;
+    if (currentPath === '/riland-bedford') return <RilandBedford />;
     return <HomePage />;
   };
 

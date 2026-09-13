@@ -184,7 +184,7 @@ const decadeData: Record<string, DecadeData> = {
     introCta: {
       label: "The Riland & The Bedford",
       to: "/riland-bedford",
-      note: "Rev. W.K. Riland Bedford was the fifth generation of his family to hold the living of Sutton Coldfield — and the ground the club plays on was their glebe land.",
+      note: "Rev. W.K. Riland Bedford was the fifth generation of his family to make their livelihood in Sutton Coldfield — and the ground the club plays on was their glebe land.",
     },
     sections: [
       {

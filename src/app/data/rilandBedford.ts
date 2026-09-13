@@ -10,7 +10,7 @@
  * close it.
  */
 
-import img_glebe_map_1761 from '@/assets/decades/1760s/1761_snape_map_of_the_glebe.png';
+import img_glebe_map_1761 from '@/assets/decades/1760s/1761_snape_map_of_the_glebe_second_sheet.jpg';
 import img_rectory_house from '@/assets/decades/1840s/rectory_house_bedford_plate.jpg';
 
 export const rilandHero = {
@@ -115,7 +115,7 @@ export const rilandSections: GroundSection[] = [
     background: "white",
     content: [
       "In 1761 Richard Bisse Riland engaged John Snape, a prominent local surveyor, to map the rectory's glebe land. Two sheets survive between them, every parcel named and measured in acres, roods and perches.",
-      "The map shows the Queen Anne rectory standing where the park is now, and it indexes twenty features of the estate - the Mansion House, the Parsonage House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Nursery, the Bridge, the Common. Among them, a Bowling Green. Games were being played on the Rector's land eighty-six years before a cricket ground was laid out on it.",
+      "The map shows the Queen Anne rectory standing where the park is now, and between the two sheets they index twenty features of the estate - the Mansion House, the Parsonage House, the Church, the Green Ponds, the Great Pond, the Mill, the Brewhouse, the Orchard, the Garden, the Nursery, the Bridge, the Common. Among them, a Bowling Green. Games were being played on the Rector's land eighty-six years before a cricket ground was laid out on it.",
     ],
     image: img_glebe_map_1761,
     imageCaption:

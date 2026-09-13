@@ -2822,7 +2822,7 @@ const timelineData: TimelineEntry[] = [
     ],
     closingSummary: "A season decided by single runs and a single point — and carried, almost alone, by a South African who bowled a maiden and took a wicket every five overs.",
     location: "Rectory Park, Sutton Coldfield",
-    imageCaption: "Photographs kept with the club’s papers from this period: a seamer in his delivery stride watched by a club umpire, portraits of members and officers, and one of the cartoons signed “C.G.” that circulated among the membership — the sitters are not identified in the surviving records.",
+    imageCaption: "Photographs kept with the club’s papers from this period: a seamer in his delivery stride watched by the umpire Peter Bell, portraits of members and officers, and one of the cartoons signed “C.G.” that circulated among the membership — the other sitters are not identified in the surviving records.",
     backgroundImage: img_1999_part2_image31,
     images: [
       img_1999_part2_image31,

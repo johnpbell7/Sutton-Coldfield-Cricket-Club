@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { useReveal } from "@/app/useReveal";
 import { Link } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
@@ -14,26 +15,10 @@ import {
 } from "@/app/data/rilandBedford";
 
 export default function RilandBedford() {
-  const refs = useRef<(HTMLElement | null)[]>([]);
-  const [visible, setVisible] = useState<Set<number>>(new Set());
+  const { refs, visible } = useReveal();
   const [viewing, setViewing] = useState<number | null>(null);
   const open = viewing === null ? null : rilandSections[viewing];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const i = Number((entry.target as HTMLElement).dataset.index);
-            setVisible((prev) => new Set(prev).add(i));
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -80px 0px" }
-    );
-    refs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="min-h-screen bg-white">

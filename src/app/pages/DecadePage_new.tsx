@@ -1,4 +1,5 @@
 import { useParams, Link } from "@/app/components/CustomLink";
+import { useReveal } from "@/app/useReveal";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
 import { DecadeCard } from "@/app/components/DecadeCard";
@@ -1467,7 +1468,7 @@ const decadeData: Record<string, DecadeData> = {
           "The lower sides were thriving too. Robert Powell scored 844 runs at 52.75 for the thirds, A. Jones made 203 not out and Jonathan Miller 100 not out in an unbroken stand of 287 against Barnt Green, and Terry Matthews took 43 wickets. In 1991 the first eleven finished runners-up in the Warwickshire Sunday League and the seconds won 21 of 40 games. The 1992 meeting changed nothing at all — every officer was returned unopposed — but it did engage Adam Bacher of South Africa as professional.",
         ],
         image: img_1999_part2_image32,
-        imageCaption: "A bowler in his delivery stride, watched by a club umpire — one of a group of photographs kept with the club's papers from these years; the players are not identified in the surviving records."
+        imageCaption: "A bowler in his delivery stride, watched by the umpire Peter Bell — one of a group of photographs kept with the club's papers from these years; the bowler is not identified in the surviving records."
       },
       {
         title: "Champions: The Summer of 1993",
@@ -1914,9 +1915,8 @@ const decadeData: Record<string, DecadeData> = {
 export default function DecadePage() {
   const { year } = useParams<{ year: string }>();
   
-  // State for fade-in animations
-  const [visibleSections, setVisibleSections] = useState<Set<number>>(new Set());
-  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  // Fade-in animations, with the guarantee that nothing stays invisible.
+  const { refs: sectionRefs, visible: visibleSections } = useReveal([year]);
   
   // Convert year to decade key (e.g., "1880" -> "1880s", "1900" -> "1900s")
   const getDecadeKey = (yearParam: string | undefined): string | null => {
@@ -1952,37 +1952,7 @@ export default function DecadePage() {
   const decadeKey = getDecadeKey(year);
   const decade = decadeKey ? decadeData[decadeKey] : null;
 
-  // IntersectionObserver for fade-in animations
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = sectionRefs.current.indexOf(entry.target as HTMLElement);
-            if (index !== -1) {
-              requestAnimationFrame(() => {
-                setVisibleSections((prev) => new Set(prev).add(index));
-              });
-            }
-          }
-        });
-      },
-      {
-        threshold: 0.01, // Trigger as soon as section is barely visible
-        rootMargin: '400px' // Increased from 150px - start animation much earlier to prevent breaking
-      }
-    );
 
-    sectionRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      sectionRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [decade]); // Re-run when decade changes
 
   if (!decade) {
     return (

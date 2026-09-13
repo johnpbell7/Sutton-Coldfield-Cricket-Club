@@ -2,7 +2,7 @@ import { useParams, Link } from "@/app/components/CustomLink";
 import { MenuBar } from "@/app/components/MenuBar";
 import { Footer } from "@/app/components/Footer";
 import { DecadeCard } from "@/app/components/DecadeCard";
-import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { useState, useEffect, useRef } from "react";
 
@@ -148,6 +148,12 @@ interface DecadeData {
   heroImage: string;
   introLarge: string;
   introBody: string;
+  /** Optional link out of the intro, for background that deserves its own page. */
+  introCta?: {
+    label: string;
+    to: string;
+    note: string;
+  };
   sections: {
     title: string;
     content: string[];
@@ -175,6 +181,11 @@ const decadeData: Record<string, DecadeData> = {
     heroImage: img_1859_team,
     introLarge: "Long before the formal establishment of Sutton Coldfield Cricket Club in 1847, cricket had already taken firm root in the town.",
     introBody: "By at least 1837, the game was being played regularly on the open expanses of Rectory Park and Sutton Park. These early matches, informal in organisation yet consistent in spirit, formed part of the social rhythm of the community. Cricket was not merely recreation; it was a gathering point — a shared pastime that reflected the character of a growing town in the early Victorian age.\n\nCentral to this formative period was the influence of the Rev. W.K. Riland Bedford. His enthusiasm for the game, combined with a strong sense of duty to parish and community, provided the leadership necessary to sustain and shape these early efforts. Though formal records from this era are scarce, later recollections and historical research allow a picture to emerge of a game sustained by volunteerism, local pride, and quiet organisation.\n\nThis was an age before committees, subscriptions, or structured competition — yet it laid the essential foundations upon which the club would soon be built.",
+    introCta: {
+      label: "The Rilands and the Riland Bedfords",
+      to: "/riland-bedford",
+      note: "Rev. W.K. Riland Bedford was the fifth generation of his family to hold the living of Sutton Coldfield — and the ground the club plays on was their glebe land.",
+    },
     sections: [
       {
         title: "The Early Game in Sutton Coldfield",
@@ -2081,6 +2092,20 @@ export default function DecadePage() {
                   {paragraph}
                 </p>
               ))}
+              {decade.introCta && (
+                <div className="mt-10 border-l-4 border-[#8B1538] bg-[#f8f6f3] p-6 md:p-8">
+                  <p className="font-['Georgia',serif] text-base md:text-lg leading-relaxed text-gray-800 mb-5">
+                    {decade.introCta.note}
+                  </p>
+                  <Link
+                    to={decade.introCta.to}
+                    className="inline-flex items-center gap-3 bg-[#8B1538] hover:bg-[#6B0F2A] text-white px-7 py-4 font-['Helvetica',sans-serif] text-base md:text-lg font-semibold transition-colors"
+                  >
+                    {decade.introCta.label}
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

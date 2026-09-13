@@ -25,13 +25,13 @@ const DECADE_ALIASES = [
 
 const PAGE_ROUTES = [
   '/journey', '/timeline', '/decades', '/view-all-decades', '/teams',
-  '/obituaries', '/showreel', '/clubhouse', '/rectory-park',
+  '/obituaries', '/showreel', '/clubhouse', '/rectory-park', '/riland-bedford',
 ]
 
 /** The canonical URL for each page, for the sitemap. Aliases are left out. */
 const SITEMAP_ROUTES = [
   '/', '/journey', '/decades', '/teams', '/obituaries', '/showreel',
-  '/rectory-park',
+  '/rectory-park', '/riland-bedford',
   ...DECADE_KEYS.map((k) => `/decades/${k}`),
 ]
 

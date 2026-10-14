@@ -1,0 +1,32 @@
+# Sutton Coldfield Cricket Club
+
+> The history of Sutton Coldfield Cricket Club, founded in 1847 and playing at Rectory Park, with cricket in the town recorded from 1837. A single-page web app that tells the story year by year, decade by decade, with team photographs and records from the club's archive.
+
+## Pages
+
+- [Home](https://sccc-heritage.co.uk/): Over 180 years of cricket excellence: the story of Sutton Coldfield Cricket Club.
+- [Our Journey Through Time](https://sccc-heritage.co.uk/journey): The full interactive timeline, 1837 to the present day, with a slider for each decade.
+- [Through the Decades](https://sccc-heritage.co.uk/decades): All fifteen eras of the club's history in one place.
+- [Meet the Teams](https://sccc-heritage.co.uk/teams): Historic team photographs and the players who built the club's legacy.
+- [In Memoriam](https://sccc-heritage.co.uk/obituaries): Members lost in the Great War, 1914-1918.
+- [Showreel](https://sccc-heritage.co.uk/showreel): Team photographs laid out on the clubhouse table, a fresh set every few seconds.
+- [Rectory Park](https://sccc-heritage.co.uk/rectory-park): The history of the ground the club laid out in 1847 and has never left.
+- [The Riland & The Bedford Family](https://sccc-heritage.co.uk/riland-bedford): Five generations of one family in the living of Sutton Coldfield, 1689 to 1907, including the Rector who founded the club.
+
+## The decades
+
+- [Foundations Before Formation (1837-1847)](https://sccc-heritage.co.uk/decades/1880s): The club's story for 1837 to 1847.
+- [The First Fifty Years (1847-1899)](https://sccc-heritage.co.uk/decades/1890s): The club's story for 1847 to 1899.
+- [The Turn of the Century (1900-1909)](https://sccc-heritage.co.uk/decades/1900s): The club's story for 1900 to 1909.
+- [The Last Summers (1910-1919)](https://sccc-heritage.co.uk/decades/1910s): The club's story for 1910 to 1919.
+- [The Golden Resurgence (1920-1929)](https://sccc-heritage.co.uk/decades/1920s): The club's story for 1920 to 1929.
+- [The Thirties (1930-1939)](https://sccc-heritage.co.uk/decades/1930s): The club's story for 1930 to 1939.
+- [The Second World War (1940-1949)](https://sccc-heritage.co.uk/decades/1940s): The club's story for 1940 to 1949.
+- [Post-War Revival (1950-1959)](https://sccc-heritage.co.uk/decades/1950s): The club's story for 1950 to 1959.
+- [The Swinging Sixties (1960-1969)](https://sccc-heritage.co.uk/decades/1960s): The club's story for 1960 to 1969.
+- [The Seventies (1970-1979)](https://sccc-heritage.co.uk/decades/1970s): The club's story for 1970 to 1979.
+- [The Eighties (1980-1989)](https://sccc-heritage.co.uk/decades/1980s): The club's story for 1980 to 1989.
+- [The Nineties (1990-1999)](https://sccc-heritage.co.uk/decades/1990s): The club's story for 1990 to 1999.
+- [The New Millennium (2000-2009)](https://sccc-heritage.co.uk/decades/2000s): The club's story for 2000 to 2009.
+- [The Twenty-Tens (2010-2019)](https://sccc-heritage.co.uk/decades/2010s): The club's story for 2010 to 2019.
+- [The Twenty-Twenties (2020-Present)](https://sccc-heritage.co.uk/decades/2020s): The club's story for 2020 to the present.

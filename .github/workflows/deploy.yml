@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -32,6 +32,12 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # Writes the finished page into every route's index.html so search engines get the real heading and words.
+      # Fails softly: if Chrome is missing or a page won't render, that page keeps the plain shell and the deploy carries on.
+      - name: Prerender pages
+        run: npm run prerender
+        continue-on-error: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

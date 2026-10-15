@@ -113,6 +113,23 @@ For Netlify/Vercel with client-side routing, add a redirect rule:
 - **Netlify**: create `public/_redirects` with `/* /index.html 200`
 - **Vercel**: create `vercel.json` with rewrites to `/index.html`
 
+## Search engines: pages, prerender, sitemap
+
+GitHub Pages serves static files and `.github/workflows/deploy.yml` builds on every push to `main`. Three things make
+each page readable to Google:
+
+- `scripts/pages.mjs` lists every real page with its title, description and main address (all end in a slash, which is
+  what GitHub Pages serves). Edit page text for search engines there. Old or duplicate addresses (`/timeline`,
+  `/clubhouse`, `/view-all-decades`, `/decades/1880s`, `/decades/1880`...) still work, and their canonical link points at the main one.
+- `vite.config.ts` uses that list at build time to write each route's `index.html` (own title, description, canonical,
+  og tags), `404.html` (noindex), `sitemap.xml`, `llms.txt` and `robots.txt`.
+- `scripts/prerender.mjs` runs after the build (`npm run prerender`): it opens each route in a hidden Chrome and writes the finished
+  page into that route's `index.html`, so the raw HTML has the real heading and words. React then replaces it with the
+  same page. It needs Chrome (the `CHROME` environment variable, the macOS app, or `google-chrome` on Linux). If Chrome is missing or a
+  page fails, that page keeps the plain shell and the deploy carries on.
+
+Share pictures (1200 x 630) are made from the studio's `Branding/Share images/build.mjs` and saved in `public/share/`.
+
 ## Fonts Used
 
 - `Archivo Black` — Headlines (Google Fonts)

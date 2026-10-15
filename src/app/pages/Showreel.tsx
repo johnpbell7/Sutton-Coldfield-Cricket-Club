@@ -231,6 +231,12 @@ export default function Showreel() {
     <div className="h-[100dvh] overflow-hidden relative">
       <MenuBar />
 
+      {/* The page's heading and a line of description for search engines and screen readers; the photographs are the visible page. */}
+      <h1 className="sr-only">Showreel: Sutton Coldfield Cricket Club Team Photographs</h1>
+      <p className="sr-only">
+        Team photographs from the club's archive, laid out on the clubhouse table. A fresh set is dealt every few seconds.
+      </p>
+
       {/* The table */}
       <div
         className="absolute inset-0 bg-cover bg-center"

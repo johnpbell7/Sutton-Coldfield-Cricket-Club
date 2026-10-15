@@ -4,38 +4,17 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
+import { routes, applyHead, notFoundHtml, sitemapXml, llmsTxt, SITE_URL } from './scripts/pages.mjs'
+
 /**
- * The site's routes.
+ * The site's routes and what search engines see of them live in scripts/pages.mjs.
  *
  * Aliases are included deliberately: several paths render the same page
  * (/journey and /timeline, /decades and /view-all-decades, /showreel and
  * /clubhouse), and the decade pages accept both a decade key ("1970s") and
- * the bare year used by older links ("1970"). Every path the app answers
- * needs a file, or Pages replies 404 to it.
+ * the bare year the site links to ("1970"). Every path the app answers needs a
+ * file, or Pages replies 404 to it.
  */
-const DECADE_KEYS = [
-  '1880s', '1890s', '1900s', '1910s', '1920s', '1930s', '1940s', '1950s',
-  '1960s', '1970s', '1980s', '1990s', '2000s', '2010s', '2020s',
-]
-
-const DECADE_ALIASES = [
-  '1837', '1847', '1880', '1890', '1900', '1910', '1920', '1930', '1940',
-  '1950', '1960', '1970', '1980', '1990', '2000', '2010', '2020',
-]
-
-const PAGE_ROUTES = [
-  '/journey', '/timeline', '/decades', '/view-all-decades', '/teams',
-  '/obituaries', '/showreel', '/clubhouse', '/rectory-park', '/riland-bedford',
-]
-
-/** The canonical URL for each page, for the sitemap. Aliases are left out. */
-const SITEMAP_ROUTES = [
-  '/', '/journey', '/decades', '/teams', '/obituaries', '/showreel',
-  '/rectory-park', '/riland-bedford',
-  ...DECADE_KEYS.map((k) => `/decades/${k}`),
-]
-
-const SITE_URL = 'https://sccc-heritage.co.uk'
 
 /**
  * GitHub Pages serves static files, so a request for /decades — typed in,
@@ -48,8 +27,10 @@ const SITE_URL = 'https://sccc-heritage.co.uk'
  * page would be dropped from the index.
  *
  * So write a real index.html at each route as well. Pages then finds a file
- * and replies 200, and the same app boots and routes exactly as before.
- * 404.html stays as the catch-all for anything genuinely unknown.
+ * and replies 200, and the same app boots and routes exactly as before. Each
+ * copy gets its own title, description and canonical link; scripts/prerender.mjs
+ * (run after the build) then writes the finished page into each one.
+ * 404.html stays as the catch-all for anything genuinely unknown, marked noindex.
  */
 function githubPagesRoutes() {
   return {
@@ -58,32 +39,29 @@ function githubPagesRoutes() {
       const dir = path.resolve(__dirname, 'dist')
       const index = path.join(dir, 'index.html')
       if (!fs.existsSync(index)) return
+      const shell = fs.readFileSync(index, 'utf8')
 
-      fs.copyFileSync(index, path.join(dir, '404.html'))
+      fs.writeFileSync(path.join(dir, '404.html'), notFoundHtml(shell))
 
-      const routes = [
-        ...PAGE_ROUTES,
-        ...DECADE_KEYS.map((k) => `/decades/${k}`),
-        ...DECADE_ALIASES.map((y) => `/decades/${y}`),
-      ]
-
-      for (const route of routes) {
+      for (const { route, page, canonical } of routes()) {
+        const html = applyHead(shell, {
+          title: page.title,
+          description: page.description,
+          canonical,
+          image: page.image,
+          imageAlt: page.imageAlt,
+        })
+        if (route === '/') {
+          fs.writeFileSync(index, html)
+          continue
+        }
         const target = path.join(dir, route)
         fs.mkdirSync(target, { recursive: true })
-        fs.copyFileSync(index, path.join(target, 'index.html'))
+        fs.writeFileSync(path.join(target, 'index.html'), html)
       }
 
-      const today = new Date().toISOString().slice(0, 10)
-      const urls = SITEMAP_ROUTES.map(
-        (r) =>
-          `  <url>\n    <loc>${SITE_URL}${r}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`,
-      ).join('\n')
-
-      fs.writeFileSync(
-        path.join(dir, 'sitemap.xml'),
-        `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
-      )
-
+      fs.writeFileSync(path.join(dir, 'sitemap.xml'), sitemapXml())
+      fs.writeFileSync(path.join(dir, 'llms.txt'), llmsTxt())
       fs.writeFileSync(
         path.join(dir, 'robots.txt'),
         `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`,

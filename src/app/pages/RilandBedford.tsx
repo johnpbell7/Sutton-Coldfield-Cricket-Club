@@ -41,7 +41,7 @@ export default function RilandBedford() {
           <div className="max-w-6xl mx-auto w-full">
             <div className="mb-4">
               <Link
-                to="/decades/1880s"
+                to="/decades/1837"
                 className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors font-['Helvetica',sans-serif] text-sm md:text-base drop-shadow-lg"
               >
                 <ArrowLeft className="w-4 h-4" />
@@ -247,7 +247,7 @@ export default function RilandBedford() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-stretch">
             <Link
-              to="/decades/1880s"
+              to="/decades/1837"
               className="flex items-center justify-center gap-3 bg-[#8B1538] hover:bg-[#6B0F2A] text-white px-10 py-5 font-['Helvetica',sans-serif] text-lg font-semibold transition-colors w-full md:w-auto"
             >
               <ArrowLeft className="w-5 h-5" />

@@ -158,8 +158,10 @@ function swap(html, re, replacement, what) {
 }
 
 /** The shell's <head> rewritten for one page. */
-export function applyHead(shell, { title, description, canonical, image, imageAlt }) {
+export function applyHead(shell, { title, description, canonical, image, imageAlt, preload }) {
   let h = shell;
+  // Early downloads (fonts the first screen uses, the home hero picture), straight after the viewport tag.
+  if (preload) h = h.replace(/<meta name="viewport"[^>]*>/, (m) => `${m}\n    ${preload}`);
   h = swap(h, /<title>[\s\S]*?<\/title>/, `<title>${escText(title)}</title>`, '<title>');
   h = swap(h, /<meta name="description"[^>]*>/, `<meta name="description" content="${esc(description)}" />${canonical ? `\n    <link rel="canonical" href="${esc(canonical)}" />` : ''}`, 'description');
   h = swap(h, /<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${esc(title)}" />${canonical ? `\n    <meta property="og:url" content="${esc(canonical)}" />` : ''}`, 'og:title');

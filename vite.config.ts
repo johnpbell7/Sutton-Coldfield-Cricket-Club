@@ -43,8 +43,23 @@ function githubPagesRoutes() {
 
       fs.writeFileSync(path.join(dir, '404.html'), notFoundHtml(shell))
 
+      // Preloads: the two font files the first screen uses (Archivo for the menu, Archivo Black for headings), and on
+      // the home page the hero picture, which is a CSS background and so would be found late.
+      const font = (f: string) => `<link rel="preload" href="/fonts/${f}" as="font" type="font/woff2" crossorigin />`
+      const heroFile = fs.readdirSync(path.join(dir, 'assets')).find((f) => /^home-hero-.*\.jpg$/.test(f))
+      const heroPreload = heroFile
+        ? `<link rel="preload" href="/assets/${heroFile}" as="image" fetchpriority="high" />`
+        : ''
+
       for (const { route, page, canonical } of routes()) {
+        const showreel = page.path === '/showreel/' // draws no headings, so no need for the heading font
+        const preload = [
+          font('archivo-latin.woff2'),
+          showreel ? '' : font('archivo-black-latin.woff2'),
+          route === '/' ? heroPreload : '',
+        ].filter(Boolean).join('\n    ')
         const html = applyHead(shell, {
+          preload,
           title: page.title,
           description: page.description,
           canonical,

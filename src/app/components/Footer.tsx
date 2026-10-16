@@ -1,5 +1,5 @@
-// The slim designer banner links to John's GitHub Pages site until his own domain is live.
-const JB_SITE = 'https://johnpbell7.github.io/JB-Design-Agency/';
+// The slim designer banner links to John's site (a followed link: it's the backlink).
+const JB_SITE = 'https://jbdesignagency.co.uk/';
 const JB_ENQUIRY =
   'mailto:jb.designagency89@gmail.com?subject=' +
   encodeURIComponent('New website enquiry (via Sutton Coldfield Cricket Club)') +

@@ -279,12 +279,11 @@ export default function HomePage() {
       {/*
         Hero Section - Full Screen.
 
-        Until the reader interacts there is no content beneath the hero, so the
-        page cannot scroll and a wheel or a swipe would do nothing at all. The
-        whole hero is therefore the control: a click, a scroll in either
-        direction, a swipe or a key all bowl the ball and carry you down. The
-        wheel and touch handlers are only armed while the hero is the whole
-        page - once the content is there, ordinary scrolling takes over.
+        The whole hero is the control: a click, a scroll in either direction,
+        a swipe or a key all bowl the ball and carry you down to the content.
+        The content is always in the page (so Google reads it); the wheel and
+        touch handlers are only armed until the first bowl, then ordinary
+        scrolling takes over.
       */}
       <section
         className="relative h-screen overflow-hidden cursor-pointer"
@@ -341,8 +340,9 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* Content sections - only show after interaction */}
-      {hasInteracted && (
+      {/* Content sections. Always in the page so Google and the prerender see
+          them; the bowl still carries the reader down to them. */}
+      {(
         <div ref={contentRef}>
           {/* Large Image + Text Section */}
           <LazySection className="bg-white">
@@ -668,10 +668,7 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* Footer - only show after interaction */}
-      {hasInteracted && (
-        <Footer />
-      )}
+      <Footer />
     </div>
   );
 }

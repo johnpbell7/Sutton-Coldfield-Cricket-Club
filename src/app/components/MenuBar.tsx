@@ -265,9 +265,8 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
               <span className="text-[12px] font-semibold text-gray-700 font-['Helvetica',sans-serif]">John Bell</span>
               <span className="text-[11px] text-gray-400 font-['Helvetica',sans-serif] ml-2">Graphic Design: Branding, Print &amp; Web</span>
             </div>
-            <div className="flex items-center gap-3 text-[10px] text-gray-400 font-['Helvetica',sans-serif] shrink-0">
-              <span>johnpbell7@gmail.com</span>
-              <span className="text-gray-300">·</span>
+            <div className="flex flex-col items-end gap-0.5 text-[10px] text-gray-400 font-['Helvetica',sans-serif] shrink-0">
+              <span>jb.designagency89@gmail.com</span>
               <span>07428 728780</span>
             </div>
           </div>

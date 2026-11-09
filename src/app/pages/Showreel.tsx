@@ -231,8 +231,7 @@ export default function Showreel() {
     <div className="h-[100dvh] overflow-hidden relative">
       <MenuBar />
 
-      {/* The page's heading and a line of description for search engines and screen readers; the photographs are the visible page. */}
-      <h1 className="sr-only">Showreel: Sutton Coldfield Cricket Club Team Photographs</h1>
+      {/* A line of description for search engines and screen readers; the heading itself sits small above the button. */}
       <p className="sr-only">
         Team photographs from the club's archive, laid out on the clubhouse table. A fresh set is dealt every few seconds.
       </p>
@@ -293,8 +292,11 @@ export default function Showreel() {
           })}
         </div>
 
-        {/* Deal again */}
-        <div className="shrink-0 flex justify-center pt-1">
+        {/* The page's heading, small but visible, then deal again */}
+        <h1 className="shrink-0 text-center font-['Helvetica',sans-serif] text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/85 [text-shadow:0_1px_3px_rgba(0,0,0,0.8)] pt-1 pb-2">
+          Showreel: Sutton Coldfield Cricket Club Team Photographs
+        </h1>
+        <div className="shrink-0 flex justify-center">
           <button
             type="button"
             onClick={() => deal(perBatch)}

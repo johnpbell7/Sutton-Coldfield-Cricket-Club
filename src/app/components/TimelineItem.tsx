@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link } from "@/app/components/CustomLink";
 import { Sheet, SheetContent, SheetTitle, SheetDescription } from "@/app/components/ui/sheet";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
+import { PhotoViewer } from "@/app/components/PhotoViewer";
 import svgPaths from "@/imports/svg-sp3yg7d05h";
 import { ArchiveGallery } from "@/app/components/ArchiveGallery";
 
@@ -56,6 +58,30 @@ export function TimelineItem({
    * The photographs to show below the story. images[0] is already the
    * thumbnail and backgroundImage the hero, so neither is repeated here.
    */
+  // The hero picture is cropped to fit the pop-up; tapping it opens the whole photograph full screen.
+  const [heroOpen, setHeroOpen] = useState(false);
+  useEffect(() => setHeroOpen(false), [isOpen, year]);
+  const heroCaption = imageCaption || `${title}, ${year}.`;
+  const heroButton = (heightClass: string, positionClass = "") =>
+    backgroundImage ? (
+      <button
+        type="button"
+        onClick={() => setHeroOpen(true)}
+        aria-label={`View the whole photograph: ${heroCaption}`}
+        className="group relative block w-full cursor-zoom-in focus:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538]"
+      >
+        <ImageWithFallback
+          src={backgroundImage}
+          alt="Sutton Coldfield Cricket Club team photo"
+          className={`w-full ${heightClass} object-cover ${positionClass}`}
+        />
+        <span className="absolute right-3 bottom-3 inline-flex items-center gap-1.5 bg-black/60 group-hover:bg-black/75 text-white text-xs md:text-sm font-['Helvetica',sans-serif] px-3 py-1.5 transition-colors">
+          <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />
+          View whole photo
+        </span>
+      </button>
+    ) : null;
+
   const galleryImages = images.filter(
     (src, idx) => idx > 0 && src !== backgroundImage && src !== images[0]
   );
@@ -260,8 +286,13 @@ export function TimelineItem({
       <Sheet open={isOpen} onOpenChange={(open) => !open && onClose()}>
         <SheetContent 
           side="bottom" 
+          onEscapeKeyDown={(e) => { if (heroOpen) e.preventDefault(); }}
           className="h-screen w-screen max-w-none p-0 border-none bg-gradient-to-b from-[rgba(255,255,255,0)] via-white to-white overflow-y-auto"
         >
+          {heroOpen && backgroundImage && (
+            <PhotoViewer src={backgroundImage} alt={heroCaption} caption={heroCaption} onClose={() => setHeroOpen(false)} />
+          )}
+
           {/* Visually hidden accessibility elements */}
           <SheetTitle className="sr-only">{title}</SheetTitle>
           <SheetDescription className="sr-only">{shortDescription}</SheetDescription>
@@ -352,11 +383,7 @@ export function TimelineItem({
                     {/* Hero Image - Main background image above everything */}
                     {backgroundImage && (
                       <div className="space-y-2">
-                        <ImageWithFallback
-                          src={backgroundImage} 
-                          alt="Sutton Coldfield Cricket Club team photo" 
-                          className="w-full h-[400px] md:h-[600px] object-cover object-[center_70%]"
-                        />
+                        {heroButton("h-[400px] md:h-[600px]", "object-[center_70%]")}
                         <div className="pt-1">
                           <p className="font-['Georgia',serif] text-sm leading-relaxed text-[#4a4a4a]">
                             {imageCaption || `${title}, ${year}.`}
@@ -435,11 +462,7 @@ export function TimelineItem({
                     {/* Fallback for old format */}
                     {backgroundImage && (
                       <div className="mb-8 md:mb-12">
-                        <ImageWithFallback
-                          src={backgroundImage} 
-                          alt="Sutton Coldfield Cricket Club team photo" 
-                          className="w-full h-[300px] md:h-[400px] object-cover"
-                        />
+                        {heroButton("h-[300px] md:h-[400px]")}
                       </div>
                     )}
 

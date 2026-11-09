@@ -89,6 +89,14 @@ const mainPages = [
     description: 'Five generations of one family held the living of Sutton Coldfield from 1689 to 1907, including the Rector who founded the club.',
     llms: 'Five generations of one family in the living of Sutton Coldfield, 1689 to 1907, including the Rector who founded the club.',
   },
+  {
+    path: '/first-class-cricketers/',
+    image: '/share/teams.jpg',
+    imageAlt: 'Sutton Coldfield Cricket Club players who went on to first-class cricket, over historic team photographs',
+    title: titleFor('First-Class Cricketers, 1847-2025'),
+    description: 'The 45 Sutton Coldfield players who went on to first-class or List A cricket, from Tom Crockford to Tom Banton of Somerset and England.',
+    llms: 'Club players who went on to first-class or List A cricket, with stories of Tom Banton, Aaron Thomason, Tom Crockford, Adam Bacher, Steve Peall, Tim Groenewald and Alan Richardson.',
+  },
 ];
 
 // id = the first year (main address); key = the app's own decade key (alias); alt = other old addresses.

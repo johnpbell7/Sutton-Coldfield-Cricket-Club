@@ -233,6 +233,17 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
               </Link>
             </li>
 
+            {/* First-class cricketers */}
+            <li>
+              <Link
+                to="/first-class-cricketers"
+                className="block py-3 px-4 text-lg transition-colors text-gray-800 font-medium"
+                onClick={toggleMenu}
+              >
+                First-Class Cricketers
+              </Link>
+            </li>
+
             {/* Rectory Park */}
             <li>
               <Link

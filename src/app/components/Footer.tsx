@@ -1,3 +1,4 @@
+import { Link } from "@/app/components/CustomLink";
 // The slim designer banner links to John's site (a followed link: it's the backlink).
 const JB_SITE = 'https://jbdesignagency.co.uk/';
 const JB_ENQUIRY =
@@ -5,6 +6,24 @@ const JB_ENQUIRY =
   encodeURIComponent('New website enquiry (via Sutton Coldfield Cricket Club)') +
   '&body=' +
   encodeURIComponent("Hi John,\r\n\r\nI saw the Sutton Coldfield Cricket Club site and I'd like to talk about a website for my business.\r\n\r\n");
+
+// Footer links: every main page of the site (so each is one click from anywhere), then the club and the game around it.
+const SITE_LINKS: [string, string][] = [
+  ['/journey', 'Our Journey Through Time'],
+  ['/decades', 'Through the Decades'],
+  ['/teams', 'Meet the Teams'],
+  ['/first-class-cricketers', 'First-Class Cricketers'],
+  ['/rectory-park', 'Rectory Park'],
+  ['/riland-bedford', 'The Riland & Bedford Family'],
+  ['/obituaries', 'In Memoriam, 1914-1918'],
+  ['/showreel', 'Showreel'],
+];
+const CRICKET_LINKS: [string, string][] = [
+  ['https://suttoncoldfield.play-cricket.com/', 'Sutton Coldfield CC today'],
+  ['https://bdpcl.play-cricket.com/', 'Birmingham & District Premier League'],
+  ['https://www.edgbaston.com/', 'Warwickshire CCC at Edgbaston'],
+  ['https://www.ecb.co.uk/', 'England and Wales Cricket Board'],
+];
 
 function JbMark({ className }: { className?: string }) {
   return (
@@ -49,12 +68,43 @@ export function DesignerCredit() {
   );
 }
 
+export function FooterLinks() {
+  return (
+    <div className="grid sm:grid-cols-2 gap-8 sm:gap-12 max-w-3xl mx-auto pb-12 border-t border-white/15 pt-10">
+      <nav aria-label="The club's history">
+        <p className="font-['Helvetica',sans-serif] text-xs uppercase tracking-[0.18em] text-white/60 mb-4">The club's history</p>
+        <ul className="space-y-2">
+          {SITE_LINKS.map(([to, label]) => (
+            <li key={to}>
+              <Link to={to} className="font-['Georgia',serif] text-base text-white/90 hover:text-white underline-offset-4 hover:underline">
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <nav aria-label="Cricket links">
+        <p className="font-['Helvetica',sans-serif] text-xs uppercase tracking-[0.18em] text-white/60 mb-4">The club and the game</p>
+        <ul className="space-y-2">
+          {CRICKET_LINKS.map(([href, label]) => (
+            <li key={href}>
+              <a href={href} target="_blank" rel="noopener" className="font-['Georgia',serif] text-base text-white/90 hover:text-white underline-offset-4 hover:underline">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="bg-[#1a472a] text-white pt-12 px-8">
       <div className="max-w-6xl mx-auto">
         {/* Club Information */}
-        <div className="text-center pb-12">
+        <div className="text-center pb-10">
           <p className="font-['Georgia',serif] text-xl mb-3">
             Sutton Coldfield Cricket Club
           </p>
@@ -62,6 +112,8 @@ export function Footer() {
             Celebrating Over 180 Years of Cricket Excellence
           </p>
         </div>
+
+        <FooterLinks />
 
         <DesignerCredit />
       </div>

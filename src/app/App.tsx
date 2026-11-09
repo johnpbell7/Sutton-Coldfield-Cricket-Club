@@ -1,4 +1,4 @@
-import { DesignerCredit } from "@/app/components/Footer";
+import { DesignerCredit, FooterLinks } from "@/app/components/Footer";
 import cricketBallIcon from '@/assets/ui/cricket-ball-icon.png';
 // Historical archive images for timeline entries
 import img_1859_team from '@/assets/decades/1850s/1859_part1_image4.jpg';
@@ -246,6 +246,7 @@ import MeetTheTeams from "@/app/pages/MeetTheTeams";
 import Obituaries from "@/app/pages/Obituaries";
 import Showreel from "@/app/pages/Showreel";
 import RectoryPark from "@/app/pages/RectoryPark";
+import FirstClassCricketers from "@/app/pages/FirstClassCricketers";
 import { currentAppPath, href } from "@/app/routing";
 
 
@@ -3886,7 +3887,7 @@ function TimelinePage() {
       <footer ref={footerRef} className="bg-[#1a472a] text-white pt-12 px-8 mt-20">
         <div className="max-w-6xl mx-auto">
           {/* Club Information */}
-          <div className="text-center pb-12">
+          <div className="text-center pb-10">
             <p className="font-['Georgia',serif] text-xl mb-3">
               Sutton Coldfield Cricket Club
             </p>
@@ -3894,7 +3895,8 @@ function TimelinePage() {
               Celebrating Over 180 Years of Cricket Excellence
             </p>
           </div>
-          
+
+          <FooterLinks />
           <DesignerCredit />
         </div>
       </footer>
@@ -4029,6 +4031,7 @@ export default function App() {
     if (currentPath === '/showreel' || currentPath === '/clubhouse') return <Showreel />;
     if (currentPath === '/rectory-park') return <RectoryPark />;
     if (currentPath === '/riland-bedford') return <RilandBedford />;
+    if (currentPath === '/first-class-cricketers') return <FirstClassCricketers />;
     return <HomePage />;
   };
 

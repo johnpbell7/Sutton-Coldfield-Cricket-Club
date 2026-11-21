@@ -12,6 +12,7 @@ const SITE_LINKS: [string, string][] = [
   ['/journey', 'Our Journey Through Time'],
   ['/decades', 'Through the Decades'],
   ['/teams', 'Meet the Teams'],
+  ['/members', 'Club Members'],
   ['/first-class-cricketers', 'First-Class Cricketers'],
   ['/rectory-park', 'Rectory Park'],
   ['/riland-bedford', 'The Riland & Bedford Family'],

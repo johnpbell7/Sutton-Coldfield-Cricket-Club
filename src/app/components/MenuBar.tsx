@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { X, ChevronDown, ChevronUp } from "lucide-react";
 import { Link, useNavigate } from "@/app/components/CustomLink";
-import imgSutton1 from "@/assets/ui/club-logo.png";
+import imgSutton1 from "@/assets/ui/club-rose.png";
 
 interface MenuBarProps {
   isScrolled?: boolean;
@@ -230,6 +230,17 @@ export function MenuBar({ isScrolled = false }: MenuBarProps) {
                 onClick={toggleMenu}
               >
                 Meet the Teams
+              </Link>
+            </li>
+
+            {/* Club members */}
+            <li>
+              <Link
+                to="/members"
+                className="block py-3 px-4 text-lg transition-colors text-gray-800 font-medium"
+                onClick={toggleMenu}
+              >
+                Club Members
               </Link>
             </li>
 

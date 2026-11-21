@@ -247,6 +247,7 @@ import Obituaries from "@/app/pages/Obituaries";
 import Showreel from "@/app/pages/Showreel";
 import RectoryPark from "@/app/pages/RectoryPark";
 import FirstClassCricketers from "@/app/pages/FirstClassCricketers";
+import ClubMembers from "@/app/pages/ClubMembers";
 import { currentAppPath, href } from "@/app/routing";
 
 
@@ -4032,6 +4033,7 @@ export default function App() {
     if (currentPath === '/rectory-park') return <RectoryPark />;
     if (currentPath === '/riland-bedford') return <RilandBedford />;
     if (currentPath === '/first-class-cricketers') return <FirstClassCricketers />;
+    if (currentPath === '/members' || currentPath.startsWith('/members/')) return <ClubMembers />;
     return <HomePage />;
   };
 

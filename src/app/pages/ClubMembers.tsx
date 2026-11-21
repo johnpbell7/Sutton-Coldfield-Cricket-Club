@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight, BookOpen, Camera, ChevronDown, ChevronLeft, Chev
 import { teamPhotos, type TeamPhoto } from "@/app/data/teamPhotos";
 import { appPath, href } from "@/app/routing";
 import heroImage from "@/assets/decades/1920s/1921_part1_image47.jpg";
+import { roll as fcRoll, profiles as fcProfiles } from "@/app/data/firstClassCricketers";
 
 /**
  * Club Members: everyone in Peter Bell's history of the club, 1837-2015.
@@ -20,6 +21,8 @@ type RawPerson = { id: string; name: string; aka: string[]; roles: string[]; abo
 type Person = RawPerson & {
   sur: string; letter: string; first: number | null; last: number | null;
   stories: Entry[]; profile: Entry[]; photos: TeamPhoto[]; portrait?: string; searchName: string; tok: string[];
+  fc?: { teams: string; years: string; order: number };
+  fcStory?: { paragraphs: string[]; image?: string; imageCaption?: string };
 };
 type Data = { people: Person[]; byId: Map<string, Person>; entries: Entry[]; peopleOf: Map<number, string[]> };
 
@@ -81,6 +84,39 @@ function loadData(): Promise<Data> {
       }));
       const peopleOf = new Map<number, string[]>();
       people.forEach((p) => [...p.about, ...p.mentions].forEach((i) => peopleOf.set(i, [...(peopleOf.get(i) || []), p.id])));
+      // The First-Class Cricketers list (the club's records, not Peter's): each player joined to their member, or added.
+      const pick = (name: string) => {
+        const clean = name.replace(/[“”"][^“”"]*[“”"]\s*/g, "").replace(/\s+/g, " ").trim();
+        const unique = (k: string) => {
+          const ids = [...new Set(keyIndex.get(k) || [])].filter((id) => !byId.get(id)!.name.startsWith("Mrs"));
+          return ids.length === 1 ? byId.get(ids[0])! : null;
+        };
+        for (const k of keysOf(clean)) { const p = unique(k); if (p) return p; }
+        // "A. D. Thomason" and "Aaron Thomason": the first initial and surname, when only one member fits
+        const k = keysOf(clean).find((x) => x.startsWith("i:"));
+        if (k) { const [ini, sur] = k.slice(2).split("|"); return unique(`i:${ini[0]}|${sur}`); }
+        return null;
+      };
+      fcRoll.forEach((r, order) => {
+        let p = pick(r.name);
+        if (!p) {
+          const [a, b] = r.years.split("-");
+          const first = parseInt(a, 10);
+          const last = !b ? first : b.length === 2 ? parseInt(a.slice(0, 2) + b, 10) : parseInt(b, 10);
+          const sur = r.name.replace(/^(Rev\.|Sir)\s+/, "").split(/\s+/).pop()!;
+          p = {
+            id: "fc-" + r.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""), name: r.name, aka: [], roles: [], about: [], mentions: [],
+            stories: [], profile: [], photos: [], first, last, sur: sur.toLowerCase(), letter: sur[0].toUpperCase(),
+            searchName: r.name.toLowerCase(), tok: tokens(r.name),
+          } as Person;
+          people.push(p); byId.set(p.id, p);
+        }
+        p.fc = { teams: r.teams, years: r.years, order };
+      });
+      fcProfiles.forEach((pr) => {
+        const p = pick(pr.name);
+        if (p) p.fcStory = { paragraphs: pr.paragraphs, image: pr.image, imageCaption: pr.imageCaption };
+      });
       people.sort((a, b) => a.sur.localeCompare(b.sur) || a.name.localeCompare(b.name));
       return { people, byId, entries, peopleOf };
     });
@@ -218,17 +254,18 @@ function initials(p: Person) {
   return (first + sur.slice(0, 1)).toUpperCase() || "?";
 }
 
-function MemberRow({ p, words }: { p: Person; words: string[] }) {
-  const line = useMemo(() => excerpt(p), [p]);
+function MemberRow({ p, words, fc = false }: { p: Person; words: string[]; fc?: boolean }) {
+  const line = useMemo(() => (fc && p.fcStory ? p.fcStory.paragraphs[0].split(/(?<=[.!?])\s+/)[0] : excerpt(p)), [p, fc]);
   const n = p.stories.length;
   return (
     <li>
       <MemberLink p={p} className="group h-full flex flex-col p-5 rounded-md bg-[#f8f6f3] border border-transparent hover:bg-white hover:border-[#e7e0d6] hover:shadow-[0_14px_30px_-18px_rgba(60,20,30,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538]/30 transition">
-        <span className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a] tabular-nums`}>{yearsOf(p)}</span>
+        <span className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a] tabular-nums`}>{fc && p.fc ? p.fc.years : yearsOf(p)}</span>
         <span className={`${display} text-xl leading-snug mt-1 ${p.unsure ? "text-[#6b6264]" : "text-[#8B1538]"}`}><Rich text={p.name} words={words} /></span>
+        {fc && p.fc && <span className={`${ui} text-sm font-semibold text-[#1a472a] mt-1`}>{p.fc.teams}</span>}
         {line && <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2 line-clamp-3`}>{line}</span>}
         <span className={`${ui} mt-auto pt-4 text-sm font-semibold text-[#8B1538] flex flex-wrap items-center gap-x-3 gap-y-1`}>
-          <span className="inline-flex items-center gap-1">{n} {n === 1 ? "story" : "stories"}<ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" /></span>
+          <span className="inline-flex items-center gap-1">{n ? `${n} ${n === 1 ? "story" : "stories"}` : "Read more"}<ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" /></span>
           {p.profile.length > 0 && <span className="inline-flex items-center gap-1 text-[#1a472a]"><BookOpen className="w-3.5 h-3.5" aria-hidden="true" />Profile</span>}
           {p.photos.length > 0 && <span className="inline-flex items-center gap-1 text-[#1a472a]"><Camera className="w-3.5 h-3.5" aria-hidden="true" />Team photo</span>}
         </span>
@@ -344,11 +381,31 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
                   <div className="min-w-0">
                     <h2 className={`${display} text-4xl md:text-6xl leading-tight text-[#8B1538] mb-3 break-words`}>{p.name}</h2>
                     <p className={`${serif} text-base md:text-lg text-[#222]/65`}>
-                      {p.first !== null ? `At the club ${yearsOf(p)}` : "Year not given"}{p.roles.length > 0 && <> · {p.roles.join(" · ")}</>}
+                      {p.stories.length ? (p.first !== null ? `At the club ${yearsOf(p)}` : "Year not given") : "Not yet in Peter’s history"}{p.roles.length > 0 && <> · {p.roles.join(" · ")}</>}
                     </p>
                     {p.aka.length > 0 && <p className={`${ui} text-sm text-[#5d5658] mt-1`}>Also written as {p.aka.join(" · ")}</p>}
+                    {p.fc && (
+                      <p className={`${ui} mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm`}>
+                        <span className="text-xs font-bold uppercase tracking-[0.12em] text-white bg-[#1a472a] rounded px-2 py-1">First-class cricket</span>
+                        <span className="font-semibold text-[#1d1a1b]">{p.fc.teams}</span>
+                        <span className="text-[#5d5658] tabular-nums">{p.fc.years}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
+
+                {p.fcStory && (
+                  <section className="mt-8 bg-[#f8f6f3] rounded-md p-5 md:p-7">
+                    <p className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#5d5658] mb-3`}>From the club’s records</p>
+                    {p.fcStory.image && (
+                      <figure className="mb-5">
+                        <img src={p.fcStory.image} alt={p.fcStory.imageCaption || p.name} loading="lazy" className="w-full max-h-[420px] object-contain bg-[#efe9df] rounded-sm" />
+                        {p.fcStory.imageCaption && <figcaption className={`${serif} text-sm text-[#5d5658] mt-2`}>{p.fcStory.imageCaption}</figcaption>}
+                      </figure>
+                    )}
+                    {p.fcStory.paragraphs.map((t, i) => <p key={i} className={`${serif} text-lg leading-relaxed text-[#2a2526] mb-4 last:mb-0`}>{t}</p>)}
+                  </section>
+                )}
 
                 {parts.decades.length >= 3 && (
                   <nav aria-label="Jump to a decade" className={`${ui} flex flex-wrap items-center gap-2 mt-6`}>
@@ -592,11 +649,11 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
         </div>
         <div className="relative w-full flex flex-col justify-end pb-28 md:pb-40 px-6">
           <div className="max-w-6xl mx-auto w-full">
-            <p className={`${serif} text-lg md:text-xl text-white/90 mb-2`}>From Peter Bell’s history of the club, 1837–2015</p>
-            <h1 className={`${display} text-5xl md:text-7xl lg:text-8xl text-white mb-4 leading-none`}>Club Members</h1>
-            <p className={`${serif} text-xl md:text-2xl text-white/95 max-w-3xl mb-8`}>
-              Captains and groundsmen, umpires and tea ladies, county players and Test cricketers: {data.people.length} people from the club’s story, and what Peter wrote about each of them.
-            </p>
+              <p className={`${serif} text-lg md:text-xl text-white/90 mb-2`}>From Peter Bell’s history of the club, 1837–2015</p>
+              <h1 className={`${display} text-5xl md:text-7xl lg:text-8xl text-white mb-4 leading-none`}>Club Members</h1>
+              <p className={`${serif} text-xl md:text-2xl text-white/95 max-w-3xl mb-8`}>
+                Captains and groundsmen, umpires and tea ladies, county players and Test cricketers: {data.people.length} people from the club’s story, and what Peter wrote about each of them.
+              </p>
             <label htmlFor="member-search" className="sr-only">Find a member, or any word in the history</label>
             {controls(false)}
           </div>
@@ -744,7 +801,7 @@ function StyleChoices({ data }: { data: Data }) {
 
 /* ---------- the page ---------- */
 
-export default function ClubMembers() {
+export default function ClubMembers({ view = "all" }: { view?: "all" | "fc" }) {
   const [data, setData] = useState<Data | null>(null);
   const [failed, setFailed] = useState(false);
   const [sheet, setSheet] = useState<{ id: string; base: string } | null>(null);
@@ -754,6 +811,8 @@ export default function ClubMembers() {
   const id = routePath.startsWith("/members/") ? routePath.slice("/members/".length) : null;
 
   useEffect(() => { loadData().then(setData).catch(() => setFailed(true)); }, []);
+  // The old First-Class Cricketers address now opens Club Members, where those players are listed with everyone.
+  useEffect(() => { if (view === "fc") try { window.history.replaceState(null, "", href("/members")); } catch { /* address bar only */ } }, [view]);
   // A short member's own address opens the list with their pop-up showing.
   useEffect(() => {
     const p = data && id ? data.byId.get(id) : null;

@@ -13,7 +13,6 @@ const SITE_LINKS: [string, string][] = [
   ['/decades', 'Through the Decades'],
   ['/teams', 'Meet the Teams'],
   ['/members', 'Club Members'],
-  ['/first-class-cricketers', 'First-Class Cricketers'],
   ['/rectory-park', 'Rectory Park'],
   ['/riland-bedford', 'The Riland & Bedford Family'],
   ['/obituaries', 'In Memoriam, 1914-1918'],

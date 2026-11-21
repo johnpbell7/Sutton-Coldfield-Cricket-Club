@@ -254,6 +254,20 @@ function initials(p: Person) {
   return (first + sur.slice(0, 1)).toUpperCase() || "?";
 }
 
+/** The opening line for a member's card: Peter's profile first, then a story headed with them, then any story naming them. */
+function excerpt(p: Person): string {
+  const about = p.stories.filter((e) => e.kind !== "profile" && p.about.includes(e.id));
+  const e = p.profile[0] || about[0] || p.stories[0];
+  if (!e) return "";
+  const re = selfPattern(p);
+  const sentences = e.paras.join(" ").split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter(Boolean);
+  const listy = (x: string) => (x.match(/;/g) || []).length >= 2 || x.length < 30;
+  const named = sentences.filter((x) => { re.lastIndex = 0; return re.test(x) && !listy(x); });
+  const hit = (e === p.profile[0] ? sentences.find((x) => !listy(x)) : named[0]) || named[0] || sentences.find((x) => !listy(x)) || "";
+  if (!hit) return "";
+  return hit.length > 160 ? hit.slice(0, hit.lastIndexOf(" ", 155)) + "…" : hit;
+}
+
 function MemberRow({ p, words, fc = false }: { p: Person; words: string[]; fc?: boolean }) {
   const line = useMemo(() => (fc && p.fcStory ? p.fcStory.paragraphs[0].split(/(?<=[.!?])\s+/)[0] : excerpt(p)), [p, fc]);
   const n = p.stories.length;
@@ -733,72 +747,6 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
   );
 }
 
-/* ---------- style choices for John (sandbox only) ---------- */
-
-function excerpt(p: Person): string {
-  // Peter's own profile first, then a story headed with this member, then any story naming them.
-  const about = p.stories.filter((e) => e.kind !== "profile" && p.about.includes(e.id));
-  const e = p.profile[0] || about[0] || p.stories[0];
-  if (!e) return "";
-  const re = selfPattern(p);
-  const sentences = e.paras.join(" ").split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter(Boolean);
-  const listy = (x: string) => (x.match(/;/g) || []).length >= 2 || x.length < 30;
-  const named = sentences.filter((x) => { re.lastIndex = 0; return re.test(x) && !listy(x); });
-  const hit = (e === p.profile[0] ? sentences.find((x) => !listy(x)) : named[0]) || named[0] || sentences.find((x) => !listy(x)) || "";
-  if (!hit) return "";
-  return hit.length > 160 ? hit.slice(0, hit.lastIndexOf(" ", 155)) + "…" : hit;
-}
-
-function StyleChoices({ data }: { data: Data }) {
-  const ids = ["pat-bowerbank", "norman-sharp", "j-addis", "naeem-arif", "henry-addenbroke", "peter-bell", "e-f-twiss", "geoff-pritchett", "c-james"];
-  const ps = ids.map((id) => data.byId.get(id)).filter(Boolean) as Person[];
-  const label = (k: string, t: string, d: string) => (
-    <div className="mb-6 mt-16 first:mt-0">
-      <h2 className={`${display} text-3xl md:text-4xl text-[#1d1a1b]`}><span className="text-[#8B1538]">{k}.</span> {t}</h2>
-      <p className={`${serif} text-lg text-[#5d5658] mt-1`}>{d}</p>
-    </div>
-  );
-  return (
-    <section className="mt-[73px] bg-white py-14">
-      <div className="max-w-6xl mx-auto px-6">
-        {label("A", "Story cards", "Each name with the opening line of what Peter wrote about them.")}
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {ps.map((p) => (
-            <li key={p.id}><MemberLink p={p} className="group h-full flex flex-col p-5 rounded-md bg-[#f8f6f3] hover:bg-white hover:shadow-[0_14px_30px_-18px_rgba(60,20,30,0.45)] border border-transparent hover:border-[#e7e0d6] transition">
-              <span className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a]`}>{yearsOf(p)}</span>
-              <span className={`${display} text-xl text-[#8B1538] mt-1 leading-snug`}>{p.name}</span>
-              <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2 line-clamp-3`}>{excerpt(p)}</span>
-              <span className={`${ui} mt-auto pt-4 text-sm font-semibold text-[#8B1538] inline-flex items-center gap-1`}>{p.stories.length} {p.stories.length === 1 ? "story" : "stories"}<ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" /></span>
-            </MemberLink></li>
-          ))}
-        </ul>
-
-        {label("B", "Membership cards", "A card for each member: name in the club’s lettering, years in green.")}
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {ps.map((p) => (
-            <li key={p.id}><MemberLink p={p} className="group h-full block rounded-sm bg-[#f8f6f3] border-t-4 border-[#8B1538] px-4 pt-4 pb-5 hover:bg-[#f6e9ed] transition-colors">
-              <span className={`${display} block text-lg leading-snug text-[#1d1a1b] group-hover:text-[#8B1538]`}>{p.name}</span>
-              <span className={`${display} block text-[#1a472a] mt-2 tabular-nums`}>{yearsOf(p)}</span>
-              <span className={`${ui} block text-sm text-[#5d5658] mt-1`}>{p.stories.length} {p.stories.length === 1 ? "story" : "stories"}{p.profile.length ? " · profile" : ""}{p.photos.length ? " · team photo" : ""}</span>
-            </MemberLink></li>
-          ))}
-        </ul>
-
-        {label("C", "Scorebook rows", "Striped rows like a score book, years in a green tag.")}
-        <ul className="border-t-2 border-[#1d1a1b]">
-          {ps.map((p, i) => (
-            <li key={p.id}><MemberLink p={p} className={`group flex items-center gap-4 px-4 py-3.5 ${i % 2 ? "bg-white" : "bg-[#f8f6f3]"} hover:bg-[#f6e9ed] transition-colors`}>
-              <span className={`${display} flex-1 min-w-0 text-lg text-[#1d1a1b] group-hover:text-[#8B1538] truncate`}>{p.name}</span>
-              <span className={`${ui} hidden sm:inline text-sm text-[#5d5658]`}>{p.stories.length} {p.stories.length === 1 ? "story" : "stories"}</span>
-              <span className={`${ui} text-sm font-bold tabular-nums bg-[#1a472a] text-white rounded-full px-3 py-1 shrink-0`}>{yearsOf(p)}</span>
-            </MemberLink></li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- the page ---------- */
 
 export default function ClubMembers({ view = "all" }: { view?: "all" | "fc" }) {
@@ -850,13 +798,12 @@ export default function ClubMembers({ view = "all" }: { view?: "all" | "fc" }) {
           </p>
         </div>
       )}
-      {data && id && id !== "styles" && !person && (
+      {data && id && !person && (
         <div className="mt-[73px] min-h-[60vh] flex flex-col items-center justify-center gap-4 px-6 text-center">
           <p className={`${serif} text-2xl`}>We couldn’t find that member.</p>
           <Link to="/members" className={`${ui} font-semibold text-[#8B1538]`}>See all club members</Link>
         </div>
       )}
-      {data && id === "styles" && <StyleChoices data={data} />}
       {data && (!id || person) && <MembersIndex data={data} sheetOpen={!!sheetPerson} />}
       {data && <MemberSheet p={sheetPerson} data={data} onClose={close} onStep={step} />}
       <Footer />

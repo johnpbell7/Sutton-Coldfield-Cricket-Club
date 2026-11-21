@@ -64,7 +64,7 @@ function loadData(): Promise<Data> {
         const clean = p.name.replace(/^Mrs?\s+/, "");
         const sur = clean.split(/\s+/).pop()!.replace(/[^A-Za-z’'-]/g, "");
         const person: Person = {
-          ...p, stories, profile: stories.filter((e) => e.kind === "profile"),
+          ...p, stories, profile: stories.filter((e) => e.kind === "profile" && p.about.includes(e.id)),
           first: ys.length ? Math.min(...ys) : null, last: ys.length ? Math.max(...ys) : null,
           sur: sur.toLowerCase(), letter: (sur[0] || "#").toUpperCase(), photos: [],
           portrait: PORTRAITS[p.id], searchName: [p.name, ...p.aka].join(" ").toLowerCase(), tok: tokens([p.name, ...p.aka].join(" ")),
@@ -557,7 +557,10 @@ function MembersIndex({ data }: { data: Data }) {
 function MemberPage({ p, data }: { p: Person; data: Data }) {
   const [viewing, setViewing] = useState<TeamPhoto | null>(null);
   const dated = p.stories.filter((e) => e.year && e.kind !== "profile");
+  // Other members' profiles that mention this one, and anything else without a year.
+  const inOthers = p.stories.filter((e) => e.kind === "profile" && !p.profile.includes(e));
   const undated = p.stories.filter((e) => !e.year && e.kind !== "profile");
+  const subjectOf = (e: Entry) => data.people.find((x) => x.id !== p.id && x.profile.includes(e));
   const decades = useMemo(() => {
     const m = new Map<number, Map<number, Entry[]>>();
     dated.forEach((e) => {
@@ -582,7 +585,9 @@ function MemberPage({ p, data }: { p: Person; data: Data }) {
   const firstFrom = WHITE;
   const bandColour = (i: number) => ((p.profile.length ? i % 2 === 0 : i % 2 === 1) ? CREAM : WHITE);
   const afterDecades = decades.length ? bandColour(decades.length - 1) : WHITE;
-  const beforePhotos = undated.length ? WHITE : afterDecades;
+  const othersBg = afterDecades === WHITE ? CREAM : WHITE;
+  const afterOthers = inOthers.length ? othersBg : afterDecades;
+  const beforePhotos = undated.length ? WHITE : afterOthers;
 
   return (
     <>
@@ -664,9 +669,33 @@ function MemberPage({ p, data }: { p: Person; data: Data }) {
         );
       })}
 
+      {inOthers.length > 0 && (
+        <>
+          <Slope from={afterDecades} to={othersBg} flip={decades.length % 2 === 1} />
+          <section style={{ background: othersBg }} className="py-12">
+            <div className="max-w-6xl mx-auto px-6">
+              <h2 className={`${display} text-3xl md:text-4xl text-[#1a472a] mb-6`}>In other members’ profiles</h2>
+              <div className="space-y-10">
+                {inOthers.map((e) => {
+                  const who = subjectOf(e);
+                  return (
+                    <article key={e.id} className="border-t border-[#d9cfc2] pt-6">
+                      <h3 className={`${ui} font-bold text-lg mb-3`}>
+                        {who ? <>From <MemberLink p={who} className="inline text-[#8B1538] hover:underline !w-auto">{who.name}</MemberLink>’s profile</> : e.heading}
+                      </h3>
+                      <StoryBody e={e} data={data} words={[]} self={p} />
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
       {undated.length > 0 && (
         <>
-          <Slope from={afterDecades} to={WHITE} flip={decades.length % 2 === 1} />
+          <Slope from={afterOthers} to={WHITE} flip={decades.length % 2 === 0} />
           <section className="bg-white py-12">
             <div className="max-w-6xl mx-auto px-6">
               <h2 className={`${display} text-3xl md:text-4xl text-[#1a472a] mb-6`}>No year given</h2>

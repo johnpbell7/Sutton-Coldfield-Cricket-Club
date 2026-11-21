@@ -210,25 +210,36 @@ function MemberLink({ p, className, children }: { p: Person; className: string; 
   return <Link to={`/members/${p.id}`} className={className}>{children}</Link>;
 }
 
+function initials(p: Person) {
+  const n = p.name.replace(/^(Mrs?|Miss|Rev|Dr|Sir)\.?\s+/, "").replace(/\(.*?\)/g, "").trim();
+  const parts = n.split(/\s+/);
+  const sur = parts.pop() || "";
+  const first = parts.join("").replace(/[^A-Z]/g, "").slice(0, 1);
+  return (first + sur.slice(0, 1)).toUpperCase() || "?";
+}
+
 function MemberRow({ p, words }: { p: Person; words: string[] }) {
   const n = p.stories.length;
   return (
     <li>
       <MemberLink p={p}
-        className="group grid grid-cols-[minmax(0,1fr)_auto] gap-x-4 gap-y-2 py-4 px-3 -mx-3 rounded-md border-b border-[#e7e0d6] hover:bg-[#f8f6f3] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538]/40 transition-colors">
-        <span className="min-w-0">
-          <span className={`${display} text-lg md:text-xl leading-tight ${p.unsure ? "text-[#6b6264]" : "text-[#8B1538]"} group-hover:text-[#6B0F2A]`}>
+        className="group h-full flex items-center gap-4 p-3 pr-4 rounded-lg bg-white border border-[#ece5da] hover:border-[#8B1538]/45 hover:shadow-[0_12px_26px_-16px_rgba(107,15,42,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538]/30 transition">
+        {p.portrait
+          ? <img src={href("/" + p.portrait)} alt="" className="w-14 h-14 rounded-full object-cover object-top shrink-0 ring-2 ring-[#f3dd8c]" />
+          : <span aria-hidden="true" className={`${display} w-14 h-14 rounded-full shrink-0 grid place-items-center text-lg tracking-wide ${p.unsure ? "bg-[#ece5da] text-[#6b6264]" : "bg-[#1a472a] text-[#f4efe6]"} group-hover:bg-[#8B1538] group-hover:text-white transition-colors`}>{initials(p)}</span>}
+        <span className="min-w-0 flex-1">
+          <span className={`${display} block text-[17px] md:text-lg leading-snug ${p.unsure ? "text-[#6b6264]" : "text-[#1d1a1b]"} group-hover:text-[#8B1538] transition-colors`}>
             <Rich text={p.name} words={words} />
           </span>
-          <span className={`${ui} flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-[#5d5658]`}>
+          <span className={`${ui} flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5 text-sm text-[#5d5658]`}>
+            <span className="font-bold text-[#1d1a1b] tabular-nums">{yearsOf(p)}</span>
+            <span aria-hidden="true">·</span>
             <span>{n} {n === 1 ? "story" : "stories"}</span>
-            {p.roles.length > 0 && <span>{p.roles.join(", ")}</span>}
+            {p.photos.length > 0 && <span className="inline-flex items-center gap-1 text-[#1a472a]" title={`In ${p.photos.length} team ${p.photos.length === 1 ? "photo" : "photos"}`}><Camera className="w-3.5 h-3.5" aria-hidden="true" /><span className="sr-only">In team photos</span>{p.photos.length}</span>}
             {p.profile.length > 0 && <span className="inline-flex items-center gap-1 text-[#1a472a] font-semibold"><BookOpen className="w-3.5 h-3.5" aria-hidden="true" />Profile</span>}
-            {p.photos.length > 0 && <span className="inline-flex items-center gap-1 text-[#1a472a] font-semibold"><Camera className="w-3.5 h-3.5" aria-hidden="true" />In {p.photos.length} team {p.photos.length === 1 ? "photo" : "photos"}</span>}
           </span>
         </span>
-        <span className={`${ui} font-bold tabular-nums text-[#1d1a1b] self-start pt-1 text-right`}>{yearsOf(p)}</span>
-        <span className="col-span-2"><Span p={p} /></span>
+        <ChevronRight className="w-5 h-5 text-[#d9cfc2] group-hover:text-[#8B1538] shrink-0 transition-colors" aria-hidden="true" />
       </MemberLink>
     </li>
   );
@@ -582,7 +593,7 @@ function MembersIndex({ data }: { data: Data }) {
               {groups.map(([letter, ps]) => (
                 <section key={letter} id={`letter-${letter}`} className="scroll-mt-[130px] pt-8">
                   <h3 className={`${display} text-5xl md:text-6xl text-[#1a472a] leading-none mb-2`}>{letter}</h3>
-                  <ul className="grid md:grid-cols-2 gap-x-12">{ps.map((p) => <MemberRow key={p.id} p={p} words={[]} />)}</ul>
+                  <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3">{ps.map((p) => <MemberRow key={p.id} p={p} words={[]} />)}</ul>
                 </section>
               ))}
             </>
@@ -592,11 +603,11 @@ function MembersIndex({ data }: { data: Data }) {
             <div className="pt-6">
               {res.here.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-4`}>{dec === null ? "Members" : `Members${decLabel}`}</h3>
-                <ul className="grid md:grid-cols-2 gap-x-12">{res.here.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3">{res.here.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
               </>}
               {res.elsewhere.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-8`}>{res.here.length ? "In other years" : `Not in the ${dec}s. In other years:`}</h3>
-                <ul className="grid md:grid-cols-2 gap-x-12">{res.elsewhere.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-3">{res.elsewhere.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
               </>}
               {res.stories.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-10`}>{res.stories.length} {res.stories.length === 1 ? "story mentions" : "stories mention"} “{applied.trim()}”{decLabel}</h3>

@@ -199,7 +199,7 @@ function Slope({ from, to, flip = false }: { from: string; to: string; flip?: bo
 /* ---------- index ---------- */
 
 /** A member with one or two stories and no profile opens in a pop-up, like the timeline; anyone else has a page. */
-const isSmall = (p: Person) => p.stories.length <= 2 && p.profile.length === 0;
+const isSmall = (_p: Person) => true; // every member opens in the pop-up (John, 21 Nov)
 type Opener = { open: (p: Person) => void; go: (p: Person) => void };
 const OpenCtx = createContext<Opener | null>(null);
 
@@ -274,15 +274,39 @@ function StoryBody({ e, data, words, self, hideHeading = true }: { e: Entry; dat
   );
 }
 
+const NAMEISH = /^(?:(?:Mr|Mrs|Miss|Dr|Rev|The Rev|Ald|Sir)\.?\s+)?(?:[A-Z]\.\s?)*(?:[A-Z][a-z’'\-]+\.?\s?)*[A-Z][A-Za-z’'\-]+\.?$/;
+/** Peter's heading, unless it is only names (those are shown as links under the story instead). */
+function topicOf(h: string) {
+  const t = h.replace(/\(.*?\)|“.*?”|".*?"/g, "").replace(/\s*[-–]\s*(Life Member|The Administrator).*$/i, "").replace(/^(Obituary( to)?|Tribute to)\s+/i, "").trim();
+  const bits = t.split(/\s*(?:,|;|&|\band\b)\s*/).map((b) => b.trim()).filter(Boolean);
+  return bits.length && bits.every((b) => b.split(/\s+/).length <= 4 && NAMEISH.test(b)) ? "" : h;
+}
+
 function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Data; onClose: () => void; onStep: (dir: -1 | 1) => void }) {
   const [viewing, setViewing] = useState<TeamPhoto | null>(null);
-  const NAMEISH = /^(?:(?:Mr|Mrs|Miss|Dr|Rev|The Rev|Ald|Sir)\.?\s+)?(?:[A-Z]\.\s?)*(?:[A-Z][a-z’'\-]+\.?\s?)*[A-Z][A-Za-z’'\-]+\.?$/;
-  const topic = (h: string) => !!h && !h.split(/\s*(?:,|;|&|\band\b)\s*/).filter(Boolean).every((b) => b.split(/\s+/).length <= 4 && NAMEISH.test(b.trim()));
+  const scroller = useRef<HTMLDivElement>(null);
+  useEffect(() => { scroller.current?.closest('[role="dialog"]')?.scrollTo({ top: 0 }); }, [p?.id]);
+  const parts = useMemo(() => {
+    if (!p) return null;
+    const own = p.profile;
+    const inOthers = p.stories.filter((e) => e.kind === "profile" && !own.includes(e));
+    const undated = p.stories.filter((e) => !e.year && e.kind !== "profile");
+    const decades = new Map<number, Map<number, Entry[]>>();
+    p.stories.filter((e) => e.year && e.kind !== "profile").forEach((e) => {
+      const d = Math.floor(e.year! / 10) * 10;
+      if (!decades.has(d)) decades.set(d, new Map());
+      const y = decades.get(d)!; y.set(e.year!, [...(y.get(e.year!) || []), e]);
+    });
+    return { own, inOthers, undated, decades: [...decades] };
+  }, [p]);
+  const subjectOf = (e: Entry) => data.people.find((x) => x.id !== p?.id && x.profile.includes(e));
+  const jump = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+
   return (
     <Sheet open={!!p} onOpenChange={(o) => !o && onClose()}>
       <SheetContent side="bottom" onEscapeKeyDown={(e) => { if (viewing) e.preventDefault(); }}
         className="h-screen w-screen max-w-none p-0 border-none bg-gradient-to-b from-[rgba(255,255,255,0)] via-white to-white overflow-y-auto">
-        {p && (
+        {p && parts && (
           <>
             {viewing && <PhotoViewer src={viewing.image} alt={viewing.title} caption={`${viewing.title}. ${viewing.players.map((x) => x.name).join(", ")}`} onClose={() => setViewing(null)} />}
             <SheetTitle className="sr-only">{p.name}</SheetTitle>
@@ -295,7 +319,7 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
             <div className="absolute top-0 left-0 right-0 h-[140px] md:h-[240px] pointer-events-none">
               <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 336"><path d="M0 336H1920V0L0 336Z" fill="white" /></svg>
             </div>
-            <div className="absolute bg-white left-0 right-0 top-[140px] md:top-[240px] min-h-[calc(100vh-140px)] md:min-h-[calc(100vh-240px)] pb-20">
+            <div ref={scroller} className="absolute bg-white left-0 right-0 top-[140px] md:top-[240px] min-h-[calc(100vh-140px)] md:min-h-[calc(100vh-240px)] pb-24">
               <div className="flex absolute right-4 top-[-20px] items-start justify-between w-[180px] border-b border-[rgba(34,34,34,0.3)] pb-px md:right-[60px] md:top-[-25px] md:w-[240px]">
                 <button onClick={() => onStep(-1)} className="flex items-center opacity-50 hover:opacity-100 transition-opacity">
                   <ChevronLeft className="w-4 h-4 md:w-5 md:h-5" /><span className={`${serif} px-1 text-sm md:text-base text-[#222]`}>previous</span>
@@ -304,58 +328,106 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
                   <span className={`${serif} px-1 text-sm md:text-base text-[#222]`}>next</span><ChevronRight className="w-4 h-4 md:w-5 md:h-5" />
                 </button>
               </div>
+
               <div className="max-w-[900px] mx-auto px-6 pt-[30px] md:pt-[50px]">
-                <h2 className={`${display} text-4xl md:text-6xl leading-tight text-[#8B1538] mb-3`}>{p.name}</h2>
-                <p className={`${serif} text-base md:text-lg text-[#222]/60`}>
-                  {p.first !== null ? `At the club ${yearsOf(p)}` : "Year not given"}{p.aka.length > 0 && <> · also written as {p.aka.join(", ")}</>}
-                </p>
-                <div className="mt-8 space-y-10">
-                  {p.stories.map((e) => (
-                    <article key={e.id} className="border-t border-[#e7e0d6] pt-6">
-                      <p className={`${display} text-2xl text-[#1a472a] tabular-nums mb-2`}>{e.year ?? "Year not given"}</p>
-                      {topic(e.heading) && <h3 className={`${ui} font-bold text-lg text-[#1d1a1b] mb-2`}>{e.heading}</h3>}
-                      <StoryBody e={e} data={data} words={[]} self={p} />
-                      {e.year && e.year >= 1840 && <Link to={`/decades/${Math.floor(e.year / 10) * 10}`} className={`${ui} inline-flex items-center gap-2 mt-4 text-sm font-semibold text-[#8B1538] hover:text-[#6B0F2A]`}>The club in the {Math.floor(e.year / 10) * 10}s<ArrowRight className="w-4 h-4" /></Link>}
-                    </article>
-                  ))}
+                <div className="flex items-start gap-6">
+                  {p.portrait && <img src={href("/" + p.portrait)} alt={`${p.name}, from Peter Bell’s history`} className="w-24 md:w-32 rounded-sm shadow-[0_12px_28px_-12px_rgba(0,0,0,0.5)] shrink-0" />}
+                  <div className="min-w-0">
+                    <h2 className={`${display} text-4xl md:text-6xl leading-tight text-[#8B1538] mb-3 break-words`}>{p.name}</h2>
+                    <p className={`${serif} text-base md:text-lg text-[#222]/65`}>
+                      {p.first !== null ? `At the club ${yearsOf(p)}` : "Year not given"}{p.roles.length > 0 && <> · {p.roles.join(" · ")}</>}
+                    </p>
+                    {p.aka.length > 0 && <p className={`${ui} text-sm text-[#5d5658] mt-1`}>Also written as {p.aka.join(" · ")}</p>}
+                  </div>
                 </div>
+
+                {parts.decades.length >= 3 && (
+                  <nav aria-label="Jump to a decade" className={`${ui} flex flex-wrap items-center gap-2 mt-6`}>
+                    <span className="text-sm text-[#5d5658] mr-1">Jump to</span>
+                    {parts.decades.map(([d]) => (
+                      <button key={d} onClick={() => jump(`sheet-${d}`)} className="px-3 py-1 rounded-full border border-[#d9cfc2] text-sm font-semibold hover:border-[#8B1538] hover:text-[#8B1538] transition-colors">{d}s</button>
+                    ))}
+                  </nav>
+                )}
+
+                {parts.own.length > 0 && (
+                  <div className="mt-8 space-y-6 [&_p]:text-xl [&_p]:leading-relaxed [&_p]:text-[#2a2526]">
+                    {parts.own.map((e) => <StoryBody key={e.id} e={e} data={data} words={[]} self={p} />)}
+                  </div>
+                )}
+
+                {parts.decades.map(([d, ys]) => (
+                  <section key={d} id={`sheet-${d}`} className="mt-12 scroll-mt-6">
+                    <div className="flex flex-wrap items-baseline justify-between gap-3 border-b-2 border-[#1a472a] pb-2 mb-2">
+                      <h3 className={`${display} text-3xl md:text-4xl text-[#1a472a]`}>The {d}s</h3>
+                      {d >= 1840 && <Link to={`/decades/${d}`} className={`${ui} inline-flex items-center gap-2 text-sm font-semibold text-[#8B1538] hover:text-[#6B0F2A]`}>The club in the {d}s<ArrowRight className="w-4 h-4" /></Link>}
+                    </div>
+                    {[...ys].map(([y, es]) => (
+                      <div key={y} className="grid md:grid-cols-[90px_minmax(0,1fr)] gap-1 md:gap-6 py-6 border-b border-[#e7e0d6] last:border-b-0">
+                        <p className={`${display} text-2xl text-[#8B1538] tabular-nums`}>{y}</p>
+                        <div className="space-y-8 min-w-0">
+                          {es.map((e) => (
+                            <article key={e.id}>
+                              {topicOf(e.heading) && <h4 className={`${ui} font-bold text-lg text-[#1d1a1b] mb-2`}>{e.heading}</h4>}
+                              <StoryBody e={e} data={data} words={[]} self={p} />
+                            </article>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </section>
+                ))}
+
+                {parts.inOthers.length > 0 && (
+                  <section className="mt-12">
+                    <h3 className={`${display} text-2xl md:text-3xl text-[#1a472a] border-b-2 border-[#1a472a] pb-2 mb-4`}>In other members’ profiles</h3>
+                    <div className="space-y-8">
+                      {parts.inOthers.map((e) => {
+                        const who = subjectOf(e);
+                        return (
+                          <article key={e.id}>
+                            <h4 className={`${ui} font-bold text-lg mb-2`}>
+                              {who ? <>From <MemberLink p={who} className="inline text-[#8B1538] hover:underline !w-auto">{who.name}</MemberLink>’s profile</> : e.heading}
+                            </h4>
+                            <StoryBody e={e} data={data} words={[]} self={p} />
+                          </article>
+                        );
+                      })}
+                    </div>
+                  </section>
+                )}
+
+                {parts.undated.length > 0 && (
+                  <section className="mt-12">
+                    <h3 className={`${display} text-2xl md:text-3xl text-[#1a472a] border-b-2 border-[#1a472a] pb-2 mb-4`}>No year given</h3>
+                    <div className="space-y-8">
+                      {parts.undated.map((e) => <article key={e.id}>{topicOf(e.heading) && <h4 className={`${ui} font-bold text-lg mb-2`}>{e.heading}</h4>}<StoryBody e={e} data={data} words={[]} self={p} /></article>)}
+                    </div>
+                  </section>
+                )}
+
                 {p.photos.length > 0 && (
-                  <div className="mt-12">
-                    <h3 className={`${display} text-2xl text-[#1a472a] mb-4`}>In the team photographs</h3>
+                  <section className="mt-12">
+                    <h3 className={`${display} text-2xl md:text-3xl text-[#1a472a] border-b-2 border-[#1a472a] pb-2 mb-5`}>In the team photographs</h3>
                     <div className="grid sm:grid-cols-2 gap-6">
                       {p.photos.map((ph) => (
                         <button key={ph.title + ph.year} onClick={() => setViewing(ph)} className="text-left group">
                           <img src={ph.image} alt={ph.title} loading="lazy" className="w-full aspect-[4/3] object-cover rounded-sm group-hover:opacity-90 transition" />
                           <span className={`${ui} block font-bold mt-2`}>{ph.title}</span>
+                          <span className={`${ui} block text-sm text-[#5d5658]`}>Click to enlarge</span>
                         </button>
                       ))}
                     </div>
-                  </div>
+                  </section>
                 )}
+
+                <p className={`${ui} text-sm text-[#5d5658] mt-14`}>Every word is Peter Bell’s, from his history of the club.</p>
               </div>
             </div>
           </>
         )}
       </SheetContent>
     </Sheet>
-  );
-}
-
-function DecadeRow({ data, dec, setDec }: { data: Data; dec: number | null; setDec: (d: number | null) => void }) {
-  const has = (d: number) => data.people.some((p) => p.first !== null && p.first <= d + 9 && p.last! >= d);
-  return (
-    <section className="bg-[#1a472a] -mt-px">
-      <div className="max-w-6xl mx-auto px-6 pt-2 pb-10 md:pb-12">
-        <div role="group" aria-label="Browse by decade" className="flex gap-2 overflow-x-auto pb-2 -mx-6 px-6 md:mx-0 md:px-0 md:flex-wrap">
-          <button onClick={() => setDec(null)} aria-pressed={dec === null}
-            className={`${ui} shrink-0 px-4 py-2 rounded-full font-bold text-sm transition-colors ${dec === null ? "bg-[#f4efe6] text-[#1d1a1b]" : "text-white border border-white/35 hover:bg-white/10"}`}>All years</button>
-          {DECADES.filter(has).map((d) => (
-            <button key={d} onClick={() => setDec(dec === d ? null : d)} aria-pressed={dec === d}
-              className={`${ui} shrink-0 px-4 py-2 rounded-full font-bold text-sm tabular-nums transition-colors ${dec === d ? "bg-[#f4efe6] text-[#1d1a1b]" : "text-white border border-white/35 hover:bg-white/10"}`}>{d}s</button>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -416,7 +488,7 @@ function MembersIndex({ data }: { data: Data }) {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/75" />
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-[90px] md:h-[150px] pointer-events-none -mb-px">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 180"><path d="M0 180H1920V0L0 180Z" fill="#1a472a" /></svg>
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 180"><path d="M0 180H1920V0L0 180Z" fill="white" /></svg>
         </div>
         <div className="relative w-full flex flex-col justify-end pb-28 md:pb-40 px-6">
           <div className="max-w-6xl mx-auto w-full">
@@ -426,7 +498,8 @@ function MembersIndex({ data }: { data: Data }) {
               Captains and groundsmen, umpires and tea ladies, county players and Test cricketers: {data.people.length} people from the club’s story, and what Peter wrote about each of them.
             </p>
             <label htmlFor="member-search" className="sr-only">Find a member, or any word in the history</label>
-            <div ref={boxRef} className="relative max-w-2xl z-30"
+            <div className="max-w-3xl flex flex-col sm:flex-row gap-3 relative z-30">
+            <div ref={boxRef} className="relative flex-1 min-w-0"
               onBlur={(e) => { if (!boxRef.current?.contains(e.relatedTarget as Node)) setOpen(false); }}>
               <Search className="absolute left-5 top-[30px] md:top-[34px] -translate-y-1/2 w-6 h-6 text-[#8B1538]" aria-hidden="true" />
               <input id="member-search" type="search" value={q} autoComplete="off" role="combobox"
@@ -471,16 +544,22 @@ function MembersIndex({ data }: { data: Data }) {
                 </ul>
               )}
             </div>
+            <div className="relative sm:w-[190px] shrink-0">
+              <label htmlFor="member-decade" className="sr-only">Decade</label>
+              <select id="member-decade" value={dec ?? ""} onChange={(e) => setDec(e.target.value ? Number(e.target.value) : null)}
+                className={`${ui} appearance-none w-full h-full text-lg font-semibold pl-5 pr-11 py-4 md:py-5 rounded-md bg-white text-[#1d1a1b] shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)] focus:outline-none focus:ring-4 focus:ring-[#f3dd8c] cursor-pointer`}>
+                <option value="">All years</option>
+                {DECADES.filter((d) => data.people.some((p) => p.first !== null && p.first <= d + 9 && p.last! >= d)).map((d) => <option key={d} value={d}>{d}s</option>)}
+              </select>
+              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B1538] pointer-events-none" aria-hidden="true" />
+            </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <DecadeRow data={data} dec={dec} setDec={setDec} />
 
       {/* Results */}
-      <div className="relative h-[60px] md:h-[100px] -mb-px bg-[#1a472a]">
-        <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 120"><path d="M0 0H1920V120L0 0Z" fill="#1a472a" /><path d="M0 0L1920 120H0Z" fill="white" /></svg>
-      </div>
       <section id="members-results" className="bg-white pb-20 scroll-mt-[73px]">
         <div className="max-w-6xl mx-auto px-6">
           <div className={`${ui} flex flex-wrap items-baseline justify-between gap-3 py-4 border-b-2 border-[#1d1a1b]`}>
@@ -552,192 +631,6 @@ function MembersIndex({ data }: { data: Data }) {
   );
 }
 
-/* ---------- a member's page ---------- */
-
-function MemberPage({ p, data }: { p: Person; data: Data }) {
-  const [viewing, setViewing] = useState<TeamPhoto | null>(null);
-  const dated = p.stories.filter((e) => e.year && e.kind !== "profile");
-  // Other members' profiles that mention this one, and anything else without a year.
-  const inOthers = p.stories.filter((e) => e.kind === "profile" && !p.profile.includes(e));
-  const undated = p.stories.filter((e) => !e.year && e.kind !== "profile");
-  const subjectOf = (e: Entry) => data.people.find((x) => x.id !== p.id && x.profile.includes(e));
-  const decades = useMemo(() => {
-    const m = new Map<number, Map<number, Entry[]>>();
-    dated.forEach((e) => {
-      const d = Math.floor(e.year! / 10) * 10;
-      if (!m.has(d)) m.set(d, new Map());
-      const y = m.get(d)!; y.set(e.year!, [...(y.get(e.year!) || []), e]);
-    });
-    return [...m];
-  }, [p]);
-  const hero = p.photos[0]?.image || heroImage;
-  const NAMEISH = /^(?:(?:Mr|Mrs|Miss|Dr|Rev|The Rev|Ald|Sir)\.?\s+)?(?:[A-Z]\.\s?)*(?:[A-Z][a-z’'\-]+\.?\s?)*[A-Z][A-Za-z’'\-]+\.?$/;
-  const namesOnly = (h: string) => {
-    const t = h.replace(/\(.*?\)|“.*?”|".*?"/g, "").replace(/\s*[-–]\s*(Life Member|The Administrator).*$/i, "").replace(/^(Obituary( to)?|Tribute to)\s+/i, "").trim();
-    const bits = t.split(/\s*(?:,|;|&|\band\b)\s*/).map((b) => b.trim()).filter(Boolean);
-    return bits.length > 0 && bits.every((b) => b.split(/\s+/).length <= 4 && NAMEISH.test(b));
-  };
-  const showHeading = (h: string) => !!h && !namesOnly(h);
-  const isOwn = (h: string) => [p.name, ...p.aka].some((f) => f.replace(/[^a-z]/gi, "").toLowerCase() === h.replace(/^(Obituary( to)?|Tribute to)\s+/i, "").replace(/\s*[-–].*$/, "").replace(/[^a-z]/gi, "").toLowerCase());
-  // A profile headed only with this member's name (M. Hooper, W.N. Houghton - Life Member) needs no heading.
-  const profileIsJustName = (h: string) => { const t = h.replace(/\s*[-–].*$/, "").trim(); return t.length < 40 && !/&|\band\b|,/.test(t) && t.toLowerCase().includes(p.sur); };
-  // After the photo: Peter's profile (white) if there is one, then the decades in alternate bands.
-  const firstFrom = WHITE;
-  const bandColour = (i: number) => ((p.profile.length ? i % 2 === 0 : i % 2 === 1) ? CREAM : WHITE);
-  const afterDecades = decades.length ? bandColour(decades.length - 1) : WHITE;
-  const othersBg = afterDecades === WHITE ? CREAM : WHITE;
-  const afterOthers = inOthers.length ? othersBg : afterDecades;
-  const beforePhotos = undated.length ? WHITE : afterOthers;
-
-  return (
-    <>
-      <section className="relative min-h-[460px] md:min-h-[560px] overflow-hidden mt-[73px] flex">
-        <div className="absolute inset-0 bg-cover bg-no-repeat bg-[#1c1c1c]" style={{ backgroundImage: `url(${hero})`, backgroundPosition: "center 30%" }}>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-[80px] md:h-[130px] pointer-events-none -mb-px">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 180"><path d="M0 180H1920V0L0 180Z" fill="white" /></svg>
-        </div>
-        <div className="relative w-full flex flex-col justify-end pb-24 md:pb-32 px-6">
-          <div className="max-w-6xl mx-auto w-full flex items-end gap-6 md:gap-10">
-            {p.portrait && <img src={href("/" + p.portrait)} alt={`${p.name}, from Peter Bell’s history`} className="hidden sm:block w-32 md:w-44 rounded-sm shadow-[0_20px_40px_-12px_rgba(0,0,0,0.8)] border-4 border-[#f4efe6]" />}
-            <div className="min-w-0">
-              <Link to="/members" className={`${ui} inline-flex items-center gap-2 text-white/85 hover:text-white font-semibold mb-5`}><ArrowLeft className="w-4 h-4" />All club members</Link>
-              <h1 className={`${display} text-4xl md:text-6xl lg:text-7xl text-white leading-[1.02] mb-3 break-words`}>{p.name}</h1>
-              <p className={`${serif} text-xl md:text-2xl text-white/90`}>
-                {p.first !== null ? <>At the club {yearsOf(p)}</> : "Year not given"}{p.roles.length > 0 && <> · {p.roles.join(" · ")}</>}
-              </p>
-              {p.aka.length > 0 && <p className={`${ui} text-sm text-white/70 mt-2`}>Also written as {p.aka.join(" · ")}</p>}
-              {decades.length >= 3 && (
-                <nav aria-label="Jump to a decade" className={`${ui} flex flex-wrap items-center gap-2 mt-5`}>
-                  <span className="text-sm text-white/70 mr-1">Jump to</span>
-                  {decades.map(([d]) => (
-                    <button key={d} onClick={() => document.getElementById(`decade-${d}`)?.scrollIntoView({ behavior: "smooth", block: "start" })}
-                      className="px-3 py-1 rounded-full border border-white/40 text-white text-sm font-semibold hover:bg-white hover:text-[#1d1a1b] transition-colors">{d}s</button>
-                  ))}
-                </nav>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Peter's profile */}
-      {p.profile.length > 0 && (
-        <section className="bg-white py-14 md:py-20">
-          <div className="max-w-4xl mx-auto px-6">
-            <h2 className="sr-only">About {p.name}</h2>
-            {p.profile.map((e) => (
-              <div key={e.id} className="mb-10 [&_p]:text-xl [&_p]:md:text-2xl [&_p]:leading-relaxed [&_p]:text-[#2a2526]">
-                {!isOwn(e.heading) && !profileIsJustName(e.heading) && <h3 className={`${ui} font-bold text-lg mb-3`}>{e.heading}</h3>}
-                <StoryBody e={e} data={data} words={[]} self={p} />
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Stories, decade by decade */}
-      {decades.map(([d, ys], i) => {
-        const bg = bandColour(i);
-        return (
-          <Fragment key={d}>
-            <Slope from={i === 0 ? firstFrom : bandColour(i - 1)} to={bg} flip={i % 2 === 1} />
-            <section id={`decade-${d}`} style={{ background: bg }} className="py-10 md:py-14 scroll-mt-[73px]">
-              <div className="max-w-6xl mx-auto px-6">
-                <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-                  <h2 className={`${display} text-4xl md:text-6xl text-[#1a472a]`}>The {d}s</h2>
-                  {d >= 1840 && <Link to={`/decades/${d}`} className={`${ui} inline-flex items-center gap-2 font-semibold text-[#8B1538] hover:text-[#6B0F2A]`}>The club in the {d}s<ArrowRight className="w-4 h-4" /></Link>}
-                </div>
-                {[...ys].map(([y, es]) => (
-                  <div key={y} id={`year-${y}`} className="grid md:grid-cols-[120px_minmax(0,1fr)] gap-2 md:gap-8 py-8 border-t border-[#d9cfc2] scroll-mt-[90px]">
-                    <div className={`${display} text-3xl md:text-4xl text-[#8B1538] tabular-nums md:sticky md:top-[96px] self-start`}>{y}</div>
-                    <div className="space-y-10 min-w-0">
-                      {es.map((e) => (
-                        <article key={e.id}>
-                          {showHeading(e.heading) && <h3 className={`${ui} font-bold text-lg md:text-xl text-[#1d1a1b] mb-3`}>{e.heading}</h3>}
-                          {!e.heading && <h3 className={`${ui} text-xs uppercase tracking-[0.16em] text-[#5d5658] mb-3`}>The year opens</h3>}
-                          <StoryBody e={e} data={data} words={[]} self={p} />
-                        </article>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </Fragment>
-        );
-      })}
-
-      {inOthers.length > 0 && (
-        <>
-          <Slope from={afterDecades} to={othersBg} flip={decades.length % 2 === 1} />
-          <section style={{ background: othersBg }} className="py-12">
-            <div className="max-w-6xl mx-auto px-6">
-              <h2 className={`${display} text-3xl md:text-4xl text-[#1a472a] mb-6`}>In other members’ profiles</h2>
-              <div className="space-y-10">
-                {inOthers.map((e) => {
-                  const who = subjectOf(e);
-                  return (
-                    <article key={e.id} className="border-t border-[#d9cfc2] pt-6">
-                      <h3 className={`${ui} font-bold text-lg mb-3`}>
-                        {who ? <>From <MemberLink p={who} className="inline text-[#8B1538] hover:underline !w-auto">{who.name}</MemberLink>’s profile</> : e.heading}
-                      </h3>
-                      <StoryBody e={e} data={data} words={[]} self={p} />
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
-          </section>
-        </>
-      )}
-
-      {undated.length > 0 && (
-        <>
-          <Slope from={afterOthers} to={WHITE} flip={decades.length % 2 === 0} />
-          <section className="bg-white py-12">
-            <div className="max-w-6xl mx-auto px-6">
-              <h2 className={`${display} text-3xl md:text-4xl text-[#1a472a] mb-6`}>No year given</h2>
-              <div className="space-y-10">{undated.map((e) => <article key={e.id}>{showHeading(e.heading) && <h3 className={`${ui} font-bold text-lg mb-3`}>{e.heading}</h3>}<StoryBody e={e} data={data} words={[]} self={p} /></article>)}</div>
-            </div>
-          </section>
-        </>
-      )}
-
-      {/* Team photographs */}
-      {p.photos.length > 0 && (
-        <>
-          <Slope from={beforePhotos} to={GREEN} />
-          <section className="bg-[#1a472a] py-14 md:py-20">
-            <div className="max-w-6xl mx-auto px-6">
-              <h2 className={`${display} text-3xl md:text-5xl text-white mb-8`}>In the team photographs</h2>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {p.photos.map((ph) => (
-                  <button key={ph.title + ph.year} onClick={() => setViewing(ph)} className="text-left group focus-visible:outline-none">
-                    <img src={ph.image} alt={ph.title} loading="lazy" className="w-full aspect-[4/3] object-cover rounded-sm group-hover:opacity-90 group-focus-visible:ring-4 group-focus-visible:ring-[#f3dd8c] transition" />
-                    <span className={`${display} block text-white text-lg mt-3`}>{ph.title}</span>
-                    <span className={`${ui} block text-sm text-white/70`}>{ph.year} · click to enlarge</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </section>
-        </>
-      )}
-      {viewing && <PhotoViewer src={viewing.image} alt={viewing.title} caption={`${viewing.title}. ${viewing.players.map((x) => x.name).join(", ")}`} onClose={() => setViewing(null)} />}
-
-      <Slope from={p.photos.length ? GREEN : beforePhotos} to={WHITE} flip />
-      <section className="bg-white py-14">
-        <div className="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
-          <Link to="/members" className={`${ui} inline-flex items-center gap-2 font-semibold text-[#8B1538] hover:text-[#6B0F2A]`}><ArrowLeft className="w-4 h-4" />All club members</Link>
-          <p className={`${ui} text-sm text-[#5d5658]`}>Every word above is Peter Bell’s, from his history of the club.</p>
-        </div>
-      </section>
-    </>
-  );
-}
-
 /* ---------- the page ---------- */
 
 export default function ClubMembers() {
@@ -771,9 +664,9 @@ export default function ClubMembers() {
   const close = () => { if (sheet) window.history.replaceState({}, "", href(sheet.base)); setSheet(null); };
   const step = (dir: -1 | 1) => {
     if (!data || !sheetPerson) return;
-    const small = data.people.filter(isSmall);
-    const i = small.indexOf(sheetPerson);
-    opener.open(small[(i + dir + small.length) % small.length]);
+    const all = data.people;
+    const i = all.indexOf(sheetPerson);
+    opener.open(all[(i + dir + all.length) % all.length]);
   };
 
   return (
@@ -793,8 +686,7 @@ export default function ClubMembers() {
           <Link to="/members" className={`${ui} font-semibold text-[#8B1538]`}>See all club members</Link>
         </div>
       )}
-      {data && person && !isSmall(person) && <MemberPage key={person.id} p={person} data={data} />}
-      {data && (!id || (person && isSmall(person))) && <MembersIndex data={data} />}
+      {data && (!id || person) && <MembersIndex data={data} />}
       {data && <MemberSheet p={sheetPerson} data={data} onClose={close} onStep={step} />}
       <Footer />
     </div>

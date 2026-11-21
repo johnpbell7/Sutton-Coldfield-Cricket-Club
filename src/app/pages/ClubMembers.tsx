@@ -313,7 +313,7 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
             <SheetTitle className="sr-only">{p.name}</SheetTitle>
             <SheetDescription className="sr-only">What Peter Bell’s history of the club says about {p.name}</SheetDescription>
             <button onClick={onClose} aria-label="Close"
-              className="fixed md:absolute top-0 right-0 w-[50px] h-[50px] md:w-[70px] md:h-[70px] bg-[#4a4a4a] flex items-center justify-center z-50 hover:bg-[#3a3a3a] transition-colors"
+              className="fixed top-0 right-0 w-[50px] h-[50px] md:w-[70px] md:h-[70px] bg-[#4a4a4a] flex items-center justify-center z-50 hover:bg-[#3a3a3a] transition-colors"
               style={{ paddingTop: "max(0px, env(safe-area-inset-top))" }}>
               <X className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </button>
@@ -423,6 +423,16 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
                 )}
 
                 <p className={`${ui} text-sm text-[#5d5658] mt-14`}>Every word is Peter Bell’s, from his history of the club.</p>
+                <div className="mt-8 pb-12 flex flex-col md:flex-row gap-4">
+                  <button onClick={onClose}
+                    className="inline-flex items-center justify-center gap-2 md:gap-3 bg-white hover:bg-[#8B1538] text-[#8B1538] hover:text-white border-2 border-[#8B1538] px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-base md:text-lg transition-colors w-full md:w-auto">
+                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />Back to Club Members
+                  </button>
+                  <button onClick={() => onStep(1)}
+                    className="inline-flex items-center justify-center gap-2 md:gap-3 bg-[#8B1538] hover:bg-[#6d0f2a] text-white px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-base md:text-lg transition-colors w-full md:w-auto">
+                    Next member<ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+                  </button>
+                </div>
               </div>
             </div>
           </>

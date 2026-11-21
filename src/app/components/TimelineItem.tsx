@@ -300,7 +300,7 @@ export function TimelineItem({
           {/* Close button - top right */}
           <button 
             onClick={onClose}
-            className="fixed md:absolute top-0 right-0 w-[50px] h-[50px] md:w-[70px] md:h-[70px] bg-[#4a4a4a] flex items-center justify-center z-50 hover:bg-[#3a3a3a] transition-colors"
+            className="fixed top-0 right-0 w-[50px] h-[50px] md:w-[70px] md:h-[70px] bg-[#4a4a4a] flex items-center justify-center z-50 hover:bg-[#3a3a3a] transition-colors"
             style={{ paddingTop: 'max(0px, env(safe-area-inset-top))' }}
             aria-label="Close"
           >

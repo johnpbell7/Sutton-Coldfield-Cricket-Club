@@ -449,7 +449,7 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
   );
 }
 
-function MembersIndex({ data }: { data: Data }) {
+function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boolean }) {
   const [q, setQ] = useState("");
   const [dec, setDecState] = useState<number | null>(null);
   const [shown, setShown] = useState(40);
@@ -569,7 +569,7 @@ function MembersIndex({ data }: { data: Data }) {
   return (
     <>
       {/* The slim search bar that stays at the top once the big one has scrolled away */}
-      <div aria-hidden={!docked} className={`fixed top-[73px] inset-x-0 z-[55] bg-white shadow-[0_14px_24px_-16px_rgba(0,0,0,0.35)] transition-all duration-300 ${docked ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0 pointer-events-none"}`}>
+      {!sheetOpen && <div aria-hidden={!docked} className={`fixed top-[73px] inset-x-0 z-[45] bg-white shadow-[0_14px_24px_-16px_rgba(0,0,0,0.35)] transition-[opacity,transform] duration-300 ${docked ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0 pointer-events-none"}`}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-1 pb-2">{docked && controls(true)}</div>
         {docked && "list" in res && res.list && (
           <nav aria-label="Jump to a letter" className="max-w-6xl mx-auto px-2 sm:px-4 pb-1.5 flex gap-0.5 overflow-x-auto">
@@ -580,7 +580,7 @@ function MembersIndex({ data }: { data: Data }) {
             })}
           </nav>
         )}
-      </div>
+      </div>}
 
       {/* Hero */}
       <section className="relative min-h-[560px] md:min-h-[680px] mt-[73px] flex">
@@ -798,7 +798,7 @@ export default function ClubMembers() {
         </div>
       )}
       {data && id === "styles" && <StyleChoices data={data} />}
-      {data && (!id || person) && <MembersIndex data={data} />}
+      {data && (!id || person) && <MembersIndex data={data} sheetOpen={!!sheetPerson} />}
       {data && <MemberSheet p={sheetPerson} data={data} onClose={close} onStep={step} />}
       <Footer />
     </div>

@@ -48,7 +48,8 @@ function pagesIn(dir, rel = '') {
   for (const e of fs.readdirSync(path.join(dir, rel), { withFileTypes: true })) {
     if (e.name === 'assets') continue;
     const r = path.join(rel, e.name);
-    if (e.isDirectory()) out = out.concat(pagesIn(dir, r));
+    // Member pages (/members/<id>/) already carry their text; Chrome would only add the whole members list to each.
+    if (e.isDirectory()) { if (/^members[\\/]/.test(r)) continue; out = out.concat(pagesIn(dir, r)); }
     else if (e.name === 'index.html') out.push(r);
   }
   return out;

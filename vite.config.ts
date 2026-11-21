@@ -4,7 +4,7 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
-import { routes, applyHead, notFoundHtml, sitemapXml, llmsTxt, SITE_URL } from './scripts/pages.mjs'
+import { routes, applyHead, notFoundHtml, sitemapXml, llmsTxt, SITE_URL, memberPages, sitemapWithMembers } from './scripts/pages.mjs'
 
 /**
  * The site's routes and what search engines see of them live in scripts/pages.mjs.
@@ -75,7 +75,18 @@ function githubPagesRoutes() {
         fs.writeFileSync(path.join(target, 'index.html'), html)
       }
 
-      fs.writeFileSync(path.join(dir, 'sitemap.xml'), sitemapXml())
+      // One page per club member (Club Members), written from public/members/data.json.
+      const membersData = path.join(dir, 'members', 'data.json')
+      const memberRoutes: string[] = []
+      if (fs.existsSync(membersData)) {
+        for (const { route, html } of memberPages(shell, JSON.parse(fs.readFileSync(membersData, 'utf8')))) {
+          const target = path.join(dir, route)
+          fs.mkdirSync(target, { recursive: true })
+          fs.writeFileSync(path.join(target, 'index.html'), html)
+          memberRoutes.push(route)
+        }
+      }
+      fs.writeFileSync(path.join(dir, 'sitemap.xml'), memberRoutes.length ? sitemapWithMembers(memberRoutes) : sitemapXml())
       fs.writeFileSync(path.join(dir, 'llms.txt'), llmsTxt())
       fs.writeFileSync(
         path.join(dir, 'robots.txt'),

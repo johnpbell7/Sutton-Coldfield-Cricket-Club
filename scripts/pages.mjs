@@ -212,6 +212,7 @@ export function llmsTxt() {
   const pages = mainPages.map((p) => link(p, {
     '/': 'Home', '/journey/': 'Our Journey Through Time', '/decades/': 'Through the Decades', '/teams/': 'Meet the Teams',
     '/obituaries/': 'In Memoriam', '/showreel/': 'Showreel', '/rectory-park/': 'Rectory Park', '/riland-bedford/': 'The Riland & The Bedford Family',
+    '/members/': 'Club Members',
   }[p.path])).join('\n');
   const decades = decadePages.map((p) => link(p, `${p.decade.name} (${p.decade.years})`)).join('\n');
   return `# Sutton Coldfield Cricket Club
@@ -232,4 +233,52 @@ ${decades}
 for (const p of PAGES) {
   if (p.title.length > 60) console.warn(`pages.mjs: title is ${p.title.length} characters: ${p.title}`);
   if (p.description.length < 120 || p.description.length > 155) console.warn(`pages.mjs: description is ${p.description.length} characters: ${p.path}`);
+}
+
+// ---- Club Members: one page per member, so Google can find each name ----
+// public/members/data.json (made in the studio from Peter Bell's history) has every member and the entries naming them.
+// Each member gets /members/<id>/ with their own title, description and the entries as plain HTML inside #root, which the
+// app replaces with the members list and their pop-up once it loads. The prerender skips these pages (scripts/prerender.mjs).
+const htmlEsc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const clip = (s, n) => (s.length <= n ? s : s.slice(0, s.lastIndexOf(' ', n - 1)) + '…');
+
+export function memberPages(shell, data) {
+  const out = [];
+  const entries = data.entries;
+  for (const m of data.people) {
+    const ids = [...new Set([...(m.about || []), ...(m.mentions || [])])];
+    const stories = ids.map((i) => entries[i]).filter((e) => e && e.paras && e.paras.length)
+      .sort((a, b) => (a.year ?? 9999) - (b.year ?? 9999) || a.id - b.id);
+    if (!stories.length) continue;
+    const years = [];
+    for (const e of stories) { if (e.year) years.push(e.year); if (e.kind === 'profile' && e.span) years.push(...e.span); }
+    const span = years.length ? (Math.min(...years) === Math.max(...years) ? `${Math.min(...years)}` : `${Math.min(...years)}–${Math.max(...years)}`) : '';
+    const surname = m.name.split(/\s+/).pop().replace(/[^A-Za-z’'-]/g, '');
+    const firstLine = stories.flatMap((e) => e.paras.join(' ').split(/(?<=[.!?])\s+/))
+      .find((x) => x.includes(surname) && x.length > 40 && (x.match(/;/g) || []).length < 2);
+    const description = clip(firstLine || `${m.name} in Peter Bell’s history of Sutton Coldfield Cricket Club${span ? `, ${span}` : ''}.`, 155);
+    const route = `/members/${m.id}/`;
+    const canonical = SITE_URL + route;
+    let html = applyHead(shell, {
+      title: titleFor(`${m.name}${span ? `, ${span}` : ''}`),
+      description,
+      canonical,
+      image: '/share/teams.jpg',
+      imageAlt: 'Sutton Coldfield Cricket Club members over historic team photographs',
+    });
+    const person = { '@context': 'https://schema.org', '@type': 'Person', name: m.name, url: canonical,
+      memberOf: { '@type': 'SportsOrganization', name: SITE_NAME, url: SITE_URL + '/' } };
+    html = html.replace('</head>', () => `  <script type="application/ld+json">${JSON.stringify(person).replace(/</g, '\\u003c')}</script>\n  </head>`);
+    const body = [`<h1>${htmlEsc(m.name)}</h1>`, span ? `<p>At Sutton Coldfield Cricket Club ${htmlEsc(span)}, from Peter Bell’s history of the club.</p>` : '']
+      .concat(stories.map((e) => `<section>${e.year ? `<h2>${e.year}</h2>` : ''}${e.heading ? `<h3>${htmlEsc(e.heading)}</h3>` : ''}${e.paras.map((t) => `<p>${htmlEsc(t)}</p>`).join('')}</section>`))
+      .concat(`<p><a href="/members/">All club members</a></p>`).join('');
+    html = html.replace('<div id="root"></div>', () => `<div id="root">${body}</div>`);
+    out.push({ route, html });
+  }
+  return out;
+}
+
+export function sitemapWithMembers(memberRoutes) {
+  const extra = memberRoutes.map((r) => `  <url>\n    <loc>${SITE_URL}${r}</loc>\n  </url>`).join('\n');
+  return sitemapXml().replace('</urlset>', `${extra}\n</urlset>`);
 }

@@ -219,13 +219,19 @@ function initials(p: Person) {
 }
 
 function MemberRow({ p, words }: { p: Person; words: string[] }) {
+  const line = useMemo(() => excerpt(p), [p]);
+  const n = p.stories.length;
   return (
     <li>
-      <MemberLink p={p} className="group block py-2.5 rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538]/25">
-        <span className={`${serif} block text-lg md:text-[19px] leading-snug ${p.unsure ? "text-[#7a7072]" : "text-[#1d1a1b]"} group-hover:text-[#8B1538] transition-colors`}>
-          <Rich text={p.name} words={words} />
+      <MemberLink p={p} className="group h-full flex flex-col p-5 rounded-md bg-[#f8f6f3] border border-transparent hover:bg-white hover:border-[#e7e0d6] hover:shadow-[0_14px_30px_-18px_rgba(60,20,30,0.45)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538]/30 transition">
+        <span className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a] tabular-nums`}>{yearsOf(p)}</span>
+        <span className={`${display} text-xl leading-snug mt-1 ${p.unsure ? "text-[#6b6264]" : "text-[#8B1538]"}`}><Rich text={p.name} words={words} /></span>
+        {line && <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2 line-clamp-3`}>{line}</span>}
+        <span className={`${ui} mt-auto pt-4 text-sm font-semibold text-[#8B1538] flex flex-wrap items-center gap-x-3 gap-y-1`}>
+          <span className="inline-flex items-center gap-1">{n} {n === 1 ? "story" : "stories"}<ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" /></span>
+          {p.profile.length > 0 && <span className="inline-flex items-center gap-1 text-[#1a472a]"><BookOpen className="w-3.5 h-3.5" aria-hidden="true" />Profile</span>}
+          {p.photos.length > 0 && <span className="inline-flex items-center gap-1 text-[#1a472a]"><Camera className="w-3.5 h-3.5" aria-hidden="true" />Team photo</span>}
         </span>
-        <span className={`${ui} block text-[13px] text-[#8a8183] tabular-nums mt-0.5`}>{yearsOf(p)}</span>
       </MemberLink>
     </li>
   );
@@ -255,17 +261,23 @@ function StoryItem({ e, data, words, defaultOpen = false }: { e: Entry; data: Da
 function StoryBody({ e, data, words, self, hideHeading = true }: { e: Entry; data: Data; words: string[]; self?: Person; hideHeading?: boolean }) {
   const selfRe = useMemo(() => (self ? selfPattern(self) : undefined), [self]);
   const others = (data.peopleOf.get(e.id) || []).filter((id) => id !== self?.id).map((id) => data.byId.get(id)!).filter(Boolean);
+  const [all, setAll] = useState(false);
+  // A run of names copied from the club's records (new members, a team) reads oddly on its own.
+  const isList = e.paras.join(" ").split(";").length >= 6;
+  const shownOthers = all ? others : others.slice(0, 6);
   return (
     <div className="max-w-3xl">
+      {isList && <p className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a] mb-2`}>A list of names from the club’s records{e.year ? `, ${e.year}` : ""}</p>}
       {(!hideHeading || !e.paras.length) && e.heading && <h4 className={`${ui} font-bold text-lg text-[#1d1a1b] mb-2`}><Rich text={e.heading} words={words} /></h4>}
       {e.paras.map((t, i) => (
         <p key={i} className={`${serif} text-lg leading-relaxed text-gray-800 mb-4 whitespace-pre-line`}><Rich text={t} words={words} self={selfRe} /></p>
       ))}
-      {others.length > 0 && <div className={`${ui} flex flex-wrap items-center gap-2 text-sm`}>
+      {!isList && others.length > 0 && <div className={`${ui} flex flex-wrap items-center gap-2 text-sm`}>
         <span className="text-[#5d5658]">Also in this story:</span>
-        {others.slice(0, 12).map((o) => (
+        {shownOthers.map((o) => (
           <span key={o.id} className="inline-block"><MemberLink p={o} className="px-2.5 py-1 rounded-full bg-[#f6e9ed] text-[#8B1538] font-semibold hover:bg-[#8B1538] hover:text-white transition-colors">{o.name}</MemberLink></span>
         ))}
+        {others.length > 6 && <button type="button" onClick={() => setAll(!all)} className="px-2.5 py-1 rounded-full border border-[#d9cfc2] text-[#5d5658] font-semibold hover:border-[#8B1538] hover:text-[#8B1538]">{all ? "Show fewer" : `+ ${others.length - 6} more`}</button>}
       </div>}
     </div>
   );
@@ -418,8 +430,7 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
                   </section>
                 )}
 
-                <p className={`${ui} text-sm text-[#5d5658] mt-14`}>Every word is Peter Bell’s, from his history of the club.</p>
-                <div className="mt-8 pb-12 flex flex-col md:flex-row gap-4">
+                <div className="mt-14 pb-12 flex flex-col md:flex-row gap-4">
                   <button onClick={onClose}
                     className="inline-flex items-center justify-center gap-2 md:gap-3 bg-white hover:bg-[#8B1538] text-[#8B1538] hover:text-white border-2 border-[#8B1538] px-6 md:px-10 py-3 md:py-4 font-['Helvetica',sans-serif] font-semibold text-base md:text-lg transition-colors w-full md:w-auto">
                     <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />Back to Club Members
@@ -443,7 +454,7 @@ function MembersIndex({ data }: { data: Data }) {
   const [dec, setDecState] = useState<number | null>(null);
   const [shown, setShown] = useState(40);
   const [applied, setApplied] = useState("");
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<false | string>(false);
   const [active, setActive] = useState(-1);
   const navigate = useNavigate();
   const boxRef = useRef<HTMLDivElement>(null);
@@ -478,6 +489,74 @@ function MembersIndex({ data }: { data: Data }) {
     return data.entries.filter((e) => entryInDec(e) && r.every((x) => x.test(e.heading + " " + e.paras.join(" ")))).length;
   }, [typed, dec, data]);
   const opener = useContext(OpenCtx);
+  const heroControls = useRef<HTMLDivElement>(null);
+  const [docked, setDocked] = useState(false);
+  useEffect(() => {
+    const el = heroControls.current; if (!el) return;
+    const io = new IntersectionObserver(([en]) => setDocked(!en.isIntersecting && en.boundingClientRect.top < 0), { rootMargin: "-73px 0px 0px 0px" });
+    io.observe(el); return () => io.disconnect();
+  }, []);
+  const controls = (dock: boolean) => {
+    const where = dock ? "dock" : "hero";
+    return (
+            <div ref={dock ? undefined : heroControls} className={dock ? "flex gap-2 relative" : "max-w-3xl flex flex-col sm:flex-row gap-3 relative z-30"}>
+            <div className="relative flex-1 min-w-0"
+              onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false); }}>
+              <Search className={dock ? "absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B1538]" : "absolute left-5 top-[30px] md:top-[34px] -translate-y-1/2 w-6 h-6 text-[#8B1538]"} aria-hidden="true" />
+              <input id={dock ? "member-search-dock" : "member-search"} aria-label="Find a member, or search the history" type="search" value={q} autoComplete="off" role="combobox"
+                aria-expanded={open === where && suggestions.length > 0} aria-controls={`member-suggestions-${where}`}
+                aria-activedescendant={active >= 0 ? `sugg-${where}-${active}` : undefined}
+                onFocus={() => setOpen(where)}
+                onChange={(e) => { setQ(e.target.value); if (!e.target.value.trim()) setApplied(""); setShown(40); setOpen(where); setActive(-1); }}
+                onKeyDown={(e) => {
+                  const n = suggestions.length + 1;
+                  if (e.key === "ArrowDown") { e.preventDefault(); setOpen(where); setActive((a) => (a + 1) % n); }
+                  else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => (a <= 0 ? n - 1 : a - 1)); }
+                  else if (e.key === "Escape") { setOpen(false); setActive(-1); }
+                  else if (e.key === "Enter") {
+                    e.preventDefault();
+                    if (active >= 0 && active < suggestions.length) { const s = suggestions[active]; setOpen(false); if (opener && isSmall(s)) opener.open(s); else navigate(`/members/${s.id}`); }
+                    else showAll();
+                  }
+                }}
+                placeholder="Find a member, or search the history"
+                className={`${ui} w-full rounded-md bg-white text-[#1d1a1b] placeholder:text-[#7a7072] focus:outline-none focus:ring-4 focus:ring-[#f3dd8c] [&::-webkit-search-cancel-button]:hidden ${dock ? "text-base pl-11 pr-10 py-2.5 border border-[#d9cfc2]" : "text-lg md:text-xl pl-14 pr-12 py-4 md:py-5 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)]"}`} />
+              {q && <button onClick={() => { setQ(""); setApplied(""); setActive(-1); }} aria-label="Clear the search" className={`absolute -translate-y-1/2 p-1 text-[#5d5658] hover:text-[#8B1538] ${dock ? "right-2.5 top-1/2" : "right-4 top-[30px] md:top-[34px]"}`}><X className="w-5 h-5" /></button>}
+              {open === where && typed.length > 0 && (
+                <ul id={`member-suggestions-${where}`} role="listbox" className="absolute left-0 right-0 top-full mt-2 bg-white rounded-md overflow-hidden shadow-[0_24px_48px_-16px_rgba(0,0,0,0.65)] border border-[#e7e0d6]">
+                  {suggestions.map((p, i) => (
+                    <li key={p.id} id={`sugg-${where}-${i}`} role="option" aria-selected={active === i}>
+                      <MemberLink p={p} className={`grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-baseline px-5 py-3 border-b border-[#f0ebe3] ${active === i ? "bg-[#f6e9ed]" : "hover:bg-[#f8f6f3]"}`}>
+                        <span className="min-w-0">
+                          <span className={`${display} text-[#8B1538] text-lg block truncate`}>{p.name}</span>
+                          <span className={`${ui} text-sm text-[#5d5658]`}>{p.stories.length} {p.stories.length === 1 ? "story" : "stories"}{p.profile.length ? " · profile" : ""}{p.photos.length ? ` · in ${p.photos.length} team ${p.photos.length === 1 ? "photo" : "photos"}` : ""}</span>
+                        </span>
+                        <span className={`${ui} font-bold tabular-nums text-[#1d1a1b]`}>{yearsOf(p)}</span>
+                      </MemberLink>
+                    </li>
+                  ))}
+                  {suggestions.length === 0 && <li className={`${ui} px-5 py-3 text-[#5d5658]`}>No member by that name.</li>}
+                  <li id={`sugg-${where}-${suggestions.length}`} role="option" aria-selected={active === suggestions.length}>
+                    <button onMouseDown={(e) => e.preventDefault()} onClick={showAll}
+                      className={`${ui} w-full text-left px-5 py-3.5 font-semibold text-[#1a472a] flex items-center gap-2 ${active === suggestions.length ? "bg-[#e6eee8]" : "hover:bg-[#f8f6f3]"}`}>
+                      <Search className="w-4 h-4" aria-hidden="true" />Search all of Peter’s history for “{q.trim()}” ({typedStories} {typedStories === 1 ? "story" : "stories"})
+                    </button>
+                  </li>
+                </ul>
+              )}
+            </div>
+            <div className={dock ? "relative w-[120px] sm:w-[170px] shrink-0" : "relative sm:w-[190px] shrink-0"}>
+              <label htmlFor={dock ? "member-decade-dock" : "member-decade"} className="sr-only">Decade</label>
+              <select id={dock ? "member-decade-dock" : "member-decade"} value={dec ?? ""} onChange={(e) => setDec(e.target.value ? Number(e.target.value) : null)}
+                className={`${ui} appearance-none w-full h-full font-semibold rounded-md bg-white text-[#1d1a1b] focus:outline-none focus:ring-4 focus:ring-[#f3dd8c] cursor-pointer ${dock ? "text-base pl-3.5 pr-9 py-2.5 border border-[#d9cfc2]" : "text-lg pl-5 pr-11 py-4 md:py-5 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)]"}`}>
+                <option value="">All years</option>
+                {DECADES.filter((d) => data.people.some((p) => p.first !== null && p.first <= d + 9 && p.last! >= d)).map((d) => <option key={d} value={d}>{d}s</option>)}
+              </select>
+              <ChevronDown className={`absolute ${dock ? "right-3" : "right-4"} top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B1538] pointer-events-none`} aria-hidden="true" />
+            </div>
+            </div>
+    );
+  };
   const showAll = () => { setApplied(q); setOpen(false); setActive(-1); requestAnimationFrame(() => document.getElementById("members-results")?.scrollIntoView({ behavior: "smooth", block: "start" })); };
 
   const groups = useMemo(() => {
@@ -489,6 +568,20 @@ function MembersIndex({ data }: { data: Data }) {
 
   return (
     <>
+      {/* The slim search bar that stays at the top once the big one has scrolled away */}
+      <div aria-hidden={!docked} className={`fixed top-[73px] inset-x-0 z-[55] bg-white shadow-[0_14px_24px_-16px_rgba(0,0,0,0.35)] transition-all duration-300 ${docked ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0 pointer-events-none"}`}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-1 pb-2">{docked && controls(true)}</div>
+        {docked && "list" in res && res.list && (
+          <nav aria-label="Jump to a letter" className="max-w-6xl mx-auto px-2 sm:px-4 pb-1.5 flex gap-0.5 overflow-x-auto">
+            {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((l) => {
+              const has = groups.some(([k]) => k === l);
+              return <button key={l} disabled={!has} onClick={() => document.getElementById(`letter-${l}`)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                className={`${ui} shrink-0 w-8 h-8 rounded font-bold text-[15px] ${has ? "text-[#8B1538] hover:bg-[#f6e9ed]" : "text-[#d9cfc2] cursor-default"}`}>{l}</button>;
+            })}
+          </nav>
+        )}
+      </div>
+
       {/* Hero */}
       <section className="relative min-h-[560px] md:min-h-[680px] mt-[73px] flex">
         <div className="absolute inset-0 bg-cover bg-no-repeat bg-[#1c1c1c]" style={{ backgroundImage: `url(${heroImage})`, backgroundPosition: "center 35%" }}>
@@ -505,69 +598,14 @@ function MembersIndex({ data }: { data: Data }) {
               Captains and groundsmen, umpires and tea ladies, county players and Test cricketers: {data.people.length} people from the club’s story, and what Peter wrote about each of them.
             </p>
             <label htmlFor="member-search" className="sr-only">Find a member, or any word in the history</label>
-            <div className="max-w-3xl flex flex-col sm:flex-row gap-3 relative z-30">
-            <div ref={boxRef} className="relative flex-1 min-w-0"
-              onBlur={(e) => { if (!boxRef.current?.contains(e.relatedTarget as Node)) setOpen(false); }}>
-              <Search className="absolute left-5 top-[30px] md:top-[34px] -translate-y-1/2 w-6 h-6 text-[#8B1538]" aria-hidden="true" />
-              <input id="member-search" type="search" value={q} autoComplete="off" role="combobox"
-                aria-expanded={open && suggestions.length > 0} aria-controls="member-suggestions"
-                aria-activedescendant={active >= 0 ? `sugg-${active}` : undefined}
-                onFocus={() => setOpen(true)}
-                onChange={(e) => { setQ(e.target.value); if (!e.target.value.trim()) setApplied(""); setShown(40); setOpen(true); setActive(-1); }}
-                onKeyDown={(e) => {
-                  const n = suggestions.length + 1;
-                  if (e.key === "ArrowDown") { e.preventDefault(); setOpen(true); setActive((a) => (a + 1) % n); }
-                  else if (e.key === "ArrowUp") { e.preventDefault(); setActive((a) => (a <= 0 ? n - 1 : a - 1)); }
-                  else if (e.key === "Escape") { setOpen(false); setActive(-1); }
-                  else if (e.key === "Enter") {
-                    e.preventDefault();
-                    if (active >= 0 && active < suggestions.length) { const s = suggestions[active]; setOpen(false); if (opener && isSmall(s)) opener.open(s); else navigate(`/members/${s.id}`); }
-                    else showAll();
-                  }
-                }}
-                placeholder="Find a member, or search the history"
-                className={`${ui} w-full text-lg md:text-xl pl-14 pr-12 py-4 md:py-5 rounded-md bg-white text-[#1d1a1b] placeholder:text-[#7a7072] shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)] focus:outline-none focus:ring-4 focus:ring-[#f3dd8c] [&::-webkit-search-cancel-button]:hidden`} />
-              {q && <button onClick={() => { setQ(""); setApplied(""); setActive(-1); }} aria-label="Clear the search" className="absolute right-4 top-[30px] md:top-[34px] -translate-y-1/2 p-1 text-[#5d5658] hover:text-[#8B1538]"><X className="w-5 h-5" /></button>}
-              {open && typed.length > 0 && (
-                <ul id="member-suggestions" role="listbox" className="absolute left-0 right-0 top-full mt-2 bg-white rounded-md overflow-hidden shadow-[0_24px_48px_-16px_rgba(0,0,0,0.65)] border border-[#e7e0d6]">
-                  {suggestions.map((p, i) => (
-                    <li key={p.id} id={`sugg-${i}`} role="option" aria-selected={active === i}>
-                      <MemberLink p={p} className={`grid grid-cols-[minmax(0,1fr)_auto] gap-3 items-baseline px-5 py-3 border-b border-[#f0ebe3] ${active === i ? "bg-[#f6e9ed]" : "hover:bg-[#f8f6f3]"}`}>
-                        <span className="min-w-0">
-                          <span className={`${display} text-[#8B1538] text-lg block truncate`}>{p.name}</span>
-                          <span className={`${ui} text-sm text-[#5d5658]`}>{p.stories.length} {p.stories.length === 1 ? "story" : "stories"}{p.profile.length ? " · profile" : ""}{p.photos.length ? ` · in ${p.photos.length} team ${p.photos.length === 1 ? "photo" : "photos"}` : ""}</span>
-                        </span>
-                        <span className={`${ui} font-bold tabular-nums text-[#1d1a1b]`}>{yearsOf(p)}</span>
-                      </MemberLink>
-                    </li>
-                  ))}
-                  {suggestions.length === 0 && <li className={`${ui} px-5 py-3 text-[#5d5658]`}>No member by that name.</li>}
-                  <li id={`sugg-${suggestions.length}`} role="option" aria-selected={active === suggestions.length}>
-                    <button onMouseDown={(e) => e.preventDefault()} onClick={showAll}
-                      className={`${ui} w-full text-left px-5 py-3.5 font-semibold text-[#1a472a] flex items-center gap-2 ${active === suggestions.length ? "bg-[#e6eee8]" : "hover:bg-[#f8f6f3]"}`}>
-                      <Search className="w-4 h-4" aria-hidden="true" />Search all of Peter’s history for “{q.trim()}” ({typedStories} {typedStories === 1 ? "story" : "stories"})
-                    </button>
-                  </li>
-                </ul>
-              )}
-            </div>
-            <div className="relative sm:w-[190px] shrink-0">
-              <label htmlFor="member-decade" className="sr-only">Decade</label>
-              <select id="member-decade" value={dec ?? ""} onChange={(e) => setDec(e.target.value ? Number(e.target.value) : null)}
-                className={`${ui} appearance-none w-full h-full text-lg font-semibold pl-5 pr-11 py-4 md:py-5 rounded-md bg-white text-[#1d1a1b] shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)] focus:outline-none focus:ring-4 focus:ring-[#f3dd8c] cursor-pointer`}>
-                <option value="">All years</option>
-                {DECADES.filter((d) => data.people.some((p) => p.first !== null && p.first <= d + 9 && p.last! >= d)).map((d) => <option key={d} value={d}>{d}s</option>)}
-              </select>
-              <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B1538] pointer-events-none" aria-hidden="true" />
-            </div>
-            </div>
+            {controls(false)}
           </div>
         </div>
       </section>
 
 
       {/* Results */}
-      <section id="members-results" className="bg-white pb-20 scroll-mt-[73px]">
+      <section id="members-results" className="bg-white pb-20 scroll-mt-[136px]">
         <div className="max-w-6xl mx-auto px-6">
           <div className={`${ui} flex flex-wrap items-baseline justify-between gap-3 py-4 border-b-2 border-[#1d1a1b]`}>
             <h2 className={`${display} text-2xl md:text-4xl text-[#1d1a1b]`}>
@@ -578,7 +616,7 @@ function MembersIndex({ data }: { data: Data }) {
 
           {"list" in res && res.list && (
             <>
-              <nav aria-label="Jump to a letter" className="sticky top-[73px] z-20 bg-white/95 backdrop-blur border-b border-[#e7e0d6] -mx-6 px-6 py-2 flex gap-1 overflow-x-auto">
+              <nav aria-label="Letters" className="border-b border-[#e7e0d6] -mx-6 px-6 py-2 flex gap-1 overflow-x-auto">
                 {"ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((l) => {
                   const has = groups.some(([k]) => k === l);
                   return <button key={l} disabled={!has} onClick={() => document.getElementById(`letter-${l}`)?.scrollIntoView({ behavior: "smooth", block: "start" })}
@@ -587,9 +625,9 @@ function MembersIndex({ data }: { data: Data }) {
               </nav>
               <p className={`${ui} text-[#5d5658] mt-4`}>{res.list.length} members{decLabel}{res.club && res.club.length > 0 && <> · <a href="#club-notes" className="text-[#8B1538] font-semibold hover:underline">{res.club.length} club stories from the {dec}s ↓</a></>}</p>
               {groups.map(([letter, ps]) => (
-                <section key={letter} id={`letter-${letter}`} className="scroll-mt-[130px] pt-8">
+                <section key={letter} id={`letter-${letter}`} className="scroll-mt-[190px] pt-8">
                   <h3 className={`${display} text-5xl md:text-6xl text-[#1a472a] leading-none mb-2`}>{letter}</h3>
-                  <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-1 mt-2">{ps.map((p) => <MemberRow key={p.id} p={p} words={[]} />)}</ul>
+                  <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mt-3">{ps.map((p) => <MemberRow key={p.id} p={p} words={[]} />)}</ul>
                 </section>
               ))}
             </>
@@ -599,11 +637,11 @@ function MembersIndex({ data }: { data: Data }) {
             <div className="pt-6">
               {res.here.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-4`}>{dec === null ? "Members" : `Members${decLabel}`}</h3>
-                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-1 mt-2">{res.here.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mt-3">{res.here.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
               </>}
               {res.elsewhere.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-8`}>{res.here.length ? "In other years" : `Not in the ${dec}s. In other years:`}</h3>
-                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-1 mt-2">{res.elsewhere.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mt-3">{res.elsewhere.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
               </>}
               {res.stories.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-10`}>{res.stories.length} {res.stories.length === 1 ? "story mentions" : "stories mention"} “{applied.trim()}”{decLabel}</h3>
@@ -624,7 +662,7 @@ function MembersIndex({ data }: { data: Data }) {
       {"club" in res && res.club && res.club.length > 0 && (
         <>
           <div className="relative h-[60px] md:h-[100px] -mb-px"><svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 120"><path d="M0 120H1920V0L0 120Z" fill="#f8f6f3" /></svg></div>
-          <section id="club-notes" className="bg-[#f8f6f3] py-14 md:py-20 -mt-px scroll-mt-[73px]">
+          <section id="club-notes" className="bg-[#f8f6f3] py-14 md:py-20 -mt-px scroll-mt-[136px]">
             <div className="max-w-5xl mx-auto px-6">
               <h2 className={`${display} text-3xl md:text-5xl text-[#8B1538] mb-3`}>Club stories, {dec}s</h2>
               <p className={`${serif} text-lg md:text-xl text-gray-700 mb-8 max-w-3xl`}>The parts of Peter’s history that belong to the whole club: meetings, matches, the ground and the pavilion.</p>

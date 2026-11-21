@@ -221,15 +221,11 @@ function initials(p: Person) {
 function MemberRow({ p, words }: { p: Person; words: string[] }) {
   return (
     <li>
-      <MemberLink p={p}
-        className="group flex items-baseline gap-2 py-3 border-b border-[#ece5da] focus-visible:outline-none focus-visible:bg-[#f6e9ed]">
-        <span className={`${serif} text-lg md:text-[19px] leading-snug ${p.unsure ? "text-[#6b6264] italic" : "text-[#1d1a1b]"} group-hover:text-[#8B1538] transition-colors min-w-0`}>
+      <MemberLink p={p} className="group block py-2.5 rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8B1538]/25">
+        <span className={`${serif} block text-lg md:text-[19px] leading-snug ${p.unsure ? "text-[#7a7072]" : "text-[#1d1a1b]"} group-hover:text-[#8B1538] transition-colors`}>
           <Rich text={p.name} words={words} />
         </span>
-        {p.profile.length > 0 && <BookOpen className="w-3.5 h-3.5 text-[#1a472a] shrink-0 self-center" aria-label="Has a profile" />}
-        {p.photos.length > 0 && <Camera className="w-3.5 h-3.5 text-[#1a472a] shrink-0 self-center" aria-label="In a team photo" />}
-        <span aria-hidden="true" className="flex-1 min-w-[1.5rem] border-b-2 border-dotted border-[#d9cfc2] group-hover:border-[#8B1538]/40 translate-y-[-4px] transition-colors" />
-        <span className={`${ui} text-sm font-bold tabular-nums text-[#5d5658] group-hover:text-[#8B1538] shrink-0 transition-colors`}>{yearsOf(p)}</span>
+        <span className={`${ui} block text-[13px] text-[#8a8183] tabular-nums mt-0.5`}>{yearsOf(p)}</span>
       </MemberLink>
     </li>
   );
@@ -593,7 +589,7 @@ function MembersIndex({ data }: { data: Data }) {
               {groups.map(([letter, ps]) => (
                 <section key={letter} id={`letter-${letter}`} className="scroll-mt-[130px] pt-8">
                   <h3 className={`${display} text-5xl md:text-6xl text-[#1a472a] leading-none mb-2`}>{letter}</h3>
-                  <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 mt-2">{ps.map((p) => <MemberRow key={p.id} p={p} words={[]} />)}</ul>
+                  <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-1 mt-2">{ps.map((p) => <MemberRow key={p.id} p={p} words={[]} />)}</ul>
                 </section>
               ))}
             </>
@@ -603,11 +599,11 @@ function MembersIndex({ data }: { data: Data }) {
             <div className="pt-6">
               {res.here.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-4`}>{dec === null ? "Members" : `Members${decLabel}`}</h3>
-                <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 mt-2">{res.here.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
+                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-1 mt-2">{res.here.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
               </>}
               {res.elsewhere.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-8`}>{res.here.length ? "In other years" : `Not in the ${dec}s. In other years:`}</h3>
-                <ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 mt-2">{res.elsewhere.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
+                <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-1 mt-2">{res.elsewhere.map((p) => <MemberRow key={p.id} p={p} words={words} />)}</ul>
               </>}
               {res.stories.length > 0 && <>
                 <h3 className={`${ui} text-sm font-bold uppercase tracking-[0.14em] text-[#5d5658] mt-10`}>{res.stories.length} {res.stories.length === 1 ? "story mentions" : "stories mention"} “{applied.trim()}”{decLabel}</h3>

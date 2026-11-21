@@ -16,12 +16,44 @@ import { roll as fcRoll, profiles as fcProfiles } from "@/app/data/firstClassCri
  * Data: public/members/data.json, made in the studio from his five parts.
  */
 
+type ScoreKind = "hundreds" | "five" | "hat" | "part";
+const SCORE_KINDS: [ScoreKind, string, string][] = [
+  ["hundreds", "Hundreds", "Members who made a hundred"],
+  ["five", "Five wickets or more", "Members who took five wickets or more"],
+  ["hat", "Hat-tricks", "Members who took a hat-trick"],
+  ["part", "Partnerships", "Members in a big partnership"],
+];
+const SCORE_TESTS: Record<ScoreKind, RegExp> = {
+  hundreds: /\((?:1\d\d|2\d\d)(?:\s*not out)?\)|\b(?:1\d\d|2\d\d)\s*(?:not out|\*)|\b(?:scor\w*|made|hit|obtain\w*|innings of)\s+(?:1\d\d|2\d\d)\b(?!\s*(?:for\s+\d|runs? for))|(?<!half[-\s])\bcent(?:u|au)r(?:y|ies)\b/i,
+  five: /\b(?:took|taking|figures of|had)\s+(?:all\s+)?(?:[5-9]|10)\s+(?:wickets\s+)?for\s+\d{1,3}\b|\ball ten wickets\b|\b(?:took|taking)\s+(?:five|six|seven|eight|nine|all ten)\s+wickets\b/i,
+  hat: /hat[\s-]?trick(?!["'”’]*\s+of\b)/i, // not "a hat trick of achieving a thousand runs"
+  part: /partnership|\bput on \d+|\bstand of \d+|for the (?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|last|\d+(?:st|nd|rd|th)) wicket/i,
+};
+/** For each kind of score, the first sentence of Peter's that names this member alongside it. */
+function findScores(p: Person): Partial<Record<ScoreKind, string>> {
+  const out: Partial<Record<ScoreKind, string>> = {};
+  const re = selfPattern(p);
+  for (const e of p.stories) {
+    for (const para of e.paras) {
+      if (para.includes("\t") || (para.match(/\b\d+\b/g) || []).length > 14) continue; // tables of figures
+      for (const sent of para.split(/(?<=[.!?])\s+/)) {
+        re.lastIndex = 0;
+        const named = re.test(sent) || (p.profile.includes(e) && !/\b[A-Z]\.\s?[A-Z]/.test(sent));
+        if (!named) continue;
+        for (const [k] of SCORE_KINDS) if (!out[k] && SCORE_TESTS[k].test(sent)) out[k] = sent.trim();
+      }
+    }
+  }
+  return out;
+}
+
 type Entry = { id: number; part: number; kind: string; year: number | null; span: [number, number] | null; heading: string; paras: string[] };
 type RawPerson = { id: string; name: string; aka: string[]; roles: string[]; about: number[]; mentions: number[]; unsure?: 1; checked?: 1; fromText?: 1 };
 type Person = RawPerson & {
   sur: string; letter: string; first: number | null; last: number | null;
   stories: Entry[]; profile: Entry[]; photos: TeamPhoto[]; portrait?: string; searchName: string; tok: string[];
   fc?: { teams: string; years: string; order: number };
+  scores: Partial<Record<ScoreKind, string>>;
   fcStory?: { paragraphs: string[]; image?: string; imageCaption?: string };
 };
 type Data = { people: Person[]; byId: Map<string, Person>; entries: Entry[]; peopleOf: Map<number, string[]> };
@@ -70,7 +102,7 @@ function loadData(): Promise<Data> {
           ...p, stories, profile: stories.filter((e) => e.kind === "profile" && p.about.includes(e.id)),
           first: ys.length ? Math.min(...ys) : null, last: ys.length ? Math.max(...ys) : null,
           sur: sur.toLowerCase(), letter: (sur[0] || "#").toUpperCase(), photos: [],
-          portrait: PORTRAITS[p.id], searchName: [p.name, ...p.aka].join(" ").toLowerCase(), tok: tokens([p.name, ...p.aka].join(" ")),
+          portrait: PORTRAITS[p.id], searchName: [p.name, ...p.aka].join(" ").toLowerCase(), tok: tokens([p.name, ...p.aka].join(" ")), scores: {},
         };
         if (!p.unsure) [p.name, ...p.aka].forEach((f) => keysOf(f).forEach((k) => keyIndex.set(k, [...(keyIndex.get(k) || []), p.id])));
         return person;
@@ -107,7 +139,7 @@ function loadData(): Promise<Data> {
           p = {
             id: "fc-" + r.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""), name: r.name, aka: [], roles: [], about: [], mentions: [],
             stories: [], profile: [], photos: [], first, last, sur: sur.toLowerCase(), letter: sur[0].toUpperCase(),
-            searchName: r.name.toLowerCase(), tok: tokens(r.name),
+            searchName: r.name.toLowerCase(), tok: tokens(r.name), scores: {},
           } as Person;
           people.push(p); byId.set(p.id, p);
         }
@@ -117,6 +149,7 @@ function loadData(): Promise<Data> {
         const p = pick(pr.name);
         if (p) p.fcStory = { paragraphs: pr.paragraphs, image: pr.image, imageCaption: pr.imageCaption };
       });
+      people.forEach((p) => { p.scores = findScores(p); });
       people.sort((a, b) => a.sur.localeCompare(b.sur) || a.name.localeCompare(b.name));
       return { people, byId, entries, peopleOf };
     });
@@ -268,8 +301,11 @@ function excerpt(p: Person): string {
   return hit.length > 160 ? hit.slice(0, hit.lastIndexOf(" ", 155)) + "…" : hit;
 }
 
-function MemberRow({ p, words, fc = false }: { p: Person; words: string[]; fc?: boolean }) {
-  const line = useMemo(() => (fc && p.fcStory ? p.fcStory.paragraphs[0].split(/(?<=[.!?])\s+/)[0] : excerpt(p)), [p, fc]);
+function MemberRow({ p, words, fc = false, kind = null }: { p: Person; words: string[]; fc?: boolean; kind?: ScoreKind | null }) {
+  const line = useMemo(() => {
+    if (kind && p.scores[kind]) { const t = p.scores[kind]!; return t.length > 240 ? t.slice(0, t.lastIndexOf(" ", 235)) + "…" : t; }
+    return fc && p.fcStory ? p.fcStory.paragraphs[0].split(/(?<=[.!?])\s+/)[0] : excerpt(p);
+  }, [p, fc, kind]);
   const n = p.stories.length;
   return (
     <li>
@@ -277,7 +313,7 @@ function MemberRow({ p, words, fc = false }: { p: Person; words: string[]; fc?: 
         <span className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a] tabular-nums`}>{fc && p.fc ? p.fc.years : yearsOf(p)}</span>
         <span className={`${display} text-xl leading-snug mt-1 ${p.unsure ? "text-[#6b6264]" : "text-[#8B1538]"}`}><Rich text={p.name} words={words} /></span>
         {fc && p.fc && <span className={`${ui} text-sm font-semibold text-[#1a472a] mt-1`}>{p.fc.teams}</span>}
-        {line ? <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2 line-clamp-3`}>{line}</span>
+        {line ? <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2 ${kind ? "line-clamp-5" : "line-clamp-3"}`}>{kind ? <Rich text={line} words={[]} /> : line}</span>
           : p.fc && <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2`}>First-class cricket for {p.fc.teams}, {p.fc.years}.</span>}
         <span className={`${ui} mt-auto pt-4 text-sm font-semibold text-[#8B1538] flex flex-wrap items-center gap-x-3 gap-y-1`}>
           <span className="inline-flex items-center gap-1">{n ? `${n} ${n === 1 ? "story" : "stories"}` : "Read more"}<ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" /></span>
@@ -539,6 +575,7 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
   const [dec, setDecState] = useState<number | null>(null);
   const [shown, setShown] = useState(40);
   const [applied, setApplied] = useState("");
+  const [kind, setKindState] = useState<ScoreKind | null>(null);
   const [open, setOpen] = useState<false | string>(false);
   const [active, setActive] = useState(-1);
   const navigate = useNavigate();
@@ -549,6 +586,7 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
   const inDec = (p: Person) => dec === null || (p.first !== null && p.first <= dec + 9 && p.last! >= dec);
   const entryInDec = (e: Entry) => dec === null || (e.year !== null && e.year >= dec && e.year <= dec + 9);
   const decLabel = dec === null ? "" : ` in the ${dec}s`;
+  const setKind = (k: ScoreKind | null) => { setKindState(k); setApplied(""); setShown(40); requestAnimationFrame(() => document.getElementById("members-results")?.scrollIntoView({ behavior: "smooth", block: "start" })); };
 
   const res = useMemo(() => {
     if (words.length) {
@@ -558,10 +596,10 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
       const stories = data.entries.filter((e) => entryInDec(e) && res.every((r) => r.test(e.heading + " " + e.paras.join(" "))));
       return { named, here: named.filter(inDec), elsewhere: named.filter((p) => !inDec(p)), stories };
     }
-    const list = data.people.filter(inDec);
+    const list = data.people.filter((p) => inDec(p) && (!kind || !!p.scores[kind]));
     const club = dec === null ? [] : data.entries.filter((e) => entryInDec(e) && e.year && !(data.peopleOf.get(e.id) || []).length);
     return { list, club };
-  }, [words, dec, data]);
+  }, [words, dec, data, kind]);
 
   const suggestions = useMemo(() => {
     if (!typed.length) return [];
@@ -584,8 +622,8 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
   const controls = (dock: boolean) => {
     const where = dock ? "dock" : "hero";
     return (
-            <div ref={dock ? undefined : heroControls} className={dock ? "flex gap-2 relative" : "max-w-3xl flex flex-col sm:flex-row gap-3 relative z-30"}>
-            <div className="relative flex-1 min-w-0"
+            <div ref={dock ? undefined : heroControls} className={dock ? "grid grid-cols-2 sm:flex gap-2 relative" : "max-w-4xl flex flex-col sm:flex-row gap-3 relative z-30"}>
+            <div className={`relative flex-1 min-w-0 ${dock ? "col-span-2" : ""}`}
               onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false); }}>
               <Search className={dock ? "absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B1538]" : "absolute left-5 top-[30px] md:top-[34px] -translate-y-1/2 w-6 h-6 text-[#8B1538]"} aria-hidden="true" />
               <input id={dock ? "member-search-dock" : "member-search"} aria-label="Find a member, or search the history" type="search" value={q} autoComplete="off" role="combobox"
@@ -630,12 +668,21 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
                 </ul>
               )}
             </div>
-            <div className={dock ? "relative w-[120px] sm:w-[170px] shrink-0" : "relative sm:w-[190px] shrink-0"}>
+            <div className={dock ? "relative sm:w-[150px] shrink-0" : "relative sm:w-[170px] shrink-0"}>
               <label htmlFor={dock ? "member-decade-dock" : "member-decade"} className="sr-only">Decade</label>
               <select id={dock ? "member-decade-dock" : "member-decade"} value={dec ?? ""} onChange={(e) => setDec(e.target.value ? Number(e.target.value) : null)}
                 className={`${ui} appearance-none w-full h-full font-semibold rounded-md bg-white text-[#1d1a1b] focus:outline-none focus:ring-4 focus:ring-[#f3dd8c] cursor-pointer ${dock ? "text-base pl-3.5 pr-9 py-2.5 border border-[#d9cfc2]" : "text-lg pl-5 pr-11 py-4 md:py-5 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)]"}`}>
                 <option value="">All years</option>
                 {DECADES.filter((d) => data.people.some((p) => p.first !== null && p.first <= d + 9 && p.last! >= d)).map((d) => <option key={d} value={d}>{d}s</option>)}
+              </select>
+              <ChevronDown className={`absolute ${dock ? "right-3" : "right-4"} top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B1538] pointer-events-none`} aria-hidden="true" />
+            </div>
+            <div className={dock ? "relative sm:w-[200px] shrink-0" : "relative sm:w-[230px] shrink-0"}>
+              <label htmlFor={dock ? "member-scores-dock" : "member-scores"} className="sr-only">Scores</label>
+              <select id={dock ? "member-scores-dock" : "member-scores"} value={kind ?? ""} onChange={(e) => setKind((e.target.value || null) as ScoreKind | null)}
+                className={`${ui} appearance-none w-full h-full font-semibold rounded-md bg-white text-[#1d1a1b] focus:outline-none focus:ring-4 focus:ring-[#f3dd8c] cursor-pointer ${dock ? "text-base pl-3.5 pr-9 py-2.5 border border-[#d9cfc2]" : "text-lg pl-5 pr-11 py-4 md:py-5 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)]"}`}>
+                <option value="">All scores</option>
+                {SCORE_KINDS.map(([k, label]) => <option key={k} value={k}>{label}</option>)}
               </select>
               <ChevronDown className={`absolute ${dock ? "right-3" : "right-4"} top-1/2 -translate-y-1/2 w-5 h-5 text-[#8B1538] pointer-events-none`} aria-hidden="true" />
             </div>
@@ -694,8 +741,9 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
         <div className="max-w-6xl mx-auto px-6">
           <div className={`${ui} flex flex-wrap items-baseline justify-between gap-3 py-4 border-b-2 border-[#1d1a1b]`}>
             <h2 className={`${display} text-2xl md:text-4xl text-[#1d1a1b]`}>
-              {words.length ? <>Results for “{applied.trim()}”{decLabel}</> : dec === null ? "All members, A to Z" : <>Members in the {dec}s</>}
+              {words.length ? <>Results for “{applied.trim()}”{decLabel}</> : kind ? <>{SCORE_KINDS.find(([k]) => k === kind)![2]}{decLabel}</> : dec === null ? "All members, A to Z" : <>Members in the {dec}s</>}
             </h2>
+            {kind && !words.length && <button onClick={() => setKind(null)} className="inline-flex items-center gap-1.5 text-[#8B1538] font-semibold hover:underline"><X className="w-4 h-4" />All members</button>}
             {dec !== null && <button onClick={() => setDecState(null)} className="inline-flex items-center gap-1.5 text-[#8B1538] font-semibold hover:underline"><X className="w-4 h-4" />Show all years</button>}
           </div>
 
@@ -708,11 +756,11 @@ function MembersIndex({ data, sheetOpen = false }: { data: Data; sheetOpen?: boo
                     className={`${ui} shrink-0 w-8 h-9 rounded font-bold ${has ? "text-[#8B1538] hover:bg-[#f6e9ed]" : "text-[#d9cfc2] cursor-default"}`}>{l}</button>;
                 })}
               </nav>
-              <p className={`${ui} text-[#5d5658] mt-4`}>{res.list.length} members{decLabel}{res.club && res.club.length > 0 && <> · <a href="#club-notes" className="text-[#8B1538] font-semibold hover:underline">{res.club.length} club stories from the {dec}s ↓</a></>}</p>
+              <p className={`${ui} text-[#5d5658] mt-4`}>{res.list.length} members{decLabel}{kind ? ` · ${SCORE_KINDS.find(([k]) => k === kind)![1].toLowerCase()} from Peter’s history` : ""}{res.club && res.club.length > 0 && <> · <a href="#club-notes" className="text-[#8B1538] font-semibold hover:underline">{res.club.length} club stories from the {dec}s ↓</a></>}</p>
               {groups.map(([letter, ps]) => (
                 <section key={letter} id={`letter-${letter}`} className="scroll-mt-[190px] pt-8">
                   <h3 className={`${display} text-5xl md:text-6xl text-[#1a472a] leading-none mb-2`}>{letter}</h3>
-                  <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mt-3">{ps.map((p) => <MemberRow key={p.id} p={p} words={[]} />)}</ul>
+                  <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mt-3">{ps.map((p) => <MemberRow key={p.id} p={p} words={[]} kind={kind} />)}</ul>
                 </section>
               ))}
             </>

@@ -127,6 +127,20 @@ function Span({ p, dark = false }: { p: Person; dark?: boolean }) {
   );
 }
 
+const WHITE = "#ffffff", CREAM = "#f8f6f3", GREEN = "#1a472a";
+
+/** The site's angled band edge: the colour above slants into the colour below, the bottom edge always full. */
+function Slope({ from, to, flip = false }: { from: string; to: string; flip?: boolean }) {
+  if (from === to) return null;
+  return (
+    <div aria-hidden="true" className="relative h-[60px] md:h-[100px] -my-px" style={{ background: from }}>
+      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 120">
+        <path d={flip ? "M0 0L1920 120H0Z" : "M0 120H1920V0Z"} fill={to} />
+      </svg>
+    </div>
+  );
+}
+
 /* ---------- index ---------- */
 
 function MemberRow({ p, words }: { p: Person; words: string[] }) {
@@ -401,6 +415,10 @@ function MemberPage({ p, data }: { p: Person; data: Data }) {
   const hero = p.photos[0]?.image || heroImage;
   const isOwn = (h: string) => [p.name, ...p.aka].some((f) => f.replace(/[^a-z]/gi, "").toLowerCase() === h.replace(/^(Obituary( to)?|Tribute to)\s+/i, "").replace(/\s*[-–].*$/, "").replace(/[^a-z]/gi, "").toLowerCase());
   const w = END - START;
+  const firstFrom = p.profile.length ? WHITE : GREEN;
+  const bandColour = (i: number) => ((firstFrom === WHITE ? i % 2 === 0 : i % 2 === 1) ? CREAM : WHITE);
+  const afterDecades = decades.length ? bandColour(decades.length - 1) : firstFrom;
+  const beforePhotos = undated.length ? WHITE : afterDecades;
 
   return (
     <>
@@ -466,6 +484,7 @@ function MemberPage({ p, data }: { p: Person; data: Data }) {
       </section>
 
       {/* Peter's profile */}
+      {p.profile.length > 0 && <Slope from={GREEN} to={WHITE} flip />}
       {p.profile.length > 0 && (
         <section className="bg-white py-14 md:py-20">
           <div className="max-w-4xl mx-auto px-6">
@@ -482,15 +501,11 @@ function MemberPage({ p, data }: { p: Person; data: Data }) {
 
       {/* Stories, decade by decade */}
       {decades.map(([d, ys], i) => {
-        const cream = i % 2 === (p.profile.length ? 0 : 1);
+        const bg = bandColour(i);
         return (
           <Fragment key={d}>
-            <div className={`relative h-[60px] md:h-[100px] -mb-px ${i === 0 && !p.profile.length ? "bg-[#1a472a]" : ""}`}>
-              <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 120">
-                <path d={i % 2 ? "M0 0H1920V120L0 0Z" : "M0 120H1920V0L0 120Z"} fill={cream ? "#f8f6f3" : "white"} />
-              </svg>
-            </div>
-            <section className={`${cream ? "bg-[#f8f6f3]" : "bg-white"} py-10 md:py-14 -mt-px`}>
+            <Slope from={i === 0 ? firstFrom : bandColour(i - 1)} to={bg} flip={i % 2 === 1} />
+            <section style={{ background: bg }} className="py-10 md:py-14">
               <div className="max-w-6xl mx-auto px-6">
                 <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
                   <h2 className={`${display} text-4xl md:text-6xl text-[#1a472a]`}>The {d}s</h2>
@@ -517,19 +532,22 @@ function MemberPage({ p, data }: { p: Person; data: Data }) {
       })}
 
       {undated.length > 0 && (
-        <section className="bg-white py-12">
-          <div className="max-w-6xl mx-auto px-6">
-            <h2 className={`${display} text-3xl md:text-4xl text-[#1a472a] mb-6`}>No year given</h2>
-            <div className="space-y-10">{undated.map((e) => <article key={e.id}>{e.heading && !isOwn(e.heading) && <h3 className={`${ui} font-bold text-lg mb-3`}>{e.heading}</h3>}<StoryBody e={e} data={data} words={[]} self={p} /></article>)}</div>
-          </div>
-        </section>
+        <>
+          <Slope from={afterDecades} to={WHITE} flip={decades.length % 2 === 1} />
+          <section className="bg-white py-12">
+            <div className="max-w-6xl mx-auto px-6">
+              <h2 className={`${display} text-3xl md:text-4xl text-[#1a472a] mb-6`}>No year given</h2>
+              <div className="space-y-10">{undated.map((e) => <article key={e.id}>{e.heading && !isOwn(e.heading) && <h3 className={`${ui} font-bold text-lg mb-3`}>{e.heading}</h3>}<StoryBody e={e} data={data} words={[]} self={p} /></article>)}</div>
+            </div>
+          </section>
+        </>
       )}
 
       {/* Team photographs */}
       {p.photos.length > 0 && (
         <>
-          <div className="relative h-[60px] md:h-[100px] -mb-px"><svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1920 120"><path d="M0 120H1920V0L0 120Z" fill="#1a472a" /></svg></div>
-          <section className="bg-[#1a472a] py-14 md:py-20 -mt-px">
+          <Slope from={beforePhotos} to={GREEN} />
+          <section className="bg-[#1a472a] py-14 md:py-20">
             <div className="max-w-6xl mx-auto px-6">
               <h2 className={`${display} text-3xl md:text-5xl text-white mb-8`}>In the team photographs</h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -547,6 +565,7 @@ function MemberPage({ p, data }: { p: Person; data: Data }) {
       )}
       {viewing && <PhotoViewer src={viewing.image} alt={viewing.title} caption={`${viewing.title}. ${viewing.players.map((x) => x.name).join(", ")}`} onClose={() => setViewing(null)} />}
 
+      <Slope from={p.photos.length ? GREEN : beforePhotos} to={WHITE} flip />
       <section className="bg-white py-14">
         <div className="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
           <Link to="/members" className={`${ui} inline-flex items-center gap-2 font-semibold text-[#8B1538] hover:text-[#6B0F2A]`}><ArrowLeft className="w-4 h-4" />All club members</Link>

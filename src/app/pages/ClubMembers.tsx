@@ -277,7 +277,8 @@ function MemberRow({ p, words, fc = false }: { p: Person; words: string[]; fc?: 
         <span className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a] tabular-nums`}>{fc && p.fc ? p.fc.years : yearsOf(p)}</span>
         <span className={`${display} text-xl leading-snug mt-1 ${p.unsure ? "text-[#6b6264]" : "text-[#8B1538]"}`}><Rich text={p.name} words={words} /></span>
         {fc && p.fc && <span className={`${ui} text-sm font-semibold text-[#1a472a] mt-1`}>{p.fc.teams}</span>}
-        {line && <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2 line-clamp-3`}>{line}</span>}
+        {line ? <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2 line-clamp-3`}>{line}</span>
+          : p.fc && <span className={`${serif} text-[17px] leading-relaxed text-[#3a3435] mt-2`}>First-class cricket for {p.fc.teams}, {p.fc.years}.</span>}
         <span className={`${ui} mt-auto pt-4 text-sm font-semibold text-[#8B1538] flex flex-wrap items-center gap-x-3 gap-y-1`}>
           <span className="inline-flex items-center gap-1">{n ? `${n} ${n === 1 ? "story" : "stories"}` : "Read more"}<ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" /></span>
           {p.profile.length > 0 && <span className="inline-flex items-center gap-1 text-[#1a472a]"><BookOpen className="w-3.5 h-3.5" aria-hidden="true" />Profile</span>}
@@ -395,7 +396,7 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
                   <div className="min-w-0">
                     <h2 className={`${display} text-4xl md:text-6xl leading-tight text-[#8B1538] mb-3 break-words`}>{p.name}</h2>
                     <p className={`${serif} text-base md:text-lg text-[#222]/65`}>
-                      {p.stories.length ? (p.first !== null ? `At the club ${yearsOf(p)}` : "Year not given") : "Not yet in Peter’s history"}{p.roles.length > 0 && <> · {p.roles.join(" · ")}</>}
+                      {p.stories.length ? (p.first !== null ? `At the club ${yearsOf(p)}` : "Year not given") : ""}{p.stories.length > 0 && p.roles.length > 0 && <> · {p.roles.join(" · ")}</>}
                     </p>
                     {p.aka.length > 0 && <p className={`${ui} text-sm text-[#5d5658] mt-1`}>Also written as {p.aka.join(" · ")}</p>}
                     {p.fc && (
@@ -407,6 +408,19 @@ function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Dat
                     )}
                   </div>
                 </div>
+
+                {p.fc && !p.fcStory && !p.stories.length && (() => {
+                  const d = Math.floor(parseInt(p.fc.years, 10) / 10) * 10;
+                  return (
+                    <section className="mt-8 bg-[#f8f6f3] rounded-md p-5 md:p-7">
+                      <p className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#5d5658] mb-3`}>From the club’s records</p>
+                      <p className={`${serif} text-lg leading-relaxed text-[#2a2526]`}>
+                        {p.name} is one of the forty-five players the club’s records name as having played for Sutton Coldfield and also played first-class or List A cricket: {p.fc.teams}, {p.fc.years}.
+                      </p>
+                      {d >= 1840 && d <= 2020 && <Link to={`/decades/${d}`} className={`${ui} inline-flex items-center gap-2 mt-4 text-sm font-semibold text-[#8B1538] hover:text-[#6B0F2A]`}>The club in the {d}s<ArrowRight className="w-4 h-4" /></Link>}
+                    </section>
+                  );
+                })()}
 
                 {p.fcStory && (
                   <section className="mt-8 bg-[#f8f6f3] rounded-md p-5 md:p-7">

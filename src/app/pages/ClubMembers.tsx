@@ -293,7 +293,7 @@ function excerpt(p: Person): string {
   const e = p.profile[0] || about[0] || p.stories[0];
   if (!e) return "";
   const re = selfPattern(p);
-  const sentences = e.paras.join(" ").split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter(Boolean);
+  const sentences = e.paras.filter((t) => !t.includes("\t")).join(" ").split(/(?<=[.!?])\s+/).map((x) => x.trim()).filter(Boolean);
   const listy = (x: string) => (x.match(/;/g) || []).length >= 2 || x.length < 30;
   const named = sentences.filter((x) => { re.lastIndex = 0; return re.test(x) && !listy(x); });
   const hit = (e === p.profile[0] ? sentences.find((x) => !listy(x)) : named[0]) || named[0] || sentences.find((x) => !listy(x)) || "";
@@ -346,16 +346,45 @@ function StoryItem({ e, data, words, defaultOpen = false }: { e: Entry; data: Da
   );
 }
 
+/** One of Peter's tables (season averages, a player's record) shown as a table; empty columns from merged cells dropped. */
+function FigureTable({ rows, self }: { rows: string[]; self?: RegExp }) {
+  const cells = rows.map((r) => r.split("\t").map((c) => c.trim()));
+  const width = Math.max(...cells.map((r) => r.length));
+  const keep = Array.from({ length: width }, (_, c) => cells.some((r) => (r[c] || "") !== "" && r[c] !== "–"));
+  const grid = cells.map((r) => Array.from({ length: width }, (_, c) => r[c] || "").filter((_, c) => keep[c]));
+  const head = grid[0] && grid[0].every((c) => !/\d/.test(c)) ? grid[0] : null;
+  const body = head ? grid.slice(1) : grid;
+  return (
+    <div className="overflow-x-auto mb-5 -mx-1 px-1">
+      <table className={`${ui} text-sm md:text-[15px] border-collapse min-w-full`}>
+        {head && <thead><tr>{head.map((c, j) => <th key={j} className="text-left font-bold text-[#1d1a1b] px-2.5 py-2 border-b-2 border-[#1d1a1b] whitespace-nowrap">{c}</th>)}</tr></thead>}
+        <tbody>{body.map((r, i) => {
+          const mine = !!self && (() => { self.lastIndex = 0; return self.test(r.join(" ")); })();
+          return (
+          <tr key={i} className={mine ? "bg-[#f6e9ed] text-[#8B1538] font-semibold" : i % 2 ? "bg-white" : "bg-[#f8f6f3]"}>
+            {r.map((c, j) => <td key={j} className={`px-2.5 py-1.5 border-b border-[#ece5da] whitespace-nowrap ${/^[\d.*/–-]+$/.test(c) ? "text-right tabular-nums" : ""} ${j === 0 ? "font-semibold" : ""}`}>{c}</td>)}
+          </tr>
+          );
+        })}</tbody>
+      </table>
+    </div>
+  );
+}
+
 function StoryBody({ e, data, words, self, hideHeading = true }: { e: Entry; data: Data; words: string[]; self?: Person; hideHeading?: boolean }) {
   const selfRe = useMemo(() => (self ? selfPattern(self) : undefined), [self]);
   const blocks = useMemo(() => {
     const out: string[][] = []; let run: string[] = [];
     const flush = () => { if (run.length >= 3) out.push(run); else run.forEach((t) => out.push([t])); run = []; };
+    let rows: string[] = [];
+    const flushRows = () => { if (rows.length) out.push(["\u0000table", ...rows]); rows = []; };
     for (const t of e.paras) {
+      if (t.includes("\t")) { flush(); rows.push(t); continue; }
+      flushRows();
       if (t.length <= 90 && !t.includes("\n")) run.push(t);
       else { flush(); out.push([t]); }
     }
-    flush();
+    flush(); flushRows();
     return out;
   }, [e]);
   const others = (data.peopleOf.get(e.id) || []).filter((id) => id !== self?.id).map((id) => data.byId.get(id)!).filter(Boolean);
@@ -367,7 +396,9 @@ function StoryBody({ e, data, words, self, hideHeading = true }: { e: Entry; dat
     <div className="max-w-3xl">
       {isList && <p className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a] mb-2`}>A list of names from the club’s records{e.year ? `, ${e.year}` : ""}</p>}
       {(!hideHeading || !e.paras.length) && e.heading && <h4 className={`${ui} font-bold text-lg text-[#1d1a1b] mb-2`}><Rich text={e.heading} words={words} /></h4>}
-      {blocks.map((b, i) => b.length === 1 ? (
+      {blocks.map((b, i) => b[0] === "\u0000table" ? (
+        <FigureTable key={i} rows={b.slice(1)} self={selfRe} />
+      ) : b.length === 1 ? (
         <p key={i} className={`${serif} text-lg leading-relaxed text-gray-800 mb-4 whitespace-pre-line`}><Rich text={b[0]} words={words} self={selfRe} /></p>
       ) : (
         // A run of short lines (awards, a team, officers): set close together as a list, nothing reworded.

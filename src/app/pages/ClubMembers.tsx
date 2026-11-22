@@ -348,6 +348,16 @@ function StoryItem({ e, data, words, defaultOpen = false }: { e: Entry; data: Da
 
 function StoryBody({ e, data, words, self, hideHeading = true }: { e: Entry; data: Data; words: string[]; self?: Person; hideHeading?: boolean }) {
   const selfRe = useMemo(() => (self ? selfPattern(self) : undefined), [self]);
+  const blocks = useMemo(() => {
+    const out: string[][] = []; let run: string[] = [];
+    const flush = () => { if (run.length >= 3) out.push(run); else run.forEach((t) => out.push([t])); run = []; };
+    for (const t of e.paras) {
+      if (t.length <= 90 && !t.includes("\n")) run.push(t);
+      else { flush(); out.push([t]); }
+    }
+    flush();
+    return out;
+  }, [e]);
   const others = (data.peopleOf.get(e.id) || []).filter((id) => id !== self?.id).map((id) => data.byId.get(id)!).filter(Boolean);
   const [all, setAll] = useState(false);
   // A run of names copied from the club's records (new members, a team) reads oddly on its own.
@@ -357,8 +367,13 @@ function StoryBody({ e, data, words, self, hideHeading = true }: { e: Entry; dat
     <div className="max-w-3xl">
       {isList && <p className={`${ui} text-xs font-bold uppercase tracking-[0.14em] text-[#1a472a] mb-2`}>A list of names from the club’s records{e.year ? `, ${e.year}` : ""}</p>}
       {(!hideHeading || !e.paras.length) && e.heading && <h4 className={`${ui} font-bold text-lg text-[#1d1a1b] mb-2`}><Rich text={e.heading} words={words} /></h4>}
-      {e.paras.map((t, i) => (
-        <p key={i} className={`${serif} text-lg leading-relaxed text-gray-800 mb-4 whitespace-pre-line`}><Rich text={t} words={words} self={selfRe} /></p>
+      {blocks.map((b, i) => b.length === 1 ? (
+        <p key={i} className={`${serif} text-lg leading-relaxed text-gray-800 mb-4 whitespace-pre-line`}><Rich text={b[0]} words={words} self={selfRe} /></p>
+      ) : (
+        // A run of short lines (awards, a team, officers): set close together as a list, nothing reworded.
+        <div key={i} className={`${serif} text-[17px] leading-snug text-gray-800 mb-5 space-y-1.5`}>
+          {b.map((t, j) => <p key={j}><Rich text={t} words={words} self={selfRe} /></p>)}
+        </div>
       ))}
       {!isList && others.length > 0 && <div className={`${ui} flex flex-wrap items-center gap-2 text-sm`}>
         <span className="text-[#5d5658]">Also in this story:</span>
@@ -376,7 +391,7 @@ const NAMEISH = /^(?:(?:Mr|Mrs|Miss|Dr|Rev|The Rev|Ald|Sir)\.?\s+)?(?:[A-Z]\.\s?
 function topicOf(h: string) {
   const t = h.replace(/\(.*?\)|“.*?”|".*?"/g, "").replace(/\s*[-–]\s*(Life Member|The Administrator).*$/i, "").replace(/^(Obituary( to)?|Tribute to)\s+/i, "").trim();
   const bits = t.split(/\s*(?:,|;|&|\band\b)\s*/).map((b) => b.trim()).filter(Boolean);
-  return bits.length && bits.every((b) => b.split(/\s+/).length <= 4 && NAMEISH.test(b)) ? "" : h;
+  return bits.length && bits.every((b) => b.split(/\s+/).length <= 4 && NAMEISH.test(b) && !/^The\s(?!Rev)/.test(b)) ? "" : h; // "The Last Safe" is a title, not a name
 }
 
 function MemberSheet({ p, data, onClose, onStep }: { p: Person | null; data: Data; onClose: () => void; onStep: (dir: -1 | 1) => void }) {

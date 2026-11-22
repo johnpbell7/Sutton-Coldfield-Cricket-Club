@@ -4,7 +4,7 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 
-import { routes, applyHead, notFoundHtml, sitemapXml, llmsTxt, SITE_URL, memberPages, sitemapWithMembers } from './scripts/pages.mjs'
+import { routes, applyHead, notFoundHtml, sitemapXml, llmsTxt, SITE_URL, memberPages, sitemapWithMembers, memberRedirects } from './scripts/pages.mjs'
 
 /**
  * The site's routes and what search engines see of them live in scripts/pages.mjs.
@@ -79,7 +79,13 @@ function githubPagesRoutes() {
       const membersData = path.join(dir, 'members', 'data.json')
       const memberRoutes: string[] = []
       if (fs.existsSync(membersData)) {
-        for (const { route, html } of memberPages(shell, JSON.parse(fs.readFileSync(membersData, 'utf8')))) {
+        const parsed = JSON.parse(fs.readFileSync(membersData, 'utf8'))
+        for (const { route, html } of memberRedirects(parsed)) {
+          const target = path.join(dir, route)
+          fs.mkdirSync(target, { recursive: true })
+          fs.writeFileSync(path.join(target, 'index.html'), html)
+        }
+        for (const { route, html } of memberPages(shell, parsed)) {
           const target = path.join(dir, route)
           fs.mkdirSync(target, { recursive: true })
           fs.writeFileSync(path.join(target, 'index.html'), html)

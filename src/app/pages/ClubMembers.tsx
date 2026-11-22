@@ -56,7 +56,7 @@ type Person = RawPerson & {
   scores: Partial<Record<ScoreKind, string>>;
   fcStory?: { paragraphs: string[]; image?: string; imageCaption?: string };
 };
-type Data = { people: Person[]; byId: Map<string, Person>; entries: Entry[]; peopleOf: Map<number, string[]> };
+type Data = { people: Person[]; byId: Map<string, Person>; entries: Entry[]; peopleOf: Map<number, string[]>; aliases: Record<string, string> };
 
 const START = 1837, END = 2015;
 const DECADES = Array.from({ length: 19 }, (_, i) => 1830 + i * 10);
@@ -88,7 +88,7 @@ function loadData(): Promise<Data> {
   if (loading) return loading;
   loading = fetch(href("/members/data.json"))
     .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
-    .then((raw: { people: RawPerson[]; entries: Entry[] }) => {
+    .then((raw: { people: RawPerson[]; entries: Entry[]; aliases?: Record<string, string> }) => {
       const entries = raw.entries;
       const keyIndex = new Map<string, string[]>();
       const people: Person[] = raw.people.map((p) => {
@@ -151,7 +151,9 @@ function loadData(): Promise<Data> {
       });
       people.forEach((p) => { p.scores = findScores(p); });
       people.sort((a, b) => a.sur.localeCompare(b.sur) || a.name.localeCompare(b.name));
-      return { people, byId, entries, peopleOf };
+      // an address that changed (a fuller name) still opens the right member
+      Object.entries(raw.aliases || {}).forEach(([from, to]) => { const p = byId.get(to); if (p && !byId.has(from)) byId.set(from, p); });
+      return { people, byId, entries, peopleOf, aliases: raw.aliases || {} };
     });
   loading.catch(() => { loading = null; });
   return loading;

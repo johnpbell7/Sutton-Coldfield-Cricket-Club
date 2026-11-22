@@ -278,6 +278,16 @@ export function memberPages(shell, data) {
   return out;
 }
 
+// Old member addresses (a name that now reads better) forward to the member's current page.
+export function memberRedirects(data) {
+  const out = [];
+  for (const [from, to] of Object.entries(data.aliases || {})) {
+    const target = `${SITE_URL}/members/${to}/`;
+    out.push({ route: `/members/${from}/`, html: `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>Club Members · ${SITE_NAME}</title><link rel="canonical" href="${target}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=/members/${to}/"></head><body><p><a href="/members/${to}/">Go to this member’s page</a></p></body></html>\n` });
+  }
+  return out;
+}
+
 export function sitemapWithMembers(memberRoutes) {
   const extra = memberRoutes.map((r) => `  <url>\n    <loc>${SITE_URL}${r}</loc>\n  </url>`).join('\n');
   return sitemapXml().replace('</urlset>', `${extra}\n</urlset>`);
